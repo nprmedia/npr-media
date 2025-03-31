@@ -2,11 +2,9 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 
-// ─── Public Routes ───────────────────────────────────────────────
-// These paths do not require auth or special handling
+// Define public paths (everything else can be "middleware-managed" later)
 const PUBLIC_PATHS = ['/', '/about', '/services', '/contact', '/unauthorized', '/api/ping']
 
-// ─── Main Middleware Logic ───────────────────────────────────────
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
@@ -16,10 +14,7 @@ export function middleware(request: NextRequest) {
   }
 
   // 2. Future: Authenticated Route Protection (stubbed)
-  const isProtectedRoute =
-    pathname.startsWith('/admin') ||
-    pathname.startsWith('/client') ||
-    pathname.startsWith('/dashboard')
+  const isProtectedRoute = false // Disable route protection entirely
 
   const userIsAuthenticated = false // 🔐 TODO: Replace with real auth check
 
