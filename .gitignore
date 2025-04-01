@@ -56,3 +56,5 @@ wordpress-export-*.xml
 # ─── OS Metadata ──────────────────────────────────────────────────
 ehthumbs.db
 desktop.ini
+.vercel
+.env*.local
