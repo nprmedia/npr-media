@@ -39,6 +39,6 @@ export const config = {
       - system assets (_next)
       - images or public assets
     */
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(svg|jpg|png|ico|txt)).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
 }

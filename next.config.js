@@ -19,11 +19,7 @@ const nextConfig = {
     NEXT_PUBLIC_ENVIRONMENT: process.env.NEXT_PUBLIC_ENVIRONMENT,
     NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
   },
-
-  experimental: {
-    serverActions: false,
-  },
-
+  
   async headers() {
     return [
       {
