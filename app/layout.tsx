@@ -1,5 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
+import Navbar from '@/components/Navbar'
 
 export const metadata: Metadata = {
   title: {
@@ -48,7 +49,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="bg-white text-gray-900 font-sans">
-        <main className="relative min-h-screen flex flex-col">{children}</main>
+        <Navbar />
+        <main className="relative min-h-screen flex flex-col pt-20">
+          {children}
+        </main>      
       </body>
     </html>
   )
