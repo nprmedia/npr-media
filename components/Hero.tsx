@@ -23,7 +23,7 @@ export default function Hero() {
         ref={heroRef}
         role="region"
         aria-labelledby="hero-title"
-        className="relative flex flex-col items-center justify-center text-center px-4 sm:px-8 lg:px-12 pt-36 pb-32 sm:pt-44 sm:pb-40 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white via-slate-50 to-slate-100 dark:from-black dark:via-gray-900 dark:to-gray-950 before:absolute before:inset-0 before:bg-[url('/noise.svg')] before:opacity-5 before:pointer-events-none"
+        className="relative flex flex-col items-center justify-center text-center px-4 sm:px-8 lg:px-12 pt-40 pb-32 sm:pt-52 sm:pb-40 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white via-slate-50 to-slate-100 dark:from-black dark:via-gray-900 dark:to-gray-950 before:absolute before:inset-0 before:bg-[url('/noise.svg')] before:opacity-5 before:pointer-events-none"
       >
         <span className="sr-only" aria-live="polite">
           Welcome to NPR Media's homepage
@@ -88,6 +88,9 @@ export default function Hero() {
               loading="lazy"
               width={1280}
               height={720}
+              onError={(e) => {
+                e.currentTarget.style.display = 'none'
+              }}
             />
           </motion.div>
         </div>
