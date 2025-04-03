@@ -1,6 +1,9 @@
 import Hero from '@/components/Hero'
 import TabbedPricing from '@/components/TabbedPricing'
 import IndustryTemplatesSection from '@/components/IndustryTemplatesSection'
+import WhyTrustSection from '@/components/WhyTrustSection'
+import ContactSection from '@/components/ContactSection'
+import FinalCtaSection from '@/components/FinalCtaSection'
 
 export default function HomePage() {
   return (
@@ -8,6 +11,9 @@ export default function HomePage() {
       <Hero />
       <TabbedPricing />
       <IndustryTemplatesSection />
+      <WhyTrustSection />
+      <ContactSection />
+      <FinalCtaSection />
     </main>
   )
 }
