@@ -6,10 +6,12 @@ import FadeInSection from '@/components/FadeInSection'
 import { motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 import type { HeroContent } from '@/types/hero'
+import { useTheme } from 'next-themes'
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null)
   const content: HeroContent = hero
+  const { theme, setTheme } = useTheme()
 
   useEffect(() => {
     const hash = window.location.hash
@@ -17,6 +19,8 @@ export default function Hero() {
       heroRef.current.scrollIntoView({ behavior: 'smooth' })
     }
   }, [])
+
+  const headlineWords = content.headline.split(' ')
 
   return (
     <FadeInSection>
@@ -34,17 +38,29 @@ export default function Hero() {
           <div className="lg:col-span-3 space-y-8 sm:space-y-10 text-center lg:text-left">
             <motion.h1
               id="hero-title"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-balance text-[clamp(2.75rem,6vw,6rem)] font-extrabold tracking-tighter leading-[1.05] text-gray-900 dark:text-white"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                visible: { transition: { staggerChildren: 0.05 } },
+              }}
+              className="text-balance text-[clamp(2.5rem,8vw,6rem)] font-extrabold tracking-tighter leading-[1.05] text-gray-900 dark:text-white"
             >
-              {content.headline}
+              {headlineWords.map((word, idx) => (
+                <motion.span
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: idx * 0.06 }}
+                  className="inline-block mr-2"
+                >
+                  {word}
+                </motion.span>
+              ))}
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
               className="text-lg md:text-xl font-medium text-gray-800 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0"
             >
               {content.subheadline}
@@ -52,7 +68,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.2 }}
+              transition={{ duration: 0.75, delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4"
             >
               <Link
@@ -73,27 +89,29 @@ export default function Hero() {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
               className="text-sm text-muted-foreground pt-6"
             >
               Trusted by over 120 scaling teams
             </motion.p>
           </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.4 }}
-            className="lg:col-span-2 w-full mx-auto lg:mx-0 aspect-[16/10] rounded-xl overflow-hidden shadow-xl lg:scale-105 lg:translate-x-2 relative"
+            transition={{ duration: 0.9, delay: 0.6 }}
+            className="relative lg:col-span-2 w-full mx-auto lg:mx-0 aspect-[16/10] rounded-xl overflow-hidden shadow-xl lg:scale-105 lg:translate-x-2"
           >
             <motion.div
-              className="absolute inset-0 rounded-xl pointer-events-none"
-              animate={{ boxShadow: '0px 0px 60px rgba(0,132,255,0.25)' }}
-              transition={{ duration: 4, repeat: Infinity, repeatType: 'mirror' }}
+              className="absolute -inset-4 -z-10 rounded-xl blur-2xl"
+              animate={{ opacity: [0.15, 0.3, 0.15] }}
+              transition={{ duration: 6, repeat: Infinity }}
+              style={{ background: 'radial-gradient(circle, rgba(0,132,255,0.5), transparent)' }}
             />
             <img
               src={content.image.src}
               alt={content.image.alt}
-              className="w-full h-full object-cover relative z-10"
+              className="w-full h-full object-cover"
               loading="lazy"
               width={1280}
               height={720}
@@ -103,11 +121,12 @@ export default function Hero() {
             />
           </motion.div>
         </div>
+
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ repeat: Infinity, duration: 1.2, repeatType: 'reverse' }}
-          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-muted-foreground text-2xl"
+          transition={{ repeat: Infinity, repeatType: 'reverse', duration: 1.5 }}
+          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-muted-foreground"
         >
           ↓
         </motion.div>
