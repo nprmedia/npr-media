@@ -1,4 +1,3 @@
-// content/hero.ts
 import type { HeroContent } from '@/types/hero'
 
 export const hero: HeroContent = {
@@ -13,7 +12,7 @@ export const hero: HeroContent = {
     href: '#contact',
   },
   image: {
-    src: '/hero-preview.webp',
+    src: '@/public/hero-preview.webp',
     alt: 'Preview of NPR Media platform interface',
   },
 }
