@@ -83,12 +83,12 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.4 }}
-            className="lg:col-span-2 w-full mx-auto lg:mx-0 rounded-xl overflow-hidden shadow-xl"
-          >
+            className="lg:col-span-2 w-full mx-auto lg:mx-0 aspect-[16/10] rounded-xl overflow-hidden shadow-xl lg:scale-105 lg:translate-x-2"
+            >
             <img
               src={content.image.src}
               alt={content.image.alt}
-              className="w-full h-auto object-cover"
+              className="w-full h-full object-cover"
               loading="lazy"
               width={1280}
               height={720}
