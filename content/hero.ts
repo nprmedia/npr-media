@@ -12,7 +12,7 @@ export const hero: HeroContent = {
     href: '#contact',
   },
   image: {
-    src: '@/public/hero-preview.webp',
+    src: 'hero-preview.webp',
     alt: 'Preview of NPR Media platform interface',
   },
 }
