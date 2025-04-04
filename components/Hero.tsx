@@ -5,9 +5,11 @@ import { hero } from '@/content/hero'
 import FadeInSection from '@/components/FadeInSection'
 import { motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
+import type { HeroContent } from '@/types/hero'
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null)
+  const content: HeroContent = hero
 
   useEffect(() => {
     const hash = window.location.hash
@@ -28,8 +30,8 @@ export default function Hero() {
         <span className="sr-only" aria-live="polite">
           Welcome to NPR Media's homepage
         </span>
-        <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 sm:space-y-10 text-center lg:text-left">
+        <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+          <div className="lg:col-span-3 space-y-8 sm:space-y-10 text-center lg:text-left">
             <motion.h1
               id="hero-title"
               initial={{ opacity: 0, y: 30 }}
@@ -37,7 +39,7 @@ export default function Hero() {
               transition={{ duration: 0.6 }}
               className="text-balance text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-[1.05] text-gray-900 dark:text-white"
             >
-              {hero.headline}
+              {content.headline}
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -45,7 +47,7 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-lg md:text-xl font-medium text-gray-800 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0"
             >
-              {hero.subheadline}
+              {content.subheadline}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -54,18 +56,18 @@ export default function Hero() {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4"
             >
               <Link
-                href={hero.cta.href}
+                href={content.cta.href}
                 aria-label="Primary call to action"
                 className="w-full sm:w-auto px-6 py-3 text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-transform duration-300 hover:scale-[1.04] bg-gradient-to-r from-gray-900 to-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
               >
-                {hero.cta.label}
+                {content.cta.label}
               </Link>
               <Link
-                href={hero.altCta.href}
+                href={content.altCta.href}
                 aria-label="Secondary call to action"
                 className="w-full sm:w-auto px-6 py-3 text-base font-semibold rounded-full border border-gray-300 dark:border-gray-600 bg-white/30 dark:bg-white/10 backdrop-blur-sm hover:bg-white/50 dark:hover:bg-white/20 transition text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
               >
-                See Client Examples
+                {content.altCta.label}
               </Link>
             </motion.div>
             <motion.p
@@ -81,11 +83,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.4 }}
-            className="w-full max-w-2xl mx-auto lg:mx-0 rounded-xl overflow-hidden shadow-xl"
+            className="lg:col-span-2 w-full mx-auto lg:mx-0 rounded-xl overflow-hidden shadow-xl"
           >
             <img
-              src="/hero-preview.webp"
-              alt="Preview of NPR Media dashboard"
+              src={content.image.src}
+              alt={content.image.alt}
               className="w-full h-auto object-cover"
               loading="lazy"
               width={1280}
