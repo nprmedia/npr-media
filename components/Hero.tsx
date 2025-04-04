@@ -37,7 +37,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-balance text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-[1.05] text-gray-900 dark:text-white"
+              className="text-balance text-[clamp(2.75rem,6vw,6rem)] font-extrabold tracking-tighter leading-[1.05] text-gray-900 dark:text-white"
             >
               {content.headline}
             </motion.h1>
@@ -83,12 +83,17 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.4 }}
-            className="lg:col-span-2 w-full mx-auto lg:mx-0 aspect-[16/10] rounded-xl overflow-hidden shadow-xl lg:scale-105 lg:translate-x-2"
-            >
+            className="lg:col-span-2 w-full mx-auto lg:mx-0 aspect-[16/10] rounded-xl overflow-hidden shadow-xl lg:scale-105 lg:translate-x-2 relative"
+          >
+            <motion.div
+              className="absolute inset-0 rounded-xl pointer-events-none"
+              animate={{ boxShadow: '0px 0px 60px rgba(0,132,255,0.25)' }}
+              transition={{ duration: 4, repeat: Infinity, repeatType: 'mirror' }}
+            />
             <img
               src={content.image.src}
               alt={content.image.alt}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover relative z-10"
               loading="lazy"
               width={1280}
               height={720}
@@ -98,6 +103,14 @@ export default function Hero() {
             />
           </motion.div>
         </div>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ repeat: Infinity, duration: 1.2, repeatType: 'reverse' }}
+          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-muted-foreground text-2xl"
+        >
+          ↓
+        </motion.div>
       </section>
     </FadeInSection>
   )
