@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from 'react'
 import { pricing } from '@/content/pricing'
 import { Card, CardContent } from '@/components/ui/card'
