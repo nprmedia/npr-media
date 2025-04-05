@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { pricing } from '@/content/pricing'
 import { Card, CardContent } from '@/components/ui/card'
 import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
 
 export default function TabbedPricing() {
   const [active, setActive] = useState(pricing[0].category)
@@ -44,10 +45,10 @@ export default function TabbedPricing() {
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.35 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
             >
               {pricing
@@ -57,25 +58,25 @@ export default function TabbedPricing() {
                   return (
                     <motion.div
                       key={index}
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ type: 'spring', stiffness: 300 }}
+                      whileHover={{ scale: 1.03 }}
+                      transition={{ type: 'spring', stiffness: 260 }}
                       className={isMiddleCard ? 'relative z-10' : ''}
                     >
                       {isMiddleCard && (
                         <motion.div
                           className="absolute inset-0 -z-10 blur-2xl rounded-2xl"
-                          animate={{ opacity: [0.15, 0.3, 0.15] }}
+                          animate={{ opacity: [0.1, 0.2, 0.1] }}
                           transition={{ duration: 5, repeat: Infinity }}
                           style={{ background: 'radial-gradient(circle, rgba(255, 200, 0, 0.4), transparent)' }}
                         />
                       )}
-                      <Card className={`relative flex flex-col justify-between border border-border shadow-2xl hover:shadow-3xl transition-all h-full rounded-2xl overflow-hidden ${isMiddleCard ? 'ring-2 ring-yellow-400' : ''}`}>
+                      <Card className={`relative flex flex-col justify-between border border-border backdrop-blur-xl bg-white/80 dark:bg-white/10 shadow-xl transition-all h-full rounded-2xl overflow-hidden ${isMiddleCard ? 'ring-2 ring-yellow-400' : ''}`}>
                         {isMiddleCard && (
                           <span className="absolute top-4 right-4 bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-1 rounded-full shadow-sm z-20">
                             Most Booked
                           </span>
                         )}
-                        <CardContent className="p-6 space-y-6">
+                        <CardContent className="p-5 space-y-4">
                           <div className="space-y-1">
                             <div className="flex items-center justify-between">
                               <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
@@ -93,17 +94,25 @@ export default function TabbedPricing() {
                           </div>
                           <ul className="text-sm text-muted-foreground space-y-2">
                             {tier.features.map((feature, i) => (
-                              <li key={i} className="flex items-start gap-2">
+                              <li key={i} className={`flex items-start gap-2 ${i === 0 ? 'font-semibold text-gray-900 dark:text-white' : ''}`}>
                                 <span className="text-green-500">✓</span> {feature}
                               </li>
                             ))}
                           </ul>
-                          <div>
+                          <div className="pt-2">
                             <button
-                              className="mt-4 inline-flex w-full justify-center rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700"
+                              className="group mt-4 inline-flex w-full justify-center items-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-900 shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 hover:scale-105 transition"
                             >
-                              Select This Plan
+                              {index === 0 && 'Book Launch Plan'}
+                              {index === 1 && 'Start This Funnel'}
+                              {index === 2 && 'Schedule Full Build'}
+                              <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
                             </button>
+                            <p className="mt-2 text-xs text-muted-foreground text-center">
+                              {index === 0 && 'Used by 30+ MVP launches in 2024'}
+                              {index === 1 && 'Our most selected startup tier'}
+                              {index === 2 && 'Trusted by executive teams'}
+                            </p>
                           </div>
                         </CardContent>
                       </Card>
