@@ -71,11 +71,6 @@ export default function TabbedPricing() {
                         />
                       )}
                       <Card className={`relative flex flex-col justify-between border border-border backdrop-blur-xl bg-white/80 dark:bg-white/10 shadow-xl transition-all h-full rounded-2xl overflow-hidden ${isMiddleCard ? 'ring-2 ring-yellow-400' : ''}`}>
-                        {isMiddleCard && (
-                          <span className="absolute top-4 right-4 bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-1 rounded-full shadow-sm z-20">
-                            Most Booked
-                          </span>
-                        )}
                         <CardContent className="p-5 space-y-4">
                           <div className="space-y-1">
                             <div className="flex items-center justify-between">
@@ -108,11 +103,6 @@ export default function TabbedPricing() {
                               {index === 2 && 'Schedule Full Build'}
                               <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
                             </button>
-                            <p className="mt-2 text-xs text-muted-foreground text-center">
-                              {index === 0 && 'Used by 30+ MVP launches in 2024'}
-                              {index === 1 && 'Our most selected startup tier'}
-                              {index === 2 && 'Trusted by executive teams'}
-                            </p>
                           </div>
                         </CardContent>
                       </Card>
