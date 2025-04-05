@@ -67,7 +67,12 @@ export default function TabbedPricing() {
                           style={{ background: 'radial-gradient(circle, rgba(255, 200, 0, 0.4), transparent)' }}
                         />
                       )}
-                      <Card className={`flex flex-col justify-between border border-border shadow-2xl hover:shadow-3xl transition-all h-full rounded-2xl overflow-hidden ${isMiddleCard ? 'ring-2 ring-yellow-400' : ''}`}>
+                      <Card className={`relative flex flex-col justify-between border border-border shadow-2xl hover:shadow-3xl transition-all h-full rounded-2xl overflow-hidden ${isMiddleCard ? 'ring-2 ring-yellow-400' : ''}`}>
+                        {isMiddleCard && (
+                          <span className="absolute top-4 right-4 bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-1 rounded-full shadow-sm z-20">
+                            Most Booked
+                          </span>
+                        )}
                         <CardContent className="p-6 space-y-6">
                           <div className="space-y-1">
                             <div className="flex items-center justify-between">
@@ -79,10 +84,9 @@ export default function TabbedPricing() {
                               </p>
                             </div>
                             <p className="text-sm italic text-muted-foreground">
-                              {/* Example placeholder — replace with real segments if needed */}
-                              {index === 0 && 'Perfect for new or stuck founders'}
-                              {index === 1 && 'Most popular: mid-stage scaling plan'}
-                              {index === 2 && 'High-growth or advisor-backed support'}
+                              {index === 0 && 'Best for early-stage launches or proof-of-concept MVPs.'}
+                              {index === 1 && 'Ideal for growth-focused startups scaling systems.'}
+                              {index === 2 && 'Perfect for high-touch execution or advisory support.'}
                             </p>
                           </div>
                           <ul className="text-sm text-muted-foreground space-y-2">
