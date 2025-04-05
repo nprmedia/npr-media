@@ -88,11 +88,6 @@ export default function TabbedPricing() {
                                 </p>
                               </div>
                               <p className="text-sm italic text-muted-foreground">
-                                {index === 0 && '“Got us from idea to launch in 2 weeks.”'}
-                                {index === 1 && '“Everything just worked after setup. Total clarity.”'}
-                                {index === 2 && '“Best money I’ve ever spent on my business.”'}
-                              </p>
-                              <p className="text-sm italic text-muted-foreground">
                                 {index === 0 && 'Best for early-stage launches or proof-of-concept MVPs.'}
                                 {index === 1 && 'Ideal for growth-focused startups scaling systems.'}
                                 {index === 2 && 'Perfect for high-touch execution or advisory support.'}

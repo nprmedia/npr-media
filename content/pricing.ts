@@ -18,7 +18,6 @@ export const pricing = [
           "Fast delivery (7 days avg)",
         ],
         cta: "Launch My Site",
-        badge: "Best for early-stage founders",
       },
       {
         title: "Conversion Engine",
@@ -33,7 +32,6 @@ export const pricing = [
           "Conversion-first UX copy",
         ],
         cta: "Build My Funnel",
-        badge: "Most Popular",
       },
       {
         title: "Investor Magnet",
@@ -48,7 +46,6 @@ export const pricing = [
           "Investor-ready presentation layer",
         ],
         cta: "Go Enterprise",
-        badge: "Built for funded startups",
       },
     ],
   },
@@ -69,7 +66,6 @@ export const pricing = [
           "Basic team SOPs",
         ],
         cta: "Start Automating",
-        badge: "Best for solo operators",
       },
       {
         title: "Growth Stack",
@@ -84,7 +80,6 @@ export const pricing = [
           "Automation across 4+ departments",
         ],
         cta: "Build My Stack",
-        badge: "Most Popular",
       },
       {
         title: "Founder's OS",
@@ -99,7 +94,6 @@ export const pricing = [
           "Investor-grade tech ops design",
         ],
         cta: "Systemize It All",
-        badge: "Built for funded teams",
       },
     ],
   },
@@ -120,7 +114,6 @@ export const pricing = [
           "Priority support access",
         ],
         cta: "Keep Me Updated",
-        badge: "Perfect for static sites",
       },
       {
         title: "Growth Optimization",
@@ -135,7 +128,6 @@ export const pricing = [
           "Conversion reporting",
         ],
         cta: "Optimize My Growth",
-        badge: "Most Popular",
       },
       {
         title: "Revenue Partner",
@@ -150,7 +142,6 @@ export const pricing = [
           "Quarterly funnel rebuilds",
         ],
         cta: "Be My Partner",
-        badge: "Trusted by $1M+ teams",
       },
     ],
   },
