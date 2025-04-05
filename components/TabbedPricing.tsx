@@ -42,7 +42,7 @@ export default function TabbedPricing() {
           ))}
         </div>
 
-        <div className="mt-16 overflow-x-auto snap-x">
+        <div className="mt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
@@ -50,7 +50,7 @@ export default function TabbedPricing() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4 }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 min-w-full"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
               {pricing
                 .find((tab) => tab.category === active)
@@ -61,7 +61,7 @@ export default function TabbedPricing() {
                       key={index}
                       whileHover={{ scale: 1.03 }}
                       transition={{ type: 'spring', stiffness: 260, delay: index * 0.1 }}
-                      className={`snap-center ${isMiddleCard ? 'relative z-10' : ''}`}
+                      className={`${isMiddleCard ? 'relative z-10' : ''}`}
                     >
                       {isMiddleCard && (
                         <motion.div
@@ -71,8 +71,10 @@ export default function TabbedPricing() {
                           style={{ background: 'radial-gradient(circle, rgba(255, 200, 0, 0.4), transparent)' }}
                         />
                       )}
-                      <Card className={`relative flex flex-col justify-between border bg-white/80 dark:bg-white/10 shadow-xl backdrop-blur-xl transition-all h-full rounded-2xl overflow-hidden ${isMiddleCard ? 'ring-2 ring-yellow-400' : ''}`}
-                        style={{ borderImage: 'linear-gradient(to right, #e2e8f0, #facc15) 1' }}>
+                      <Card
+                        className={`relative flex flex-col justify-between border bg-white/80 dark:bg-white/10 shadow-xl backdrop-blur-xl transition-all h-full rounded-2xl overflow-hidden ${isMiddleCard ? 'ring-2 ring-yellow-400' : ''}`}
+                        style={{ borderImage: 'linear-gradient(to right, #e2e8f0, #facc15) 1' }}
+                      >
                         <CardContent className="p-5 space-y-4">
                           <div className="space-y-1">
                             <div className="flex items-center justify-between">
