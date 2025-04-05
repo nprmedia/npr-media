@@ -1,6 +1,6 @@
 import Hero from '@/components/Hero'
 import TabbedPricing from '@/components/PricingSection'
-import IndustryTemplatesSection from '@/components/IndustryTemplatesSection'
+import IndustryTemplatesSection from '@/components/IndustryTemplates'
 import WhyTrustSection from '@/components/WhyTrustSection'
 import ContactSection from '@/components/ContactSection'
 import FinalCtaSection from '@/components/FinalCtaSection'
