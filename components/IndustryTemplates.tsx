@@ -43,21 +43,44 @@ export default function IndustryTemplatesSection() {
                     }}
                     transition={{ duration: 0.4, delay: i * 0.05 }}
                   >
-                    <Link
-                      href={`/templates/${template.slug}`}
-                      className="group block rounded-xl border border-border bg-card p-6 shadow-sm hover:shadow-md transition hover:-translate-y-1 hover:border-primary"
-                    >
-                      <h4 className="text-lg font-semibold text-foreground mb-1">
+                    <div className="group block rounded-xl border border-border bg-card p-6 shadow-sm hover:shadow-lg ring-1 ring-inset ring-primary/5 transition hover:-translate-y-1">
+                      <div className="aspect-video w-full rounded-lg overflow-hidden mb-4 border border-muted bg-muted/30">
+                        <iframe
+                          src={template.demoUrl}
+                          loading="lazy"
+                          className="w-full h-full pointer-events-none"
+                          title={`Live preview of ${template.title}`}
+                        />
+                      </div>
+                      <h4 className="text-base sm:text-lg font-semibold text-foreground mb-1 truncate">
                         {template.title}
                       </h4>
-                      <p className="text-sm text-muted-foreground mb-3">
+                      <p className="text-sm text-muted-foreground mb-2">
                         {template.description}
                       </p>
-                      <span className="inline-flex items-center text-sm font-medium text-primary group-hover:underline">
-                        View Live Demo
-                        <ArrowRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                      </span>
-                    </Link>
+                      <p className="text-xs text-muted-foreground italic mb-4">
+                        Used by 12+ clients in this industry
+                      </p>
+                      <div className="flex justify-between items-center text-sm font-medium gap-4">
+                        <a
+                          href={template.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Opens in new tab"
+                          aria-label={`Open demo for ${template.title}`}
+                          className="px-3 py-1.5 rounded-full bg-muted text-foreground hover:bg-muted/80 transition"
+                        >
+                          Open Demo →
+                        </a>
+                        <Link
+                          href={`/templates/${template.slug}`}
+                          className="px-3 py-1.5 rounded-full text-muted-foreground hover:text-primary hover:underline transition"
+                          aria-label={`More info on ${template.title}`}
+                        >
+                          More Info
+                        </Link>
+                      </div>
+                    </div>
                   </motion.div>
                 ))}
               </motion.div>
