@@ -7,7 +7,7 @@ import { industryTemplates } from '@/content/templates'
 
 export default function IndustryTemplatesSection() {
   return (
-    <section id="templates" className="w-full py-24 bg-background border-t border-border bg-gradient-to-b from-background to-muted/10 overflow-hidden scroll-mt-[120px]">
+    <section id="templates" className="w-full py-24 bg-background border-t border-border bg-gradient-to-b from-background to-muted/10 overflow-x-hidden scroll-mt-[120px]">
       <div className="container max-w-6xl px-4 sm:px-6 lg:px-8 mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
@@ -50,14 +50,12 @@ export default function IndustryTemplatesSection() {
                       data-template-name={template.title}
                     >
                       <div className="aspect-video w-full rounded-lg overflow-hidden mb-4 border border-muted bg-muted/30 shadow relative after:absolute after:inset-x-0 after:bottom-0 after:h-8 after:bg-gradient-to-t after:from-card after:to-transparent">
-                        <div className="p-[2px] h-full">
-                          <iframe
-                            src={template.demoUrl}
-                            loading="lazy"
-                            className="w-full h-full pointer-events-none rounded"
-                            title={`Live preview of ${template.title}`}
-                          />
-                        </div>
+                        <iframe
+                          src={template.demoUrl}
+                          loading="lazy"
+                          className="w-full h-full pointer-events-none rounded block"
+                          title={`Live preview of ${template.title}`}
+                        />
                       </div>
                       <div className="flex-grow flex flex-col">
                         <h4 className="text-base sm:text-lg font-semibold text-foreground mb-1 truncate">
