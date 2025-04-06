@@ -27,13 +27,15 @@ export default function TemplatePage({ params }: Params) {
           <p className="mt-2 text-muted-foreground text-base">{template.description}</p>
         </div>
 
-        <div className="aspect-video w-full max-w-5xl rounded-xl overflow-hidden border border-border shadow">
-          <iframe
-            src={template.demoUrl}
-            className="w-full h-full"
-            loading="lazy"
-            allow="fullscreen"
-          />
+        <div className="pt-8">
+          <a
+            href={template.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-3 text-sm font-medium hover:scale-105 transition"
+          >
+            Open Live Demo →
+          </a>
         </div>
       </div>
     </main>
