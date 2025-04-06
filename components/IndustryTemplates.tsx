@@ -7,7 +7,7 @@ import { industryTemplates } from '@/content/templates'
 
 export default function IndustryTemplatesSection() {
   return (
-    <section id="templates" className="w-full py-24 bg-background border-t border-border">
+    <section id="templates" className="w-full py-24 bg-background border-t border-border bg-gradient-to-b from-background to-muted/10">
       <div className="container max-w-6xl px-4 sm:px-6 lg:px-8 mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
@@ -18,47 +18,52 @@ export default function IndustryTemplatesSection() {
           </p>
         </div>
 
-        <div className="space-y-16">
+        <div className="space-y-20">
           {industryTemplates.map((group, groupIdx) => (
-            <div key={group.industry} className="space-y-6">
-              <h3 className="text-xl sm:text-2xl font-semibold text-center text-primary">
+            <motion.div
+              key={group.industry}
+              className="space-y-6"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: groupIdx * 0.1 }}
+            >
+              <h3 className="text-xl sm:text-2xl font-semibold text-center text-primary flex items-center justify-center gap-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-primary"></span>
                 {group.industry}
               </h3>
-
               <motion.div
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                variants={{
-                  visible: { transition: { staggerChildren: 0.1 } },
-                }}
+                variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
               >
                 {group.templates.map((template, i) => (
                   <motion.div
                     key={template.slug}
-                    variants={{
-                      hidden: { opacity: 0, y: 30 },
-                      visible: { opacity: 1, y: 0 },
-                    }}
+                    variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
                     transition={{ duration: 0.4, delay: i * 0.05 }}
                   >
-                    <div className="group block rounded-xl border border-border bg-card p-6 shadow-sm hover:shadow-lg ring-1 ring-inset ring-primary/5 transition hover:-translate-y-1">
-                      <div className="aspect-video w-full rounded-lg overflow-hidden mb-4 border border-muted bg-muted/30">
+                    <div
+                      className="group block rounded-2xl border border-border bg-card p-6 shadow-sm hover:shadow-lg ring-1 ring-inset ring-primary/5 transition hover:-translate-y-1 relative"
+                      data-template-name={template.title}
+                    >
+                      <div className="aspect-video w-full rounded-lg overflow-hidden mb-4 border border-muted bg-muted/30 shadow">
                         <iframe
                           src={template.demoUrl}
                           loading="lazy"
-                          className="w-full h-full pointer-events-none"
+                          className="w-full h-full pointer-events-none rounded"
                           title={`Live preview of ${template.title}`}
                         />
                       </div>
                       <h4 className="text-base sm:text-lg font-semibold text-foreground mb-1 truncate">
                         {template.title}
                       </h4>
-                      <p className="text-sm text-muted-foreground mb-2">
+                      <p className="text-sm text-muted-foreground mb-1">
                         {template.description}
                       </p>
-                      <p className="text-xs text-muted-foreground italic mb-4">
+                      <p className="text-xs text-muted-foreground italic mb-3">
                         Used by 12+ clients in this industry
                       </p>
                       <div className="flex justify-between items-center text-sm font-medium gap-4">
@@ -84,7 +89,7 @@ export default function IndustryTemplatesSection() {
                   </motion.div>
                 ))}
               </motion.div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
