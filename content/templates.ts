@@ -6,7 +6,7 @@ export const industryTemplates = [
         title: 'Launch Pad Website',
         description: 'For solo coaches launching a new offer or lead magnet.',
         slug: 'launch-pad-website',
-        demoUrl: 'https://launch-pad-demo.vercel.app',
+        demoUrl: 'https://launch-pad-demo.vercel.app'
       },
       {
         title: 'Funnel Builder',
