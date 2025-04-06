@@ -53,7 +53,9 @@ export default function IndustryTemplatesSection() {
                         <iframe
                           src={template.demoUrl}
                           loading="lazy"
-                          className="w-full h-full pointer-events-none rounded block"
+                          scrolling="no"
+                          sandbox=""
+                          className="w-full h-full pointer-events-none rounded block overflow-hidden"
                           title={`Live preview of ${template.title}`}
                         />
                       </div>
