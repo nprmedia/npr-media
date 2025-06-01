@@ -1,0 +1,28 @@
+{
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "useTabs": false,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "printWidth": 100,
+    "endOfLine": "lf",
+    "embeddedLanguageFormatting": "auto",
+    "overrides": [
+      {
+        "files": "*.mdx",
+        "options": {
+          "parser": "mdx"
+        }
+      },
+      {
+        "files": "*.css",
+        "options": {
+          "parser": "css"
+        }
+      }
+    ],
+    "plugins": ["prettier-plugin-tailwindcss"]
+  }
+  

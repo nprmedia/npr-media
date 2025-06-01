@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import { industryTemplates } from '@/content/templates'
+import { industryTemplates } from '@/content/homepage/templates'
 
 export default function IndustryTemplatesSection() {
   return (

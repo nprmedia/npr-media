@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
-import DarkModeToggle from '@/components/DarkModeToggle'
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -73,7 +72,6 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <DarkModeToggle />
 
           <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-gray-700 dark:text-gray-200">
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

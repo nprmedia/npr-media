@@ -2,7 +2,6 @@
 
 import { trustPoints } from '@/content/trustPoints'
 import { LucideIcon, Target, Zap, UserCircle, Layers } from 'lucide-react'
-import FadeInSection from '@/components/FadeInSection'
 
 const icons: Record<string, LucideIcon> = {
   Target,
@@ -13,7 +12,6 @@ const icons: Record<string, LucideIcon> = {
 
 export default function WhyTrustSection() {
   return (
-    <FadeInSection>
       <section className="bg-slate-50 dark:bg-gray-950 py-24 px-6 border-t border-gray-200 dark:border-gray-800">
         <div className="max-w-6xl mx-auto text-center space-y-12">
           <div className="space-y-4">
@@ -48,6 +46,5 @@ export default function WhyTrustSection() {
           </div>
         </div>
       </section>
-    </FadeInSection>
   )
 }

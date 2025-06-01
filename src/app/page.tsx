@@ -1,0 +1,32 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
+import StickyHeader from '@/components/global/Header';
+import HeroSection from '@/components/homepage/Hero';
+import { hero } from '@/content/homepage/hero';
+import TabbedPricing from '@/components/homepage/PricingSection';
+import FaqSection from '@/components/homepage/ContactSection';
+import CtaSection from '@/components/homepage/FinalCtaSection';
+import FooterSection from '@/components/global/Footer';
+import WhyTrustSection from '@/components/homepage/WhyTrustSection';
+import ContactSection from '@/components/homepage/ContactSection';
+import FinalCtaSection from '@/components/homepage/FinalCtaSection';
+
+export default function Page() {
+  const pathname = usePathname();
+
+  return (
+    <section>
+    <StickyHeader />
+    <main key={pathname} className="relative w-full overflow-x-hidden bg-white text-black">
+        <HeroSection {...hero} />
+        <TabbedPricing />
+        <WhyTrustSection />
+        <ContactSection />
+        <FaqSection />
+        <FinalCtaSection />
+    </main>
+    <FooterSection />
+    </section>  
+  );
+}
