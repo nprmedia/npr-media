@@ -45,7 +45,7 @@ export default function IndustryTemplatesSection() {
                   <motion.div
                     key={template.slug}
                     variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-                    whileHover={{ scale: 1.02, boxShadow: '0 8px 20px rgba(0,0,0,0.1)' }}
+                    whileHover="hover"
                     transition={{
                       duration: 0.4,
                       delay: i * 0.05,
@@ -53,12 +53,19 @@ export default function IndustryTemplatesSection() {
                       stiffness: 260,
                       damping: 20,
                     }}
+                    className="will-change-transform"
                   >
                     <div
                       className="group border-border bg-card ring-primary/5 hover:ring-primary/40 relative block flex h-full flex-col rounded-2xl border p-6 shadow-sm ring-1 transition ring-inset hover:-translate-y-1 hover:shadow-lg hover:ring-2"
                       data-template-name={template.title}
                     >
-                      <div className="border-muted bg-muted/30 after:from-card relative mb-4 aspect-video w-full overflow-hidden rounded-lg border shadow after:absolute after:inset-x-0 after:bottom-0 after:h-8 after:bg-gradient-to-t after:to-transparent">
+                      <motion.div
+                        className="border-muted bg-muted/30 relative mb-4 aspect-video w-full overflow-hidden rounded-lg border shadow after:absolute after:inset-x-0 after:bottom-0 after:h-8 after:bg-gradient-to-t after:from-card after:to-transparent"
+                        variants={{ hover: { rotate: -2, scale: 1.03, boxShadow: '0 8px 20px rgba(0,0,0,0.1)' }, rest: { rotate: -5, scale: 1, boxShadow: '0 4px 10px rgba(0,0,0,0.05)' } }}
+                        initial="rest"
+                        whileHover="hover"
+                        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+                      >
                         <iframe
                           src={template.demoUrl}
                           loading="lazy"
@@ -67,7 +74,7 @@ export default function IndustryTemplatesSection() {
                           className="pointer-events-none block h-full w-full overflow-hidden rounded"
                           title={`Live preview of ${template.title}`}
                         />
-                      </div>
+                      </motion.div>
                       <div className="flex flex-grow flex-col">
                         <h4 className="text-foreground mb-1 truncate text-base font-semibold sm:text-lg">
                           {template.title}
