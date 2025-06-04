@@ -1,5 +1,6 @@
 'use client';
 
+import React, { Suspense } from 'react';
 import { usePathname } from 'next/navigation';
 import StickyHeader from '@/components/global/Header';
 import HeroSection from '@/components/homepage/Hero';
@@ -19,7 +20,9 @@ export default function Page() {
     <section>
     <StickyHeader />
     <main key={pathname} className="relative w-full overflow-x-hidden bg-white text-black">
-        <HeroSection {...hero} />
+        <Suspense>
+          <HeroSection {...hero} />
+        </Suspense>
         <TabbedPricing />
         <WhyTrustSection />
         <ContactSection />
