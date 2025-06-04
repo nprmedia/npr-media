@@ -6,8 +6,31 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        didot: ['"GFS Didot"', 'serif'],
+        grotesk: ['"Space Grotesk"', 'sans-serif'],
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        code: ['JetBrains Mono', 'monospace'],
       },
+
+      fontSize: {
+        xs: ['12px', '16px'],
+        sm: ['14px', '20px'],
+        base: ['16px', '24px'],
+        lg: ['18px', '28px'],
+        xl: ['20px', '28px'],
+        '2xl': ['24px', '32px'],
+        '3xl': ['30px', '36px'],
+        '4xl': ['36px', '44px'],
+      },
+
+      fontWeight: {
+        light: '300',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
+        bold: '700',
+      },
+
       container: {
         center: true,
         padding: '1rem',
@@ -19,6 +42,7 @@ module.exports = {
           '2xl': '1440px',
         },
       },
+
       typography: {
         DEFAULT: {
           css: {
@@ -29,10 +53,15 @@ module.exports = {
       },
     },
   },
+
   safelist: [
     'text-2xl', 'text-3xl', 'text-4xl',
     'pt-10', 'pt-12', 'pt-16',
     'max-w-[800px]', 'w-full', 'object-contain'
   ],
-  plugins: [require('@tailwindcss/typography')],
+
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
+  ],
 };

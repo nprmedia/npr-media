@@ -1,104 +1,59 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
-const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'Services', href: '#pricing' },
-  { name: 'Contact', href: '#contact' },
-]
-
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('')
+export default function StickyHeader() {
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const sectionIds = navItems.map((item) => item.href.replace('#', ''))
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id)
-            break
-          }
-        }
-      },
-      { rootMargin: '-50% 0% -50% 0%', threshold: 0.1 }
-    )
-
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
-    })
-
-    return () => observer.disconnect()
-  }, [])
-
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
-    if (href.startsWith('#')) {
-      e.preventDefault()
-      const target = document.querySelector(href)
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' })
-        setIsOpen(false)
-      }
-    }
-  }
+    const onScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur border-b border-gray-200 dark:border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <Link href="/" className="text-lg font-bold tracking-tight">
-          NPR Media
+    <motion.header
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      className={`fixed top-0 left-0 w-full z-50 transition-all ${
+        scrolled
+          ? 'bg-[#0A0F1C]/90 backdrop-blur-sm shadow-md border-b border-gray-200'
+          : 'bg-transparent backdrop-blur-0'
+      } text-black`}
+    >
+      <div className="mx-auto w-full px-3 md:px-10 lg:px-60 flex items-center bg-[#1F1F1F] text-[#F2F3F4] justify-between h-[clamp(3rem,6vw,3.75rem)]">
+        <Link
+          href="/"
+          className="text-[clamp(0.9rem,1.4vw,1.25rem)] font-bold tracking-tight hover:scale-105 transition-transform"
+        >
+          NPR MEDIA
         </Link>
-
-        <nav className="hidden md:flex gap-6 text-sm font-medium">
-          {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              onClick={(e) => handleSmoothScroll(e, item.href)}
-              className={`transition ${
-                activeSection === item.href.replace('#', '')
-                  ? 'text-black dark:text-white font-semibold'
-                  : 'text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white'
-              }`}
-            >
-              {item.name}
-            </a>
-          ))}
+        <nav className="hidden md:flex gap-[clamp(1.25rem,3vw,2rem)] items-center">
+          <Link href="/features" className="text-[clamp(0.75rem,1vw,0.875rem)] hover:text-blue-600 hover:scale-105 transition-transform">
+            Features
+          </Link>
+          <Link href="/pricing" className="text-[clamp(0.75rem,1vw,0.875rem)] hover:text-blue-600 hover:scale-105 transition-transform">
+            Pricing
+          </Link>
+          <Link href="/contact" className="text-[clamp(0.75rem,1vw,0.875rem)] hover:text-blue-600 hover:scale-105 transition-transform">
+            Contact
+          </Link>
+          <Link href="/blog" className="text-[clamp(0.75rem,1vw,0.875rem)] hover:text-blue-600 hover:scale-105 transition-transform">
+            Blog
+          </Link>
+          <Link
+            href="/signup"
+            className="ml-4 inline-flex items-center gap-2 bg-black text-white px-4 py-[0.45rem] rounded-lg text-[clamp(0.65rem,0.9vw,0.75rem)] font-semibold shadow hover:brightness-110 hover:scale-105 transition-transform"
+          >
+            Get Started →
+          </Link>
         </nav>
-
-        <div className="flex items-center gap-4">
-
-          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-gray-700 dark:text-gray-200">
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
       </div>
-
-      {isOpen && (
-        <div className="md:hidden px-6 pb-4 pt-2 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800">
-          <nav className="flex flex-col space-y-2 text-sm font-medium">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => handleSmoothScroll(e, item.href)}
-                className={`transition ${
-                  activeSection === item.href.replace('#', '')
-                    ? 'text-black dark:text-white font-semibold'
-                    : 'text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white'
-                }`}
-              >
-                {item.name}
-              </a>
-            ))}
-          </nav>
-        </div>
-      )}
-    </header>
-  )
+    </motion.header>
+  );
 }
