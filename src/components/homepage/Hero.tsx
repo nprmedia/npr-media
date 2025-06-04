@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { motion, useAnimation, useReducedMotion } from 'framer-motion';
+import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
 
 interface HeroProps {
@@ -84,7 +86,15 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   useEffect(() => {
     if (!parallaxRef.current || prefersReducedMotion) return;
     const handleScroll = () => {
-@@ -109,107 +105,176 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
+      if (window.scrollY > 300 && !modifiedCTA) setModifiedCTA(true);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [modifiedCTA]);
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    const onScroll = () => {
       setIsStickyVisible(false);
       clearTimeout(timer);
       timer = setTimeout(() => setIsStickyVisible(true), 15000);
