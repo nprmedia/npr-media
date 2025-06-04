@@ -176,6 +176,20 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       </motion.div>
 
       <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 0.6, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="hidden md:block absolute top-1/2 right-[25%] -translate-y-1/2 pointer-events-none z-20"
+      >
+        <span
+          className="block font-extrabold text-primary/30"
+          style={{ writingMode: 'vertical-rl', textOrientation: 'upright', fontSize: 'clamp(2rem,8vw,6rem)' }}
+        >
+          NPR
+        </span>
+      </motion.div>
+
+      <motion.div
         variants={textVariants}
         custom={2.5}
         className="absolute z-30 group hover:scale-105 w-full max-w-[clamp(22rem,38vw,38rem)] left-1/2 transform -translate-x-1/2 md:left-[74%] md:transform-none"
