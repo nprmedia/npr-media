@@ -43,7 +43,14 @@ export default function IndustryTemplatesSection() {
                   <motion.div
                     key={template.slug}
                     variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-                    transition={{ duration: 0.4, delay: i * 0.05 }}
+                    whileHover={{ scale: 1.02, boxShadow: '0 8px 20px rgba(0,0,0,0.1)' }}
+                    transition={{
+                      duration: 0.4,
+                      delay: i * 0.05,
+                      type: 'spring',
+                      stiffness: 260,
+                      damping: 20,
+                    }}
                   >
                     <div
                       className="group block rounded-2xl border border-border bg-card p-6 shadow-sm hover:shadow-lg ring-1 ring-inset ring-primary/5 transition hover:-translate-y-1 hover:ring-2 hover:ring-primary/40 relative h-full flex flex-col"
