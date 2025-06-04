@@ -1,4 +1,4 @@
-export const industryTemplates = [
+export const templates = [
   {
     industry: 'Coaches & Consultants',
     templates: [
@@ -14,7 +14,7 @@ export const industryTemplates = [
           'Mobile responsive design with call-to-action',
         ],
         useCase: 'Great for early-stage coaches validating a new offer.',
-        price: '$500–$1,000'
+        price: '$500–$1,000',
       },
       {
         title: 'Funnel Builder',
@@ -28,7 +28,7 @@ export const industryTemplates = [
           'Automated thank-you and follow-up pages',
         ],
         useCase: 'For creators and consultants looking to build automated pipelines.',
-        price: '$1,000–$2,000'
+        price: '$1,000–$2,000',
       },
       {
         title: 'Authority Platform',
@@ -42,9 +42,9 @@ export const industryTemplates = [
           'Custom workflows for nurturing leads and sessions',
         ],
         useCase: 'For experienced coaches building a full-service presence.',
-        price: '$3,000–$5,000'
-      }
-    ]
+        price: '$3,000–$5,000',
+      },
+    ],
   },
   {
     industry: 'Bootstrapped SaaS',
@@ -61,7 +61,7 @@ export const industryTemplates = [
           'GA + Hotjar setup baked in',
         ],
         useCase: 'For bootstrapped founders testing MVP traction.',
-        price: '$500–$1,200'
+        price: '$500–$1,200',
       },
       {
         title: 'Marketing Site + Funnel',
@@ -75,7 +75,7 @@ export const industryTemplates = [
           'Lead scoring workflow readiness',
         ],
         useCase: 'For scaling startups needing top-of-funnel optimization.',
-        price: '$2,000–$2,500'
+        price: '$2,000–$2,500',
       },
       {
         title: 'Growth Engine',
@@ -89,9 +89,9 @@ export const industryTemplates = [
           'Lifecycle marketing integrations',
         ],
         useCase: 'Ideal for post-Series A SaaS teams focused on growth loops.',
-        price: '$4,000–$6,000'
-      }
-    ]
+        price: '$4,000–$6,000',
+      },
+    ],
   },
   {
     industry: 'Local Service Providers',
@@ -108,7 +108,7 @@ export const industryTemplates = [
           'Trust badges and testimonials block',
         ],
         useCase: 'Built for plumbers, dentists, and service pros needing leads.',
-        price: '$500–$1,200'
+        price: '$500–$1,200',
       },
       {
         title: 'Mini Funnel + Booking',
@@ -122,7 +122,7 @@ export const industryTemplates = [
           'Confirmation thank-you page',
         ],
         useCase: 'Ideal for solo providers running appointment funnels.',
-        price: '$1,000–$1,800'
+        price: '$1,000–$1,800',
       },
       {
         title: 'Full Local SEO System',
@@ -136,8 +136,8 @@ export const industryTemplates = [
           'Google Analytics + lead tracking setup',
         ],
         useCase: 'For service businesses targeting multiple local markets.',
-        price: '$2,500–$4,000'
-      }
-    ]
-  }
+        price: '$2,500–$4,000',
+      },
+    ],
+  },
 ];
