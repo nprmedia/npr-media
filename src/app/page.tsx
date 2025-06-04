@@ -6,8 +6,6 @@ import StickyHeader from '@/components/global/Header';
 import HeroSection from '@/components/homepage/Hero';
 import { hero } from '@/content/homepage/hero';
 import TabbedPricing from '@/components/homepage/PricingSection';
-import FaqSection from '@/components/homepage/ContactSection';
-import CtaSection from '@/components/homepage/FinalCtaSection';
 import FooterSection from '@/components/global/Footer';
 import WhyTrustSection from '@/components/homepage/WhyTrustSection';
 import ContactSection from '@/components/homepage/ContactSection';
@@ -26,7 +24,6 @@ export default function Page() {
         <TabbedPricing />
         <WhyTrustSection />
         <ContactSection />
-        <FaqSection />
         <FinalCtaSection />
     </main>
     <FooterSection />
