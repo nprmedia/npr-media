@@ -11,9 +11,17 @@ interface HeroProps {
   subheadline?: string;
   ctaText?: string;
   ctaLink?: string;
+  image?: {
+    url: string;
+    alt?: string;
+    width?: number;
+    height?: number;
+  };
 }
 
-const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaLink }) => {
+const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaLink, image }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const parallaxRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const ctaRef = useRef<HTMLAnchorElement>(null);
 
@@ -27,6 +35,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   const [personalizedHeadline, setPersonalizedHeadline] = useState('');
   const [greeting, setGreeting] = useState('');
 
+  useParticleBackground(containerRef);
   useHeroAnalytics({ heroRef, ctaRef });
 
   useEffect(() => {
@@ -73,16 +82,9 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   }, [controls, prefersReducedMotion]);
 
   useEffect(() => {
+    if (!parallaxRef.current || prefersReducedMotion) return;
     const handleScroll = () => {
-      if (window.scrollY > 300 && !modifiedCTA) setModifiedCTA(true);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [modifiedCTA]);
-
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-    const onScroll = () => {
+@@ -109,107 +105,176 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       setIsStickyVisible(false);
       clearTimeout(timer);
       timer = setTimeout(() => setIsStickyVisible(true), 15000);
@@ -108,80 +110,149 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       id="hero"
       ref={heroRef}
       aria-label="Hero Section"
-      className={`relative min-h-screen flex items-center justify-center bg-[#1F1F1F] font-sans ${isFrozen ? 'overflow-hidden' : ''}`}
+      className={`bg-gradient-depth animate-gradient-slow text-textDark relative isolate flex min-h-screen items-center justify-center overflow-hidden font-sans ${isFrozen ? 'overflow-hidden' : ''}`}
     >
+      <div
+        ref={containerRef}
+        className="pointer-events-none absolute inset-0 z-[3] h-full w-full"
+      />
+
+      <div className="absolute z-0 h-full w-full overflow-hidden">
+        <div className="relative h-full w-full">
+          <Image
+            src="/images/mountain.jpg"
+            alt="Snowy mountain backdrop"
+            fill
+            priority
+            className="object-cover object-left-top opacity-60"
+            style={{ objectPosition: 'left 30%' }}
+          />
+        </div>
+        <div className="absolute bottom-0 left-0 z-[2] h-[60px] w-full bg-white/10 blur-2xl" />
+      </div>
+
+      <div className="pointer-events-none absolute top-0 left-0 z-[4] h-full w-1/2">
+        <div className="h-full w-full bg-gradient-to-r from-white via-white/90 to-transparent" />
+      </div>
+      <div
+        className="pointer-events-none absolute inset-0 z-[5]"
+        style={{
+          background: 'linear-gradient(135deg, rgba(0, 170, 255, 0.25), rgba(255,220,180,0.05))',
+        }}
+      />
+
       <motion.div
-        className="relative z-10 max-w-[88rem] w-full mx-auto px-[clamp(1rem,4vw,2rem)] py-[clamp(4rem,8vw,6rem)] grid grid-cols-1 md:grid-cols-2 gap-[clamp(2rem,6vw,5rem)] items-center"
+        className="relative z-10 mx-auto grid w-full max-w-[88rem] grid-cols-1 items-center gap-[clamp(2rem,6vw,5rem)] px-[clamp(1rem,4vw,2rem)] py-[clamp(4rem,8vw,6rem)] md:grid-cols-2"
         initial="hidden"
         animate={controls}
       >
-        <div className="relative flex flex-col items-start">
+        <div className="pl-[clamp(1.25rem,3vw,2rem)]">
           <motion.div
             variants={textVariants}
             custom={0}
-            className="text-[clamp(0.85rem,1.2vw,0.9rem)] text-[#ACFF4F] tracking-widest font-thin mb-6 ml-[10vw]"
+            className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold text-black hover:scale-101"
           >
-            WE ARE NPR-MEDIA
+            {greeting}
           </motion.div>
-
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-            }}
-            className="ml-[15vw] w-full"
+          <motion.h1
+            variants={textVariants}
+            custom={1}
+            className="mb-4 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-tight font-extrabold tracking-tight hover:scale-103"
           >
-            <motion.h1
+            {personalizedHeadline || headline}
+          </motion.h1>
+          {subheadline && (
+            <motion.p
               variants={textVariants}
-              custom={1}
-              className="text-[clamp(2.5rem,5vw,4rem)] text-[#F2F3F4] font-extrabold tracking-tight leading-tight mb-4 w-full"
+              custom={1.5}
+              className="text-textLight mb-4 max-w-xl text-[clamp(0.75rem,1.6vw,1rem)] hover:scale-102"
             >
-              {personalizedHeadline || headline}
-            </motion.h1>
-
-            {subheadline && (
-              <motion.p
-                variants={textVariants}
-                custom={1.5}
-                className="text-[clamp(0.75rem,1.6vw,1rem)] text-[#F2F3F4] mb-6 w-full"
+              {subheadline}
+            </motion.p>
+          )}
+          {ctaText && ctaLink && (
+            <motion.div
+              variants={textVariants}
+              custom={2}
+              className="group relative inline-block hover:scale-105"
+            >
+              <div className="bg-primary/20 absolute -inset-1.5 z-[-1] animate-pulse rounded-full" />
+              <Link
+                ref={ctaRef}
+                href={{ pathname: ctaLink }}
+                className={`inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-black shadow-lg ring-1 transition ${modifiedCTA ? 'bg-accent text-black' : 'bg-primary text-black'}`}
               >
-                {subheadline}
-              </motion.p>
-            )}
-
-            {ctaText && ctaLink && (
-              <motion.div
-                variants={textVariants}
-                custom={2}
-                className="relative inline-block group ml-[0.2rem]"
-              >
-                <Link
-                  ref={ctaRef}
-                  href={{ pathname: ctaLink }}
-                  className="relative inline-flex items-center justify-center px-8 py-4 text-sm font-semibold text-white bg-[#3A7DFF] rounded-[9999px_9999px_9999px_40%] shadow-[0_0_40px_rgba(58,125,255,0.4)] transition-all duration-300 ease-in-out group-hover:scale-105"
-                >
-                  <span className="relative z-10 group-hover:tracking-wider transition-all duration-300">
-                    {modifiedCTA ? 'Claim My Free Trial' : ctaText}
-                  </span>
-                  <span
-                    className="absolute inset-0 z-0 rounded-[9999px_9999px_9999px_40%] bg-gradient-to-br from-[#3A7DFF66] to-transparent blur-xl opacity-70 group-hover:opacity-100 transition duration-500"
-                    aria-hidden="true"
-                  />
-                  <span
-                    className="absolute -inset-1 rounded-[9999px_9999px_9999px_40%] border border-[#3A7DFF66] opacity-30 group-hover:animate-ping"
-                    aria-hidden="true"
-                  />
-                </Link>
-              </motion.div>
-            )}
-          </motion.div>
+                {modifiedCTA ? 'Claim My Free Trial' : ctaText}
+              </Link>
+              <div className="text-muted relative top-full left-0 mt-1 text-[0.65rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                No card required. Cancel anytime.
+              </div>
+            </motion.div>
+          )}
+          <div className="text-muted mt-4 text-[0.6rem] hover:scale-101">
+            SOC2 Certified • GDPR Ready • Trusted by 10,000+ users
+          </div>
         </div>
       </motion.div>
 
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={{
+          visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
+        }}
+        className="pointer-events-none absolute top-1/2 right-[25%] z-20 hidden -translate-y-1/2 flex-col items-center md:flex"
+        style={{ writingMode: 'vertical-rl', textOrientation: 'upright' }}
+      >
+        {['N', 'P', 'R'].map((letter) => (
+          <motion.span
+            key={letter}
+            variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.6, y: 0 } }}
+            transition={{ duration: 0.6 }}
+            className="text-primary/30 block font-extrabold"
+            style={{ fontSize: 'clamp(2rem,8vw,6rem)' }}
+          >
+            {letter}
+          </motion.span>
+        ))}
+      </motion.div>
+
+      <motion.div
+        variants={textVariants}
+        custom={2.5}
+        className="group absolute left-1/2 z-30 w-full max-w-[clamp(22rem,38vw,38rem)] -translate-x-1/2 transform hover:scale-105 md:left-[74%] md:transform-none"
+        style={{
+          bottom: '28%',
+          filter: 'contrast(0.85) brightness(1.05)',
+          transition: 'transform 0.4s ease',
+        }}
+      >
+        <div className="relative w-full rounded-xl">
+          {image && (
+            <Image
+              src={image.url}
+              alt={image.alt || 'Product Screenshot'}
+              width={image.width || 480}
+              height={image.height || 480}
+              className="h-auto w-full rounded-xl shadow-2xl"
+              priority
+            />
+          )}
+          <div
+            className="pointer-events-none absolute top-0 left-0 h-full w-full rounded-xl"
+            style={{ background: 'linear-gradient(270deg, rgba(0, 0, 0, 0.15), transparent 60%)' }}
+          />
+        </div>
+      </motion.div>
+
+      <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 transform">
+        <div className="text-primary animate-bounce text-lg drop-shadow-[0_0_4px_rgba(255,255,255,0.5)]">
+          ↓
+        </div>
+      </div>
+
       {isStickyVisible && (
-        <div className="fixed bottom-36 left-1/2 -translate-x-1/2 bg-[#1F1F1F] text-white text-sm font-bold opacity-90 px-4 py-2 rounded-full shadow-xl z-50">
+        <div className="fixed bottom-36 left-1/2 z-50 -translate-x-1/2 rounded-full bg-black px-4 py-2 text-sm font-bold text-white opacity-90 shadow-xl hover:scale-105">
           Still thinking? Start your free trial now →
         </div>
       )}
