@@ -11,7 +11,8 @@
     "safe:build": "pnpm run safe:deps && pnpm build",
     "ci:safe": "pnpm run safe:deps && pnpm list --depth=0",
     "build:css": "postcss src/styles/globals.css -o public/styles.css",
-    "watch:css": "postcss src/styles/globals.css -o public/styles.css --watch"
+    "watch:css": "postcss src/styles/globals.css -o public/styles.css --watch",
+    "lint": "next lint"
   },
   "dependencies": {
     "@fontsource/gfs-didot": "^5.2.6",

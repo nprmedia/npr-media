@@ -1,10 +1,12 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { motion, useAnimation, useReducedMotion } from 'framer-motion';
+import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
 import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 
@@ -85,6 +87,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
   useEffect(() => {
     if (!parallaxRef.current || prefersReducedMotion) return;
+
     let timer: NodeJS.Timeout;
     const onScroll = () => {
       setIsStickyVisible(false);
