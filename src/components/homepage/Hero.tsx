@@ -1,29 +1,12 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
-  }, []);
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      if (parallaxRef.current) {
-        const translateY = offset * -0.1;
-        const blurAmount = Math.min(offset * 0.03, 12);
-        parallaxRef.current.style.transform = `translateY(${translateY}px)`;
-        parallaxRef.current.style.filter = `blur(${blurAmount}px) brightness(1.1)`;
-      }
-      if (offset > 300 && !modifiedCTA) setModifiedCTA(true);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [modifiedCTA, prefersReducedMotion]);
-
-  useEffect(() => {
-  }, []);
+import { useSearchParams } from 'next/navigation';
 import { motion, useAnimation, useReducedMotion } from 'framer-motion';
 import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
-import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 
 interface HeroProps {
   headline: string;
@@ -33,7 +16,7 @@ interface HeroProps {
   image?: {
     url: string;
     alt?: string;
-  }, [prefersReducedMotion]);
+    width?: number;
     height?: number;
   };
 }
@@ -58,8 +41,6 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   useHeroAnalytics({ heroRef, ctaRef });
 
   useEffect(() => {
-  // Adds a subtle parallax effect to the hero image
-  // Displays a sticky call-to-action after inactivity on scroll
     const hour = new Date().getHours();
     setGreeting(hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening');
   }, []);
@@ -83,12 +64,13 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
     const email = localStorage.getItem('user_email');
     if (email && email.includes('@bigco.com')) {
       setPersonalizedHeadline('The #1 platform for enterprise teams like BigCo');
-    window.addEventListener('scroll', onScroll);
-      window.removeEventListener('scroll', onScroll);
+    }
+  }, [searchParams]);
 
+  useEffect(() => {
     if (prefersReducedMotion) return;
 
-  }, [prefersReducedMotion]);
+    const original = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
     controls.start('visible').then(() => {
@@ -103,20 +85,33 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
   useEffect(() => {
     if (!parallaxRef.current || prefersReducedMotion) return;
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (parallaxRef.current) {
+        const translateY = offset * -0.1;
+        const blurAmount = Math.min(offset * 0.03, 12);
+        parallaxRef.current.style.transform = `translateY(${translateY}px)`;
+        parallaxRef.current.style.filter = `blur(${blurAmount}px) brightness(1.1)`;
+      }
+      if (offset > 300 && !modifiedCTA) setModifiedCTA(true);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [modifiedCTA, prefersReducedMotion]);
 
+  useEffect(() => {
     let timer: NodeJS.Timeout;
     const onScroll = () => {
       setIsStickyVisible(false);
       clearTimeout(timer);
       timer = setTimeout(() => setIsStickyVisible(true), 15000);
     };
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener('scroll', onScroll);
     return () => {
       clearTimeout(timer);
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener('scroll', onScroll);
     };
   }, []);
-
 
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -140,16 +135,10 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       />
 
       <div className="absolute z-0 h-full w-full overflow-hidden">
-        <div className="relative h-full w-full">
-          <Image
-            src="/images/mountain.jpg"
-            alt="Snowy mountain backdrop"
-            fill
-            priority
-            className="object-cover object-left-top opacity-60"
-            style={{ objectPosition: 'left 30%' }}
-          />
-        </div>
+        <div
+          className="h-full w-full bg-gradient-to-b from-white/70 via-white/40 to-transparent"
+          style={{ backgroundPosition: 'left 30%' }}
+        />
         <div className="absolute bottom-0 left-0 z-[2] h-[60px] w-full bg-white/10 blur-2xl" />
       </div>
 

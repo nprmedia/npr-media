@@ -7,6 +7,9 @@ export function useParticleBackground(containerRef: React.RefObject<HTMLDivEleme
   useEffect(() => {
     if (!containerRef.current) return;
 
+    // Capture the container element to avoid stale references in cleanup
+    const containerEl = containerRef.current;
+
     const isLowPower = navigator.hardwareConcurrency <= 4;
     const particleCount = isLowPower ? 1500 : 4000;
 
@@ -16,15 +19,15 @@ export function useParticleBackground(containerRef: React.RefObject<HTMLDivEleme
 
     const camera = new THREE.PerspectiveCamera(
       75,
-      containerRef.current.clientWidth / containerRef.current.clientHeight,
+      containerEl.clientWidth / containerEl.clientHeight,
       0.1,
       1000
     );
     camera.position.z = 50;
 
     const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
-    containerRef.current.appendChild(renderer.domElement);
+    renderer.setSize(containerEl.clientWidth, containerEl.clientHeight);
+    containerEl.appendChild(renderer.domElement);
 
     // Geometry
     const geometry = new THREE.BufferGeometry();
@@ -53,13 +56,10 @@ export function useParticleBackground(containerRef: React.RefObject<HTMLDivEleme
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
 
-    // Texture + Material
-    const texture = new THREE.TextureLoader().load('/textures/Glow-PNG-Photo.png'); // <-- Ensure this file exists
-    texture.colorSpace = THREE.SRGBColorSpace;
-
+    // Material
     const material = new THREE.PointsMaterial({
       size: 0.2,
-      map: texture,
+      color: 0xffffff,
       transparent: true,
       opacity: 0.4,
       blending: THREE.AdditiveBlending,
@@ -122,7 +122,7 @@ export function useParticleBackground(containerRef: React.RefObject<HTMLDivEleme
       renderer.dispose();
       geometry.dispose();
       material.dispose();
-      containerRef.current?.removeChild(renderer.domElement);
+      containerEl.removeChild(renderer.domElement);
     };
   }, [containerRef]);
 }
