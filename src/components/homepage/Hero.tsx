@@ -186,7 +186,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
         }}
         className="pointer-events-none absolute top-1/2 right-[25%] z-20 hidden -translate-y-1/2 flex flex-col items-center md:flex"
-        style={{ writingMode: 'vertical-rl', textOrientation: 'upright' }}
+
       >
         {['N', 'P', 'R'].map((letter) => (
           <motion.span
