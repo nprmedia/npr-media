@@ -4,7 +4,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { motion, useAnimation, useReducedMotion } from 'framer-motion';
+import {
+  motion,
+  useAnimation,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  useSpring,
+} from 'framer-motion';
 import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
 
@@ -24,7 +31,6 @@ interface HeroProps {
 const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaLink, image }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const parallaxRef = useRef<HTMLDivElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const ctaRef = useRef<HTMLAnchorElement>(null);
 
@@ -35,6 +41,10 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   const [isStickyVisible, setIsStickyVisible] = useState(false);
   const [modifiedCTA, setModifiedCTA] = useState(false);
   const [personalizedHeadline, setPersonalizedHeadline] = useState('');
+
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const overlayRaw = useTransform(scrollYProgress, [0, 1], ['0vh', '-20vh']);
+  const overlayY = useSpring(overlayRaw, { stiffness: 60, damping: 20 });
 
   useParticleBackground(containerRef);
   useHeroAnalytics({ heroRef, ctaRef });
@@ -79,23 +89,25 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
   useEffect(() => {
     if (prefersReducedMotion) return;
+    let raf = 0;
     const handleScroll = () => {
-      const offset = window.scrollY;
-      if (parallaxRef.current) {
-        const translateY = offset * -0.1;
-        const blurAmount = Math.min(offset * 0.03, 12);
-        parallaxRef.current.style.transform = `translateY(${translateY}px)`;
-        parallaxRef.current.style.filter = `blur(${blurAmount}px) brightness(1.1)`;
-      }
-      if (overlayRef.current && heroRef.current) {
-        const heroHeight = heroRef.current.offsetHeight;
-        const progress = Math.min(Math.max(offset / heroHeight, 0), 1);
-        overlayRef.current.style.transform = `translateY(-${progress * 20}vh)`;
-      }
-      if (offset > 300 && !modifiedCTA) setModifiedCTA(true);
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const offset = window.scrollY;
+        if (parallaxRef.current) {
+          const translateY = offset * -0.1;
+          const blurAmount = Math.min(offset * 0.03, 12);
+          parallaxRef.current.style.transform = `translateY(${translateY}px)`;
+          parallaxRef.current.style.filter = `blur(${blurAmount}px) brightness(1.1)`;
+        }
+        if (offset > 300 && !modifiedCTA) setModifiedCTA(true);
+      });
     };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [modifiedCTA, prefersReducedMotion]);
 
   useEffect(() => {
@@ -142,56 +154,57 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           <div className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold text-[#ACFF4F]">
             We are NPR Media
           </div>
-          <motion.h1
-            variants={textVariants}
-            custom={1}
-            className="mb-4 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-tight font-extrabold tracking-tight text-[#F2F3F4] hover:scale-103"
-          >
-            {personalizedHeadline || headline}
-          </motion.h1>
-          {subheadline && (
-            <motion.p
+          <div className="pl-[clamp(1.25rem,4vw,2.5rem)]">
+            <motion.h1
               variants={textVariants}
-              custom={1.5}
-              className="mb-4 max-w-xl text-[clamp(0.75rem,1.6vw,1rem)] text-[#F2F3F4] hover:scale-102"
+              custom={1}
+              className="mb-4 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-tight font-extrabold tracking-tight text-[#F2F3F4] hover:scale-103"
             >
-              {subheadline}
-            </motion.p>
-          )}
-          {ctaText && ctaLink && (
-            <motion.div
-              variants={textVariants}
-              custom={2}
-              className="group relative inline-block hover:scale-105"
-            >
-              <div className="bg-primary/20 absolute -inset-1.5 z-[-1] animate-pulse rounded-full" />
-              <Link
-                ref={ctaRef}
-                href={{ pathname: ctaLink }}
-                className={`inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-white shadow-lg ring-1 transition ${modifiedCTA ? 'bg-accent' : 'bg-primary'}`}
+              {personalizedHeadline || headline}
+            </motion.h1>
+            {subheadline && (
+              <motion.p
+                variants={textVariants}
+                custom={1.5}
+                className="mb-4 max-w-xl text-[clamp(0.75rem,1.6vw,1rem)] text-[#F2F3F4] hover:scale-102"
               >
-                {modifiedCTA ? 'Claim My Free Trial' : ctaText}
-              </Link>
-              <div className="text-muted relative top-full left-0 mt-1 text-[0.65rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                No card required. Cancel anytime.
-              </div>
-            </motion.div>
-          )}
-          <div className="text-muted mt-4 text-[0.6rem] hover:scale-101">
-            SOC2 Certified • GDPR Ready • Trusted by 10,000+ users
+                {subheadline}
+              </motion.p>
+            )}
+            {ctaText && ctaLink && (
+              <motion.div
+                variants={textVariants}
+                custom={2}
+                className="group relative inline-block hover:scale-105"
+              >
+                <div className="bg-primary/20 absolute -inset-1.5 z-[-1] animate-pulse rounded-full" />
+                <Link
+                  ref={ctaRef}
+                  href={{ pathname: ctaLink }}
+                  className={`inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-white shadow-lg ring-1 transition ${modifiedCTA ? 'bg-accent' : 'bg-primary'}`}
+                >
+                  {modifiedCTA ? 'Claim My Free Trial' : ctaText}
+                </Link>
+                <div className="text-muted relative top-full left-0 mt-1 text-[0.65rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                  No card required. Cancel anytime.
+                </div>
+              </motion.div>
+            )}
+            <div className="text-muted mt-4 text-[0.6rem] hover:scale-101">
+              SOC2 Certified • GDPR Ready • Trusted by 10,000+ users
+            </div>
           </div>
         </div>
       </motion.div>
 
       <motion.div
-        ref={overlayRef}
         initial="hidden"
         animate="visible"
         variants={{
           visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
         }}
         className="pointer-events-none absolute right-[25%] z-20 hidden flex-col items-center justify-between md:flex"
-        style={{ opacity: 0.35, top: 0, bottom: '-20vh' }}
+        style={{ opacity: 0.35, top: 0, bottom: '-20vh', y: overlayY, willChange: 'transform' }}
       >
         {['N', 'P', 'R'].map((letter) => (
           <motion.span
