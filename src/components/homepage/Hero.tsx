@@ -24,6 +24,7 @@ interface HeroProps {
 const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaLink, image }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const parallaxRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const ctaRef = useRef<HTMLAnchorElement>(null);
 
@@ -31,7 +32,6 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   const controls = useAnimation();
   const prefersReducedMotion = useReducedMotion();
 
-  const [isFrozen, setIsFrozen] = useState(true);
   const [isStickyVisible, setIsStickyVisible] = useState(false);
   const [modifiedCTA, setModifiedCTA] = useState(false);
   const [personalizedHeadline, setPersonalizedHeadline] = useState('');
@@ -70,7 +70,6 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
     controls.start('visible').then(() => {
       document.body.style.overflow = original;
-      setIsFrozen(false);
     });
 
     return () => {
@@ -79,7 +78,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   }, [controls, prefersReducedMotion]);
 
   useEffect(() => {
-    if (!parallaxRef.current || prefersReducedMotion) return;
+    if (prefersReducedMotion) return;
     const handleScroll = () => {
       const offset = window.scrollY;
       if (parallaxRef.current) {
@@ -87,6 +86,11 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         const blurAmount = Math.min(offset * 0.03, 12);
         parallaxRef.current.style.transform = `translateY(${translateY}px)`;
         parallaxRef.current.style.filter = `blur(${blurAmount}px) brightness(1.1)`;
+      }
+      if (overlayRef.current && heroRef.current) {
+        const heroHeight = heroRef.current.offsetHeight;
+        const progress = Math.min(Math.max(offset / heroHeight, 0), 1);
+        overlayRef.current.style.transform = `translateY(-${progress * 20}vh)`;
       }
       if (offset > 300 && !modifiedCTA) setModifiedCTA(true);
     };
@@ -122,7 +126,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       id="hero"
       ref={heroRef}
       aria-label="Hero Section"
-      className={`relative flex min-h-screen items-center justify-center bg-[#1F1F1F] font-sans ${isFrozen ? 'overflow-hidden' : ''}`}
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#1F1F1F] font-sans"
     >
       <div
         ref={containerRef}
@@ -180,6 +184,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       </motion.div>
 
       <motion.div
+        ref={overlayRef}
         initial="hidden"
         animate="visible"
         variants={{
