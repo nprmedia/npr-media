@@ -186,15 +186,15 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
         }}
         className="pointer-events-none absolute top-1/2 right-[25%] z-20 hidden -translate-y-1/2 flex-col items-center overflow-visible md:flex"
-        style={{ opacity: 0.08 }}
+        style={{ opacity: 0.12 }}
       >
         {['N', 'P', 'R'].map((letter) => (
           <motion.span
             key={letter}
             variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.6 }}
-            className="text-primary block font-extrabold"
-            style={{ fontSize: 'clamp(6rem, 25vh, 18rem)' }}
+            className="text-primary/80 block font-extrabold"
+            style={{ fontSize: 'clamp(8rem, 30vh, 24rem)', lineHeight: '0.6em' }}
           >
             {letter}
           </motion.span>
