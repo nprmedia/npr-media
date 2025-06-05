@@ -1,10 +1,25 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
-import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
+import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
+  }, []);
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (parallaxRef.current) {
+        const translateY = offset * -0.1;
+        const blurAmount = Math.min(offset * 0.03, 12);
+        parallaxRef.current.style.transform = `translateY(${translateY}px)`;
+        parallaxRef.current.style.filter = `blur(${blurAmount}px) brightness(1.1)`;
+      }
+      if (offset > 300 && !modifiedCTA) setModifiedCTA(true);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [modifiedCTA, prefersReducedMotion]);
+
+  useEffect(() => {
+  }, []);
 import { motion, useAnimation, useReducedMotion } from 'framer-motion';
 import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
