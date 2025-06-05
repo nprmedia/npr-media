@@ -66,10 +66,9 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
     const email = localStorage.getItem('user_email');
     if (email && email.includes('@bigco.com')) {
       setPersonalizedHeadline('The #1 platform for enterprise teams like BigCo');
-    }
-  }, [searchParams]);
+    window.addEventListener('scroll', onScroll);
+      window.removeEventListener('scroll', onScroll);
 
-  useEffect(() => {
     if (prefersReducedMotion) return;
 
     const original = document.body.style.overflow;
