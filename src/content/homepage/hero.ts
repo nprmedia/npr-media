@@ -18,10 +18,5 @@ export const hero: HeroProps = {
   subheadline: 'Built for SaaS teams who want cleaner dashboards and less spreadsheet chaos. Try it free — no card required.',
   ctaText: 'Start Free Trial',
   ctaLink: '/signup',
-  image: {
-    url: '/hero-preview.png',
-    alt: 'Product demo screenshot',
-    width: 800,
-    height: 600,
-  },
+  // Preview image removed to avoid bundling binary assets
 };
