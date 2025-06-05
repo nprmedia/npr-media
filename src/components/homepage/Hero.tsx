@@ -2,9 +2,11 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { motion, useAnimation, useReducedMotion } from 'framer-motion';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
+import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 
 interface HeroProps {
   headline: string;
@@ -83,18 +85,19 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
   useEffect(() => {
     if (!parallaxRef.current || prefersReducedMotion) return;
-    const handleScroll = () => {
-@@ -109,107 +105,176 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
+    let timer: NodeJS.Timeout;
+    const onScroll = () => {
       setIsStickyVisible(false);
       clearTimeout(timer);
       timer = setTimeout(() => setIsStickyVisible(true), 15000);
     };
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll);
     return () => {
       clearTimeout(timer);
-      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
+
 
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
