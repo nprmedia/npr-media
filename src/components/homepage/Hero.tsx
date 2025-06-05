@@ -127,29 +127,11 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       id="hero"
       ref={heroRef}
       aria-label="Hero Section"
-      className={`bg-gradient-depth animate-gradient-slow text-textDark relative isolate flex min-h-screen items-center justify-center overflow-hidden font-sans ${isFrozen ? 'overflow-hidden' : ''}`}
+      className={`relative flex min-h-screen items-center justify-center bg-[#1F1F1F] font-sans ${isFrozen ? 'overflow-hidden' : ''}`}
     >
       <div
         ref={containerRef}
         className="pointer-events-none absolute inset-0 z-[3] h-full w-full"
-      />
-
-      <div className="absolute z-0 h-full w-full overflow-hidden">
-        <div
-          className="h-full w-full bg-gradient-to-b from-white/70 via-white/40 to-transparent"
-          style={{ backgroundPosition: 'left 30%' }}
-        />
-        <div className="absolute bottom-0 left-0 z-[2] h-[60px] w-full bg-white/10 blur-2xl" />
-      </div>
-
-      <div className="pointer-events-none absolute top-0 left-0 z-[4] h-full w-1/2">
-        <div className="h-full w-full bg-gradient-to-r from-white via-white/90 to-transparent" />
-      </div>
-      <div
-        className="pointer-events-none absolute inset-0 z-[5]"
-        style={{
-          background: 'linear-gradient(135deg, rgba(0, 170, 255, 0.25), rgba(255,220,180,0.05))',
-        }}
       />
 
       <motion.div
@@ -161,14 +143,14 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           <motion.div
             variants={textVariants}
             custom={0}
-            className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold text-black hover:scale-101"
+            className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold text-[#ACFF4F] hover:scale-101"
           >
             {greeting}
           </motion.div>
           <motion.h1
             variants={textVariants}
             custom={1}
-            className="mb-4 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-tight font-extrabold tracking-tight hover:scale-103"
+            className="mb-4 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-tight font-extrabold tracking-tight text-[#F2F3F4] hover:scale-103"
           >
             {personalizedHeadline || headline}
           </motion.h1>
@@ -176,7 +158,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             <motion.p
               variants={textVariants}
               custom={1.5}
-              className="text-textLight mb-4 max-w-xl text-[clamp(0.75rem,1.6vw,1rem)] hover:scale-102"
+              className="mb-4 max-w-xl text-[clamp(0.75rem,1.6vw,1rem)] text-[#F2F3F4] hover:scale-102"
             >
               {subheadline}
             </motion.p>
@@ -191,7 +173,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               <Link
                 ref={ctaRef}
                 href={{ pathname: ctaLink }}
-                className={`inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-black shadow-lg ring-1 transition ${modifiedCTA ? 'bg-accent text-black' : 'bg-primary text-black'}`}
+                className={`inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-white shadow-lg ring-1 transition ${modifiedCTA ? 'bg-accent' : 'bg-primary'}`}
               >
                 {modifiedCTA ? 'Claim My Free Trial' : ctaText}
               </Link>
@@ -212,8 +194,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         variants={{
           visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
         }}
-        className="pointer-events-none absolute top-1/2 right-[25%] z-20 hidden -translate-y-1/2 flex-col items-center md:flex"
-        style={{ writingMode: 'vertical-rl', textOrientation: 'upright' }}
+        className="pointer-events-none absolute top-1/2 right-[25%] z-20 hidden -translate-y-1/2 rotate-90 flex flex-col items-center md:flex"
       >
         {['N', 'P', 'R'].map((letter) => (
           <motion.span

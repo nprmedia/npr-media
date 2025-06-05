@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import StickyHeader from '@/components/global/Header';
 import HeroSection from '@/components/homepage/Hero';
 import { hero } from '@/content/homepage/hero';
+import IndustryTemplatesSection from '@/components/homepage/IndustryTemplates';
 import TabbedPricing from '@/components/homepage/PricingSection';
 import FooterSection from '@/components/global/Footer';
 import WhyTrustSection from '@/components/homepage/WhyTrustSection';
@@ -21,6 +22,7 @@ export default function Page() {
         <Suspense>
           <HeroSection {...hero} />
         </Suspense>
+        <IndustryTemplatesSection />
         <TabbedPricing />
         <WhyTrustSection />
         <ContactSection />
