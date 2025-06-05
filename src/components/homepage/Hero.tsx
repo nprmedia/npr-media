@@ -203,7 +203,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         variants={{
           visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
         }}
-        className="pointer-events-none absolute right-[25%] z-20 hidden flex-col items-center gap-[0.25vh] md:flex"
+        className="pointer-events-none absolute right-[25%] z-20 hidden flex-col items-center gap-[20px] md:flex"
         style={{ opacity: 0.35, top: 0, bottom: 0, y: overlayY, willChange: 'transform' }}
       >
         {['N', 'P', 'R'].map((letter) => (
@@ -211,7 +211,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             key={letter}
             variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.6 }}
-            className="block font-extrabold text-gray-500 mix-blend-difference"
+            className="block font-extrabold leading-none text-gray-500 mix-blend-difference"
             style={{ fontSize: '50vh' }}
           >
             {letter}
