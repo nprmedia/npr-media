@@ -43,7 +43,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   const [personalizedHeadline, setPersonalizedHeadline] = useState('');
 
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
-  const overlayRaw = useTransform(scrollYProgress, [0, 1], ['0vh', '-20vh']);
+  const overlayRaw = useTransform(scrollYProgress, [0, 1], ['0vh', '-60vh']);
   const overlayY = useSpring(overlayRaw, { stiffness: 60, damping: 20 });
 
   useParticleBackground(containerRef);
@@ -138,7 +138,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       id="hero"
       ref={heroRef}
       aria-label="Hero Section"
-      className="relative flex min-h-screen items-center justify-center overflow-visible bg-[#1F1F1F] font-sans"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#1F1F1F] font-sans"
     >
       <div
         ref={containerRef}
@@ -203,8 +203,8 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         variants={{
           visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
         }}
-        className="pointer-events-none absolute right-[25%] z-20 hidden flex-col items-center justify-between md:flex"
-        style={{ opacity: 0.35, top: 0, bottom: '-20vh', y: overlayY, willChange: 'transform' }}
+        className="pointer-events-none absolute right-[25%] z-20 hidden flex-col items-center gap-[2vh] md:flex"
+        style={{ opacity: 0.35, top: 0, bottom: 0, y: overlayY, willChange: 'transform' }}
       >
         {['N', 'P', 'R'].map((letter) => (
           <motion.span
@@ -212,7 +212,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.6 }}
             className="block font-extrabold text-gray-500 mix-blend-difference"
-            style={{ fontSize: '40vh', lineHeight: 1 }}
+            style={{ fontSize: '50vh' }}
           >
             {letter}
           </motion.span>
