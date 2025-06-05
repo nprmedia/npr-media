@@ -18,7 +18,7 @@ interface HeroProps {
   image?: {
     url: string;
     alt?: string;
-    width?: number;
+  }, [prefersReducedMotion]);
     height?: number;
   };
 }
@@ -71,7 +71,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
     if (prefersReducedMotion) return;
 
-    const original = document.body.style.overflow;
+  }, [prefersReducedMotion]);
     document.body.style.overflow = 'hidden';
 
     controls.start('visible').then(() => {
