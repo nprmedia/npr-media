@@ -14,14 +14,14 @@ export default function IndustryTemplatesSection() {
   return (
     <section
       id="templates"
-      className="bg-background border-border from-background to-muted/10 w-full scroll-mt-[120px] overflow-x-hidden border-t bg-gradient-to-b py-24"
+      className="bg-background border-border from-background to-muted/10 w-full scroll-mt-[120px] overflow-x-hidden border-t bg-gradient-to-b py-[clamp(5rem,10vw,8rem)]"
     >
       <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">
+          <h2 className="text-foreground text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">
             Authority Platform Demo
           </h2>
-          <p className="text-muted-foreground mt-2 text-lg">
+          <p className="text-muted-foreground mt-2 text-[clamp(0.9rem,1.6vw,1.125rem)]">
             Our premier template for coaches and consultants.
           </p>
         </div>
@@ -34,7 +34,7 @@ export default function IndustryTemplatesSection() {
           variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 40 } }}
         >
           <div
-            className="group border-border bg-card ring-primary/5 hover:ring-primary/40 relative flex flex-col rounded-2xl border p-6 shadow-sm ring-1 transition ring-inset hover:-translate-y-1 hover:shadow-lg hover:ring-2"
+            className="group border-border bg-card ring-primary/5 hover:ring-primary/40 relative flex flex-col rounded-2xl border p-[clamp(1rem,2.5vw,1.5rem)] shadow-sm ring-1 transition ring-inset hover:-translate-y-1 hover:shadow-lg hover:ring-2"
             data-template-name={authority.title}
           >
             <motion.div
@@ -54,27 +54,27 @@ export default function IndustryTemplatesSection() {
               />
             </motion.div>
             <div className="flex flex-grow flex-col">
-              <h4 className="text-foreground mb-1 truncate text-base font-semibold sm:text-lg">
+              <h4 className="text-foreground mb-1 truncate text-[clamp(1rem,1.8vw,1.25rem)] font-semibold">
                 {authority.title}
               </h4>
-              <p className="text-muted-foreground mb-1 text-sm">{authority.description}</p>
-              <p className="text-muted-foreground mb-3 text-xs italic">
+              <p className="text-muted-foreground mb-1 text-[clamp(0.8rem,1.2vw,0.9rem)]">{authority.description}</p>
+              <p className="text-muted-foreground mb-3 text-[clamp(0.7rem,1vw,0.8rem)] italic">
                 Used by 12+ clients in this industry
               </p>
-              <div className="mt-auto flex items-center justify-between gap-4 text-sm font-medium">
+              <div className="mt-auto flex items-center justify-between gap-4 text-[clamp(0.8rem,1vw,0.9rem)] font-medium">
                 <a
                   href={authority.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   title="Opens in new tab"
                   aria-label={`Open demo for ${authority.title}`}
-                  className="bg-muted text-foreground hover:bg-muted/80 focus:ring-primary rounded-full px-3 py-1.5 transition hover:scale-105 focus:ring-2 focus:outline-none"
+                  className="bg-muted text-foreground hover:bg-muted/80 focus:ring-primary rounded-full px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.4rem,1vw,0.6rem)] transition hover:scale-105 focus:ring-2 focus:outline-none"
                 >
                   Open Demo →
                 </a>
                 <Link
                   href={`/templates/${authority.slug}`}
-                  className="text-muted-foreground hover:text-primary focus:ring-primary rounded-full px-3 py-1.5 transition hover:underline focus:ring-2 focus:outline-none"
+                  className="text-muted-foreground hover:text-primary focus:ring-primary rounded-full px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.4rem,1vw,0.6rem)] transition hover:underline focus:ring-2 focus:outline-none"
                   aria-label={`More info on ${authority.title}`}
                 >
                   More Info

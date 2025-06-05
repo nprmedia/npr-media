@@ -12,17 +12,17 @@ export default function TabbedPricing() {
   return (
     <section
       id="pricing"
-      className="w-full py-24 bg-white dark:bg-black border-t border-border"
+      className="w-full py-[clamp(5rem,10vw,8rem)] bg-white dark:bg-black border-t border-border"
     >
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
         <div className="max-w-4xl mx-auto text-center space-y-4">
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight text-gray-900 dark:text-white">
             Transparent Pricing. Tiered For Growth.
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-muted-foreground">
             {"Whether you're launching, scaling, or streamlining — each tier is scoped for ROI, speed, and clarity."}
           </p>
-          <p className="text-sm text-muted-foreground">Trusted by 120+ teams worldwide</p>
+          <p className="text-[clamp(0.75rem,1.2vw,0.9rem)] text-muted-foreground">Trusted by 120+ teams worldwide</p>
         </div>
 
         <div className="mt-12 flex justify-center gap-3 sm:gap-4 flex-wrap sticky top-0 z-20 bg-white dark:bg-black/90 backdrop-blur supports-backdrop-blur:border-b">
@@ -30,7 +30,7 @@ export default function TabbedPricing() {
             <button
               key={tab.category}
               onClick={() => setActive(tab.category)}
-              className={`px-5 py-2.5 rounded-full border text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 ring-offset-2 ring-gray-300 dark:ring-gray-600
+              className={`px-[clamp(1rem,2.5vw,1.25rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] rounded-full border text-[clamp(0.8rem,1vw,0.9rem)] font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 ring-offset-2 ring-gray-300 dark:ring-gray-600
                 ${
                   active === tab.category
                     ? 'bg-gray-900 text-white dark:bg-white dark:text-black shadow-md'
@@ -79,21 +79,21 @@ export default function TabbedPricing() {
                             <div className="space-y-1">
                               <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
-                                  <h3 className="text-lg sm:text-xl font-semibold leading-tight text-gray-900 dark:text-white">
+                                  <h3 className="text-[clamp(1rem,1.8vw,1.25rem)] font-semibold leading-tight text-gray-900 dark:text-white">
                                     {tier.title}
                                   </h3>
                                 </div>
-                                <p className="text-lg font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap">
+                                <p className="text-[clamp(1rem,1.8vw,1.25rem)] font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap">
                                   {tier.price}
                                 </p>
                               </div>
-                              <p className="text-sm italic text-muted-foreground">
+                              <p className="text-[clamp(0.8rem,1.2vw,0.9rem)] italic text-muted-foreground">
                                 {index === 0 && 'Best for early-stage launches or proof-of-concept MVPs.'}
                                 {index === 1 && 'Ideal for growth-focused startups scaling systems.'}
                                 {index === 2 && 'Perfect for high-touch execution or advisory support.'}
                               </p>
                             </div>
-                            <ul className="text-sm text-muted-foreground space-y-2 max-h-[180px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700">
+                            <ul className="text-[clamp(0.8rem,1.2vw,0.9rem)] text-muted-foreground space-y-2 max-h-[180px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700">
                               {tier.features.map((feature, i) => (
                                 <li key={i} className={`flex items-start gap-2 ${i === 0 ? 'font-semibold text-gray-900 dark:text-white' : ''}`}>
                                   <span className="text-green-500">{i === 0 ? '✅' : '✓'}</span> {feature}
@@ -102,12 +102,12 @@ export default function TabbedPricing() {
                             </ul>
                             <div className="pt-2">
                               <button
-                                className="group mt-4 inline-flex w-full justify-center items-center gap-2 rounded-full border border-gray-300 bg-gradient-to-br from-white to-gray-50 px-4 py-2 text-sm font-medium text-gray-900 shadow-sm hover:from-gray-100 hover:to-white dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 hover:scale-105 transition"
+                                className="group mt-4 inline-flex w-full justify-center items-center gap-2 rounded-full border border-gray-300 bg-gradient-to-br from-white to-gray-50 px-[clamp(1rem,2.5vw,1.25rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-[clamp(0.8rem,1vw,0.9rem)] font-medium text-gray-900 shadow-sm hover:from-gray-100 hover:to-white dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 hover:scale-105 transition"
                               >
                                 Start Plan
                                 <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform group-hover:opacity-100" />
                               </button>
-                              <p className="text-xs text-center text-muted-foreground mt-1 flex items-center justify-center gap-1 italic">
+                              <p className="text-[clamp(0.7rem,1vw,0.8rem)] text-center text-muted-foreground mt-1 flex items-center justify-center gap-1 italic">
                                 <Info className="w-3 h-3 opacity-70" />
                                 {index === 0 && 'Launch Website Plan'}
                                 {index === 1 && 'Funnel Setup Plan'}
