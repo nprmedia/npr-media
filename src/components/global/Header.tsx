@@ -26,7 +26,10 @@ export default function StickyHeader() {
           : 'bg-transparent backdrop-blur-0'
       } text-black`}
     >
-      <div className="mx-auto w-full px-3 md:px-10 lg:px-60 flex items-center bg-[#1F1F1F] text-[#F2F3F4] justify-between h-[clamp(3rem,6vw,3.75rem)]">
+      <div
+        className="mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center justify-between px-3 md:px-10 lg:px-60 text-[#F2F3F4]"
+        style={{ backgroundColor: scrolled ? '#1F1F1F' : 'transparent' }}
+      >
         <Link
           href="/"
           className="text-[clamp(0.9rem,1.4vw,1.25rem)] font-bold tracking-tight hover:scale-105 transition-transform"
