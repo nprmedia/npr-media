@@ -185,7 +185,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         variants={{
           visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
         }}
-        className="pointer-events-none absolute inset-0 z-20 hidden flex-col items-center justify-center overflow-visible md:flex"
+        className="pointer-events-none absolute top-1/2 right-[25%] z-20 hidden -translate-y-1/2 flex-col items-center overflow-visible md:flex"
         style={{ opacity: 0.08 }}
       >
         {['N', 'P', 'R'].map((letter) => (
