@@ -35,14 +35,10 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   const [isStickyVisible, setIsStickyVisible] = useState(false);
   const [modifiedCTA, setModifiedCTA] = useState(false);
   const [personalizedHeadline, setPersonalizedHeadline] = useState('');
-  const [greeting, setGreeting] = useState('');
 
   useParticleBackground(containerRef);
   useHeroAnalytics({ heroRef, ctaRef });
 
-  useEffect(() => {
-    setGreeting('Hello, we are NPR Media');
-  }, []);
 
   useEffect(() => {
     const storedHeadline = localStorage.getItem('hero_headline_variant');
@@ -138,14 +134,10 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         initial="hidden"
         animate={controls}
       >
-        <div className="pl-[clamp(1.25rem,3vw,2rem)]">
-          <motion.div
-            variants={textVariants}
-            custom={0}
-            className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold text-[#ACFF4F] hover:scale-101"
-          >
-            {greeting}
-          </motion.div>
+        <div className="pl-[clamp(2rem,4vw,3rem)]">
+          <div className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold text-[#ACFF4F]">
+            We are NPR Media
+          </div>
           <motion.h1
             variants={textVariants}
             custom={1}
@@ -193,7 +185,8 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         variants={{
           visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
         }}
-        className="pointer-events-none absolute top-1/2 right-[25%] z-20 hidden -translate-y-1/2 -rotate-90 flex flex-col items-center md:flex"
+        className="pointer-events-none absolute top-1/2 right-[25%] z-20 hidden -translate-y-1/2 flex flex-col items-center md:flex"
+        style={{ writingMode: 'vertical-rl', textOrientation: 'upright' }}
       >
         {['N', 'P', 'R'].map((letter) => (
           <motion.span
