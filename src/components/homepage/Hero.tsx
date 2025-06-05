@@ -58,6 +58,8 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   useHeroAnalytics({ heroRef, ctaRef });
 
   useEffect(() => {
+  // Adds a subtle parallax effect to the hero image
+  // Displays a sticky call-to-action after inactivity on scroll
     const hour = new Date().getHours();
     setGreeting(hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening');
   }, []);
