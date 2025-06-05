@@ -9,7 +9,7 @@ export function useHeroAnalytics(refs: {
     let interacted = false;
     let hoverStart: number | null = null;
 
-    const logEvent = (event: string, payload: any) => {
+    const logEvent = (event: string, payload: Record<string, unknown>) => {
       console.log(`[HeroAnalytics] ${event}`, payload);
       // Replace this with PostHog/Plausible/etc later
     };

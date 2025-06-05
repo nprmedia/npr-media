@@ -1,12 +1,29 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
+  }, []);
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (parallaxRef.current) {
+        const translateY = offset * -0.1;
+        const blurAmount = Math.min(offset * 0.03, 12);
+        parallaxRef.current.style.transform = `translateY(${translateY}px)`;
+        parallaxRef.current.style.filter = `blur(${blurAmount}px) brightness(1.1)`;
+      }
+      if (offset > 300 && !modifiedCTA) setModifiedCTA(true);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [modifiedCTA, prefersReducedMotion]);
+
+  useEffect(() => {
+  }, []);
 import { motion, useAnimation, useReducedMotion } from 'framer-motion';
 import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
+import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 
 interface HeroProps {
   headline: string;
@@ -16,7 +33,7 @@ interface HeroProps {
   image?: {
     url: string;
     alt?: string;
-    width?: number;
+  }, [prefersReducedMotion]);
     height?: number;
   };
 }
@@ -41,6 +58,8 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   useHeroAnalytics({ heroRef, ctaRef });
 
   useEffect(() => {
+  // Adds a subtle parallax effect to the hero image
+  // Displays a sticky call-to-action after inactivity on scroll
     const hour = new Date().getHours();
     setGreeting(hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening');
   }, []);
@@ -64,13 +83,12 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
     const email = localStorage.getItem('user_email');
     if (email && email.includes('@bigco.com')) {
       setPersonalizedHeadline('The #1 platform for enterprise teams like BigCo');
-    }
-  }, [searchParams]);
+    window.addEventListener('scroll', onScroll);
+      window.removeEventListener('scroll', onScroll);
 
-  useEffect(() => {
     if (prefersReducedMotion) return;
 
-    const original = document.body.style.overflow;
+  }, [prefersReducedMotion]);
     document.body.style.overflow = 'hidden';
 
     controls.start('visible').then(() => {
@@ -85,26 +103,20 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
   useEffect(() => {
     if (!parallaxRef.current || prefersReducedMotion) return;
-    const handleScroll = () => {
-      if (window.scrollY > 300 && !modifiedCTA) setModifiedCTA(true);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [modifiedCTA]);
 
-  useEffect(() => {
     let timer: NodeJS.Timeout;
     const onScroll = () => {
       setIsStickyVisible(false);
       clearTimeout(timer);
       timer = setTimeout(() => setIsStickyVisible(true), 15000);
     };
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll);
     return () => {
       clearTimeout(timer);
-      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
+
 
   const textVariants = {
     hidden: { opacity: 0, y: 20 },

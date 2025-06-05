@@ -20,7 +20,7 @@ export default function TabbedPricing() {
             Transparent Pricing. Tiered For Growth.
           </h2>
           <p className="text-lg text-muted-foreground">
-            Whether you're launching, scaling, or streamlining — each tier is scoped for ROI, speed, and clarity.
+            {"Whether you're launching, scaling, or streamlining — each tier is scoped for ROI, speed, and clarity."}
           </p>
           <p className="text-sm text-muted-foreground">Trusted by 120+ teams worldwide</p>
         </div>
