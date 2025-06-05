@@ -41,8 +41,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   useHeroAnalytics({ heroRef, ctaRef });
 
   useEffect(() => {
-    const hour = new Date().getHours();
-    setGreeting(hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening');
+    setGreeting('Hello, we are NPR Media');
   }, []);
 
   useEffect(() => {
@@ -194,7 +193,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         variants={{
           visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
         }}
-        className="pointer-events-none absolute top-1/2 right-[25%] z-20 hidden -translate-y-1/2 rotate-90 flex flex-col items-center md:flex"
+        className="pointer-events-none absolute top-1/2 right-[25%] z-20 hidden -translate-y-1/2 -rotate-90 flex flex-col items-center md:flex"
       >
         {['N', 'P', 'R'].map((letter) => (
           <motion.span
