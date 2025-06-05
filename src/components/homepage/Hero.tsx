@@ -138,7 +138,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       id="hero"
       ref={heroRef}
       aria-label="Hero Section"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#1F1F1F] font-sans"
+      className="relative flex min-h-screen items-center justify-center overflow-visible bg-[#1F1F1F] font-sans"
     >
       <div
         ref={containerRef}
