@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import {
   motion,
@@ -11,6 +10,7 @@ import {
   useScroll,
   useTransform,
   useSpring,
+  useMotionValue,
 } from 'framer-motion';
 import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
@@ -41,26 +41,31 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   const [isStickyVisible, setIsStickyVisible] = useState(false);
   const [modifiedCTA, setModifiedCTA] = useState(false);
   const [personalizedHeadline, setPersonalizedHeadline] = useState('');
-  const [greeting, setGreeting] = useState('');
 
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const overlayRaw = useTransform(scrollYProgress, [0, 1], ['0vh', '-60vh']);
   const overlayY = useSpring(overlayRaw, { stiffness: 60, damping: 20 });
 
+  const tiltX = useMotionValue(0);
+  const tiltY = useMotionValue(0);
+  const rotateX = useTransform(tiltY, [-60, 60], [12, -12]);
+  const rotateY = useTransform(tiltX, [-60, 60], [-12, 12]);
+
+  const handleTilt = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const dx = e.clientX - rect.left - rect.width / 2;
+    const dy = e.clientY - rect.top - rect.height / 2;
+    tiltX.set(dx);
+    tiltY.set(dy);
+  };
+
+  const resetTilt = () => {
+    tiltX.set(0);
+    tiltY.set(0);
+  };
+
   useParticleBackground(containerRef);
   useHeroAnalytics({ heroRef, ctaRef });
-
-  useEffect(() => {
-    const hour = new Date().getHours();
-    setGreeting(
-      hour < 12
-        ? 'GOOD MORNING'
-        : hour < 18
-          ? 'GOOD AFTERNOON'
-          : 'GOOD EVENING'
-    );
-  }, []);
-
 
   useEffect(() => {
     const storedHeadline = localStorage.getItem('hero_headline_variant');
@@ -163,15 +168,8 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         animate={controls}
       >
         <div className="pl-[clamp(2rem,4vw,3rem)]">
-          <motion.div
-            variants={textVariants}
-            custom={0}
-            className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold text-[#ACFF4F] uppercase"
-          >
-            {greeting}
-          </motion.div>
-          <div className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold text-[#ACFF4F] uppercase">
-            WE ARE NPR MEDIA
+          <div className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold uppercase text-[#ACFF4F]">
+            HELLO, WE ARE NPR MEDIA
           </div>
           <div className="pl-[clamp(1.25rem,4vw,2.5rem)]">
             <motion.h1
@@ -194,17 +192,32 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               <motion.div
                 variants={textVariants}
                 custom={2}
-                className="group relative inline-block hover:scale-110"
+                className="relative inline-block"
               >
-                <span className="absolute inset-0 -z-10 rounded-full bg-gradient-to-br from-primary via-accent to-primary opacity-60 blur-lg transition-transform group-hover:rotate-180 group-hover:scale-105" />
-                <Link
+                <motion.a
                   ref={ctaRef}
                   href={{ pathname: ctaLink }}
-                  className="relative inline-flex items-center justify-center rounded-full bg-black/80 px-[clamp(1rem,2vw,1.25rem)] py-[clamp(0.5rem,1.2vw,0.75rem)] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold uppercase text-white shadow-xl backdrop-blur-sm"
+                  onMouseMove={handleTilt}
+                  onMouseLeave={resetTilt}
+                  style={{ rotateX, rotateY }}
+                  className="relative isolate flex items-center justify-center overflow-hidden rounded-xl bg-black/70 px-[clamp(1rem,2.5vw,1.5rem)] py-[clamp(0.6rem,1.3vw,0.8rem)] text-[clamp(0.75rem,1vw,0.95rem)] font-semibold uppercase tracking-wider text-white shadow-2xl backdrop-blur-lg"
                 >
-                  {modifiedCTA ? 'CLAIM MY FREE TRIAL' : ctaText}
-                </Link>
-                <div className="text-muted relative top-full left-0 mt-1 text-[0.65rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                  <motion.span
+                    aria-hidden
+                    className="absolute inset-0 rounded-xl bg-gradient-conic from-primary via-accent to-primary opacity-60"
+                    animate={{ rotate: 360 }}
+                    transition={{ repeat: Infinity, ease: 'linear', duration: 8 }}
+                    style={{ scale: 1.4 }}
+                  />
+                  <motion.span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 rounded-xl bg-white/5 mix-blend-overlay blur-lg"
+                  />
+                  <span className="relative z-10">
+                    {modifiedCTA ? 'CLAIM MY FREE TRIAL' : ctaText}
+                  </span>
+                </motion.a>
+                <div className="text-muted relative top-full left-1/2 mt-1 -translate-x-1/2 text-[0.65rem]">
                   No card required. Cancel anytime.
                 </div>
               </motion.div>
