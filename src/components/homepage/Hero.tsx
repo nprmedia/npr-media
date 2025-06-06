@@ -41,6 +41,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   const [isStickyVisible, setIsStickyVisible] = useState(false);
   const [modifiedCTA, setModifiedCTA] = useState(false);
   const [personalizedHeadline, setPersonalizedHeadline] = useState('');
+  const [greeting, setGreeting] = useState('');
 
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const overlayRaw = useTransform(scrollYProgress, [0, 1], ['0vh', '-60vh']);
@@ -48,6 +49,17 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
   useParticleBackground(containerRef);
   useHeroAnalytics({ heroRef, ctaRef });
+
+  useEffect(() => {
+    const hour = new Date().getHours();
+    setGreeting(
+      hour < 12
+        ? 'GOOD MORNING'
+        : hour < 18
+          ? 'GOOD AFTERNOON'
+          : 'GOOD EVENING'
+    );
+  }, []);
 
 
   useEffect(() => {
@@ -151,8 +163,15 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         animate={controls}
       >
         <div className="pl-[clamp(2rem,4vw,3rem)]">
-          <div className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold text-[#ACFF4F]">
-            We are NPR Media
+          <motion.div
+            variants={textVariants}
+            custom={0}
+            className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold text-[#ACFF4F] uppercase"
+          >
+            {greeting}
+          </motion.div>
+          <div className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold text-[#ACFF4F] uppercase">
+            WE ARE NPR MEDIA
           </div>
           <div className="pl-[clamp(1.25rem,4vw,2.5rem)]">
             <motion.h1
@@ -175,15 +194,15 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               <motion.div
                 variants={textVariants}
                 custom={2}
-                className="group relative inline-block hover:scale-105"
+                className="group relative inline-block hover:scale-110"
               >
-                <div className="bg-primary/20 absolute -inset-1.5 z-[-1] animate-pulse rounded-full" />
+                <span className="absolute inset-0 -z-10 rounded-full bg-gradient-to-br from-primary via-accent to-primary opacity-60 blur-lg transition-transform group-hover:rotate-180 group-hover:scale-105" />
                 <Link
                   ref={ctaRef}
                   href={{ pathname: ctaLink }}
-                  className={`inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-white shadow-lg ring-1 transition ${modifiedCTA ? 'bg-accent' : 'bg-primary'}`}
+                  className="relative inline-flex items-center justify-center rounded-full bg-black/80 px-[clamp(1rem,2vw,1.25rem)] py-[clamp(0.5rem,1.2vw,0.75rem)] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold uppercase text-white shadow-xl backdrop-blur-sm"
                 >
-                  {modifiedCTA ? 'Claim My Free Trial' : ctaText}
+                  {modifiedCTA ? 'CLAIM MY FREE TRIAL' : ctaText}
                 </Link>
                 <div className="text-muted relative top-full left-0 mt-1 text-[0.65rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                   No card required. Cancel anytime.
