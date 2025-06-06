@@ -30,7 +30,6 @@ interface HeroProps {
 
 const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaLink, image }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const parallaxRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const ctaRef = useRef<HTMLAnchorElement>(null);
 
@@ -39,7 +38,6 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   const prefersReducedMotion = useReducedMotion();
 
   const [isStickyVisible, setIsStickyVisible] = useState(false);
-  const [modifiedCTA, setModifiedCTA] = useState(false);
   const [personalizedHeadline, setPersonalizedHeadline] = useState('');
 
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
@@ -104,28 +102,6 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
     };
   }, [controls, prefersReducedMotion]);
 
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-    let raf = 0;
-    const handleScroll = () => {
-      if (raf) cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const offset = window.scrollY;
-        if (parallaxRef.current) {
-          const translateY = offset * -0.1;
-          const blurAmount = Math.min(offset * 0.03, 12);
-          parallaxRef.current.style.transform = `translateY(${translateY}px)`;
-          parallaxRef.current.style.filter = `blur(${blurAmount}px) brightness(1.1)`;
-        }
-        if (offset > 300 && !modifiedCTA) setModifiedCTA(true);
-      });
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [modifiedCTA, prefersReducedMotion]);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -196,7 +172,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               >
                 <motion.a
                   ref={ctaRef}
-                  href={{ pathname: ctaLink }}
+                  href={ctaLink}
                   onMouseMove={handleTilt}
                   onMouseLeave={resetTilt}
                   style={{ rotateX, rotateY }}
@@ -213,9 +189,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
                     aria-hidden
                     className="pointer-events-none absolute inset-0 rounded-xl bg-white/5 mix-blend-overlay blur-lg"
                   />
-                  <span className="relative z-10">
-                    {modifiedCTA ? 'CLAIM MY FREE TRIAL' : ctaText}
-                  </span>
+                  <span className="relative z-10">{ctaText}</span>
                 </motion.a>
                 <div className="text-muted relative top-full left-1/2 mt-1 -translate-x-1/2 text-[0.65rem]">
                   No card required. Cancel anytime.
@@ -235,8 +209,8 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         variants={{
           visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
         }}
-        className="pointer-events-none absolute right-[25%] z-20 hidden flex-col items-center gap-px md:flex"
-        style={{ opacity: 0.35, top: 0, bottom: 0, y: overlayY, willChange: 'transform' }}
+        className="pointer-events-none absolute right-[25%] z-20 hidden md:flex"
+        style={{ opacity: 0.35, top: 0, bottom: 0, y: overlayY, rotate: -90, willChange: 'transform' }}
       >
         {['N', 'P', 'R'].map((letter) => (
           <motion.span
@@ -272,10 +246,6 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               priority
             />
           )}
-          <div
-            className="pointer-events-none absolute top-0 left-0 h-full w-full rounded-xl"
-            style={{ background: 'linear-gradient(270deg, rgba(0, 0, 0, 0.15), transparent 60%)' }}
-          />
         </div>
       </motion.div>
 
