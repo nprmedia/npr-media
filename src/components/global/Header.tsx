@@ -22,7 +22,7 @@ export default function StickyHeader() {
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 w-full z-50 transition-all ${
         scrolled
-          ? 'bg-[#0A0F1C]/90 backdrop-blur-sm shadow-md border-b border-gray-200'
+          ? 'bg-[#0A0F1C]/90 backdrop-blur-sm shadow-md'
           : 'bg-transparent backdrop-blur-0'
       } text-black`}
     >
