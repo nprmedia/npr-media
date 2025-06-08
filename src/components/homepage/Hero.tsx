@@ -43,8 +43,10 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const overlayRaw = useTransform(scrollYProgress, [0, 1], ['0vh', '-60vh']);
   const overlayY = useSpring(overlayRaw, { stiffness: 60, damping: 20 });
-  // Subtle two-tone color cycle near gray
-  const colorCycle = ['#B5B5B5', '#8B8B8B'];
+  // Light color cycle for subtle sheen
+  const colorCycle = ['#FFFFFF', '#F5F5F5'];
+  // Clip path reveals the letters as the user scrolls
+  const revealClip = useTransform(scrollYProgress, [0, 1], ['inset(0% 0% 40% 0%)', 'inset(0% 0% -5% 0%)']);
 
   const tiltX = useMotionValue(0);
   const tiltY = useMotionValue(0);
@@ -205,42 +207,49 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         </div>
       </motion.div>
 
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.15, delayChildren: 0.1 },
-          },
-        }}
-        className="pointer-events-none absolute right-[25%] z-20 hidden flex-col items-center md:flex"
-        style={{ top: 0, bottom: 0, y: overlayY, willChange: 'transform' }}
+      <div
+        className="pointer-events-none absolute right-[25%] z-20 hidden md:flex"
+        style={{ top: 0, bottom: 0 }}
       >
-        {['N', 'P', 'R'].map((letter, index) => (
-          <motion.span
-            key={letter}
-            custom={index}
+        <motion.div style={{ clipPath: revealClip }} className="h-full overflow-hidden">
+          <motion.div
+            initial="hidden"
+            animate="visible"
             variants={{
-              hidden: { opacity: 0, y: 80, scale: 0.8 },
+              hidden: { opacity: 0 },
               visible: {
-                opacity: 0.9,
-                y: 0,
-                scale: 1,
-                transition: { type: 'spring', stiffness: 200, damping: 20 },
+                opacity: 1,
+                transition: { staggerChildren: 0.15, delayChildren: 0.1 },
               },
             }}
-            initial={{ color: colorCycle[0] }}
-            animate={{ color: colorCycle[1] }}
-            transition={{ duration: 1.5, ease: 'easeInOut' }}
-            className="block font-extrabold leading-none mix-blend-difference"
-            style={{ fontSize: '50vh', lineHeight: 1 }}
+            style={{ y: overlayY, willChange: 'transform' }}
+            className="flex h-full flex-col items-center"
           >
-            {letter}
-          </motion.span>
-        ))}
-      </motion.div>
+            {['N', 'P', 'R'].map((letter, index) => (
+              <motion.span
+                key={letter}
+                custom={index}
+                variants={{
+                  hidden: { opacity: 0, y: 80, scale: 0.8 },
+                  visible: {
+                    opacity: 0.9,
+                    y: 0,
+                    scale: 1,
+                    transition: { type: 'spring', stiffness: 200, damping: 20 },
+                  },
+                }}
+                initial={{ color: colorCycle[0] }}
+                animate={{ color: colorCycle[1] }}
+                transition={{ duration: 1.5, ease: 'easeInOut' }}
+                className="block font-extrabold leading-none mix-blend-difference"
+                style={{ fontSize: '50vh', lineHeight: 1 }}
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
 
       <motion.div
         variants={textVariants}
