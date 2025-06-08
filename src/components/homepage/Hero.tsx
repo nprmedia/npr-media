@@ -43,7 +43,8 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const overlayRaw = useTransform(scrollYProgress, [0, 1], ['0vh', '-60vh']);
   const overlayY = useSpring(overlayRaw, { stiffness: 60, damping: 20 });
-  const colorCycle = ['#FF007A', '#FFD600', '#00E0FF', '#FF007A'];
+  // Subtle two-tone color cycle near gray
+  const colorCycle = ['#B5B5B5', '#8B8B8B'];
 
   const tiltX = useMotionValue(0);
   const tiltY = useMotionValue(0);
@@ -215,7 +216,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           },
         }}
         className="pointer-events-none absolute right-[25%] z-20 hidden flex-col items-center md:flex"
-        style={{ top: 0, bottom: 0, y: overlayY, rotate: '-90deg', willChange: 'transform' }}
+        style={{ top: 0, bottom: 0, y: overlayY, willChange: 'transform' }}
       >
         {['N', 'P', 'R'].map((letter, index) => (
           <motion.span
@@ -230,8 +231,9 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
                 transition: { type: 'spring', stiffness: 200, damping: 20 },
               },
             }}
-            animate={{ color: colorCycle }}
-            transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
+            initial={{ color: colorCycle[0] }}
+            animate={{ color: colorCycle[1] }}
+            transition={{ duration: 1.5, ease: 'easeInOut' }}
             className="block font-extrabold leading-none mix-blend-difference"
             style={{ fontSize: '50vh', lineHeight: 1 }}
           >
