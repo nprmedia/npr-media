@@ -29,6 +29,7 @@ interface HeroProps {
 const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaLink, image }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLAnchorElement>(null);
 
   const searchParams = useSearchParams();
@@ -113,6 +114,33 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       window.removeEventListener('scroll', onScroll);
     };
   }, []);
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+
+    const hero = heroRef.current;
+    const overlay = overlayRef.current;
+    if (!hero || !overlay) return;
+
+    const letterShift = hero.offsetHeight / 2; // move one letter height
+
+    let raf = 0;
+    const update = () => {
+      const rect = hero.getBoundingClientRect();
+      const progress = Math.min(Math.max(-rect.top / rect.height, 0), 1);
+      overlay.style.transform = `translateY(${-progress * letterShift}px)`;
+    };
+    const handleScroll = () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(update);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [prefersReducedMotion]);
 
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -201,8 +229,9 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       </motion.div>
 
       <motion.div
-        className="pointer-events-none absolute right-[25%] z-20 hidden md:flex"
-        style={{ top: 0, bottom: 0 }}
+        ref={overlayRef}
+        className="pointer-events-none absolute right-[25%] z-20 hidden flex-col items-center gap-[10px] md:flex"
+        style={{ top: 0, bottom: 0, writingMode: 'vertical-rl', textOrientation: 'upright' }}
         initial="hidden"
         animate="visible"
         variants={{
