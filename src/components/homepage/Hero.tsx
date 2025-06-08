@@ -43,6 +43,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const overlayRaw = useTransform(scrollYProgress, [0, 1], ['0vh', '-60vh']);
   const overlayY = useSpring(overlayRaw, { stiffness: 60, damping: 20 });
+  const colorCycle = ['#FF007A', '#FFD600', '#00E0FF', '#FF007A'];
 
   const tiltX = useMotionValue(0);
   const tiltY = useMotionValue(0);
@@ -209,26 +210,29 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         variants={{
           hidden: { opacity: 0 },
           visible: {
-            opacity: 0.18,
-            transition: { staggerChildren: 0.2, delayChildren: 0.2 },
+            opacity: 1,
+            transition: { staggerChildren: 0.15, delayChildren: 0.1 },
           },
         }}
         className="pointer-events-none absolute right-[25%] z-20 hidden flex-col items-center md:flex"
-        style={{ top: 0, bottom: 0, y: overlayY, willChange: 'transform' }}
+        style={{ top: 0, bottom: 0, y: overlayY, rotate: '-90deg', willChange: 'transform' }}
       >
-        {['N', 'P', 'R'].map((letter) => (
+        {['N', 'P', 'R'].map((letter, index) => (
           <motion.span
             key={letter}
+            custom={index}
             variants={{
-              hidden: { opacity: 0, y: 30, scale: 0.95 },
+              hidden: { opacity: 0, y: 80, scale: 0.8 },
               visible: {
-                opacity: 0.18,
+                opacity: 0.9,
                 y: 0,
                 scale: 1,
-                transition: { type: 'spring', stiffness: 70, damping: 18 },
+                transition: { type: 'spring', stiffness: 200, damping: 20 },
               },
             }}
-            className="block font-extrabold mix-blend-overlay leading-none text-gray-400"
+            animate={{ color: colorCycle }}
+            transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
+            className="block font-extrabold leading-none mix-blend-difference"
             style={{ fontSize: '50vh', lineHeight: 1 }}
           >
             {letter}
