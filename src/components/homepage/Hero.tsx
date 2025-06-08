@@ -209,29 +209,26 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         variants={{
           hidden: { opacity: 0 },
           visible: {
-            opacity: 0.25,
-            transition: { staggerChildren: 0.25, delayChildren: 0.3 },
+            opacity: 0.18,
+            transition: { staggerChildren: 0.2, delayChildren: 0.2 },
           },
         }}
-        className="pointer-events-none absolute right-[20%] z-20 hidden flex-col items-center md:flex"
+        className="pointer-events-none absolute right-[25%] z-20 hidden flex-col items-center md:flex"
         style={{ top: 0, bottom: 0, y: overlayY, willChange: 'transform' }}
       >
         {['N', 'P', 'R'].map((letter) => (
           <motion.span
             key={letter}
             variants={{
-              hidden: { opacity: 0, y: 40, color: '#3f3f3f' },
+              hidden: { opacity: 0, y: 30, scale: 0.95 },
               visible: {
-                opacity: 0.25,
+                opacity: 0.18,
                 y: 0,
-                color: ['#3f3f3f', '#6b6b6b', '#3f3f3f'],
-                transition: {
-                  y: { type: 'spring', stiffness: 80, damping: 16 },
-                  color: { duration: 1.4, ease: 'easeInOut' },
-                },
+                scale: 1,
+                transition: { type: 'spring', stiffness: 70, damping: 18 },
               },
             }}
-            className="block font-extrabold mix-blend-overlay leading-none"
+            className="block font-extrabold mix-blend-overlay leading-none text-gray-400"
             style={{ fontSize: '50vh', lineHeight: 1 }}
           >
             {letter}
