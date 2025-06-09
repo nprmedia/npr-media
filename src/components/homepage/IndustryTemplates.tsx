@@ -38,19 +38,32 @@ export default function IndustryTemplatesSection() {
             data-template-name={authority.title}
           >
             <motion.div
-              className="border-muted relative mb-4 aspect-[2/3] w-full overflow-hidden rounded-lg shadow md:mb-0 md:mr-6 md:w-[70%]"
-              variants={{ hover: { rotate: -2, scale: 1.03, boxShadow: '0 8px 20px rgba(0,0,0,0.1)' }, rest: { rotate: -5, scale: 1, boxShadow: '0 4px 10px rgba(0,0,0,0.05)' } }}
+              className="relative mb-4 aspect-[2/3] w-full max-h-[80vh] overflow-hidden rounded-lg shadow md:mb-0 md:mr-6 md:w-[60%]"
+              variants={{
+                hover: { rotate: -2, scale: 1.03, boxShadow: '0 8px 20px rgba(0,0,0,0.1)' },
+                rest: { rotate: -5, scale: 1, boxShadow: '0 4px 10px rgba(0,0,0,0.05)' },
+              }}
               initial="rest"
               whileHover="hover"
               transition={{ type: 'spring', stiffness: 260, damping: 20 }}
             >
-              <Image
-                src="/logos/authority-platform.jpg"
-                alt="Authority Platform preview"
-                width={400}
-                height={600}
-                className="pointer-events-none h-full w-full rounded object-cover"
-              />
+              <a
+                href={authority.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open demo for ${authority.title}`}
+                className="block h-full w-full"
+              >
+                <Image
+                  src="/logos/authority-platform.jpg"
+                  alt="Authority Platform preview"
+                  sizes="(max-width: 768px) 90vw, 60vw"
+                  width={800}
+                  height={1200}
+                  className="h-full w-full object-contain"
+                  priority
+                />
+              </a>
             </motion.div>
             <div className="flex flex-grow flex-col md:w-1/2">
               <h4 className="text-foreground mb-1 truncate text-[clamp(1rem,1.8vw,1.25rem)] font-semibold">
