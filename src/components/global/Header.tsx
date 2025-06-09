@@ -24,7 +24,7 @@ export default function StickyHeader() {
         scrolled
           ? 'bg-[#0A0F1C]/90 backdrop-blur-sm shadow-md'
           : 'bg-transparent backdrop-blur-0'
-      } text-black`}
+      } text-[#F2F3F4]`}
     >
       <div
         className="mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center justify-between px-3 md:px-10 lg:px-60 text-[#F2F3F4]"
