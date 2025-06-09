@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { templates } from '@/content/homepage/templates';
 
@@ -14,7 +14,7 @@ export default function IndustryTemplatesSection() {
   return (
     <section
       id="templates"
-      className="w-full scroll-mt-[120px] overflow-x-hidden border-t bg-[#212121] text-[#F2F3F4] py-[clamp(5rem,10vw,8rem)]"
+      className="w-full scroll-mt-[120px] overflow-x-hidden bg-[#212121] text-[#F2F3F4] py-[clamp(5rem,10vw,8rem)]"
     >
       <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
@@ -34,23 +34,22 @@ export default function IndustryTemplatesSection() {
           variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 40 } }}
         >
           <div
-            className="group border-border ring-[#d4af37]/5 hover:ring-[#d4af37]/40 relative flex flex-col md:flex-row md:items-start gap-6 rounded-2xl border p-[clamp(1rem,2.5vw,1.5rem)] shadow-sm ring-1 transition ring-inset hover:-translate-y-1 hover:shadow-lg hover:ring-2 bg-transparent"
+            className="group relative flex flex-col gap-6 rounded-2xl p-[clamp(1rem,2.5vw,1.5rem)] shadow-sm transition hover:-translate-y-1 hover:shadow-lg md:flex-row md:items-start"
             data-template-name={authority.title}
           >
             <motion.div
-              className="border-muted relative mb-4 aspect-video w-full md:mb-0 md:mr-6 md:w-1/2 overflow-hidden rounded-lg border shadow after:absolute after:inset-x-0 after:bottom-0 after:h-8 after:bg-gradient-to-t after:from-card after:to-transparent bg-transparent"
+              className="border-muted relative mb-4 aspect-[2/3] w-full overflow-hidden rounded-lg shadow md:mb-0 md:mr-6 md:w-[70%]"
               variants={{ hover: { rotate: -2, scale: 1.03, boxShadow: '0 8px 20px rgba(0,0,0,0.1)' }, rest: { rotate: -5, scale: 1, boxShadow: '0 4px 10px rgba(0,0,0,0.05)' } }}
               initial="rest"
               whileHover="hover"
               transition={{ type: 'spring', stiffness: 260, damping: 20 }}
             >
-              <iframe
-                src={authority.demoUrl}
-                loading="lazy"
-                scrolling="no"
-                sandbox=""
-                className="pointer-events-none block h-full w-full overflow-hidden rounded"
-                title={`Live preview of ${authority.title}`}
+              <Image
+                src="/logos/authority-platform.jpg"
+                alt="Authority Platform preview"
+                width={400}
+                height={600}
+                className="pointer-events-none h-full w-full rounded object-cover"
               />
             </motion.div>
             <div className="flex flex-grow flex-col md:w-1/2">
@@ -61,7 +60,7 @@ export default function IndustryTemplatesSection() {
               <p className="text-gray-400 mb-3 text-[clamp(0.7rem,1vw,0.8rem)] italic">
                 Used by 12+ clients in this industry
               </p>
-              <div className="mt-auto flex items-center justify-between gap-4 text-[clamp(0.8rem,1vw,0.9rem)] font-medium">
+              <div className="mt-auto text-[clamp(0.8rem,1vw,0.9rem)] font-medium">
                 <a
                   href={authority.demoUrl}
                   target="_blank"
@@ -72,13 +71,6 @@ export default function IndustryTemplatesSection() {
                 >
                   Open Demo →
                 </a>
-                <Link
-                  href={`/templates/${authority.slug}`}
-                  className="text-gray-300 hover:text-[#d4af37] focus:ring-[#d4af37] rounded-full px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.4rem,1vw,0.6rem)] transition hover:underline focus:ring-2 focus:outline-none"
-                  aria-label={`More info on ${authority.title}`}
-                >
-                  More Info
-                </Link>
               </div>
             </div>
           </div>
