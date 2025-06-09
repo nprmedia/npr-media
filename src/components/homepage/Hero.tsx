@@ -170,7 +170,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       >
         <div className="pl-[clamp(2rem,4vw,3rem)]">
           <div className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold uppercase text-[#d4af37]">
-            HELLO, WE ARE NPR MEDIA
+            WE ARE NPR-MEDIA
           </div>
           <div className="pl-[clamp(1.25rem,4vw,2.5rem)]">
             <motion.h1
