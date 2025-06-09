@@ -128,7 +128,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
     const update = () => {
       const rect = hero.getBoundingClientRect();
       const progress = Math.min(Math.max(-rect.top / rect.height, 0), 1);
-      overlay.style.transform = `translateY(${-progress * letterShift}px) rotate(-90deg)`;
+      overlay.style.transform = `translateY(${-progress * letterShift}px)`;
     };
     const handleScroll = () => {
       if (raf) cancelAnimationFrame(raf);
@@ -260,7 +260,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             animate={{ color: colorCycle[1] }}
             transition={{ duration: 1.5, ease: 'easeInOut' }}
             className="block font-extrabold leading-none mix-blend-difference"
-            style={{ fontSize: '50vh', lineHeight: 1, transform: 'rotate(90deg)' }}
+            style={{ fontSize: '50vh', lineHeight: 1 }}
           >
             {letter}
           </motion.span>
