@@ -230,7 +230,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
       <motion.div
         ref={overlayRef}
-        className="pointer-events-none absolute right-[25%] z-20 hidden -rotate-90 flex-col items-center gap-[4px] md:flex"
+        className="pointer-events-none absolute right-[25%] z-20 hidden flex-col items-center gap-[4px] md:flex"
         style={{ top: 0, bottom: 0 }}
         initial="hidden"
         animate="visible"
@@ -259,7 +259,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             initial={{ color: colorCycle[0] }}
             animate={{ color: colorCycle[1] }}
             transition={{ duration: 1.5, ease: 'easeInOut' }}
-            className="block rotate-90 font-extrabold leading-none mix-blend-difference"
+            className="block font-extrabold leading-none mix-blend-difference"
             style={{ fontSize: '50vh', lineHeight: 1 }}
           >
             {letter}
