@@ -39,8 +39,8 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   const [isStickyVisible, setIsStickyVisible] = useState(false);
   const [personalizedHeadline, setPersonalizedHeadline] = useState('');
 
-  // Light color cycle for subtle sheen
-  const colorCycle = ['#FFFFFF', '#F5F5F5'];
+  // Gold color cycle for overlay animation
+  const colorCycle = ['#b28d1b', '#d4af37'];
 
   const tiltX = useMotionValue(0);
   const tiltY = useMotionValue(0);
@@ -169,7 +169,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         animate={controls}
       >
         <div className="pl-[clamp(2rem,4vw,3rem)]">
-          <div className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold uppercase text-[#ACFF4F]">
+          <div className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold uppercase text-[#d4af37]">
             HELLO, WE ARE NPR MEDIA
           </div>
           <div className="pl-[clamp(1.25rem,4vw,2.5rem)]">
@@ -205,7 +205,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
                 >
                   <motion.span
                     aria-hidden
-                    className="absolute inset-0 rounded-xl bg-gradient-conic from-primary via-accent to-primary opacity-60"
+                    className="absolute inset-0 rounded-xl bg-gradient-conic from-[#b28d1b] via-[#d4af37] to-[#b28d1b] opacity-60"
                     animate={{ rotate: 360 }}
                     transition={{ repeat: Infinity, ease: 'linear', duration: 8 }}
                     style={{ scale: 1.4 }}
@@ -231,7 +231,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       <motion.div
         ref={overlayRef}
         className="pointer-events-none absolute right-[25%] z-20 hidden flex-col items-center gap-[4px] md:flex"
-        style={{ top: 0, bottom: 0 }}
+        style={{ top: 0, bottom: 0, writingMode: 'vertical-lr', textOrientation: 'upright' }}
         initial="hidden"
         animate="visible"
         variants={{
@@ -292,7 +292,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       </motion.div>
 
       <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 transform">
-        <div className="text-primary animate-bounce text-lg drop-shadow-[0_0_4px_rgba(255,255,255,0.5)]">
+        <div className="text-[#d4af37] animate-bounce text-lg drop-shadow-[0_0_4px_rgba(255,255,255,0.5)]">
           ↓
         </div>
       </div>

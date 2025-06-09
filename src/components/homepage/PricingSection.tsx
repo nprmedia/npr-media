@@ -96,7 +96,7 @@ export default function TabbedPricing() {
                             <ul className="text-[clamp(0.8rem,1.2vw,0.9rem)] text-muted-foreground space-y-2 max-h-[180px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700">
                               {tier.features.map((feature, i) => (
                                 <li key={i} className={`flex items-start gap-2 ${i === 0 ? 'font-semibold text-gray-900 dark:text-white' : ''}`}>
-                                  <span className="text-green-500">{i === 0 ? '✅' : '✓'}</span> {feature}
+                                  <span className="text-[#d4af37]">{i === 0 ? '✅' : '✓'}</span> {feature}
                                 </li>
                               ))}
                             </ul>

@@ -34,7 +34,7 @@ export default function IndustryTemplatesSection() {
           variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 40 } }}
         >
           <div
-            className="group border-border bg-card ring-primary/5 hover:ring-primary/40 relative flex flex-col rounded-2xl border p-[clamp(1rem,2.5vw,1.5rem)] shadow-sm ring-1 transition ring-inset hover:-translate-y-1 hover:shadow-lg hover:ring-2"
+            className="group border-border bg-card ring-[#d4af37]/5 hover:ring-[#d4af37]/40 relative flex flex-col rounded-2xl border p-[clamp(1rem,2.5vw,1.5rem)] shadow-sm ring-1 transition ring-inset hover:-translate-y-1 hover:shadow-lg hover:ring-2"
             data-template-name={authority.title}
           >
             <motion.div
@@ -68,13 +68,13 @@ export default function IndustryTemplatesSection() {
                   rel="noopener noreferrer"
                   title="Opens in new tab"
                   aria-label={`Open demo for ${authority.title}`}
-                  className="bg-muted text-foreground hover:bg-muted/80 focus:ring-primary rounded-full px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.4rem,1vw,0.6rem)] transition hover:scale-105 focus:ring-2 focus:outline-none"
+                  className="bg-muted text-foreground hover:bg-muted/80 focus:ring-[#d4af37] rounded-full px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.4rem,1vw,0.6rem)] transition hover:scale-105 focus:ring-2 focus:outline-none"
                 >
                   Open Demo →
                 </a>
                 <Link
                   href={`/templates/${authority.slug}`}
-                  className="text-muted-foreground hover:text-primary focus:ring-primary rounded-full px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.4rem,1vw,0.6rem)] transition hover:underline focus:ring-2 focus:outline-none"
+                  className="text-muted-foreground hover:text-[#d4af37] focus:ring-[#d4af37] rounded-full px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.4rem,1vw,0.6rem)] transition hover:underline focus:ring-2 focus:outline-none"
                   aria-label={`More info on ${authority.title}`}
                 >
                   More Info
