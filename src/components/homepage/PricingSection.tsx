@@ -12,7 +12,7 @@ export default function TabbedPricing() {
   return (
     <section
       id="pricing"
-      className="w-full py-[clamp(5rem,10vw,8rem)] bg-[#1F1F1F] text-[#F2F3F4] border-t"
+      className="w-full py-[clamp(5rem,10vw,8rem)] bg-[#1c1c1c] text-[#F2F3F4] border-t"
     >
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
         <div className="max-w-4xl mx-auto text-center space-y-4">
@@ -25,7 +25,7 @@ export default function TabbedPricing() {
           <p className="text-[clamp(0.75rem,1.2vw,0.9rem)] text-gray-400">Trusted by 120+ teams worldwide</p>
         </div>
 
-        <div className="mt-12 flex justify-center gap-3 sm:gap-4 flex-wrap sticky top-0 z-20 bg-white dark:bg-black/90 backdrop-blur supports-backdrop-blur:border-b">
+        <div className="mt-12 flex justify-center gap-3 sm:gap-4 flex-wrap sticky top-0 z-20 bg-transparent backdrop-blur supports-backdrop-blur:border-b">
           {pricing.map((tab) => (
             <button
               key={tab.category}
@@ -73,7 +73,7 @@ export default function TabbedPricing() {
                       )}
                       <div className={`relative rounded-2xl before:absolute before:inset-0 before:rounded-2xl ${isMiddleCard ? 'before:ring-2 before:ring-yellow-400 before:animate-pulse' : ''}`}>
                         <Card
-                          className="relative flex flex-col justify-between bg-[linear-gradient(white,white),linear-gradient(to_right,#e0e0e0,#facc15)] bg-clip-padding border border-transparent shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] backdrop-blur-lg transition-shadow hover:shadow-xl dark:hover:shadow-zinc-900/30 h-full rounded-2xl overflow-hidden"
+                          className="relative flex flex-col justify-between bg-[#2b2b2b] border border-transparent shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] backdrop-blur-lg transition-shadow hover:shadow-xl dark:hover:shadow-zinc-900/30 h-full rounded-2xl overflow-hidden"
                         >
                           <CardContent className="p-5 space-y-4">
                             <div className="space-y-1">

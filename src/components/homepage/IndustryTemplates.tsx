@@ -14,7 +14,7 @@ export default function IndustryTemplatesSection() {
   return (
     <section
       id="templates"
-      className="w-full scroll-mt-[120px] overflow-x-hidden border-t bg-[#1F1F1F] text-[#F2F3F4] py-[clamp(5rem,10vw,8rem)]"
+      className="w-full scroll-mt-[120px] overflow-x-hidden border-t bg-[#212121] text-[#F2F3F4] py-[clamp(5rem,10vw,8rem)]"
     >
       <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
@@ -34,11 +34,11 @@ export default function IndustryTemplatesSection() {
           variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 40 } }}
         >
           <div
-            className="group border-border bg-card ring-[#d4af37]/5 hover:ring-[#d4af37]/40 relative flex flex-col rounded-2xl border p-[clamp(1rem,2.5vw,1.5rem)] shadow-sm ring-1 transition ring-inset hover:-translate-y-1 hover:shadow-lg hover:ring-2"
+            className="group border-border ring-[#d4af37]/5 hover:ring-[#d4af37]/40 relative flex flex-col rounded-2xl border p-[clamp(1rem,2.5vw,1.5rem)] shadow-sm ring-1 transition ring-inset hover:-translate-y-1 hover:shadow-lg hover:ring-2 bg-transparent"
             data-template-name={authority.title}
           >
             <motion.div
-              className="border-muted bg-muted/30 relative mb-4 aspect-video w-full overflow-hidden rounded-lg border shadow after:absolute after:inset-x-0 after:bottom-0 after:h-8 after:bg-gradient-to-t after:from-card after:to-transparent"
+              className="border-muted relative mb-4 aspect-video w-full overflow-hidden rounded-lg border shadow after:absolute after:inset-x-0 after:bottom-0 after:h-8 after:bg-gradient-to-t after:from-card after:to-transparent bg-transparent"
               variants={{ hover: { rotate: -2, scale: 1.03, boxShadow: '0 8px 20px rgba(0,0,0,0.1)' }, rest: { rotate: -5, scale: 1, boxShadow: '0 4px 10px rgba(0,0,0,0.05)' } }}
               initial="rest"
               whileHover="hover"

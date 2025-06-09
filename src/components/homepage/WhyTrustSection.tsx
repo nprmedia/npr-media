@@ -12,7 +12,7 @@ const icons: Record<string, LucideIcon> = {
 
 export default function WhyTrustSection() {
   return (
-      <section className="bg-[#1F1F1F] text-[#F2F3F4] py-[clamp(5rem,10vw,8rem)] px-[clamp(1rem,4vw,3rem)] border-t">
+      <section className="bg-[#242424] text-[#F2F3F4] py-[clamp(5rem,10vw,8rem)] px-[clamp(1rem,4vw,3rem)] border-t">
         <div className="max-w-6xl mx-auto text-center space-y-12">
           <div className="space-y-4">
             <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold text-[#F2F3F4]">
@@ -29,7 +29,7 @@ export default function WhyTrustSection() {
               return (
                 <div
                   key={point.title}
-                  className="flex items-start gap-4 bg-[#2A2A2A] p-[clamp(1rem,2.5vw,1.5rem)] rounded-xl border border-gray-700 shadow-sm hover:shadow-md transition"
+                  className="flex items-start gap-4 p-[clamp(1rem,2.5vw,1.5rem)] rounded-xl border border-gray-700 shadow-sm hover:shadow-md transition bg-transparent"
                 >
                   {Icon && <Icon className="w-6 h-6 text-black dark:text-white mt-1" />}
                   <div>

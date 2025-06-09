@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export default function FinalCtaSection() {
   return (
-      <section className="bg-[#1F1F1F] text-[#F2F3F4] px-[clamp(1rem,4vw,3rem)] py-[clamp(5rem,10vw,8rem)] text-center">
+      <section className="bg-[#262626] text-[#F2F3F4] px-[clamp(1rem,4vw,3rem)] py-[clamp(5rem,10vw,8rem)] text-center">
         <div className="max-w-3xl mx-auto space-y-6">
           <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold">
             {finalCta.title}

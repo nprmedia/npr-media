@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export default function ContactSection() {
   return (
-      <section className="bg-[#1F1F1F] text-[#F2F3F4] py-[clamp(4rem,8vw,6rem)] px-[clamp(1rem,4vw,3rem)]">
+      <section className="bg-[#1e1e1e] text-[#F2F3F4] py-[clamp(4rem,8vw,6rem)] px-[clamp(1rem,4vw,3rem)]">
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold">
             {contactSection.title}
