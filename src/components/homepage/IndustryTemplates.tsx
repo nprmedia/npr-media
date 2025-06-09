@@ -27,18 +27,18 @@ export default function IndustryTemplatesSection() {
         </div>
 
         <motion.div
-          className="mx-auto max-w-xl"
+          className="mx-auto max-w-4xl"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 40 } }}
         >
           <div
-            className="group border-border ring-[#d4af37]/5 hover:ring-[#d4af37]/40 relative flex flex-col rounded-2xl border p-[clamp(1rem,2.5vw,1.5rem)] shadow-sm ring-1 transition ring-inset hover:-translate-y-1 hover:shadow-lg hover:ring-2 bg-transparent"
+            className="group border-border ring-[#d4af37]/5 hover:ring-[#d4af37]/40 relative flex flex-col md:flex-row md:items-start gap-6 rounded-2xl border p-[clamp(1rem,2.5vw,1.5rem)] shadow-sm ring-1 transition ring-inset hover:-translate-y-1 hover:shadow-lg hover:ring-2 bg-transparent"
             data-template-name={authority.title}
           >
             <motion.div
-              className="border-muted relative mb-4 aspect-video w-full overflow-hidden rounded-lg border shadow after:absolute after:inset-x-0 after:bottom-0 after:h-8 after:bg-gradient-to-t after:from-card after:to-transparent bg-transparent"
+              className="border-muted relative mb-4 aspect-video w-full md:mb-0 md:mr-6 md:w-1/2 overflow-hidden rounded-lg border shadow after:absolute after:inset-x-0 after:bottom-0 after:h-8 after:bg-gradient-to-t after:from-card after:to-transparent bg-transparent"
               variants={{ hover: { rotate: -2, scale: 1.03, boxShadow: '0 8px 20px rgba(0,0,0,0.1)' }, rest: { rotate: -5, scale: 1, boxShadow: '0 4px 10px rgba(0,0,0,0.05)' } }}
               initial="rest"
               whileHover="hover"
@@ -53,7 +53,7 @@ export default function IndustryTemplatesSection() {
                 title={`Live preview of ${authority.title}`}
               />
             </motion.div>
-            <div className="flex flex-grow flex-col">
+            <div className="flex flex-grow flex-col md:w-1/2">
               <h4 className="text-foreground mb-1 truncate text-[clamp(1rem,1.8vw,1.25rem)] font-semibold">
                 {authority.title}
               </h4>
