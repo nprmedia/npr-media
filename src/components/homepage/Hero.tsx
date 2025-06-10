@@ -24,13 +24,13 @@ interface HeroProps {
 const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaLink, image }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLAnchorElement>(null);
 
   const searchParams = useSearchParams();
   const controls = useAnimation();
   const prefersReducedMotion = useReducedMotion();
 
-  const [isFrozen, setIsFrozen] = useState(true);
   const [isStickyVisible, setIsStickyVisible] = useState(false);
   const [personalizedHeadline, setPersonalizedHeadline] = useState('');
 
@@ -68,7 +68,6 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
     controls.start('visible').then(() => {
       document.body.style.overflow = original;
-      setIsFrozen(false);
     });
 
     return () => {
@@ -100,12 +99,29 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
     }),
   };
 
+  useEffect(() => {
+    const hero = heroRef.current;
+    const overlay = overlayRef.current;
+    if (!hero || !overlay) return;
+
+    const onScroll = () => {
+      const rect = hero.getBoundingClientRect();
+      const progress = Math.min(Math.max(-rect.top / rect.height, 0), 1);
+      const shift = (rect.height / 3) * progress;
+      overlay.style.transform = `translateY(-${shift}px) rotate(-90deg)`;
+    };
+
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <section
       id="hero"
       ref={heroRef}
       aria-label="Hero Section"
-      className={`relative min-h-screen flex items-center justify-center bg-[#1F1F1F] font-sans ${isFrozen ? 'overflow-hidden' : ''}`}
+      className="relative min-h-screen overflow-hidden flex items-center justify-center bg-[#1F1F1F] font-sans"
     >
       <div
         ref={containerRef}
@@ -169,13 +185,14 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       </div>
 
       <motion.div
+        ref={overlayRef}
         initial="hidden"
         animate="visible"
         variants={{
           visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
         }}
         className="pointer-events-none absolute top-1/2 right-[25%] z-20 hidden -translate-y-1/2 flex-col items-center md:flex"
-        style={{ writingMode: 'vertical-rl', textOrientation: 'upright' }}
+        style={{ willChange: 'transform' }}
       >
         {['N', 'P', 'R'].map((letter) => (
           <motion.span
@@ -183,7 +200,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.6, y: 0 } }}
             transition={{ duration: 0.6 }}
             className="block font-extrabold text-[#f2f3f4]/40"
-            style={{ fontSize: 'clamp(2rem,8vw,6rem)' }}
+            style={{ fontSize: 'clamp(2rem,8vw,6rem)', transform: 'rotate(90deg)' }}
           >
             {letter}
           </motion.span>
