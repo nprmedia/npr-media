@@ -32,13 +32,13 @@ export default function IndustryTemplatesSection() {
           viewport={{ once: true }}
           variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 40 } }}
         >
-          <div className="relative mb-4 aspect-[2/3] w-full max-h-[80vh] overflow-hidden rounded-lg shadow md:mb-0 md:mr-6 md:w-[60%]">
+          <div className="relative mb-4 aspect-video w-full max-h-[80vh] overflow-hidden rounded-lg shadow md:mb-0 md:mr-6 md:w-[60%]">
             <iframe
               src={authority.demoUrl}
               loading="lazy"
               sandbox="allow-scripts allow-same-origin"
               scrolling="no"
-              className="h-full w-full scale-[0.85] origin-top-left rounded-lg"
+              className="h-full w-full scale-[0.8] origin-top rounded-lg"
               title={`Live preview of ${authority.title}`}
             />
           </div>
