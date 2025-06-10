@@ -38,7 +38,7 @@ export default function IndustryTemplatesSection() {
               loading="lazy"
               sandbox="allow-scripts allow-same-origin"
               scrolling="no"
-              className="h-full w-full scale-[0.8] origin-top rounded-lg"
+              className="h-full w-full scale-[0.9] origin-top rounded-lg"
               title={`Live preview of ${authority.title}`}
             />
           </div>

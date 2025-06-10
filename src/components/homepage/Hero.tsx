@@ -2,14 +2,9 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import {
-  motion,
-  useAnimation,
-  useReducedMotion,
-  useMotionValue,
-  useTransform,
-} from 'framer-motion';
+import { motion, useAnimation, useReducedMotion } from 'framer-motion';
 import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
 
@@ -28,40 +23,27 @@ interface HeroProps {
 
 const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaLink, image }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const parallaxRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLAnchorElement>(null);
 
   const searchParams = useSearchParams();
   const controls = useAnimation();
   const prefersReducedMotion = useReducedMotion();
 
+  const [isFrozen, setIsFrozen] = useState(true);
   const [isStickyVisible, setIsStickyVisible] = useState(false);
+  const [modifiedCTA, setModifiedCTA] = useState(false);
   const [personalizedHeadline, setPersonalizedHeadline] = useState('');
-
-  // Gold color cycle for overlay animation
-  const colorCycle = ['#b28d1b', '#d4af37'];
-
-  const tiltX = useMotionValue(0);
-  const tiltY = useMotionValue(0);
-  const rotateX = useTransform(tiltY, [-60, 60], [12, -12]);
-  const rotateY = useTransform(tiltX, [-60, 60], [-12, 12]);
-
-  const handleTilt = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const dx = e.clientX - rect.left - rect.width / 2;
-    const dy = e.clientY - rect.top - rect.height / 2;
-    tiltX.set(dx);
-    tiltY.set(dy);
-  };
-
-  const resetTilt = () => {
-    tiltX.set(0);
-    tiltY.set(0);
-  };
+  const [greeting, setGreeting] = useState('');
 
   useParticleBackground(containerRef);
   useHeroAnalytics({ heroRef, ctaRef });
+
+  useEffect(() => {
+    const hour = new Date().getHours();
+    setGreeting(hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening');
+  }, []);
 
   useEffect(() => {
     const storedHeadline = localStorage.getItem('hero_headline_variant');
@@ -93,6 +75,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
     controls.start('visible').then(() => {
       document.body.style.overflow = original;
+      setIsFrozen(false);
     });
 
     return () => {
@@ -100,6 +83,21 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
     };
   }, [controls, prefersReducedMotion]);
 
+  useEffect(() => {
+    if (!parallaxRef.current || prefersReducedMotion) return;
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (parallaxRef.current) {
+        const translateY = offset * -0.1;
+        const blurAmount = Math.min(offset * 0.03, 12);
+        parallaxRef.current.style.transform = `translateY(${translateY}px)`;
+        parallaxRef.current.style.filter = `blur(${blurAmount}px) brightness(1.1)`;
+      }
+      if (offset > 300 && !modifiedCTA) setModifiedCTA(true);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [modifiedCTA, prefersReducedMotion]);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -115,33 +113,6 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
     };
   }, []);
 
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-
-    const hero = heroRef.current;
-    const overlay = overlayRef.current;
-    if (!hero || !overlay) return;
-
-    const letterShift = hero.offsetHeight / 2; // move one letter height
-
-    let raf = 0;
-    const update = () => {
-      const rect = hero.getBoundingClientRect();
-      const progress = Math.min(Math.max(-rect.top / rect.height, 0), 1);
-      overlay.style.transform = `translateY(${-progress * letterShift}px) rotate(-90deg)`;
-    };
-    const handleScroll = () => {
-      if (raf) cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(update);
-    };
-    handleScroll();
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [prefersReducedMotion]);
-
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
@@ -156,11 +127,29 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       id="hero"
       ref={heroRef}
       aria-label="Hero Section"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#1F1F1F] font-sans"
+      className={`bg-gradient-depth animate-gradient-slow text-textDark relative isolate flex min-h-screen items-center justify-center overflow-hidden font-sans ${isFrozen ? 'overflow-hidden' : ''}`}
     >
       <div
         ref={containerRef}
         className="pointer-events-none absolute inset-0 z-[3] h-full w-full"
+      />
+
+      <div className="absolute z-0 h-full w-full overflow-hidden">
+        <div
+          className="h-full w-full bg-gradient-to-b from-white/70 via-white/40 to-transparent"
+          style={{ backgroundPosition: 'left 30%' }}
+        />
+        <div className="absolute bottom-0 left-0 z-[2] h-[60px] w-full bg-white/10 blur-2xl" />
+      </div>
+
+      <div className="pointer-events-none absolute top-0 left-0 z-[4] h-full w-1/2">
+        <div className="h-full w-full bg-gradient-to-r from-white via-white/90 to-transparent" />
+      </div>
+      <div
+        className="pointer-events-none absolute inset-0 z-[5]"
+        style={{
+          background: 'linear-gradient(135deg, rgba(0, 170, 255, 0.25), rgba(255,220,180,0.05))',
+        }}
       />
 
       <motion.div
@@ -168,99 +157,71 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         initial="hidden"
         animate={controls}
       >
-        <div className="pl-[clamp(2rem,4vw,3rem)]">
-          <div className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold uppercase text-[#d4af37]">
-            HELLO, WE ARE NPR MEDIA
-          </div>
-          <div className="pl-[clamp(1.25rem,4vw,2.5rem)]">
-            <motion.h1
+        <div className="pl-[clamp(1.25rem,3vw,2rem)]">
+          <motion.div
+            variants={textVariants}
+            custom={0}
+            className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold text-black hover:scale-101"
+          >
+            {greeting}
+          </motion.div>
+          <motion.h1
+            variants={textVariants}
+            custom={1}
+            className="mb-4 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-tight font-extrabold tracking-tight hover:scale-103"
+          >
+            {personalizedHeadline || headline}
+          </motion.h1>
+          {subheadline && (
+            <motion.p
               variants={textVariants}
-              custom={1}
-              className="mb-4 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-tight font-extrabold tracking-tight text-[#F2F3F4] hover:scale-103"
+              custom={1.5}
+              className="text-textLight mb-4 max-w-xl text-[clamp(0.75rem,1.6vw,1rem)] hover:scale-102"
             >
-              {personalizedHeadline || headline}
-            </motion.h1>
-            {subheadline && (
-              <motion.p
-                variants={textVariants}
-                custom={1.5}
-                className="mb-4 max-w-xl text-[clamp(0.75rem,1.6vw,1rem)] text-[#F2F3F4] hover:scale-102"
+              {subheadline}
+            </motion.p>
+          )}
+          {ctaText && ctaLink && (
+            <motion.div
+              variants={textVariants}
+              custom={2}
+              className="group relative inline-block hover:scale-105"
+            >
+              <div className="bg-primary/20 absolute -inset-1.5 z-[-1] animate-pulse rounded-full" />
+              <Link
+                ref={ctaRef}
+                href={{ pathname: ctaLink }}
+                className={`inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-black shadow-lg ring-1 transition ${modifiedCTA ? 'bg-accent text-black' : 'bg-primary text-black'}`}
               >
-                {subheadline}
-              </motion.p>
-            )}
-            {ctaText && ctaLink && (
-              <motion.div
-                variants={textVariants}
-                custom={2}
-                className="relative inline-block"
-              >
-                <motion.a
-                  ref={ctaRef}
-                  href={ctaLink}
-                  onMouseMove={handleTilt}
-                  onMouseLeave={resetTilt}
-                  style={{ rotateX, rotateY }}
-                  className="relative isolate flex items-center justify-center overflow-hidden rounded-xl bg-black/70 px-[clamp(1rem,2.5vw,1.5rem)] py-[clamp(0.6rem,1.3vw,0.8rem)] text-[clamp(0.75rem,1vw,0.95rem)] font-semibold uppercase tracking-wider text-white shadow-2xl backdrop-blur-lg"
-                >
-                  <motion.span
-                    aria-hidden
-                    className="absolute inset-0 rounded-xl bg-gradient-conic from-[#b28d1b] via-[#d4af37] to-[#b28d1b] opacity-60"
-                    animate={{ rotate: 360 }}
-                    transition={{ repeat: Infinity, ease: 'linear', duration: 8 }}
-                    style={{ scale: 1.4 }}
-                  />
-                  <motion.span
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0 rounded-xl bg-white/5 mix-blend-overlay blur-lg"
-                  />
-                  <span className="relative z-10">{ctaText}</span>
-                </motion.a>
-                <div className="text-muted relative top-full left-1/2 mt-1 -translate-x-1/2 text-[0.65rem]">
-                  No card required. Cancel anytime.
-                </div>
-              </motion.div>
-            )}
-            <div className="text-muted mt-4 text-[0.6rem] hover:scale-101">
-              SOC2 Certified • GDPR Ready • Trusted by 10,000+ users
-            </div>
+                {modifiedCTA ? 'Claim My Free Trial' : ctaText}
+              </Link>
+              <div className="text-muted relative top-full left-0 mt-1 text-[0.65rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                No card required. Cancel anytime.
+              </div>
+            </motion.div>
+          )}
+          <div className="text-muted mt-4 text-[0.6rem] hover:scale-101">
+            SOC2 Certified • GDPR Ready • Trusted by 10,000+ users
           </div>
         </div>
       </motion.div>
 
       <motion.div
-        ref={overlayRef}
-        className="pointer-events-none absolute right-[25%] z-20 hidden flex-col items-center gap-[4px] md:flex"
-        style={{ top: 0, bottom: 0, willChange: 'transform' }}
         initial="hidden"
         animate="visible"
         variants={{
-          hidden: { opacity: 0, y: 80 },
-          visible: {
-            opacity: 0.9,
-            y: 0,
-            transition: { duration: 1.4, ease: 'easeOut', staggerChildren: 0.18 },
-          },
+          visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
         }}
+        className="pointer-events-none absolute top-1/2 right-[25%] z-20 hidden -translate-y-1/2 flex-col items-center md:flex"
+        style={{ writingMode: 'vertical-rl', textOrientation: 'upright' }}
       >
-        {['N', 'P', 'R'].map((letter, index) => (
+        {['N', 'P', 'R'].map((letter) => (
           <motion.span
             key={letter}
-            custom={index}
-            variants={{
-              hidden: { opacity: 0, y: 80, scale: 0.8 },
-              visible: {
-                opacity: 0.9,
-                y: 0,
-                scale: 1,
-                transition: { type: 'spring', stiffness: 200, damping: 20 },
-              },
-            }}
-            initial={{ color: colorCycle[0] }}
-            animate={{ color: colorCycle[1] }}
-            transition={{ duration: 1.5, ease: 'easeInOut' }}
-            className="block rotate-90 font-extrabold leading-none mix-blend-difference"
-            style={{ fontSize: '50vh', lineHeight: 1 }}
+            variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.6, y: 0 } }}
+            transition={{ duration: 0.6 }}
+            className="text-primary/30 block font-extrabold"
+            style={{ fontSize: 'clamp(2rem,8vw,6rem)' }}
           >
             {letter}
           </motion.span>
@@ -288,11 +249,15 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               priority
             />
           )}
+          <div
+            className="pointer-events-none absolute top-0 left-0 h-full w-full rounded-xl"
+            style={{ background: 'linear-gradient(270deg, rgba(0, 0, 0, 0.15), transparent 60%)' }}
+          />
         </div>
       </motion.div>
 
       <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 transform">
-        <div className="text-[#d4af37] animate-bounce text-lg drop-shadow-[0_0_4px_rgba(255,255,255,0.5)]">
+        <div className="text-primary animate-bounce text-lg drop-shadow-[0_0_4px_rgba(255,255,255,0.5)]">
           ↓
         </div>
       </div>
