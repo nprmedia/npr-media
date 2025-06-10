@@ -22,11 +22,14 @@ export default function StickyHeader() {
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 w-full z-50 transition-all ${
         scrolled
-          ? 'bg-[#0A0F1C]/90 backdrop-blur-sm shadow-md border-b border-gray-200'
+          ? 'bg-[#0A0F1C]/90 backdrop-blur-sm shadow-md'
           : 'bg-transparent backdrop-blur-0'
-      } text-black`}
+      } text-[#F2F3F4]`}
     >
-      <div className="mx-auto w-full px-3 md:px-10 lg:px-60 flex items-center bg-[#1F1F1F] text-[#F2F3F4] justify-between h-[clamp(3rem,6vw,3.75rem)]">
+      <div
+        className="mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center justify-between px-3 md:px-10 lg:px-60 text-[#F2F3F4]"
+        style={{ backgroundColor: scrolled ? '#1F1F1F' : 'transparent' }}
+      >
         <Link
           href="/"
           className="text-[clamp(0.9rem,1.4vw,1.25rem)] font-bold tracking-tight hover:scale-105 transition-transform"
@@ -39,6 +42,9 @@ export default function StickyHeader() {
           </Link>
           <Link href="/pricing" className="text-[clamp(0.75rem,1vw,0.875rem)] hover:text-blue-600 hover:scale-105 transition-transform">
             Pricing
+          </Link>
+          <Link href="/about" className="text-[clamp(0.75rem,1vw,0.875rem)] hover:text-blue-600 hover:scale-105 transition-transform">
+            About
           </Link>
           <Link href="/contact" className="text-[clamp(0.75rem,1vw,0.875rem)] hover:text-blue-600 hover:scale-105 transition-transform">
             Contact
