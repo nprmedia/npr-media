@@ -32,7 +32,7 @@ export default function IndustryTemplatesSection() {
           viewport={{ once: true }}
           variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 40 } }}
         >
-          <div className="relative mb-4 aspect-video w-full max-h-[80vh] overflow-hidden rounded-lg shadow md:mb-0 md:mr-6 md:w-[60%]">
+          <div className="relative mb-4 h-[80vh] aspect-[2/3] overflow-hidden rounded-lg shadow md:mb-0 md:mr-6">
             <iframe
               src={authority.demoUrl}
               loading="lazy"

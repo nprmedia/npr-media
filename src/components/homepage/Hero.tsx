@@ -128,7 +128,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
     const update = () => {
       const rect = hero.getBoundingClientRect();
       const progress = Math.min(Math.max(-rect.top / rect.height, 0), 1);
-      overlay.style.transform = `translateY(${-progress * letterShift}px)`;
+      overlay.style.transform = `translateY(${-progress * letterShift}px) rotate(-90deg)`;
     };
     const handleScroll = () => {
       if (raf) cancelAnimationFrame(raf);
@@ -170,7 +170,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       >
         <div className="pl-[clamp(2rem,4vw,3rem)]">
           <div className="mb-1 text-[clamp(0.65rem,1.2vw,0.9rem)] font-bold uppercase text-[#d4af37]">
-            WE ARE NPR-MEDIA
+            HELLO, WE ARE NPR MEDIA
           </div>
           <div className="pl-[clamp(1.25rem,4vw,2.5rem)]">
             <motion.h1
@@ -259,7 +259,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             initial={{ color: colorCycle[0] }}
             animate={{ color: colorCycle[1] }}
             transition={{ duration: 1.5, ease: 'easeInOut' }}
-            className="block font-extrabold leading-none mix-blend-difference"
+            className="block rotate-90 font-extrabold leading-none mix-blend-difference"
             style={{ fontSize: '50vh', lineHeight: 1 }}
           >
             {letter}
