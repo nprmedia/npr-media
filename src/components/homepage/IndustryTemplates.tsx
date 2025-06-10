@@ -1,115 +1,71 @@
 'use client';
 
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { templates } from '@/content/homepage/templates';
 
 export default function IndustryTemplatesSection() {
+  const authority = templates
+    .flatMap((group) => group.templates)
+    .find((t) => t.slug === 'authority-platform');
+
+  if (!authority) return null;
+
   return (
     <section
       id="templates"
-      className="bg-background border-border from-background to-muted/10 w-full scroll-mt-[120px] overflow-x-hidden border-t bg-gradient-to-b py-24"
+      className="w-full scroll-mt-[120px] overflow-x-hidden bg-[#212121] text-[#F2F3F4] py-[clamp(5rem,10vw,8rem)]"
     >
-      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">
-            See Templates by Industry
+          <h2 className="text-[#F2F3F4] text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">
+            Authority Platform Demo
           </h2>
-          <p className="text-muted-foreground mt-2 text-lg">
-            Real examples of our most profitable builds — tailored for top-performing clients.
+          <p className="text-gray-300 mt-2 text-[clamp(0.9rem,1.6vw,1.125rem)]">
+            Our premier template for coaches and consultants.
           </p>
         </div>
 
-        <div className="space-y-20">
-          {templates.map((group, groupIdx) => (
-            <motion.div
-              key={group.industry}
-              className="space-y-6"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: groupIdx * 0.1 }}
-            >
-              <h3 className="text-primary flex items-center justify-center gap-2 text-center text-xl font-semibold sm:text-2xl">
-                <span className="bg-primary inline-block h-2 w-2 animate-pulse rounded-full"></span>
-                {group.industry}
-              </h3>
-              <motion.div
-                className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+        <motion.div
+          className="mx-auto flex max-w-4xl flex-col gap-6 md:flex-row md:items-start"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 40 } }}
+        >
+          <div className="relative mb-4 h-[80vh] aspect-[2/3] overflow-hidden rounded-lg shadow md:mb-0 md:mr-6">
+            <iframe
+              src={authority.demoUrl}
+              loading="lazy"
+              sandbox="allow-scripts allow-same-origin"
+              scrolling="no"
+              className="h-full w-full scale-[0.9] origin-top rounded-lg"
+              title={`Live preview of ${authority.title}`}
+            />
+          </div>
+          <div className="flex flex-grow flex-col md:w-1/2">
+            <h4 className="text-foreground mb-1 truncate text-[clamp(1rem,1.8vw,1.25rem)] font-semibold">
+              {authority.title}
+            </h4>
+            <p className="text-gray-300 mb-1 text-[clamp(0.8rem,1.2vw,0.9rem)]">
+              {authority.description}
+            </p>
+            <p className="text-gray-400 mb-3 text-[clamp(0.7rem,1vw,0.8rem)] italic">
+              Used by 12+ clients in this industry
+            </p>
+            <div className="mt-auto text-[clamp(0.8rem,1vw,0.9rem)] font-medium">
+              <a
+                href={authority.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Opens in new tab"
+                aria-label={`Open demo for ${authority.title}`}
+                className="bg-gray-700 text-[#F2F3F4] hover:bg-gray-600 focus:ring-[#d4af37] rounded-full px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.4rem,1vw,0.6rem)] transition hover:scale-105 focus:ring-2 focus:outline-none"
               >
-                {group.templates.map((template, i) => (
-                  <motion.div
-                    key={template.slug}
-                    variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-                    whileHover="hover"
-                    transition={{
-                      duration: 0.4,
-                      delay: i * 0.05,
-                      type: 'spring',
-                      stiffness: 260,
-                      damping: 20,
-                    }}
-                    className="will-change-transform"
-                  >
-                    <div
-                      className="group border-border bg-card ring-primary/5 hover:ring-primary/40 relative block flex h-full flex-col rounded-2xl border p-6 shadow-sm ring-1 transition ring-inset hover:-translate-y-1 hover:shadow-lg hover:ring-2"
-                      data-template-name={template.title}
-                    >
-                      <motion.div
-                        className="border-muted bg-muted/30 relative mb-4 aspect-video w-full overflow-hidden rounded-lg border shadow after:absolute after:inset-x-0 after:bottom-0 after:h-8 after:bg-gradient-to-t after:from-card after:to-transparent"
-                        variants={{ hover: { rotate: -2, scale: 1.03, boxShadow: '0 8px 20px rgba(0,0,0,0.1)' }, rest: { rotate: -5, scale: 1, boxShadow: '0 4px 10px rgba(0,0,0,0.05)' } }}
-                        initial="rest"
-                        whileHover="hover"
-                        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                      >
-                        <iframe
-                          src={template.demoUrl}
-                          loading="lazy"
-                          scrolling="no"
-                          sandbox=""
-                          className="pointer-events-none block h-full w-full overflow-hidden rounded"
-                          title={`Live preview of ${template.title}`}
-                        />
-                      </motion.div>
-                      <div className="flex flex-grow flex-col">
-                        <h4 className="text-foreground mb-1 truncate text-base font-semibold sm:text-lg">
-                          {template.title}
-                        </h4>
-                        <p className="text-muted-foreground mb-1 text-sm">{template.description}</p>
-                        <p className="text-muted-foreground mb-3 text-xs italic">
-                          Used by 12+ clients in this industry
-                        </p>
-                        <div className="mt-auto flex items-center justify-between gap-4 text-sm font-medium">
-                          <a
-                            href={template.demoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            title="Opens in new tab"
-                            aria-label={`Open demo for ${template.title}`}
-                            className="bg-muted text-foreground hover:bg-muted/80 focus:ring-primary rounded-full px-3 py-1.5 transition hover:scale-105 focus:ring-2 focus:outline-none"
-                          >
-                            Open Demo →
-                          </a>
-                          <Link
-                            href={`/templates/${template.slug}`}
-                            className="text-muted-foreground hover:text-primary focus:ring-primary rounded-full px-3 py-1.5 transition hover:underline focus:ring-2 focus:outline-none"
-                            aria-label={`More info on ${template.title}`}
-                          >
-                            More Info
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
+                Open Demo →
+              </a>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
