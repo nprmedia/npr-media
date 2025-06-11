@@ -31,7 +31,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
     target: heroRef,
     offset: ['start start', 'end start'],
   });
-  const overlayY = useTransform(scrollYProgress, [0, 1], ['0%', '-95%']);
+  const overlayY = useTransform(scrollYProgress, [0, 1], ['0%', '-100%']);
 
   const searchParams = useSearchParams();
   const controls = useAnimation();
@@ -173,13 +173,13 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         </motion.div>
       </div>
 
-      <div className="pointer-events-none absolute top-0 right-[25%] z-20 hidden h-[95%] overflow-hidden md:flex">
+      <div className="pointer-events-none absolute top-0 right-[25%] z-20 hidden h-full overflow-hidden md:flex">
         <motion.div
           ref={overlayRef}
           style={{ y: overlayY }}
           initial="hidden"
           animate="visible"
-          className="flex h-[190%] flex-col items-center"
+          className="flex h-[200%] flex-col items-center"
         >
           {['N', 'P', 'R'].map((letter) => (
             <motion.span
