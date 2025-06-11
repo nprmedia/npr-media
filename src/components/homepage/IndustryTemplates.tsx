@@ -29,14 +29,14 @@ export default function IndustryTemplatesSection() {
           className="mx-auto flex max-w-4xl flex-col gap-6 md:flex-row md:items-start"
         >
           <div
-            className="group relative mb-4 aspect-[2/3] h-screen max-h-screen overflow-hidden rounded-lg shadow md:mb-0 md:mr-6"
+            className="group relative mb-4 aspect-[2/3] h-[80vh] max-h-[80vh] overflow-hidden rounded-lg shadow md:mb-0 md:mr-6"
             style={{ perspective: '1000px' }}
           >
             <Image
               src="/authority-platform-preview.png"
               alt={`Screenshot of ${authority.title}`}
-              width={800}
-              height={1200}
+              width={640}
+              height={960}
               className="h-full w-full rounded-lg object-cover transition-transform duration-500 group-hover:[transform:rotateY(-12deg)]"
               priority
             />
