@@ -184,7 +184,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           {['N', 'P', 'R'].map((letter) => (
             <motion.span
               key={letter}
-              style={{ fontSize: 'clamp(2rem,8vw,6rem)' }}
+              style={{ fontSize: 'clamp(4rem,18vw,12rem)' }}
               variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.6, y: 0 } }}
               transition={{ duration: 0.6 }}
               className="block font-extrabold text-[#d4af37] leading-none"
