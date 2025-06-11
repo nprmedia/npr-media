@@ -31,7 +31,10 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
     target: heroRef,
     offset: ['start start', 'end start'],
   });
-  const overlayY = useTransform(scrollYProgress, [0, 1], ['0%', '-95%']);
+  // Scroll the overlay fully offscreen so the last letter ends flush with the
+  // bottom of the hero section. This accounts for bottom padding restrictions
+  // from the moving background.
+  const overlayY = useTransform(scrollYProgress, [0, 1], ['0%', '-100%']);
 
   const searchParams = useSearchParams();
   const controls = useAnimation();
@@ -179,7 +182,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           style={{ y: overlayY }}
           initial="hidden"
           animate="visible"
-          className="flex h-[195%] flex-col items-center"
+          className="flex h-[200%] flex-col items-center"
         >
           {['N', 'P', 'R'].map((letter) => (
             <motion.span
