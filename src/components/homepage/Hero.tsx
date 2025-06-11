@@ -31,7 +31,13 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
     target: heroRef,
     offset: ['start start', 'end start'],
   });
-  const overlayY = useTransform(scrollYProgress, [0, 1], ['0%', '-40%']);
+  // Scroll the overlay fully offscreen so the last letter ends flush with the
+  // bottom of the hero section. This accounts for bottom padding restrictions
+  // from the moving background.
+  // Scroll the overlay so the letters end slightly above the bottom of the hero
+  // section. Moving about 53% of the wrapper height leaves roughly 5% padding
+  // below the final "R" while keeping it hidden once the hero scrolls away.
+  const overlayY = useTransform(scrollYProgress, [0, 1], ['0%', '-53%']);
 
   const searchParams = useSearchParams();
   const controls = useAnimation();
@@ -110,7 +116,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       id="hero"
       ref={heroRef}
       aria-label="Hero Section"
-      className="relative min-h-screen flex items-center justify-center bg-[#1F1F1F] font-sans overflow-hidden"
+      className="relative min-h-screen pb-[5vh] flex items-center justify-center bg-[#1F1F1F] font-sans overflow-hidden"
     >
       <div
         ref={containerRef}
@@ -173,22 +179,21 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         </motion.div>
       </div>
 
-      <div className="pointer-events-none absolute top-1/2 right-[25%] z-20 hidden -translate-y-1/2 md:flex">
+      <div className="pointer-events-none absolute inset-y-0 right-[15%] z-[5] hidden md:flex">
         <motion.div
           ref={overlayRef}
-          style={{ y: overlayY, rotate: -90 }}
+          style={{ y: overlayY }}
           initial="hidden"
           animate="visible"
-          variants={{ visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } } }}
-          className="flex flex-col items-center gap-1"
+          className="flex h-[200%] flex-col items-center pb-[5vh]"
         >
           {['N', 'P', 'R'].map((letter) => (
             <motion.span
               key={letter}
-              style={{ rotate: 90, fontSize: 'clamp(2rem,8vw,6rem)' }}
+              style={{ fontSize: 'min(48vh,32vw)' }}
               variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.6, y: 0 } }}
               transition={{ duration: 0.6 }}
-              className="block font-extrabold text-[#f2f3f4]/40 leading-none"
+              className="block font-extrabold text-[#d4af37] leading-none"
             >
               {letter}
             </motion.span>
