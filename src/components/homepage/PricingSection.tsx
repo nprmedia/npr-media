@@ -49,7 +49,9 @@ export default function TabbedPricing() {
                     />
                   )}
                   <div
-                    className={`relative rounded-2xl before:absolute before:inset-0 before:rounded-2xl ${isMiddleCard ? 'before:animate-pulse before:ring-2 before:ring-[var(--color-accent)]' : ''}`}
+                    className={`relative rounded-2xl ${
+                      isMiddleCard ? 'animate-pulse ring-2 ring-[var(--color-accent)]' : ''
+                    }`}
                   >
                     <Card className="relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-[var(--color-gray-600)] bg-[var(--color-card)] shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] backdrop-blur-lg transition-shadow hover:shadow-xl dark:hover:shadow-zinc-900/30">
                       <CardContent className="space-y-4 p-5">
