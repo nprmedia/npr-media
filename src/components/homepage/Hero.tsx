@@ -179,12 +179,12 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           style={{ y: overlayY }}
           initial="hidden"
           animate="visible"
-          className="flex h-[270%] flex-col items-center justify-between"
+          className="flex h-[190%] flex-col items-center"
         >
           {['N', 'P', 'R'].map((letter) => (
             <motion.span
               key={letter}
-              style={{ fontSize: 'min(85vh,60vw)' }}
+              style={{ fontSize: 'min(45vh,30vw)' }}
               variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.6, y: 0 } }}
               transition={{ duration: 0.6 }}
               className="block font-extrabold text-[#d4af37] leading-none"
