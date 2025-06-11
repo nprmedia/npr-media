@@ -32,7 +32,7 @@ export default function IndustryTemplatesSection() {
               src={authority.demoUrl}
               loading="lazy"
               scrolling="no"
-              className="h-full w-full rounded-lg border-0"
+              className="h-full w-full rounded-lg border-0 scale-[0.8] origin-top"
               title={`Live preview of ${authority.title}`}
             />
           </div>
