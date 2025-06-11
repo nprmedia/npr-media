@@ -17,6 +17,13 @@
   --color-card: #222222;
   --color-text-light: #f2f3f4;
   --color-accent: #d4af37;
+  --color-accent-rgb: 212, 175, 55;
+
+  /* Neutral Palette */
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
 }
 
 html {
