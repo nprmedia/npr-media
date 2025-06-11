@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { templates } from '@/content/homepage/templates';
 
 export default function IndustryTemplatesSection() {
@@ -28,18 +29,13 @@ export default function IndustryTemplatesSection() {
           className="mx-auto flex max-w-4xl flex-col gap-6 md:flex-row md:items-start"
         >
           <div className="relative mb-4 h-[120vh] sm:h-[150vh] aspect-[2/3] overflow-hidden rounded-lg shadow md:mb-0 md:mr-6">
-            <iframe
-              src={authority.demoUrl}
-              loading="lazy"
-              scrolling="no"
-              style={{
-                width: '100%',
-                height: '100%',
-                transform: 'scale(0.6)',
-                transformOrigin: 'top left',
-              }}
-              className="rounded-lg border-0"
-              title={`Live preview of ${authority.title}`}
+            <Image
+              src="/authority-platform-preview.png"
+              alt={`Screenshot of ${authority.title}`}
+              width={800}
+              height={1200}
+              className="h-full w-full object-cover rounded-lg"
+              priority
             />
           </div>
           <div className="flex flex-grow flex-col md:w-1/2">
