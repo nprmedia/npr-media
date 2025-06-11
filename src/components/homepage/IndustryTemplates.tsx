@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { templates } from '@/content/homepage/templates';
 
 export default function IndustryTemplatesSection() {
@@ -25,20 +24,15 @@ export default function IndustryTemplatesSection() {
           </p>
         </div>
 
-        <motion.div
+        <div
           className="mx-auto flex max-w-4xl flex-col gap-6 md:flex-row md:items-start"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 40 } }}
         >
           <div className="relative mb-4 h-[80vh] aspect-[2/3] overflow-hidden rounded-lg shadow md:mb-0 md:mr-6">
             <iframe
               src={authority.demoUrl}
               loading="lazy"
-              sandbox="allow-scripts allow-same-origin"
               scrolling="no"
-              className="h-full w-full scale-[0.9] origin-top rounded-lg"
+              className="h-full w-full rounded-lg border-0"
               title={`Live preview of ${authority.title}`}
             />
           </div>
@@ -65,7 +59,7 @@ export default function IndustryTemplatesSection() {
               </a>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
