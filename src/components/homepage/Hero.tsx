@@ -113,7 +113,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       id="hero"
       ref={heroRef}
       aria-label="Hero Section"
-      className="relative min-h-screen flex items-center justify-center bg-[#1F1F1F] font-sans overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center bg-[#1F1F1F] font-sans"
     >
       <div
         ref={containerRef}
@@ -176,7 +176,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         </motion.div>
       </div>
 
-      <div className="pointer-events-none absolute inset-y-0 right-[25%] z-20 hidden overflow-hidden md:flex">
+      <div className="pointer-events-none absolute inset-y-0 right-[25%] z-20 hidden md:flex">
         <motion.div
           ref={overlayRef}
           style={{ y: overlayY }}
