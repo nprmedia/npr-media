@@ -58,7 +58,7 @@ export default function IndustryTemplatesSection() {
                 rel="noopener noreferrer"
                 title="Opens in new tab"
                 aria-label={`Open demo for ${authority.title}`}
-                className="bg-[#d4af37] text-black hover:bg-[#c49e2e] focus:ring-[#d4af37] rounded-full px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.4rem,1vw,0.6rem)] transition hover:scale-105 focus:ring-2 focus:outline-none"
+                className="bg-[var(--color-accent)] text-black hover:bg-[var(--color-accent-dark)] focus:ring-[var(--color-accent)] rounded-full px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.4rem,1vw,0.6rem)] transition hover:scale-105 focus:ring-2 focus:outline-none"
               >
                 Open Demo →
               </a>
