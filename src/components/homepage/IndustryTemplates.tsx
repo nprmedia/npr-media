@@ -12,7 +12,7 @@ export default function IndustryTemplatesSection() {
   return (
     <section
       id="templates"
-      className="w-full scroll-mt-[120px] overflow-x-hidden bg-[#F2F3F4] text-black py-[clamp(5rem,10vw,8rem)]"
+      className="w-full scroll-mt-[120px] overflow-x-hidden bg-white text-black py-[clamp(5rem,10vw,8rem)]"
     >
       <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
@@ -27,12 +27,12 @@ export default function IndustryTemplatesSection() {
         <div
           className="mx-auto flex max-w-4xl flex-col gap-6 md:flex-row md:items-start"
         >
-          <div className="relative mb-4 h-[80vh] aspect-[2/3] overflow-hidden rounded-lg shadow md:mb-0 md:mr-6">
+          <div className="relative mb-4 h-[90vh] sm:h-[120vh] aspect-[2/3] overflow-hidden rounded-lg shadow md:mb-0 md:mr-6">
             <iframe
               src={authority.demoUrl}
               loading="lazy"
               scrolling="no"
-              className="h-full w-full rounded-lg border-0 scale-[0.8] origin-top"
+              className="h-full w-full rounded-lg border-0 scale-[0.55] origin-top"
               title={`Live preview of ${authority.title}`}
             />
           </div>
