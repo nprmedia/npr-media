@@ -34,7 +34,10 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   // Scroll the overlay fully offscreen so the last letter ends flush with the
   // bottom of the hero section. This accounts for bottom padding restrictions
   // from the moving background.
-  const overlayY = useTransform(scrollYProgress, [0, 1], ['0%', '-100%']);
+  // Scroll the overlay so the letters end slightly above the bottom of the hero
+  // section. Moving about 53% of the wrapper height leaves roughly 5% padding
+  // below the final "R" while keeping it hidden once the hero scrolls away.
+  const overlayY = useTransform(scrollYProgress, [0, 1], ['0%', '-53%']);
 
   const searchParams = useSearchParams();
   const controls = useAnimation();
@@ -113,7 +116,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       id="hero"
       ref={heroRef}
       aria-label="Hero Section"
-      className="relative min-h-screen flex items-center justify-center bg-[#1F1F1F] font-sans"
+      className="relative min-h-screen flex items-center justify-center bg-[#1F1F1F] font-sans overflow-hidden"
     >
       <div
         ref={containerRef}
@@ -182,7 +185,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           style={{ y: overlayY }}
           initial="hidden"
           animate="visible"
-          className="flex h-[200%] flex-col items-center"
+          className="flex h-[200%] flex-col items-center pb-[5vh]"
         >
           {['N', 'P', 'R'].map((letter) => (
             <motion.span
