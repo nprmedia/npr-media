@@ -27,14 +27,14 @@ export default function IndustryTemplatesSection() {
         <div
           className="mx-auto flex max-w-4xl flex-col gap-6 md:flex-row md:items-start"
         >
-          <div className="relative mb-4 h-[100vh] sm:h-[130vh] aspect-[2/3] overflow-hidden rounded-lg shadow md:mb-0 md:mr-6">
+          <div className="relative mb-4 h-[120vh] sm:h-[150vh] aspect-[2/3] overflow-hidden rounded-lg shadow md:mb-0 md:mr-6">
             <iframe
               src={authority.demoUrl}
               loading="lazy"
               scrolling="no"
               style={{
-                width: '166.67%',
-                height: '166.67%',
+                width: '100%',
+                height: '100%',
                 transform: 'scale(0.6)',
                 transformOrigin: 'top left',
               }}
