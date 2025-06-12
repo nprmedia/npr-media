@@ -1,148 +1,63 @@
-// content/pricing.ts
+// src/content/homepage/pricing.ts
 
-export const pricing = [
-  {
-    category: "Web Development",
-    headline: "From MVP to investor-ready — launch fast, scale smart.",
-    tiers: [
-      {
-        title: "Launch Fast",
-        price: "$1,490",
-        highlight: false,
-        description: "Get live in 7 days with a polished, conversion-ready MVP.",
-        features: [
-          "1-page or MVP site",
-          "Mobile-first responsive design",
-          "Lead capture + contact form",
-          "Core brand styling",
-          "Fast delivery (7 days avg)",
-        ],
-        cta: "Launch My Site",
-      },
-      {
-        title: "Conversion Engine",
-        price: "$3,500",
-        highlight: true,
-        description: "Your site becomes a funnel — designed to scale traffic and leads.",
-        features: [
-          "Multi-page CMS website",
-          "CRM + email integration",
-          "Custom animations + scroll logic",
-          "SEO + speed optimized",
-          "Conversion-first UX copy",
-        ],
-        cta: "Build My Funnel",
-      },
-      {
-        title: "Investor Magnet",
-        price: "$6,000+",
-        highlight: false,
-        description: "A flagship site that turns heads and secures funding.",
-        features: [
-          "6+ pages with premium layout",
-          "Full UI/UX polish + advanced animations",
-          "CMS with custom API hooks",
-          "Interactive components",
-          "Investor-ready presentation layer",
-        ],
-        cta: "Go Enterprise",
-      },
-    ],
-  },
-  {
-    category: "Systems That Scale",
-    headline: "Automation + infrastructure to grow like a $10M company.",
-    tiers: [
-      {
-        title: "Automate & Save",
-        price: "$2,500",
-        highlight: false,
-        description: "Start saving 20+ hours/month with smart automations.",
-        features: [
-          "CRM setup (GoHighLevel, HubSpot, or Notion)",
-          "Email nurture flows",
-          "Lead intake automation",
-          "2 Zapier/Make workflows",
-          "Basic team SOPs",
-        ],
-        cta: "Start Automating",
-      },
-      {
-        title: "Growth Stack",
-        price: "$6,400",
-        highlight: true,
-        description: "Your operating system for revenue, hiring, and scale.",
-        features: [
-          "Sales & marketing CRM buildout",
-          "Funnel tracking dashboards",
-          "Hiring + onboarding systems",
-          "Team Notion workspace + SOPs",
-          "Automation across 4+ departments",
-        ],
-        cta: "Build My Stack",
-      },
-      {
-        title: "Founder's OS",
-        price: "$12,000+",
-        highlight: false,
-        description: "Custom stack, investor-ready architecture, and scale support.",
-        features: [
-          "Custom Retool/Airtable/Make dashboards",
-          "Slack, CRM, Notion + hiring integrations",
-          "Advanced permissioning + roles",
-          "Team training & onboarding materials",
-          "Investor-grade tech ops design",
-        ],
-        cta: "Systemize It All",
-      },
-    ],
-  },
-  {
-    category: "Growth Retainers",
-    headline: "Ongoing optimization to keep your digital engine compounding.",
-    tiers: [
-      {
-        title: "Site Support",
-        price: "$500/mo",
-        highlight: false,
-        description: "Keep your site updated and always sharp.",
-        features: [
-          "Monthly content edits",
-          "CRO tweak (1/month)",
-          "Performance monitoring",
-          "Speed & SEO checkups",
-          "Priority support access",
-        ],
-        cta: "Keep Me Updated",
-      },
-      {
-        title: "Growth Optimization",
-        price: "$1,000/mo",
-        highlight: true,
-        description: "Ongoing CRO, testing, and updates that drive conversion growth.",
-        features: [
-          "Bi-weekly A/B testing",
-          "2+ monthly CRO updates",
-          "Quarterly UX refreshes",
-          "Analytics dashboard setup",
-          "Conversion reporting",
-        ],
-        cta: "Optimize My Growth",
-      },
-      {
-        title: "Revenue Partner",
-        price: "$2,000+/mo",
-        highlight: false,
-        description: "Full partnership model for conversion, funnel, and MRR growth.",
-        features: [
-          "Unlimited site edits",
-          "Weekly strategy sessions",
-          "Performance + ROI dashboards",
-          "Revenue-focused design upgrades",
-          "Quarterly funnel rebuilds",
-        ],
-        cta: "Be My Partner",
-      },
-    ],
-  },
-];
+export interface PricingTier {
+  title: string;
+  price: string;
+  highlight?: boolean;
+  microcopy: string;
+  description: string;
+  features: string[];
+  cta: string;
+}
+
+export interface PricingData {
+  headline: string;
+  tiers: PricingTier[];
+}
+
+export const pricing: PricingData = {
+  headline:
+    'Transparent packages with room to grow. Choose the plan that best aligns with your launch goals and budget.',
+  tiers: [
+    {
+      title: 'Launch Pad',
+      price: '$4,000',
+      microcopy: 'Ideal for SaaS MVPs',
+      description: 'Spin up a conversion\u2011ready MVP in less than two weeks.',
+      features: [
+        'Core pages & blog setup',
+        'Responsive design & basic analytics',
+        'Lead capture funnel',
+        'Launch roadmap session',
+      ],
+      cta: 'Build My Plan',
+    },
+    {
+      title: 'Growth Engine',
+      price: '$7,500',
+      highlight: true,
+      microcopy: 'Most popular for funded startups',
+      description: 'Save 40+ hours with an automated funnel and CRM.',
+      features: [
+        'Full CMS with SEO polish',
+        'CRM & email automations',
+        'Analytics dashboards & A/B testing',
+        'Ongoing optimization support',
+      ],
+      cta: 'Unlock ROI',
+    },
+    {
+      title: 'Scale Partner',
+      price: '$10,000+',
+      microcopy: 'Custom enterprise scope',
+      description: 'We architect a scalable system tailored to your ops.',
+      features: [
+        'Custom integrations & API work',
+        'Advanced animations & UX',
+        'Scalable CMS architecture',
+        'Roadmapping with our founder',
+      ],
+      cta: 'Start Partnership',
+    },
+  ],
+};
