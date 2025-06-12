@@ -10,7 +10,6 @@ import PricingSection from '@/components/homepage/PricingSection';
 import FooterSection from '@/components/global/Footer';
 import TrustSection from '@/components/homepage/TrustSection';
 import ContactSection from '@/components/homepage/ContactSection';
-import FinalCtaSection from '@/components/homepage/FinalCtaSection';
 
 export default function Page() {
   const pathname = usePathname();
@@ -26,7 +25,6 @@ export default function Page() {
         <PricingSection />
         <TrustSection variant="light" />
         <ContactSection />
-        <FinalCtaSection />
       </main>
       <FooterSection />
     </section>
