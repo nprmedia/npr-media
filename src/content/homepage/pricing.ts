@@ -20,6 +20,19 @@ export const pricing: PricingData = {
     'Transparent packages with room to grow. Choose the plan that best aligns with your launch goals and budget.',
   tiers: [
     {
+      title: 'Quick Launch',
+      price: '$1,000',
+      microcopy: 'Perfect for a fast online debut',
+      description: 'Launch a polished landing page within a week.',
+      features: [
+        'Single-page design',
+        'Contact form setup',
+        'Basic SEO pass',
+        'One revision round',
+      ],
+      cta: 'Kickstart Now',
+    },
+    {
       title: 'Launch Pad',
       price: '$4,000',
       microcopy: 'Ideal for SaaS MVPs',
