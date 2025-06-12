@@ -1,7 +1,7 @@
 import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
 import IndustryTemplatesSection from '@/components/homepage/IndustryTemplates'
-import WhyTrustSection from '@/components/homepage/WhyTrustSection'
+import TrustSection from '@/components/homepage/TrustSection'
 
 export default function FeaturesPage() {
   return (
@@ -9,7 +9,7 @@ export default function FeaturesPage() {
       <StickyHeader />
       <main className="relative w-full overflow-x-hidden bg-white text-black">
         <IndustryTemplatesSection />
-        <WhyTrustSection />
+        <TrustSection />
       </main>
       <FooterSection />
     </section>

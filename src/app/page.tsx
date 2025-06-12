@@ -8,7 +8,7 @@ import { hero } from '@/content/homepage/hero';
 import IndustryTemplatesSection from '@/components/homepage/IndustryTemplates';
 import PricingSection from '@/components/homepage/PricingSection';
 import FooterSection from '@/components/global/Footer';
-import WhyTrustSection from '@/components/homepage/WhyTrustSection';
+import TrustSection from '@/components/homepage/TrustSection';
 import ContactSection from '@/components/homepage/ContactSection';
 import FinalCtaSection from '@/components/homepage/FinalCtaSection';
 
@@ -24,7 +24,7 @@ export default function Page() {
         </Suspense>
         <IndustryTemplatesSection />
         <PricingSection />
-        <WhyTrustSection />
+        <TrustSection />
         <ContactSection />
         <FinalCtaSection />
       </main>
