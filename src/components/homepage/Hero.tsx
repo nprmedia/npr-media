@@ -133,7 +133,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         <motion.div
           variants={textVariants}
           custom={0}
-          className="ml-[10vw] mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-[#d4af37]"
+          className="ml-[10vw] mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-[var(--color-accent)]"
         >
           HELLO, WE ARE NPR MEDIA
         </motion.div>
@@ -193,7 +193,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               style={{ fontSize: 'min(48vh,32vw)' }}
               variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.6, y: 0 } }}
               transition={{ duration: 0.6 }}
-              className="block font-extrabold text-[#d4af37] leading-none"
+              className="block font-extrabold text-[var(--color-accent)] leading-none"
             >
               {letter}
             </motion.span>

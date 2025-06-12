@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 /* Global CSS Variables and Base Styles */
@@ -11,6 +11,20 @@
   --font-body: 'Inter', sans-serif;
   --font-didot: 'GFS Didot', serif;
   --font-grotesk: 'Space Grotesk', sans-serif;
+
+  /* Brand Colors */
+  --color-bg-dark: #181818;
+  --color-card: #222222;
+  --color-text-light: #f2f3f4;
+  --color-accent: #d4af37;
+  --color-accent-rgb: 212, 175, 55;
+  --color-accent-dark: #c49e2e;
+
+  /* Neutral Palette */
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
 }
 
 html {
@@ -26,7 +40,12 @@ body {
   padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   margin: 0;
