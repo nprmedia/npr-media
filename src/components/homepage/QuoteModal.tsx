@@ -2,6 +2,7 @@
 
 import * as Dialog from '@radix-ui/react-dialog';
 import { useState } from 'react';
+import { X, CheckCircle2 } from 'lucide-react';
 
 export default function QuoteModal({
   triggerLabel = 'Request a Quote',
@@ -16,7 +17,7 @@ export default function QuoteModal({
   };
 
   return (
-    <Dialog.Root>
+    <Dialog.Root onOpenChange={() => setSubmitted(false)}>
       <Dialog.Trigger asChild>
         <button className="inline-flex items-center justify-center rounded-full bg-white px-6 py-2 text-sm font-semibold text-black shadow hover:bg-gray-200">
           {triggerLabel}
@@ -26,10 +27,17 @@ export default function QuoteModal({
         <Dialog.Overlay className="fixed inset-0 bg-black/50" />
         <Dialog.Content className="fixed top-1/2 left-1/2 w-[90vw] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white p-6 text-black shadow-lg">
           <Dialog.Title className="text-lg font-semibold">Tell us what you need</Dialog.Title>
+          <Dialog.Description className="text-sm text-gray-600">
+            Your submission is reviewed by our founder — not a sales bot.
+          </Dialog.Description>
+          <Dialog.Close className="absolute right-3 top-3 rounded p-1 text-gray-700 hover:bg-gray-100">
+            <X className="h-4 w-4" />
+          </Dialog.Close>
           {submitted ? (
-            <p className="mt-4 text-center text-sm">
-              We&apos;ll respond within 24h with next steps.
-            </p>
+            <div className="mt-4 flex flex-col items-center space-y-2">
+              <CheckCircle2 className="h-8 w-8 text-green-600" />
+              <p className="text-center text-sm">We&apos;ll respond within 24h with next steps.</p>
+            </div>
           ) : (
             <form onSubmit={handleSubmit} className="mt-4 space-y-3">
               <label className="block text-sm">
@@ -71,9 +79,6 @@ export default function QuoteModal({
               <button type="submit" className="mt-2 w-full rounded bg-black px-4 py-2 text-white">
                 Send Request
               </button>
-              <p className="mt-2 text-center text-xs text-gray-600">
-                Your submission is reviewed by our founder — not a sales bot.
-              </p>
             </form>
           )}
         </Dialog.Content>

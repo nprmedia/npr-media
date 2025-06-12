@@ -23,7 +23,9 @@ export default function PricingSection() {
         </div>
 
         <div className="mx-auto mt-16 max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div
+            className="flex snap-x snap-mandatory gap-6 overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3"
+          >
             {pricing.tiers.map((tier, index) => {
               const isMiddleCard = tier.highlight;
               return (
@@ -31,7 +33,7 @@ export default function PricingSection() {
                   key={index}
                   whileHover={{ scale: 1.03 }}
                   transition={{ type: 'spring', stiffness: 260, delay: index * 0.1 }}
-                  className={isMiddleCard ? 'relative z-10 scale-[1.01]' : ''}
+                  className={`${isMiddleCard ? 'relative z-10 scale-[1.01]' : ''} min-w-[85%] flex-shrink-0 snap-start`}
                 >
                   {isMiddleCard && (
                     <motion.div
@@ -60,6 +62,9 @@ export default function PricingSection() {
                           </div>
                           <p className="text-[clamp(0.8rem,1.2vw,0.9rem)] text-[var(--color-gray-400)] italic">
                             {tier.microcopy}
+                          </p>
+                          <p className="text-[clamp(0.8rem,1.2vw,0.9rem)] text-[var(--color-gray-300)]">
+                            {tier.description}
                           </p>
                         </div>
                         <ul className="scrollbar-thin scrollbar-thumb-[var(--color-gray-700)] max-h-[180px] space-y-2 overflow-y-auto text-[clamp(0.8rem,1.2vw,0.9rem)] text-[var(--color-gray-300)]">

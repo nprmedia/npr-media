@@ -11,16 +11,17 @@ export interface PricingTier {
 }
 
 export const pricing = {
-  headline: 'Transparent packages for growing teams with room for custom enterprise scopes.',
+  headline:
+    'Transparent packages for growing teams with room for custom enterprise scopes.',
   tiers: [
     {
       title: 'Launch Pad',
       price: '$4,000',
       microcopy: 'Ideal for SaaS MVPs',
-      description: 'Deploy a conversion ready MVP in under two weeks.',
+      description: 'Deploy a conversion‑ready MVP in under two weeks.',
       features: [
         'Core landing pages & blog setup',
-        'Responsive design + basic analytics',
+        'Responsive design & basic analytics',
         'Lead capture and onboarding funnel',
         'Launch roadmap session',
       ],
