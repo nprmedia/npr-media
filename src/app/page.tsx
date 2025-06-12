@@ -6,7 +6,7 @@ import StickyHeader from '@/components/global/Header';
 import HeroSection from '@/components/homepage/Hero';
 import { hero } from '@/content/homepage/hero';
 import IndustryTemplatesSection from '@/components/homepage/IndustryTemplates';
-import TabbedPricing from '@/components/homepage/PricingSection';
+import PricingSection from '@/components/homepage/PricingSection';
 import FooterSection from '@/components/global/Footer';
 import WhyTrustSection from '@/components/homepage/WhyTrustSection';
 import ContactSection from '@/components/homepage/ContactSection';
@@ -17,18 +17,18 @@ export default function Page() {
 
   return (
     <section>
-    <StickyHeader />
-    <main key={pathname} className="relative w-full overflow-x-hidden bg-white text-black">
+      <StickyHeader />
+      <main key={pathname} className="relative w-full overflow-x-hidden bg-white text-black">
         <Suspense>
           <HeroSection {...hero} />
         </Suspense>
         <IndustryTemplatesSection />
-        <TabbedPricing />
+        <PricingSection />
         <WhyTrustSection />
         <ContactSection />
         <FinalCtaSection />
-    </main>
-    <FooterSection />
-    </section>  
+      </main>
+      <FooterSection />
+    </section>
   );
 }
