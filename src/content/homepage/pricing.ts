@@ -10,19 +10,24 @@ export interface PricingTier {
   cta: string;
 }
 
-export const pricing = {
+export interface PricingData {
+  headline: string;
+  tiers: PricingTier[];
+}
+
+export const pricing: PricingData = {
   headline:
-    'Transparent packages for growing teams with room for custom enterprise scopes.',
+    'Transparent packages with room to grow. Choose the plan that best aligns with your launch goals and budget.',
   tiers: [
     {
       title: 'Launch Pad',
       price: '$4,000',
       microcopy: 'Ideal for SaaS MVPs',
-      description: 'Deploy a conversion‑ready MVP in under two weeks.',
+      description: 'Spin up a conversion\u2011ready MVP in less than two weeks.',
       features: [
-        'Core landing pages & blog setup',
+        'Core pages & blog setup',
         'Responsive design & basic analytics',
-        'Lead capture and onboarding funnel',
+        'Lead capture funnel',
         'Launch roadmap session',
       ],
       cta: 'Build My Plan',
@@ -32,9 +37,9 @@ export const pricing = {
       price: '$7,500',
       highlight: true,
       microcopy: 'Most popular for funded startups',
-      description: 'Save 40+ hours on funnel setup and automation.',
+      description: 'Save 40+ hours with an automated funnel and CRM.',
       features: [
-        'Multi-page CMS with SEO polish',
+        'Full CMS with SEO polish',
         'CRM & email automations',
         'Analytics dashboards & A/B testing',
         'Ongoing optimization support',
@@ -44,7 +49,7 @@ export const pricing = {
     {
       title: 'Scale Partner',
       price: '$10,000+',
-      microcopy: 'Enterprise or custom scope',
+      microcopy: 'Custom enterprise scope',
       description: 'We architect a scalable system tailored to your ops.',
       features: [
         'Custom integrations & API work',

@@ -70,11 +70,7 @@ export default function QuoteModal({
               </label>
               <label className="block text-sm">
                 Details
-                <textarea
-                  className="mt-1 w-full rounded border px-2 py-1"
-                  rows={3}
-                  required
-                ></textarea>
+                <textarea className="mt-1 w-full rounded border px-2 py-1" rows={3} required></textarea>
               </label>
               <button type="submit" className="mt-2 w-full rounded bg-black px-4 py-2 text-white">
                 Send Request

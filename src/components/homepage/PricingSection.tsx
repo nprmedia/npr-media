@@ -23,9 +23,7 @@ export default function PricingSection() {
         </div>
 
         <div className="mx-auto mt-16 max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div
-            className="flex snap-x snap-mandatory gap-6 overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3"
-          >
+          <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3">
             {pricing.tiers.map((tier, index) => {
               const isMiddleCard = tier.highlight;
               return (
@@ -41,13 +39,11 @@ export default function PricingSection() {
                       animate={{ opacity: [0.2, 0.4, 0.2] }}
                       transition={{ duration: 5, repeat: Infinity }}
                       style={{
-                        background:
-                          'radial-gradient(circle, rgba(var(--color-accent-rgb),0.45), transparent)',
+                        background: 'radial-gradient(circle, rgba(var(--color-accent-rgb),0.45), transparent)',
                       }}
                     />
                   )}
-                  <div
-                    className={`relative rounded-2xl ${isMiddleCard ? 'animate-pulse ring-2 ring-[var(--color-accent)]' : ''}`}
+                  <div className={`relative rounded-2xl ${isMiddleCard ? 'animate-pulse ring-2 ring-[var(--color-accent)]' : ''}`}
                   >
                     <Card className="relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-[var(--color-gray-600)] bg-[var(--color-card)] shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] backdrop-blur-lg transition-shadow hover:shadow-xl dark:hover:shadow-zinc-900/30">
                       <CardContent className="space-y-4 p-5">
@@ -73,10 +69,7 @@ export default function PricingSection() {
                               key={i}
                               className={`flex items-start gap-2 ${i === 0 ? 'font-semibold text-[var(--color-text-light)]' : ''}`}
                             >
-                              <span className="text-[var(--color-accent)]">
-                                {i === 0 ? '✅' : '✓'}
-                              </span>{' '}
-                              {feature}
+                              <span className="text-[var(--color-accent)]">{i === 0 ? '✅' : '✓'}</span> {feature}
                             </li>
                           ))}
                         </ul>
