@@ -24,7 +24,7 @@ export default function Page() {
         </Suspense>
         <IndustryTemplatesSection />
         <PricingSection />
-        <TrustSection />
+        <TrustSection variant="light" />
         <ContactSection />
         <FinalCtaSection />
       </main>
