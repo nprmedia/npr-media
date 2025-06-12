@@ -51,6 +51,7 @@ export default function QuoteModal({
               <label className="block text-sm">
                 Budget Range
                 <select className="mt-1 w-full rounded border px-2 py-1">
+                  <option value="1-4k">$1K – $4K</option>
                   <option value="4-7k">$4K – $7K</option>
                   <option value="7-10k">$7K – $10K</option>
                   <option value="10k+">$10K+</option>

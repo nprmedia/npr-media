@@ -13,18 +13,18 @@
   --font-grotesk: 'Space Grotesk', sans-serif;
 
   /* Brand Colors */
-  --color-bg-dark: #181818;
-  --color-card: #222222;
-  --color-text-light: #f2f3f4;
-  --color-accent: #d4af37;
-  --color-accent-rgb: 212, 175, 55;
-  --color-accent-dark: #c49e2e;
+  --color-bg-dark: #111827;
+  --color-card: #1e293b;
+  --color-text-light: #f1f5f9;
+  --color-accent: #e11d48;
+  --color-accent-rgb: 225, 29, 72;
+  --color-accent-dark: #be123c;
 
   /* Neutral Palette */
-  --color-gray-300: #d1d5db;
-  --color-gray-400: #9ca3af;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
+  --color-gray-300: #cbd5e1;
+  --color-gray-400: #94a3b8;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155;
 }
 
 html {
