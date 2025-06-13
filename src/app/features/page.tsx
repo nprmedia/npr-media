@@ -4,7 +4,10 @@ import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
+import QuoteModal from '@/components/homepage/QuoteModal'
 import { motion } from 'framer-motion'
+import { features, steps, hero, testimonial } from '@/content/features'
+import { LucideIcon, GaugeCircle, Map, Hammer, PartyPopper, MousePointerClick, Rocket } from 'lucide-react'
 
 
 const fadeIn = {
@@ -38,7 +41,7 @@ function Hero() {
         custom={0}
         className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold"
       >
-        Launch a Website That Sells While You Sleep
+        {hero.headline}
       </motion.h1>
       <motion.p
         variants={fadeIn}
@@ -47,22 +50,22 @@ function Hero() {
         custom={1}
         className="mx-auto max-w-2xl text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700"
       >
-        Custom-built sites that load fast, convert better, and scale with your startup.
+        {hero.subheadline}
       </motion.p>
       <motion.div variants={fadeIn} initial="hidden" animate="show" custom={2}>
         <Link
-          href="/contact"
+          href={hero.cta.href}
           className="inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-[clamp(1.25rem,3vw,1.5rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-[clamp(0.8rem,1vw,0.9rem)] font-semibold text-black shadow transition hover:scale-105"
         >
-          Get a Quote
+          {hero.cta.label}
         </Link>
       </motion.div>
       <motion.div variants={fadeIn} initial="hidden" animate="show" custom={3} className="mx-auto mt-8 max-w-3xl">
         <Image
-          src="/logos/authority-platform.jpg"
-          alt="Website mockup"
-          width={800}
-          height={450}
+          src={hero.image.src}
+          alt={hero.image.alt}
+          width={hero.image.width}
+          height={hero.image.height}
           className="mx-auto rounded-lg shadow-lg"
           priority
         />
@@ -72,58 +75,20 @@ function Hero() {
 }
 
 function FeaturePillars() {
-  const features = [
-    {
-      title: 'Designed to Convert',
-      body: 'We use proven UX frameworks to guide users to action.',
-    },
-    {
-      title: 'Optimized for Speed & SEO',
-      body: 'Your site hits 90+ on Lighthouse and gets indexed right.',
-    },
-    {
-      title: 'Built to Grow with You',
-      body: 'Easily update content and scale pages with built-in CMS.',
-    },
-  ]
+  const icons: Record<string, LucideIcon> = {
+    MousePointerClick,
+    GaugeCircle,
+    Rocket,
+  }
 
   return (
     <section className="bg-[var(--color-bg-dark)] text-[var(--color-text-light)] py-[clamp(5rem,10vw,8rem)]">
       <div className="container mx-auto grid gap-8 px-4 md:grid-cols-3">
-        {features.map((f, idx) => (
-          <motion.div
-            key={f.title}
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            custom={idx}
-            className="space-y-2 text-center"
-          >
-            <h3 className="text-[clamp(1.25rem,2.5vw,1.75rem)] font-semibold">{f.title}</h3>
-            <p className="text-[clamp(0.8rem,1.2vw,0.9rem)] text-gray-300">{f.body}</p>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  )
-}
-
-function ProcessOverview() {
-  const steps = [
-    { title: 'Plan', body: 'We align on goals, brand, and functionality.' },
-    { title: 'Build', body: 'We design and develop your custom site.' },
-    { title: 'Launch', body: 'We handle the tech. You go live with confidence.' },
-  ]
-
-  return (
-    <section className="py-[clamp(5rem,10vw,8rem)]">
-      <div className="container mx-auto max-w-4xl space-y-8 px-4">
-        <h2 className="text-center text-[clamp(1.5rem,3vw,2rem)] font-bold">Simple Process</h2>
-        <ol className="grid gap-8 md:grid-cols-3">
-          {steps.map((s, idx) => (
-            <motion.li
-              key={s.title}
+        {features.map((f, idx) => {
+          const Icon = icons[f.icon]
+          return (
+            <motion.div
+              key={f.title}
               variants={fadeIn}
               initial="hidden"
               whileInView="show"
@@ -131,10 +96,47 @@ function ProcessOverview() {
               custom={idx}
               className="space-y-2 text-center"
             >
-              <div className="text-[clamp(1.1rem,2vw,1.5rem)] font-semibold">{s.title}</div>
-              <p className="text-[clamp(0.8rem,1.2vw,0.9rem)] text-gray-700">{s.body}</p>
-            </motion.li>
-          ))}
+              {Icon && <Icon className="mx-auto h-8 w-8" aria-hidden="true" />}
+              <h3 className="text-[clamp(1.25rem,2.5vw,1.75rem)] font-semibold">{f.title}</h3>
+              <p className="text-[clamp(0.8rem,1.2vw,0.9rem)] text-gray-300">{f.body}</p>
+            </motion.div>
+          )
+        })}
+      </div>
+    </section>
+  )
+}
+
+function ProcessOverview() {
+  const icons: Record<string, LucideIcon> = {
+    Map,
+    Hammer,
+    PartyPopper,
+  }
+
+  return (
+    <section className="py-[clamp(5rem,10vw,8rem)]">
+      <div className="container mx-auto max-w-4xl space-y-8 px-4">
+        <h2 className="text-center text-[clamp(1.5rem,3vw,2rem)] font-bold">Simple Process</h2>
+        <ol className="grid gap-8 md:grid-cols-3">
+          {steps.map((s, idx) => {
+            const Icon = icons[s.icon]
+            return (
+              <motion.li
+                key={s.title}
+                variants={fadeIn}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                custom={idx}
+                className="space-y-2 text-center"
+              >
+                {Icon && <Icon className="mx-auto h-8 w-8" aria-hidden="true" />}
+                <div className="text-[clamp(1.1rem,2vw,1.5rem)] font-semibold">{s.title}</div>
+                <p className="text-[clamp(0.8rem,1.2vw,0.9rem)] text-gray-700">{s.body}</p>
+              </motion.li>
+            )
+          })}
         </ol>
       </div>
     </section>
@@ -153,7 +155,7 @@ function TestimonialSection() {
           custom={0}
           className="text-[clamp(0.9rem,1.2vw,1rem)] font-medium italic"
         >
-          “Working with NPR Media was a game changer. Our new site increased demo bookings by 42% in 2 weeks.”
+          “{testimonial.quote}”
         </motion.p>
         <motion.div
           variants={fadeIn}
@@ -163,7 +165,7 @@ function TestimonialSection() {
           custom={1}
           className="text-[clamp(0.8rem,1vw,0.9rem)]"
         >
-          — Jamie L., SaaS Founder
+          — {testimonial.author}
         </motion.div>
       </div>
     </section>
@@ -178,12 +180,7 @@ function FinalCTA() {
         <p className="mx-auto max-w-xl text-[clamp(0.9rem,1.6vw,1.125rem)]">
           We’ll respond with a tailored quote—no pressure, no fluff.
         </p>
-        <Link
-          href="/contact"
-          className="inline-flex items-center justify-center rounded-full bg-black px-[clamp(1.25rem,3vw,1.5rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-[clamp(0.8rem,1vw,0.9rem)] font-semibold text-white shadow transition hover:scale-105"
-        >
-          Request My Quote
-        </Link>
+        <QuoteModal triggerLabel="Request My Quote" />
       </div>
     </section>
   )
