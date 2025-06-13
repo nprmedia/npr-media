@@ -2,10 +2,11 @@
 
 import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
+import { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import QuoteModal from '@/components/homepage/QuoteModal'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { features, steps, hero, testimonial } from '@/content/features'
 import { LucideIcon, GaugeCircle, Map, Hammer, PartyPopper, MousePointerClick, Rocket } from 'lucide-react'
 
@@ -32,43 +33,71 @@ export default function FeaturesPage() {
 }
 
 function Hero() {
+  const ref = useRef<HTMLElement>(null)
+  const prefersReducedMotion = useReducedMotion()
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start'],
+  })
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '-20%'])
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0])
+
   return (
-    <section className="mx-auto max-w-6xl px-4 py-[clamp(5rem,10vw,8rem)] text-center space-y-6">
-      <motion.h1
-        variants={fadeIn}
-        initial="hidden"
-        animate="show"
-        custom={0}
-        className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold"
+    <section
+      ref={ref}
+      className="mx-auto max-w-6xl px-4 py-[clamp(5rem,10vw,8rem)] text-center"
+    >
+      <motion.div
+        style={prefersReducedMotion ? {} : { y, opacity }}
+        className="space-y-6"
       >
-        {hero.headline}
-      </motion.h1>
-      <motion.p
-        variants={fadeIn}
-        initial="hidden"
-        animate="show"
-        custom={1}
-        className="mx-auto max-w-2xl text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700"
-      >
-        {hero.subheadline}
-      </motion.p>
-      <motion.div variants={fadeIn} initial="hidden" animate="show" custom={2}>
-        <Link
-          href={hero.cta.href}
-          className="inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-[clamp(1.25rem,3vw,1.5rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-[clamp(0.8rem,1vw,0.9rem)] font-semibold text-black shadow transition hover:scale-105"
+        <motion.h1
+          variants={fadeIn}
+          initial="hidden"
+          animate="show"
+          custom={0}
+          className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold"
         >
-          {hero.cta.label}
-        </Link>
-      </motion.div>
-      <motion.div variants={fadeIn} initial="hidden" animate="show" custom={3} className="mx-auto mt-8 max-w-3xl">
-        <Image
-          src={hero.image.src}
-          alt={hero.image.alt}
-          width={hero.image.width}
-          height={hero.image.height}
-          className="mx-auto rounded-lg shadow-lg"
-          priority
-        />
+          {hero.headline}
+        </motion.h1>
+        <motion.p
+          variants={fadeIn}
+          initial="hidden"
+          animate="show"
+          custom={1}
+          className="mx-auto max-w-2xl text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700"
+        >
+          {hero.subheadline}
+        </motion.p>
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          animate="show"
+          custom={2}
+        >
+          <Link
+            href={hero.cta.href}
+            className="inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-[clamp(1.25rem,3vw,1.5rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-[clamp(0.8rem,1vw,0.9rem)] font-semibold text-black shadow transition hover:scale-105"
+          >
+            {hero.cta.label}
+          </Link>
+        </motion.div>
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          animate="show"
+          custom={3}
+          className="mx-auto mt-8 max-w-3xl"
+        >
+          <Image
+            src={hero.image.src}
+            alt={hero.image.alt}
+            width={hero.image.width}
+            height={hero.image.height}
+            className="mx-auto rounded-lg shadow-lg"
+            priority
+          />
+        </motion.div>
       </motion.div>
     </section>
   )
@@ -92,7 +121,7 @@ function FeaturePillars() {
               variants={fadeIn}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.4 }}
               custom={idx}
               className="space-y-2 text-center"
             >
@@ -127,7 +156,7 @@ function ProcessOverview() {
                 variants={fadeIn}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.4 }}
                 custom={idx}
                 className="space-y-2 text-center"
               >
@@ -151,7 +180,7 @@ function TestimonialSection() {
           variants={fadeIn}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.4 }}
           custom={0}
           className="text-[clamp(0.9rem,1.2vw,1rem)] font-medium italic"
         >
@@ -161,7 +190,7 @@ function TestimonialSection() {
           variants={fadeIn}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.4 }}
           custom={1}
           className="text-[clamp(0.8rem,1vw,0.9rem)]"
         >
@@ -174,7 +203,13 @@ function TestimonialSection() {
 
 function FinalCTA() {
   return (
-    <section className="bg-[var(--color-accent)] py-[clamp(5rem,10vw,8rem)] text-center text-black">
+    <motion.section
+      className="bg-[var(--color-accent)] py-[clamp(5rem,10vw,8rem)] text-center text-black"
+      variants={fadeIn}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: false, amount: 0.4 }}
+    >
       <div className="container mx-auto space-y-6 px-4">
         <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold">Let’s Build Your Sales-Ready Website</h2>
         <p className="mx-auto max-w-xl text-[clamp(0.9rem,1.6vw,1.125rem)]">
@@ -182,6 +217,6 @@ function FinalCTA() {
         </p>
         <QuoteModal triggerLabel="Request My Quote" />
       </div>
-    </section>
+    </motion.section>
   )
 }
