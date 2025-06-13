@@ -1,10 +1,15 @@
 export const contactSection = {
-    title: "Have a question or want to get started?",
-    description:
-      "Whether you're ready to build or just exploring options, we're here to help you move forward with clarity.",
-    button: {
-      label: 'Book a Strategy Call',
-      href: '#contact',
-    },
-  };
-  
+  title: 'Launch a Site That Pays for Itself',
+  subtitle:
+    'Backed by proven UX strategy, real conversions, and startup-tested code. See why 50+ founders trust us.',
+  cta: {
+    label: 'Book Your Free Strategy Call',
+    href: '#booking',
+  },
+  trust: 'No obligation. Just real insights.',
+  urgency: 'Currently booking June projects',
+  exitLink: {
+    label: 'Not ready yet? See our pricing breakdown.',
+    href: '/pricing',
+  },
+};

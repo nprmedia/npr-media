@@ -2,26 +2,50 @@
 
 import { contactSection } from '@/content/homepage/contactSection'
 import Link from 'next/link'
+import { ArrowRight, Sparkles } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export default function ContactSection() {
+  const { title, subtitle, cta, trust, urgency, exitLink } = contactSection
+
   return (
-      <section id="contact" className="bg-[var(--color-bg-dark)] text-[var(--color-text-light)] py-[clamp(4rem,8vw,6rem)] px-[clamp(1rem,4vw,3rem)]">
-        <div className="max-w-3xl mx-auto text-center space-y-6">
-          <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold">
-            {contactSection.title}
-          </h2>
-          <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-300">
-            {contactSection.description}
-          </p>
-          <div className="pt-4">
-            <Link
-              href={contactSection.button.href}
-              className="inline-block rounded-full bg-white text-black px-[clamp(1.25rem,3vw,1.5rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-[clamp(0.8rem,1vw,0.9rem)] font-semibold shadow hover:bg-gray-200 transition"
-            >
-              {contactSection.button.label}
-            </Link>
-          </div>
+    <section
+      id="contact"
+      className="relative border-t bg-[var(--color-bg-dark)] text-[var(--color-text-light)] py-[clamp(5rem,10vw,8rem)] px-[clamp(1rem,4vw,3rem)] overflow-hidden"
+    >
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-[var(--color-accent)] opacity-20 blur-3xl" />
+      </div>
+      <div className="mx-auto max-w-2xl text-center space-y-6">
+        <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold">{title}</h2>
+        <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-300">{subtitle}</p>
+        <div className="pt-4">
+          <Link
+            href={cta.href}
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-[clamp(1.25rem,3vw,1.5rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-[clamp(0.8rem,1vw,0.9rem)] font-semibold text-black shadow-lg transition hover:scale-105 hover:shadow-xl"
+          >
+            {cta.label}
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
-      </section>
+        <p className="text-sm text-gray-400">{trust}</p>
+        {urgency && <p className="text-xs font-medium text-[var(--color-accent)]">{urgency}</p>}
+        <div className="pt-2">
+          <Link
+            href={exitLink.href}
+            className="text-[clamp(0.75rem,1vw,0.875rem)] text-gray-400 underline-offset-4 hover:underline"
+          >
+            {exitLink.label}
+          </Link>
+        </div>
+      </div>
+      <motion.div
+        className="absolute bottom-2 right-2 text-[var(--color-accent)]"
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        <Sparkles className="h-6 w-6" />
+      </motion.div>
+    </section>
   )
 }
