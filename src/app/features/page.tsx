@@ -1,13 +1,11 @@
+'use client'
+
 import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-export const metadata = {
-  title: 'Features - NPR Media',
-  description: 'Explore how NPR Media builds fast, conversion-driven websites',
-}
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
