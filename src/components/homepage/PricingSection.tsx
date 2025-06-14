@@ -3,12 +3,13 @@
 import { pricing } from '@/content/homepage/pricing'
 import QuoteModal from './QuoteModal'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="w-full border-t bg-[var(--color-bg-dark)] text-[var(--color-text-light)] py-[clamp(5rem,10vw,8rem)]"
+      className="w-full border-t bg-[var(--color-bg-dark)] text-[var(--color-text-light)] py-[clamp(6rem,12vw,10rem)]"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl space-y-4 text-center">
@@ -20,12 +21,13 @@ export default function PricingSection() {
           </p>
         </div>
 
-        <div className="mx-auto mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {pricing.tiers.map((tier, index) => (
             <motion.div
               key={tier.title}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.05 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className={`relative flex flex-col overflow-hidden rounded-2xl border border-[var(--color-gray-700)] bg-[var(--color-card)] p-6 ${tier.highlight ? 'ring-2 ring-[var(--color-accent)]' : ''}`}
@@ -41,6 +43,13 @@ export default function PricingSection() {
                   }}
                 />
               )}
+              <Image
+                src={tier.image.src}
+                alt={tier.image.alt}
+                width={tier.image.width}
+                height={tier.image.height}
+                className="mb-4 rounded-lg"
+              />
               <div className="flex items-baseline justify-between">
                 <h3 className="text-[clamp(1rem,1.8vw,1.25rem)] font-semibold">
                   {tier.title}

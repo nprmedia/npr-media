@@ -7,7 +7,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import QuoteModal from '@/components/homepage/QuoteModal'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
-import { features, steps, hero, testimonial } from '@/content/features'
+import { useParticleBackground } from '@/lib/hooks/useParticleBackground'
+import { features, steps, hero, testimonial, gallery } from '@/content/features'
 import { LucideIcon, GaugeCircle, Map, Hammer, PartyPopper, MousePointerClick, Rocket } from 'lucide-react'
 
 
@@ -24,6 +25,7 @@ export default function FeaturesPage() {
         <Hero />
         <FeaturePillars />
         <ProcessOverview />
+        <ShowcaseGallery />
         <TestimonialSection />
         <FinalCTA />
       </main>
@@ -34,7 +36,9 @@ export default function FeaturesPage() {
 
 function Hero() {
   const ref = useRef<HTMLElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const prefersReducedMotion = useReducedMotion()
+  useParticleBackground(containerRef)
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end start'],
@@ -45,11 +49,12 @@ function Hero() {
   return (
     <section
       ref={ref}
-      className="mx-auto max-w-6xl px-4 py-[clamp(5rem,10vw,8rem)] text-center"
+      className="relative mx-auto max-w-6xl px-4 py-[clamp(8rem,16vw,12rem)] text-center"
     >
+      <div ref={containerRef} className="pointer-events-none absolute inset-0" />
       <motion.div
         style={prefersReducedMotion ? {} : { y, opacity }}
-        className="space-y-6"
+        className="relative space-y-6"
       >
         <motion.h1
           variants={fadeIn}
@@ -111,7 +116,7 @@ function FeaturePillars() {
   }
 
   return (
-    <section className="bg-[var(--color-bg-dark)] text-[var(--color-text-light)] py-[clamp(5rem,10vw,8rem)]">
+    <section className="bg-[var(--color-bg-dark)] text-[var(--color-text-light)] py-[clamp(8rem,16vw,12rem)]">
       <div className="container mx-auto grid gap-8 px-4 md:grid-cols-3">
         {features.map((f, idx) => {
           const Icon = icons[f.icon]
@@ -144,7 +149,7 @@ function ProcessOverview() {
   }
 
   return (
-    <section className="py-[clamp(5rem,10vw,8rem)]">
+    <section className="py-[clamp(8rem,16vw,12rem)]">
       <div className="container mx-auto max-w-4xl space-y-8 px-4">
         <h2 className="text-center text-[clamp(1.5rem,3vw,2rem)] font-bold">Simple Process</h2>
         <ol className="grid gap-8 md:grid-cols-3">
@@ -172,9 +177,40 @@ function ProcessOverview() {
   )
 }
 
+function ShowcaseGallery() {
+  return (
+    <section className="py-[clamp(8rem,16vw,12rem)]">
+      <div className="container mx-auto space-y-8 px-4">
+        <h2 className="text-center text-[clamp(1.5rem,3vw,2rem)] font-bold">Recent Projects</h2>
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-4">
+          {gallery.map((img, idx) => (
+            <motion.div
+              key={img.src}
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="show"
+              whileHover={{ scale: 1.02 }}
+              viewport={{ once: false, amount: 0.4 }}
+              custom={idx}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                width={img.width}
+                height={img.height}
+                className="rounded-lg shadow-lg"
+              />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function TestimonialSection() {
   return (
-    <section className="bg-[var(--color-card)] text-[var(--color-text-light)] py-[clamp(5rem,10vw,8rem)]">
+    <section className="bg-[var(--color-card)] text-[var(--color-text-light)] py-[clamp(8rem,16vw,12rem)]">
       <div className="container mx-auto max-w-3xl space-y-4 px-4 text-center">
         <motion.p
           variants={fadeIn}
@@ -204,16 +240,16 @@ function TestimonialSection() {
 function FinalCTA() {
   return (
     <motion.section
-      className="bg-[var(--color-accent)] py-[clamp(5rem,10vw,8rem)] text-center text-black"
+      className="bg-[var(--color-accent)] py-[clamp(8rem,16vw,12rem)] text-center text-black"
       variants={fadeIn}
       initial="hidden"
       whileInView="show"
       viewport={{ once: false, amount: 0.4 }}
     >
       <div className="container mx-auto space-y-6 px-4">
-        <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold">Let’s Build Your Sales-Ready Website</h2>
+        <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold">Ready to Elevate Your Presence?</h2>
         <p className="mx-auto max-w-xl text-[clamp(0.9rem,1.6vw,1.125rem)]">
-          We’ll respond with a tailored quote—no pressure, no fluff.
+          We’ll craft a bespoke quote tailored to your goals—no strings attached.
         </p>
         <QuoteModal triggerLabel="Request My Quote" />
       </div>
