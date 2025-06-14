@@ -21,7 +21,7 @@ export default function FeaturesPage() {
   return (
     <section>
       <StickyHeader />
-      <main className="relative w-full overflow-x-hidden bg-[var(--color-bg-dark)] text-[var(--color-text-light)]">
+      <main className="relative w-full overflow-hidden bg-[var(--color-bg-dark)] text-[var(--color-text-light)]">
         <Hero />
         <FeaturePillars />
         <ProcessOverview />
@@ -49,7 +49,7 @@ function Hero() {
   return (
     <section
       ref={ref}
-      className="relative mx-auto max-w-6xl px-4 py-[clamp(6rem,12vw,10rem)] text-center bg-gradient-to-b from-[var(--color-bg-dark)] via-[#1b2431] to-[#0f172a]"
+      className="relative mx-auto max-w-6xl px-4 py-[clamp(6rem,12vw,10rem)] text-center overflow-hidden bg-gradient-to-b from-[var(--color-bg-dark)] via-[#2b2512] to-black"
     >
       <div ref={containerRef} className="pointer-events-none absolute inset-0" />
       <motion.div
