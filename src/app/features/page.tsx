@@ -49,7 +49,7 @@ function Hero() {
   return (
     <section
       ref={ref}
-      className="relative mx-auto max-w-6xl px-4 py-[clamp(8rem,16vw,12rem)] text-center"
+      className="relative mx-auto max-w-6xl px-4 py-[clamp(6rem,12vw,10rem)] text-center"
     >
       <div ref={containerRef} className="pointer-events-none absolute inset-0" />
       <motion.div
@@ -116,7 +116,7 @@ function FeaturePillars() {
   }
 
   return (
-    <section className="bg-[var(--color-bg-dark)] text-[var(--color-text-light)] py-[clamp(8rem,16vw,12rem)]">
+    <section className="bg-[var(--color-bg-dark)] text-[var(--color-text-light)] py-[clamp(6rem,12vw,10rem)]">
       <div className="container mx-auto grid gap-8 px-4 md:grid-cols-3">
         {features.map((f, idx) => {
           const Icon = icons[f.icon]
@@ -149,7 +149,7 @@ function ProcessOverview() {
   }
 
   return (
-    <section className="py-[clamp(8rem,16vw,12rem)]">
+    <section className="py-[clamp(6rem,12vw,10rem)]">
       <div className="container mx-auto max-w-4xl space-y-8 px-4">
         <h2 className="text-center text-[clamp(1.5rem,3vw,2rem)] font-bold">Simple Process</h2>
         <ol className="grid gap-8 md:grid-cols-3">
@@ -179,7 +179,7 @@ function ProcessOverview() {
 
 function ShowcaseGallery() {
   return (
-    <section className="py-[clamp(8rem,16vw,12rem)]">
+    <section className="py-[clamp(6rem,12vw,10rem)]">
       <div className="container mx-auto space-y-8 px-4">
         <h2 className="text-center text-[clamp(1.5rem,3vw,2rem)] font-bold">Recent Projects</h2>
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-4">
@@ -210,7 +210,7 @@ function ShowcaseGallery() {
 
 function TestimonialSection() {
   return (
-    <section className="bg-[var(--color-card)] text-[var(--color-text-light)] py-[clamp(8rem,16vw,12rem)]">
+    <section className="bg-[var(--color-card)] text-[var(--color-text-light)] py-[clamp(6rem,12vw,10rem)]">
       <div className="container mx-auto max-w-3xl space-y-4 px-4 text-center">
         <motion.p
           variants={fadeIn}
@@ -240,7 +240,7 @@ function TestimonialSection() {
 function FinalCTA() {
   return (
     <motion.section
-      className="bg-[var(--color-accent)] py-[clamp(8rem,16vw,12rem)] text-center text-black"
+      className="bg-[var(--color-accent)] py-[clamp(6rem,12vw,10rem)] text-center text-black"
       variants={fadeIn}
       initial="hidden"
       whileInView="show"
