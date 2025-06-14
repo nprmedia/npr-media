@@ -21,7 +21,7 @@ export default function FeaturesPage() {
   return (
     <section>
       <StickyHeader />
-      <main className="relative w-full overflow-x-hidden bg-white text-black">
+      <main className="relative w-full overflow-x-hidden bg-[var(--color-bg-dark)] text-[var(--color-text-light)]">
         <Hero />
         <FeaturePillars />
         <ProcessOverview />
@@ -49,12 +49,12 @@ function Hero() {
   return (
     <section
       ref={ref}
-      className="relative mx-auto max-w-6xl px-4 py-[clamp(6rem,12vw,10rem)] text-center"
+      className="relative mx-auto max-w-6xl px-4 py-[clamp(6rem,12vw,10rem)] text-center bg-gradient-to-b from-[var(--color-bg-dark)] via-[#1b2431] to-[#0f172a]"
     >
       <div ref={containerRef} className="pointer-events-none absolute inset-0" />
       <motion.div
         style={prefersReducedMotion ? {} : { y, opacity }}
-        className="relative space-y-6"
+        className="relative space-y-6 text-[var(--color-text-light)]"
       >
         <motion.h1
           variants={fadeIn}
@@ -128,7 +128,8 @@ function FeaturePillars() {
               whileInView="show"
               viewport={{ once: false, amount: 0.4 }}
               custom={idx}
-              className="space-y-2 text-center"
+              whileHover={{ y: -4 }}
+              className="space-y-2 rounded-xl bg-[var(--color-card)] p-6 text-center shadow-lg transition hover:shadow-xl"
             >
               {Icon && <Icon className="mx-auto h-8 w-8" aria-hidden="true" />}
               <h3 className="text-[clamp(1.25rem,2.5vw,1.75rem)] font-semibold">{f.title}</h3>
@@ -163,7 +164,8 @@ function ProcessOverview() {
                 whileInView="show"
                 viewport={{ once: false, amount: 0.4 }}
                 custom={idx}
-                className="space-y-2 text-center"
+                whileHover={{ y: -4 }}
+                className="space-y-2 rounded-xl bg-[var(--color-card)] p-6 text-center shadow-lg transition hover:shadow-xl"
               >
                 {Icon && <Icon className="mx-auto h-8 w-8" aria-hidden="true" />}
                 <div className="text-[clamp(1.1rem,2vw,1.5rem)] font-semibold">{s.title}</div>
@@ -187,18 +189,19 @@ function ShowcaseGallery() {
             <motion.div
               key={img.src}
               variants={fadeIn}
-              initial="hidden"
-              whileInView="show"
-              whileHover={{ scale: 1.02 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.05 }}
               viewport={{ once: false, amount: 0.4 }}
-              custom={idx}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              className="overflow-hidden rounded-xl shadow-lg"
             >
               <Image
                 src={img.src}
                 alt={img.alt}
                 width={img.width}
                 height={img.height}
-                className="rounded-lg shadow-lg"
+                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
               />
             </motion.div>
           ))}

@@ -11,9 +11,9 @@ export interface StepItem {
 }
 
 export const hero = {
-  headline: 'Elevate Every Click Into Profit',
+  headline: 'Experience Digital Craftsmanship',
   subheadline:
-    'Harness a polished platform built to mesmerize visitors and turn curiosity into loyal customers.',
+    'Our design-first approach fuses stunning aesthetics with marketing science to captivate and convert.',
   cta: {
     label: 'Request Your Quote',
     href: '/contact',
@@ -29,19 +29,18 @@ export const hero = {
 
 export const features: FeatureItem[] = [
   {
-    title: 'Inspire Action',
-    body:
-      'Data\u2011driven UX flows turn casual interest into decisive engagement.',
+    title: 'Compel Action',
+    body: 'Data\u2011driven journeys turn curiosity into genuine commitment.',
     icon: 'MousePointerClick',
   },
   {
-    title: 'Lightning-Fast Performance',
-    body: 'Blazing speeds keep visitors immersed and eager to explore.',
+    title: 'Speed That Thrills',
+    body: 'Ultra-fast pages keep visitors engaged and eager to explore.',
     icon: 'GaugeCircle',
   },
   {
-    title: 'Built for the Future',
-    body: 'A flexible CMS positions you to scale without limits.',
+    title: 'Limitless Scalability',
+    body: 'A flexible CMS empowers you to grow without restrictions.',
     icon: 'Rocket',
   },
 ]
@@ -49,17 +48,17 @@ export const features: FeatureItem[] = [
 export const steps: StepItem[] = [
   {
     title: 'Plan',
-    body: 'We dive deep into your goals and craft a strategic blueprint.',
+    body: 'Together we map a strategy that aligns every pixel to your business goals.',
     icon: 'Map',
   },
   {
     title: 'Build',
-    body: 'Our experts develop clean, scalable code tailored to your growth.',
+    body: 'Our team crafts clean, scalable code tailored for long-term growth.',
     icon: 'Hammer',
   },
   {
     title: 'Launch',
-    body: 'We optimize, host and train you so you excel from day one.',
+    body: 'We optimize, host and train you so you shine from day one.',
     icon: 'PartyPopper',
   },
 ]
