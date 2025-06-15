@@ -26,29 +26,29 @@ export interface TrustData {
 export const trust: TrustData = {
   headline: 'Trusted by SaaS Teams Backed by Y Combinator & Techstars',
   clients: [
-    { name: 'SaaSFlow', src: '/logos/Authority Platform.webp' },
-    { name: 'GrowthKit', src: '/logos/Authority Platform.webp' },
-    { name: 'LaunchHero', src: '/logos/Authority Platform.webp' },
-    { name: 'MetricMax', src: '/logos/Authority Platform.webp' },
+    { name: 'SaaSFlow', src: '/logos/authority-platform.jpg' },
+    { name: 'GrowthKit', src: '/logos/authority-platform.jpg' },
+    { name: 'LaunchHero', src: '/logos/authority-platform.jpg' },
+    { name: 'MetricMax', src: '/logos/authority-platform.jpg' },
   ],
   testimonials: [
     {
       quote: 'NPR Media boosted our signups by 212% in 30 days.',
       name: 'Mark P.',
       role: 'SaaSFlow CEO',
-      logo: '/logos/Authority Platform.webp',
+      logo: '/logos/authority-platform.jpg',
     },
     {
       quote: 'Our funnel ROI skyrocketed 150% after launch.',
       name: 'Lisa W.',
       role: 'LaunchHero Founder',
-      logo: '/logos/Authority Platform.webp',
+      logo: '/logos/authority-platform.jpg',
     },
     {
       quote: 'We hit 95% CSAT and passed SOC2 with ease.',
       name: 'Raj K.',
       role: 'SecureApp CTO',
-      logo: '/logos/Authority Platform.webp',
+      logo: '/logos/authority-platform.jpg',
     },
   ],
   badges: [
