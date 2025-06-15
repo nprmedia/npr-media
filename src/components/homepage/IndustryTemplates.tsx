@@ -37,7 +37,7 @@ export default function IndustryTemplatesSection() {
               alt={`Screenshot of ${authority.title}`}
               width={640}
               height={960}
-              className="h-full w-full rounded-lg object-cover transition-transform duration-500 group-hover:[transform:rotateY(-12deg)]"
+              className="h-full w-full rounded-lg object-cover transition-transform duration-500 origin-left group-hover:[transform:rotateY(12deg)]"
               priority
             />
           </div>
