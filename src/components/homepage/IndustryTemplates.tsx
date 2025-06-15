@@ -33,7 +33,7 @@ export default function IndustryTemplatesSection() {
             style={{ perspective: '1000px' }}
           >
             <Image
-              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=640&q=80"
+              src="/authority-platform-preview.png"
               alt={`Screenshot of ${authority.title}`}
               width={640}
               height={960}

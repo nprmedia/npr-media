@@ -25,17 +25,9 @@ export function useParticleBackground(containerRef: React.RefObject<HTMLDivEleme
     );
     camera.position.z = 50;
 
-   const renderer = new THREE.WebGLRenderer({ alpha: true });
-   renderer.setSize(containerEl.clientWidth, containerEl.clientHeight);
-   containerEl.appendChild(renderer.domElement);
-
-    const handleResize = () => {
-      if (!containerEl) return;
-      camera.aspect = containerEl.clientWidth / containerEl.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(containerEl.clientWidth, containerEl.clientHeight);
-    };
-    window.addEventListener('resize', handleResize);
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(containerEl.clientWidth, containerEl.clientHeight);
+    containerEl.appendChild(renderer.domElement);
 
     // Geometry
     const geometry = new THREE.BufferGeometry();
@@ -56,7 +48,7 @@ export function useParticleBackground(containerRef: React.RefObject<HTMLDivEleme
       );
       sizes[i] = Math.random() * 1 + 0.5;
 
-      const color = new THREE.Color(0xd4af37);
+      const color = new THREE.Color(0xffffff);
       colors.set([color.r, color.g, color.b], i * 3);
     }
 
@@ -67,7 +59,7 @@ export function useParticleBackground(containerRef: React.RefObject<HTMLDivEleme
     // Material
     const material = new THREE.PointsMaterial({
       size: 0.2,
-      color: 0xd4af37,
+      color: 0xffffff,
       transparent: true,
       opacity: 0.4,
       blending: THREE.AdditiveBlending,
@@ -127,7 +119,6 @@ export function useParticleBackground(containerRef: React.RefObject<HTMLDivEleme
     return () => {
       cancelAnimationFrame(animationRef.current!);
       window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('resize', handleResize);
       renderer.dispose();
       geometry.dispose();
       material.dispose();

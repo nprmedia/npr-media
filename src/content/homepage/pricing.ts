@@ -4,12 +4,6 @@ export interface PricingTier {
   title: string;
   price: string;
   highlight?: boolean;
-  image: {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-  };
   microcopy: string;
   description: string;
   features: string[];
@@ -23,20 +17,13 @@ export interface PricingData {
 
 export const pricing: PricingData = {
   headline:
-    'Premium packages that grow with you. Select the firepower your launch deserves.',
+    'Transparent packages with room to grow. Choose the plan that best aligns with your launch goals and budget.',
   tiers: [
     {
       title: 'Quick Launch',
       price: '$1,000',
-      image: {
-        src:
-          'https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=800&q=80',
-        alt: 'Developers collaborating quickly',
-        width: 1200,
-        height: 800,
-      },
-      microcopy: 'Elegant landing in a flash',
-      description: 'Deploy a sleek single page in just one week.',
+      microcopy: 'Perfect for a fast online debut',
+      description: 'Launch a polished landing page within a week.',
       features: [
         'Single-page design',
         'Contact form setup',
@@ -48,15 +35,8 @@ export const pricing: PricingData = {
     {
       title: 'Launch Pad',
       price: '$4,000',
-      image: {
-        src:
-          'https://images.unsplash.com/photo-1531497865146-810c7f59365c?auto=format&fit=crop&w=800&q=80',
-        alt: 'Team huddling around a strategy',
-        width: 1200,
-        height: 800,
-      },
-      microcopy: 'Accelerate your MVP',
-      description: 'Get a conversion\u2011ready site in under two weeks.',
+      microcopy: 'Ideal for SaaS MVPs',
+      description: 'Spin up a conversion\u2011ready MVP in less than two weeks.',
       features: [
         'Core pages & blog setup',
         'Responsive design & basic analytics',
@@ -69,15 +49,8 @@ export const pricing: PricingData = {
       title: 'Growth Engine',
       price: '$7,500',
       highlight: true,
-      image: {
-        src:
-          'https://images.unsplash.com/photo-1487017159836-4d8bdeed776b?auto=format&fit=crop&w=800&q=80',
-        alt: 'Developer building features for scale',
-        width: 1200,
-        height: 800,
-      },
-      microcopy: 'Most popular for scaling startups',
-      description: 'Automate your funnel and CRM—save 40+ hours.',
+      microcopy: 'Most popular for funded startups',
+      description: 'Save 40+ hours with an automated funnel and CRM.',
       features: [
         'Full CMS with SEO polish',
         'CRM & email automations',
@@ -89,15 +62,8 @@ export const pricing: PricingData = {
     {
       title: 'Scale Partner',
       price: '$10,000+',
-      image: {
-        src:
-          'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=800&q=80',
-        alt: 'High-level planning session',
-        width: 1200,
-        height: 800,
-      },
-      microcopy: 'Tailored for enterprise growth',
-      description: 'Scalable architecture and custom integrations.',
+      microcopy: 'Custom enterprise scope',
+      description: 'We architect a scalable system tailored to your ops.',
       features: [
         'Custom integrations & API work',
         'Advanced animations & UX',
