@@ -8,7 +8,6 @@ import { hero } from '@/content/homepage/hero';
 import IndustryTemplatesSection from '@/components/homepage/IndustryTemplates';
 import PricingSection from '@/components/homepage/PricingSection';
 import FooterSection from '@/components/global/Footer';
-import TrustSection from '@/components/homepage/TrustSection';
 import ContactSection from '@/components/homepage/ContactSection';
 
 export default function Page() {
@@ -23,7 +22,6 @@ export default function Page() {
         </Suspense>
         <IndustryTemplatesSection />
         <PricingSection />
-        <TrustSection variant="light" />
         <ContactSection />
       </main>
       <FooterSection />
