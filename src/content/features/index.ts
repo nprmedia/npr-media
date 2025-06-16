@@ -11,15 +11,16 @@ export interface StepItem {
 }
 
 export const hero = {
-  headline: 'Launch a Website That Sells While You Sleep',
-  subheadline: 'Custom-built sites that load fast, convert better, and scale with your startup.',
+  headline: 'Why Choose NPR Media',
+  subheadline:
+    'Our human specialists craft websites that outperform AI generators and cookie-cutter templates.',
   cta: {
-    label: 'Get a Quote',
+    label: 'Request Your Quote',
     href: '/contact',
   },
   image: {
-    src: '/logos/Authority Platform.webp',
-    alt: 'Screenshot of a high-converting website built by NPR Media',
+    url: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d',
+    alt: 'Developers collaborating on website design',
     width: 600,
     height: 338,
   },
@@ -27,30 +28,65 @@ export const hero = {
 
 export const features: FeatureItem[] = [
   {
-    title: 'Designed to Convert',
-    body: 'We use proven UX frameworks to guide users to action.',
+    title: 'Custom Strategy',
+    body: 'We align every build with your unique business goals.',
     icon: 'MousePointerClick',
   },
   {
-    title: 'Optimized for Speed & SEO',
-    body: 'Your site hits 90+ on Lighthouse and gets indexed right.',
+    title: 'Expert Craftsmanship',
+    body: 'Our team hand-codes experiences AI tools simply can\u2019t match.',
     icon: 'GaugeCircle',
   },
   {
-    title: 'Built to Grow with You',
-    body: 'Easily update content and scale pages with built-in CMS.',
+    title: 'Long-Term Partnership',
+    body: 'We refine and scale your site as your needs evolve.',
     icon: 'Rocket',
   },
 ]
 
 export const steps: StepItem[] = [
-  { title: 'Plan', body: 'We align on goals, brand, and functionality.', icon: 'Map' },
-  { title: 'Build', body: 'We design and develop your custom site.', icon: 'Hammer' },
-  { title: 'Launch', body: 'We handle the tech. You go live with confidence.', icon: 'PartyPopper' },
+  { title: 'Discover', body: 'We workshop your goals and requirements.', icon: 'Map' },
+  { title: 'Craft', body: 'Design and development proceed in tight cycles.', icon: 'Hammer' },
+  { title: 'Amplify', body: 'Launch, test, and refine for continuous improvement.', icon: 'PartyPopper' },
 ]
 
 export const testimonial = {
-  quote: 'Working with NPR Media was a game changer. Our new site increased demo bookings by 42% in 2 weeks.',
-  author: 'Jamie L., SaaS Founder',
+  quote: 'Our new site from NPR Media doubled signups in the first month.',
+  author: 'Alex P., Startup CEO',
 }
 
+export const betterThanAI = [
+  {
+    title: 'Tailored to Your Audience',
+    body: 'We design for real people, not generic algorithms.',
+  },
+  {
+    title: 'Strategic Thinking',
+    body: 'Our approach blends data with human intuition, so every page has purpose.',
+  },
+  {
+    title: 'Accountability',
+    body: 'We deliver measurable results and adjust based on feedback.',
+  },
+]
+
+export const showcase = [
+  {
+    url: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97',
+    alt: 'Laptop displaying modern website design',
+    width: 600,
+    height: 400,
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1587829751301-dc798b84f5c5',
+    alt: 'Developer building responsive layout',
+    width: 600,
+    height: 400,
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
+    alt: 'Team collaborating over website wireframes',
+    width: 600,
+    height: 400,
+  },
+]

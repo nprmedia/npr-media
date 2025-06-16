@@ -8,8 +8,16 @@ const nextConfig = {
   },
   // ❌ remove `swcMinify`, it's deprecated in Next 14+
   reactStrictMode: true,
-    pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
-
+  pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
