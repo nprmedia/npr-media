@@ -17,6 +17,12 @@ export const hero = {
     label: 'Request Your Quote',
     href: '/contact',
   },
+  image: {
+    url: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d',
+    alt: 'Developers collaborating on website design',
+    width: 600,
+    height: 338,
+  },
 }
 
 export const features: FeatureItem[] = [

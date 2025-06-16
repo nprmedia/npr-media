@@ -5,6 +5,7 @@ import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
 import QuoteModal from '@/components/homepage/QuoteModal'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { hero, features, steps, testimonial, betterThanAI } from '@/content/features'
 import {
@@ -68,6 +69,23 @@ function Hero() {
           {hero.cta.label}
         </Link>
       </motion.div>
+      {hero.image && (
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          animate="show"
+          custom={3}
+          className="mx-auto mt-8 max-w-3xl"
+        >
+          <Image
+            src={`${hero.image.url}?auto=format&w=800`}
+            alt={hero.image.alt}
+            width={hero.image.width}
+            height={hero.image.height}
+            className="mx-auto rounded-lg shadow-lg"
+          />
+        </motion.div>
+      )}
     </section>
   )
 }
