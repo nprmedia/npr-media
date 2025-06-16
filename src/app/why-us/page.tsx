@@ -5,6 +5,7 @@ import FooterSection from '@/components/global/Footer'
 import QuoteModal from '@/components/homepage/QuoteModal'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { BrainCog, Settings2, ShieldCheck } from 'lucide-react'
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -17,19 +18,19 @@ const fadeIn = {
 
 const aiItems = [
   {
-    img: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d',
-    alt: 'Team brainstorming over web concepts',
-    text: 'Human insight tailors every pixel to real audiences.',
+    icon: BrainCog,
+    title: 'Human Insight',
+    text: 'We tailor each build for real people, not generic algorithms.',
   },
   {
-    img: 'https://images.unsplash.com/photo-1503389152951-9f343605f61e',
-    alt: 'Sketching interface ideas',
-    text: 'We iterate quickly with strategy that AI generators lack.',
+    icon: Settings2,
+    title: 'Strategic Iteration',
+    text: 'Rapid cycles and testing deliver results AI tools can\'t match.',
   },
   {
-    img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
-    alt: 'Website testing',
-    text: 'Accountability means constant refinement for performance.',
+    icon: ShieldCheck,
+    title: 'Accountability',
+    text: 'You get measurable improvements and ongoing support.',
   },
 ]
 
@@ -97,32 +98,51 @@ function Hero() {
 function BetterThanAI() {
   return (
     <section id="against-ai" className="bg-gray-50 py-[clamp(4rem,8vw,6rem)]">
-      <div className="container mx-auto max-w-5xl space-y-8 px-4">
-        <motion.h2
-          variants={fadeIn}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          custom={0}
-          className="text-center text-[clamp(1.5rem,3vw,2rem)] font-bold"
-        >
-          Why We Beat AI
-        </motion.h2>
-        <div className="grid gap-6 md:grid-cols-3">
-          {aiItems.map((item, idx) => (
-            <motion.div
-              key={item.text}
-              variants={fadeIn}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.3 }}
-              custom={idx}
-              className="space-y-2 text-center"
-            >
-              <Image src={item.img} alt={item.alt} width={400} height={260} className="mx-auto rounded-lg shadow-lg object-cover" />
-              <p className="text-[clamp(0.8rem,1.2vw,0.9rem)] text-gray-700">{item.text}</p>
-            </motion.div>
-          ))}
+      <div className="container mx-auto grid max-w-5xl items-center gap-8 px-4 md:grid-cols-2">
+        <div className="space-y-4">
+          <motion.h2
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            custom={0}
+            className="text-[clamp(1.5rem,3vw,2rem)] font-bold"
+          >
+            Why We Beat AI
+          </motion.h2>
+          <motion.p
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            custom={1}
+            className="max-w-md text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700"
+          >
+            Human-driven design and strategy ensure your site connects and performs beyond what any generator can do.
+          </motion.p>
+          <motion.div variants={fadeIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} custom={2}>
+            <QuoteModal triggerLabel="Start Your Project" />
+          </motion.div>
+        </div>
+        <div className="h-64 overflow-y-auto snap-y snap-mandatory space-y-0">
+          {aiItems.map((item, idx) => {
+            const Icon = item.icon
+            return (
+              <motion.div
+                key={item.title}
+                variants={fadeIn}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.5 }}
+                custom={idx}
+                className="snap-start flex h-64 flex-col items-center justify-center space-y-3 text-center"
+              >
+                {Icon && <Icon className="h-12 w-12 text-[var(--color-accent)]" aria-hidden="true" />}
+                <h3 className="text-[clamp(1.1rem,2vw,1.5rem)] font-semibold">{item.title}</h3>
+                <p className="text-[clamp(0.8rem,1.2vw,0.9rem)] text-gray-700">{item.text}</p>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>
