@@ -96,6 +96,7 @@ function Hero() {
             alt={hero.image.alt}
             width={hero.image.width}
             height={hero.image.height}
+            sizes="(min-width: 768px) 600px, 100vw"
             className="mx-auto rounded-lg shadow-lg"
             priority
           />
@@ -148,15 +149,6 @@ function FeatureShowcase() {
   return (
     <section className="bg-white py-[clamp(5rem,10vw,8rem)] text-black">
       <div className="container mx-auto flex flex-col items-center gap-8 px-4 md:flex-row">
-        <div className="md:w-1/2">
-          <Image
-            src="/logos/Authority Platform.webp"
-            alt={authority.title}
-            width={800}
-            height={450}
-            className="w-full rounded-lg shadow-xl"
-          />
-        </div>
         <div className="md:w-1/2 space-y-4">
           <h3 className="text-[clamp(1.5rem,3vw,2rem)] font-bold">High-Impact Features</h3>
           <ul className="list-disc space-y-2 pl-4 text-[clamp(0.9rem,1.2vw,0.95rem)] text-gray-700">
