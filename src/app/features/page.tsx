@@ -7,7 +7,7 @@ import QuoteModal from '@/components/homepage/QuoteModal'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { hero, features, steps, testimonial, betterThanAI } from '@/content/features'
+import { hero, features, steps, testimonial, betterThanAI, showcase } from '@/content/features'
 import {
   LucideIcon,
   GaugeCircle,
@@ -31,6 +31,7 @@ export default function FeaturesPage() {
         <Hero />
         <BetterThanAI />
         <Pillars />
+        <ShowcaseGallery />
         <ProcessSteps />
         <TestimonialSection />
         <FinalCTA />
@@ -153,6 +154,38 @@ function Pillars() {
             </motion.div>
           )
         })}
+      </div>
+    </section>
+  )
+}
+
+function ShowcaseGallery() {
+  return (
+    <section className="bg-white py-[clamp(5rem,10vw,8rem)] text-black">
+      <div className="container mx-auto max-w-5xl space-y-8 px-4">
+        <h2 className="text-center text-[clamp(1.5rem,3vw,2rem)] font-bold">
+          Recent Work
+        </h2>
+        <div className="grid gap-6 md:grid-cols-3">
+          {showcase.map((img, idx) => (
+            <motion.div
+              key={img.url}
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false, amount: 0.4 }}
+              custom={idx}
+            >
+              <Image
+                src={`${img.url}?auto=format&w=600`}
+                alt={img.alt}
+                width={img.width}
+                height={img.height}
+                className="rounded-lg shadow-lg"
+              />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   )

@@ -68,3 +68,24 @@ export const betterThanAI = [
     body: 'We deliver measurable results and adjust based on feedback.',
   },
 ]
+
+export const showcase = [
+  {
+    url: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97',
+    alt: 'Laptop displaying modern website design',
+    width: 600,
+    height: 400,
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1587829751301-dc798b84f5c5',
+    alt: 'Developer building responsive layout',
+    width: 600,
+    height: 400,
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
+    alt: 'Team collaborating over website wireframes',
+    width: 600,
+    height: 400,
+  },
+]
