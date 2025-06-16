@@ -20,8 +20,8 @@ export const hero = {
   image: {
     src: '/logos/Authority Platform.webp',
     alt: 'Screenshot of a high-converting website built by NPR Media',
-    width: 800,
-    height: 450,
+    width: 600,
+    height: 338,
   },
 }
 
