@@ -1,70 +1,64 @@
 export interface FeatureItem {
-  title: string;
-  body: string;
-  icon: string;
+  title: string
+  body: string
+  icon: string
 }
 
 export interface StepItem {
-  title: string;
-  body: string;
-  icon: string;
+  title: string
+  body: string
+  icon: string
 }
 
 export const hero = {
-  headline: 'Human‑Crafted Websites That Outperform AI',
-  subheadline:
-    'Our experts build experiences tuned to real people\u2014something a bot can\u2019t match.',
+  headline: 'Next-Level Websites Built by Real Experts',
+  subheadline: 'Human creativity outperforms automated site builders every time.',
   cta: {
-    label: 'Get a Quote',
+    label: 'Request Your Quote',
     href: '/contact',
   },
-};
+}
 
 export const features: FeatureItem[] = [
   {
-    title: 'Designed to Convert',
-    body: 'We use proven UX frameworks to guide users to action.',
+    title: 'Conversion-Focused UX',
+    body: 'Each page guides visitors toward taking action.',
     icon: 'MousePointerClick',
   },
   {
-    title: 'Optimized for Speed & SEO',
-    body: 'Your site hits 90+ on Lighthouse and gets indexed right.',
+    title: 'Lightning-Fast Performance',
+    body: 'Optimized code and caching keep load times under a second.',
     icon: 'GaugeCircle',
   },
   {
-    title: 'Built to Grow with You',
-    body: 'Easily update content and scale pages with built-in CMS.',
+    title: 'Flexible Architecture',
+    body: 'Easily extend and iterate as your business grows.',
     icon: 'Rocket',
   },
-];
+]
 
 export const steps: StepItem[] = [
-  { title: 'Plan', body: 'We align on goals, brand, and functionality.', icon: 'Map' },
-  { title: 'Build', body: 'We design and develop your custom site.', icon: 'Hammer' },
-  {
-    title: 'Launch',
-    body: 'We handle the tech. You go live with confidence.',
-    icon: 'PartyPopper',
-  },
-];
+  { title: 'Discover', body: 'We workshop your goals and requirements.', icon: 'Map' },
+  { title: 'Craft', body: 'Design and development proceed in tight cycles.', icon: 'Hammer' },
+  { title: 'Amplify', body: 'Launch, test, and refine for continuous improvement.', icon: 'PartyPopper' },
+]
 
 export const testimonial = {
-  quote:
-    'Working with NPR Media was a game changer. Our new site increased demo bookings by 42% in 2 weeks.',
-  author: 'Jamie L., SaaS Founder',
-};
+  quote: 'Our new site from NPR Media doubled signups in the first month.',
+  author: 'Alex P., Startup CEO',
+}
 
 export const betterThanAI = [
   {
-    title: 'Human insight',
-    body: 'Real experience means we design for emotions, not algorithms.',
+    title: 'Tailored to Your Audience',
+    body: 'We design for real people, not generic algorithms.',
   },
   {
-    title: 'Iterative expertise',
-    body: 'We refine your site through testing and feedback\u2014AI can\u2019t improvise.',
+    title: 'Strategic Thinking',
+    body: 'Our approach blends data with human intuition, so every page has purpose.',
   },
   {
-    title: 'Transparent code',
-    body: 'No black boxes or hallucinations\u2014just maintainable, scalable sites.',
+    title: 'Accountability',
+    body: 'We deliver measurable results and adjust based on feedback.',
   },
-];
+]
