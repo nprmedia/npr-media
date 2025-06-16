@@ -1,13 +1,14 @@
 'use client'
 
+import React, { useRef } from 'react'
 import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
-import { useRef } from 'react'
+import QuoteModal from '@/components/homepage/QuoteModal'
 import Image from 'next/image'
 import Link from 'next/link'
-import QuoteModal from '@/components/homepage/QuoteModal'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { features, steps, hero, testimonial } from '@/content/features'
+import { templates } from '@/content/homepage/templates'
 import { LucideIcon, GaugeCircle, Map, Hammer, PartyPopper, MousePointerClick, Rocket } from 'lucide-react'
 
 
@@ -23,6 +24,7 @@ export default function FeaturesPage() {
       <main className="relative w-full overflow-x-hidden bg-white text-black">
         <Hero />
         <FeaturePillars />
+        <FeatureShowcase />
         <ProcessOverview />
         <TestimonialSection />
         <FinalCTA />
@@ -94,6 +96,7 @@ function Hero() {
             alt={hero.image.alt}
             width={hero.image.width}
             height={hero.image.height}
+            sizes="(min-width: 768px) 600px, 100vw"
             className="mx-auto rounded-lg shadow-lg"
             priority
           />
@@ -102,6 +105,7 @@ function Hero() {
     </section>
   )
 }
+
 
 function FeaturePillars() {
   const icons: Record<string, LucideIcon> = {
@@ -131,6 +135,29 @@ function FeaturePillars() {
             </motion.div>
           )
         })}
+      </div>
+    </section>
+  )
+}
+
+function FeatureShowcase() {
+  const authority = templates
+    .flatMap((g) => g.templates)
+    .find((t) => t.slug === 'authority-platform')
+  if (!authority) return null
+
+  return (
+    <section className="bg-white py-[clamp(5rem,10vw,8rem)] text-black">
+      <div className="container mx-auto flex flex-col items-center gap-8 px-4 md:flex-row">
+        <div className="md:w-1/2 space-y-4">
+          <h3 className="text-[clamp(1.5rem,3vw,2rem)] font-bold">High-Impact Features</h3>
+          <ul className="list-disc space-y-2 pl-4 text-[clamp(0.9rem,1.2vw,0.95rem)] text-gray-700">
+            {authority.features.slice(0,6).map((f, i) => (
+              <li key={i}>{f}</li>
+            ))}
+          </ul>
+          <QuoteModal triggerLabel="Request My Quote" />
+        </div>
       </div>
     </section>
   )
@@ -211,9 +238,9 @@ function FinalCTA() {
       viewport={{ once: false, amount: 0.4 }}
     >
       <div className="container mx-auto space-y-6 px-4">
-        <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold">Let’s Build Your Sales-Ready Website</h2>
+        <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold">Launch Your High-Converting Site</h2>
         <p className="mx-auto max-w-xl text-[clamp(0.9rem,1.6vw,1.125rem)]">
-          We’ll respond with a tailored quote—no pressure, no fluff.
+          Get a personalized quote within 24 hours—no pressure, no fluff.
         </p>
         <QuoteModal triggerLabel="Request My Quote" />
       </div>
