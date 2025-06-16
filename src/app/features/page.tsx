@@ -1,12 +1,12 @@
 'use client'
 
-import React, { Suspense } from 'react'
+import React, { useRef } from 'react'
 import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
-import HeroSection from '@/components/homepage/Hero'
 import QuoteModal from '@/components/homepage/QuoteModal'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { features, steps, hero, testimonial } from '@/content/features'
 import { templates } from '@/content/homepage/templates'
 import { LucideIcon, GaugeCircle, Map, Hammer, PartyPopper, MousePointerClick, Rocket } from 'lucide-react'
@@ -22,15 +22,7 @@ export default function FeaturesPage() {
     <section>
       <StickyHeader />
       <main className="relative w-full overflow-x-hidden bg-white text-black">
-        <Suspense>
-          <HeroSection
-            headline={hero.headline}
-            subheadline={hero.subheadline}
-            ctaText={hero.cta.label}
-            ctaLink={hero.cta.href}
-            image={{ url: hero.image.src, alt: hero.image.alt, width: hero.image.width, height: hero.image.height }}
-          />
-        </Suspense>
+        <Hero />
         <FeaturePillars />
         <FeatureShowcase />
         <ProcessOverview />
@@ -38,6 +30,77 @@ export default function FeaturesPage() {
         <FinalCTA />
       </main>
       <FooterSection />
+    </section>
+  )
+}
+
+function Hero() {
+  const ref = useRef<HTMLElement>(null)
+  const prefersReducedMotion = useReducedMotion()
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start'],
+  })
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '-20%'])
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0])
+
+  return (
+    <section
+      ref={ref}
+      className="mx-auto max-w-6xl px-4 py-[clamp(5rem,10vw,8rem)] text-center"
+    >
+      <motion.div
+        style={prefersReducedMotion ? {} : { y, opacity }}
+        className="space-y-6"
+      >
+        <motion.h1
+          variants={fadeIn}
+          initial="hidden"
+          animate="show"
+          custom={0}
+          className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold"
+        >
+          {hero.headline}
+        </motion.h1>
+        <motion.p
+          variants={fadeIn}
+          initial="hidden"
+          animate="show"
+          custom={1}
+          className="mx-auto max-w-2xl text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700"
+        >
+          {hero.subheadline}
+        </motion.p>
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          animate="show"
+          custom={2}
+        >
+          <Link
+            href={hero.cta.href}
+            className="inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-[clamp(1.25rem,3vw,1.5rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-[clamp(0.8rem,1vw,0.9rem)] font-semibold text-black shadow transition hover:scale-105"
+          >
+            {hero.cta.label}
+          </Link>
+        </motion.div>
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          animate="show"
+          custom={3}
+          className="mx-auto mt-8 max-w-3xl"
+        >
+          <Image
+            src={hero.image.src}
+            alt={hero.image.alt}
+            width={hero.image.width}
+            height={hero.image.height}
+            className="mx-auto rounded-lg shadow-lg"
+            priority
+          />
+        </motion.div>
+      </motion.div>
     </section>
   )
 }
@@ -87,10 +150,10 @@ function FeatureShowcase() {
       <div className="container mx-auto flex flex-col items-center gap-8 px-4 md:flex-row">
         <div className="md:w-1/2">
           <Image
-            src="/logos/authority-platform.jpg"
+            src="/logos/Authority Platform.webp"
             alt={authority.title}
             width={800}
-            height={600}
+            height={450}
             className="w-full rounded-lg shadow-xl"
           />
         </div>
