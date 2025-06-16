@@ -26,22 +26,24 @@ export default function IndustryTemplatesSection() {
         </div>
 
         <div
-          className="mx-auto flex max-w-4xl flex-col gap-6 md:flex-row md:items-start"
+          className="group mx-auto flex max-w-4xl flex-col gap-6 md:flex-row md:items-start"
         >
           <div
-            className="group relative mb-4 aspect-[2/3] h-[80vh] max-h-[80vh] overflow-hidden rounded-lg shadow md:mb-0 md:mr-6"
+            className="relative mb-4 aspect-[2/3] h-[80vh] max-h-[80vh] overflow-hidden rounded-lg md:mb-0 md:mr-6"
             style={{ perspective: '1000px' }}
           >
             <Image
-              src="/authority-platform-preview.png"
+              src="/logos/Authority Platform.webp"
               alt={`Screenshot of ${authority.title}`}
               width={640}
               height={960}
-              className="h-full w-full rounded-lg object-cover transition-transform duration-500 group-hover:[transform:rotateY(-12deg)]"
+              className="h-full w-full rounded-lg object-cover transition-transform duration-500 origin-left group-hover:[transform:rotateY(12deg)]"
               priority
             />
           </div>
-          <div className="flex flex-grow flex-col md:w-1/2">
+          <div
+            className="flex flex-grow flex-col md:w-1/2 origin-left transform-gpu transition-all duration-500 group-hover:[transform:translateX(1.5rem)_rotateY(-6deg)]"
+          >
             <h4 className="text-[#212121] mb-1 truncate text-[clamp(1rem,1.8vw,1.25rem)] font-semibold">
               {authority.title}
             </h4>
