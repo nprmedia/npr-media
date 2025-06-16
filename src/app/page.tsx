@@ -24,7 +24,7 @@ export default function Page() {
         <section className="bg-gray-50 py-8 text-center">
           <p className="text-[clamp(0.9rem,1.2vw,1rem)]">
             Curious how humans beat the bots?{' '}
-            <Link href="/features#better-than-ai" className="text-primary font-semibold underline">
+            <Link href="/why-us#against-ai" className="text-primary font-semibold underline">
               See why we\u2019re better than AI
             </Link>
             .
