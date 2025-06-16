@@ -131,12 +131,14 @@ function Pillars() {
   }
   return (
     <section className="bg-[var(--color-bg-dark)] py-[clamp(5rem,10vw,8rem)] text-[var(--color-text-light)]">
-      <div className="container mx-auto grid gap-8 px-4 md:grid-cols-3">
-        {features.map((f, idx) => {
-          const Icon = icons[f.icon]
-          return (
-            <motion.div
-              key={f.title}
+      <div className="container mx-auto space-y-8 px-4">
+        <h2 className="text-center text-[clamp(1.5rem,3vw,2rem)] font-bold">Why Choose Us</h2>
+        <div className="grid gap-8 md:grid-cols-3">
+          {features.map((f, idx) => {
+            const Icon = icons[f.icon]
+            return (
+              <motion.div
+                key={f.title}
               variants={fadeIn}
               initial="hidden"
               whileInView="show"
@@ -152,8 +154,9 @@ function Pillars() {
                 {f.body}
               </p>
             </motion.div>
-          )
+            )
         })}
+        </div>
       </div>
     </section>
   )

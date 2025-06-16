@@ -11,8 +11,9 @@ export interface StepItem {
 }
 
 export const hero = {
-  headline: 'Next-Level Websites Built by Real Experts',
-  subheadline: 'Human creativity outperforms automated site builders every time.',
+  headline: 'Why Choose NPR Media',
+  subheadline:
+    'Our human specialists craft websites that outperform AI generators and cookie-cutter templates.',
   cta: {
     label: 'Request Your Quote',
     href: '/contact',
@@ -27,18 +28,18 @@ export const hero = {
 
 export const features: FeatureItem[] = [
   {
-    title: 'Conversion-Focused UX',
-    body: 'Each page guides visitors toward taking action.',
+    title: 'Custom Strategy',
+    body: 'We align every build with your unique business goals.',
     icon: 'MousePointerClick',
   },
   {
-    title: 'Lightning-Fast Performance',
-    body: 'Optimized code and caching keep load times under a second.',
+    title: 'Expert Craftsmanship',
+    body: 'Our team hand-codes experiences AI tools simply can\u2019t match.',
     icon: 'GaugeCircle',
   },
   {
-    title: 'Flexible Architecture',
-    body: 'Easily extend and iterate as your business grows.',
+    title: 'Long-Term Partnership',
+    body: 'We refine and scale your site as your needs evolve.',
     icon: 'Rocket',
   },
 ]
