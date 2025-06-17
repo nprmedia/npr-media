@@ -102,18 +102,38 @@ function BetterThanAI() {
   useEffect(() => {
     const el = aiListRef.current
     if (!el) return
+
+    const root = document.documentElement
+    const body = document.body
+
+    const disablePageScroll = () => {
+      root.style.overflowY = 'hidden'
+      body.style.overflowY = 'hidden'
+    }
+    const enablePageScroll = () => {
+      root.style.overflowY = ''
+      body.style.overflowY = ''
+    }
+
     const onWheel = (e: WheelEvent) => {
       if (
         e.deltaY > 0 &&
         el.scrollTop + el.clientHeight >= el.scrollHeight
       ) {
+        enablePageScroll()
         const section = el.closest('section')
         const next = section?.nextElementSibling as HTMLElement | null
         next?.scrollIntoView({ behavior: 'smooth' })
       }
     }
+
+    disablePageScroll()
     el.addEventListener('wheel', onWheel)
-    return () => el.removeEventListener('wheel', onWheel)
+
+    return () => {
+      el.removeEventListener('wheel', onWheel)
+      enablePageScroll()
+    }
   }, [])
   return (
     <section id="against-ai" className="bg-gray-50 py-[clamp(4rem,8vw,6rem)]">

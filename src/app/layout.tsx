@@ -9,11 +9,11 @@ import '@fontsource/space-grotesk/700.css';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="no-scrollbar">
+    <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className="font-sans bg-background text-foreground antialiased no-scrollbar">
+      <body className="font-sans bg-background text-foreground antialiased">
         {children}
       </body>
     </html>
