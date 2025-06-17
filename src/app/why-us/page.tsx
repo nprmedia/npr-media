@@ -127,11 +127,23 @@ function BetterThanAI() {
       }
     }
 
-    disablePageScroll()
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          disablePageScroll()
+        } else {
+          enablePageScroll()
+        }
+      },
+      { threshold: 0.6 }
+    )
+
+    observer.observe(el)
     el.addEventListener('wheel', onWheel)
 
     return () => {
       el.removeEventListener('wheel', onWheel)
+      observer.disconnect()
       enablePageScroll()
     }
   }, [])
