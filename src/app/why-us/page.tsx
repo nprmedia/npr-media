@@ -124,7 +124,7 @@ function BetterThanAI() {
             <QuoteModal triggerLabel="Start Your Project" />
           </motion.div>
         </div>
-        <div className="snap-y snap-mandatory space-y-0">
+        <div className="h-[80vh] overflow-y-auto snap-y snap-mandatory space-y-0 no-scrollbar">
           {aiItems.map((item, idx) => {
             const Icon = item.icon
             return (
