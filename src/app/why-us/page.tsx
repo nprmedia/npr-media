@@ -127,9 +127,16 @@ function BetterThanAI() {
       }
     }
 
+    const onScroll = () => {
+      if (el.scrollTop + el.clientHeight >= el.scrollHeight - 1) {
+        enablePageScroll()
+      }
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        const atEnd = el.scrollTop + el.clientHeight >= el.scrollHeight - 1
+        if (entry.isIntersecting && !atEnd) {
           disablePageScroll()
         } else {
           enablePageScroll()
@@ -140,9 +147,11 @@ function BetterThanAI() {
 
     observer.observe(el)
     el.addEventListener('wheel', onWheel)
+    el.addEventListener('scroll', onScroll)
 
     return () => {
       el.removeEventListener('wheel', onWheel)
+      el.removeEventListener('scroll', onScroll)
       observer.disconnect()
       enablePageScroll()
     }
