@@ -6,7 +6,6 @@ import QuoteModal from '@/components/homepage/QuoteModal'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { BrainCog, Settings2, ShieldCheck } from 'lucide-react'
-import { useEffect, useRef } from 'react'
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -97,28 +96,10 @@ function Hero() {
 }
 
 function BetterThanAI() {
-  const aiListRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const list = aiListRef.current
-    if (!list) return
-
-    const handleWheel = (e: WheelEvent) => {
-      const atBottom = Math.ceil(list.scrollTop + list.clientHeight) >= list.scrollHeight
-      const atTop = list.scrollTop <= 0
-
-      if ((atBottom && e.deltaY > 0) || (atTop && e.deltaY < 0)) {
-        window.scrollBy({ top: e.deltaY, behavior: 'smooth' })
-      }
-    }
-
-    list.addEventListener('wheel', handleWheel)
-    return () => list.removeEventListener('wheel', handleWheel)
-  }, [])
   return (
     <section id="against-ai" className="bg-gray-50 py-[clamp(4rem,8vw,6rem)]">
-      <div className="container mx-auto grid max-w-5xl items-center gap-8 px-4 md:grid-cols-2">
-        <div className="space-y-4">
+      <div className="container mx-auto grid max-w-5xl gap-8 px-4 md:grid-cols-2">
+        <div className="space-y-4 md:sticky md:top-24 self-start">
           <motion.h2
             variants={fadeIn}
             initial="hidden"
@@ -143,10 +124,7 @@ function BetterThanAI() {
             <QuoteModal triggerLabel="Start Your Project" />
           </motion.div>
         </div>
-        <div
-          ref={aiListRef}
-          className="h-[80vh] overflow-y-auto overflow-x-hidden no-scrollbar snap-y snap-mandatory space-y-0"
-        >
+        <div className="snap-y snap-mandatory space-y-0">
           {aiItems.map((item, idx) => {
             const Icon = item.icon
             return (
