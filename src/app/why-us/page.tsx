@@ -5,6 +5,7 @@ import FooterSection from '@/components/global/Footer'
 import QuoteModal from '@/components/homepage/QuoteModal'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 import { BrainCog, Settings2, ShieldCheck } from 'lucide-react'
 
 const fadeIn = {
@@ -96,6 +97,24 @@ function Hero() {
 }
 
 function BetterThanAI() {
+  const aiListRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = aiListRef.current
+    if (!el) return
+    const onWheel = (e: WheelEvent) => {
+      if (
+        e.deltaY > 0 &&
+        el.scrollTop + el.clientHeight >= el.scrollHeight
+      ) {
+        const section = el.closest('section')
+        const next = section?.nextElementSibling as HTMLElement | null
+        next?.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+    el.addEventListener('wheel', onWheel)
+    return () => el.removeEventListener('wheel', onWheel)
+  }, [])
   return (
     <section id="against-ai" className="bg-gray-50 py-[clamp(4rem,8vw,6rem)]">
       <div className="container mx-auto grid max-w-5xl gap-8 px-4 md:grid-cols-2">
@@ -124,7 +143,10 @@ function BetterThanAI() {
             <QuoteModal triggerLabel="Start Your Project" />
           </motion.div>
         </div>
-        <div className="snap-y snap-mandatory">
+        <div
+          ref={aiListRef}
+          className="no-scrollbar h-[80vh] overflow-y-auto snap-y snap-mandatory"
+        >
           {aiItems.map((item, idx) => {
             const Icon = item.icon
             return (
