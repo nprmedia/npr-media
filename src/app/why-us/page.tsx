@@ -124,7 +124,7 @@ function BetterThanAI() {
             <QuoteModal triggerLabel="Start Your Project" />
           </motion.div>
         </div>
-        <div className="h-64 overflow-y-auto snap-y snap-mandatory space-y-0">
+        <div className="h-[80vh] overflow-y-auto overflow-x-hidden no-scrollbar snap-y snap-mandatory space-y-0">
           {aiItems.map((item, idx) => {
             const Icon = item.icon
             return (
@@ -135,7 +135,7 @@ function BetterThanAI() {
                 whileInView="show"
                 viewport={{ once: true, amount: 0.5 }}
                 custom={idx}
-                className="snap-start flex h-64 flex-col items-center justify-center space-y-3 text-center"
+                className="snap-start flex h-[80vh] flex-col items-center justify-center space-y-3 text-center"
               >
                 {Icon && <Icon className="h-12 w-12 text-[var(--color-accent)]" aria-hidden="true" />}
                 <h3 className="text-[clamp(1.1rem,2vw,1.5rem)] font-semibold">{item.title}</h3>
