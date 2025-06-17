@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className="font-sans bg-background text-foreground antialiased">
+      <body className="font-sans bg-background text-foreground antialiased no-scrollbar">
         {children}
       </body>
     </html>
