@@ -37,8 +37,8 @@ export default function StickyHeader() {
           NPR MEDIA
         </Link>
         <nav className="hidden md:flex gap-[clamp(1.25rem,3vw,2rem)] items-center">
-          <Link href="/features" className="text-[clamp(0.75rem,1vw,0.875rem)] hover:text-blue-600 hover:scale-105 transition-transform">
-            Features
+          <Link href="/why-us" className="text-[clamp(0.75rem,1vw,0.875rem)] hover:text-blue-600 hover:scale-105 transition-transform">
+            Why Us
           </Link>
           <Link href="/pricing" className="text-[clamp(0.75rem,1vw,0.875rem)] hover:text-blue-600 hover:scale-105 transition-transform">
             Pricing

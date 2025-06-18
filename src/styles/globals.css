@@ -30,6 +30,7 @@
 html {
   scroll-behavior: smooth;
   font-family: var(--font-body);
+  overflow-x: hidden;
 }
 
 body {
@@ -38,6 +39,7 @@ body {
   font-weight: 400;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 h1,
@@ -66,3 +68,4 @@ img {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
