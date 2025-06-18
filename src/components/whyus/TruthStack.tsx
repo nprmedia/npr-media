@@ -15,7 +15,9 @@ export default function TruthStack({ seq, showTestimonial }: StackProps) {
 
   const card1X = useTransform(scrollYProgress, [0, 0.33], ['0%', '-120%']);
   const card2X = useTransform(scrollYProgress, [0, 0.33, 0.66], ['100%', '0%', '-120%']);
-  const card3X = useTransform(scrollYProgress, [0.66, 1], ['100%', '0%']);
+  // Finish the third card animation slightly earlier so the card is
+  // completely visible while centered on screen
+  const card3X = useTransform(scrollYProgress, [0.66, 0.8], ['100%', '0%']);
 
   return (
     <div ref={ref} className="relative h-[220vh]">
