@@ -142,7 +142,7 @@ function BetterThanAI() {
           enablePageScroll()
         }
       },
-      { threshold: 0.6 }
+      { rootMargin: '-50% 0px -50% 0px' }
     )
 
     observer.observe(el)
