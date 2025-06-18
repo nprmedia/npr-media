@@ -3,6 +3,7 @@ export interface TruthSequence {
   claim: string;
   truth: string;
   response: string;
+  variant?: 'left' | 'right' | 'up' | 'down' | 'zoom';
 }
 
 export const sequences: TruthSequence[] = [
@@ -11,36 +12,42 @@ export const sequences: TruthSequence[] = [
     claim: 'Launch in minutes!',
     truth: 'Zero strategy. Zero retention.',
     response: 'Custom funnels. Built for buyer logic.',
+    variant: 'left',
   },
   {
     id: 'agencies',
     claim: 'Award-winning creative.',
     truth: 'Templated. Outsourced. Overbilled.',
     response: 'Founder-led systems that scale with you.',
+    variant: 'right',
   },
   {
     id: 'cost',
     claim: '$10/mo websites!',
     truth: "You're the product. You're locked in.",
     response: 'Full code ownership. Built for ROI.',
+    variant: 'up',
   },
   {
     id: 'stack',
     claim: 'No-code magic',
     truth: 'Rigid. Unscalable. Bloated.',
     response: 'Next.js + CMS. Fast, dynamic, future-ready.',
+    variant: 'down',
   },
   {
     id: 'control',
     claim: 'One-click AI hosting',
     truth: 'Closed platform. No control.',
     response: 'You own everything \u2014 content, stack, path.',
+    variant: 'zoom',
   },
   {
     id: 'outcomes',
     claim: 'We design pretty sites.',
     truth: 'No KPIs. No growth. Just views.',
     response: 'Every section engineered to convert.',
+    variant: 'left',
   },
 ];
 
