@@ -2,7 +2,11 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { responseMicrocopy, TruthSequence } from '@/content/why-us/sequences';
+import {
+  responseMicrocopy,
+  TruthSequence,
+  AnimationVariant,
+} from '@/content/why-us/sequences';
 
 interface StackProps {
   seq: TruthSequence;
@@ -12,31 +16,74 @@ interface StackProps {
 export default function TruthStack({ seq, showTestimonial }: StackProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
+  const variant: AnimationVariant = seq.animation ?? 'left';
+  const transforms = {
+    left: {
+      card1: { x: useTransform(scrollYProgress, [0, 0.33], ['0%', '-120%']) },
+      card2: {
+        x: useTransform(scrollYProgress, [0, 0.33, 0.66], ['100%', '0%', '-120%']),
+      },
+      card3: { x: useTransform(scrollYProgress, [0.66, 1], ['100%', '0%']) },
+    },
+    right: {
+      card1: { x: useTransform(scrollYProgress, [0, 0.33], ['0%', '120%']) },
+      card2: {
+        x: useTransform(scrollYProgress, [0, 0.33, 0.66], ['-100%', '0%', '120%']),
+      },
+      card3: { x: useTransform(scrollYProgress, [0.66, 1], ['-100%', '0%']) },
+    },
+    up: {
+      card1: { y: useTransform(scrollYProgress, [0, 0.33], ['0%', '-120%']) },
+      card2: {
+        y: useTransform(scrollYProgress, [0, 0.33, 0.66], ['100%', '0%', '-120%']),
+      },
+      card3: { y: useTransform(scrollYProgress, [0.66, 1], ['100%', '0%']) },
+    },
+    down: {
+      card1: { y: useTransform(scrollYProgress, [0, 0.33], ['0%', '120%']) },
+      card2: {
+        y: useTransform(scrollYProgress, [0, 0.33, 0.66], ['-100%', '0%', '120%']),
+      },
+      card3: { y: useTransform(scrollYProgress, [0.66, 1], ['-100%', '0%']) },
+    },
+    rotate: {
+      card1: { rotate: useTransform(scrollYProgress, [0, 0.33], ['0deg', '-90deg']) },
+      card2: {
+        rotate: useTransform(scrollYProgress, [0, 0.33, 0.66], ['90deg', '0deg', '-90deg']),
+      },
+      card3: { rotate: useTransform(scrollYProgress, [0.66, 1], ['90deg', '0deg']) },
+    },
+    zoom: {
+      card1: { scale: useTransform(scrollYProgress, [0, 0.33], [1, 0.6]) },
+      card2: {
+        scale: useTransform(scrollYProgress, [0, 0.33, 0.66], [0.6, 1, 0.6]),
+      },
+      card3: { scale: useTransform(scrollYProgress, [0.66, 1], [0.6, 1]) },
+    },
+  } as const;
 
-  const card1X = useTransform(scrollYProgress, [0, 0.33], ['0%', '-120%']);
-  const card2X = useTransform(scrollYProgress, [0, 0.33, 0.66], ['100%', '0%', '-120%']);
-  const card3X = useTransform(scrollYProgress, [0.66, 1], ['100%', '0%']);
+  const { card1, card2, card3 } = transforms[variant];
 
   return (
     <div ref={ref} className="relative h-[200vh]">
       <div className="sticky top-0 flex h-screen items-center justify-center">
         <div className="relative h-[80vh] w-full max-w-md">
           <motion.div
-            style={{ x: card1X }}
+            style={card1}
             className="absolute inset-0 z-30 flex flex-col items-center justify-center rounded-xl bg-white p-6 text-center shadow-lg"
           >
             <p className="text-lg font-semibold">{seq.claim}</p>
           </motion.div>
 
           <motion.div
-            style={{ x: card2X }}
+            style={card2}
             className="absolute inset-0 z-20 flex flex-col items-center justify-center rounded-xl bg-gray-800 p-6 text-center text-white shadow-lg"
           >
             <p className="text-lg font-semibold">{seq.truth}</p>
           </motion.div>
 
           <motion.div
-            style={{ x: card3X }}
+            style={card3}
             className="absolute inset-0 z-10 flex flex-col items-center justify-center rounded-xl bg-gradient-to-br from-pink-600 to-purple-600 p-6 text-center text-white shadow-xl"
           >
             <p className="text-lg font-semibold">{seq.response}</p>

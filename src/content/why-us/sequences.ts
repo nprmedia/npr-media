@@ -1,8 +1,17 @@
+export type AnimationVariant =
+  | 'left'
+  | 'right'
+  | 'up'
+  | 'down'
+  | 'rotate'
+  | 'zoom';
+
 export interface TruthSequence {
   id: string;
   claim: string;
   truth: string;
   response: string;
+  animation?: AnimationVariant;
 }
 
 export const sequences: TruthSequence[] = [
@@ -11,36 +20,42 @@ export const sequences: TruthSequence[] = [
     claim: 'Launch in minutes!',
     truth: 'Zero strategy. Zero retention.',
     response: 'Custom funnels. Built for buyer logic.',
+    animation: 'left',
   },
   {
     id: 'agencies',
     claim: 'Award-winning creative.',
     truth: 'Templated. Outsourced. Overbilled.',
     response: 'Founder-led systems that scale with you.',
+    animation: 'right',
   },
   {
     id: 'cost',
     claim: '$10/mo websites!',
     truth: "You're the product. You're locked in.",
     response: 'Full code ownership. Built for ROI.',
+    animation: 'up',
   },
   {
     id: 'stack',
     claim: 'No-code magic',
     truth: 'Rigid. Unscalable. Bloated.',
     response: 'Next.js + CMS. Fast, dynamic, future-ready.',
+    animation: 'down',
   },
   {
     id: 'control',
     claim: 'One-click AI hosting',
     truth: 'Closed platform. No control.',
     response: 'You own everything \u2014 content, stack, path.',
+    animation: 'rotate',
   },
   {
     id: 'outcomes',
     claim: 'We design pretty sites.',
     truth: 'No KPIs. No growth. Just views.',
     response: 'Every section engineered to convert.',
+    animation: 'zoom',
   },
 ];
 
