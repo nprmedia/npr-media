@@ -6,37 +6,153 @@ import { responseMicrocopy, TruthSequence } from '@/content/why-us/sequences';
 
 interface StackProps {
   seq: TruthSequence;
+  index: number;
   showTestimonial?: boolean;
 }
 
-export default function TruthStack({ seq, showTestimonial }: StackProps) {
+export default function TruthStack({ seq, index, showTestimonial }: StackProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
 
-  const card1X = useTransform(scrollYProgress, [0, 0.33], ['0%', '-120%']);
-  const card2X = useTransform(scrollYProgress, [0, 0.33, 0.66], ['100%', '0%', '-120%']);
-  const card3X = useTransform(scrollYProgress, [0.66, 1], ['100%', '0%']);
+  const variant = index % 6;
+
+  const card1X = useTransform(
+    scrollYProgress,
+    [0, 0.33],
+    [
+      ['0%', '-120%'],
+      ['0%', '120%'],
+      ['0%', '0%'],
+      ['0%', '0%'],
+      ['0%', '-120%'],
+      ['0%', '0%'],
+    ][variant],
+  );
+
+  const card1Y = useTransform(
+    scrollYProgress,
+    [0, 0.33],
+    [
+      ['0%', '0%'],
+      ['0%', '0%'],
+      ['0%', '-120%'],
+      ['0%', '120%'],
+      ['0%', '120%'],
+      ['0%', '0%'],
+    ][variant],
+  );
+
+  const card1Scale = useTransform(
+    scrollYProgress,
+    [0, 0.33],
+    [
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 0],
+    ][variant],
+  );
+
+  const card2X = useTransform(
+    scrollYProgress,
+    [0, 0.33, 0.66],
+    [
+      ['100%', '0%', '-120%'],
+      ['-100%', '0%', '120%'],
+      ['0%', '0%', '0%'],
+      ['0%', '0%', '0%'],
+      ['120%', '0%', '-120%'],
+      ['0%', '0%', '0%'],
+    ][variant],
+  );
+
+  const card2Y = useTransform(
+    scrollYProgress,
+    [0, 0.33, 0.66],
+    [
+      ['0%', '0%', '0%'],
+      ['0%', '0%', '0%'],
+      ['100%', '0%', '-120%'],
+      ['-100%', '0%', '120%'],
+      ['-120%', '0%', '120%'],
+      ['0%', '0%', '0%'],
+    ][variant],
+  );
+
+  const card2Scale = useTransform(
+    scrollYProgress,
+    [0, 0.33, 0.66],
+    [
+      [1, 1, 1],
+      [1, 1, 1],
+      [1, 1, 1],
+      [1, 1, 1],
+      [1, 1, 1],
+      [0, 1, 0],
+    ][variant],
+  );
+
+  const card3X = useTransform(
+    scrollYProgress,
+    [0.66, 1],
+    [
+      ['100%', '0%'],
+      ['-100%', '0%'],
+      ['0%', '0%'],
+      ['0%', '0%'],
+      ['120%', '0%'],
+      ['0%', '0%'],
+    ][variant],
+  );
+
+  const card3Y = useTransform(
+    scrollYProgress,
+    [0.66, 1],
+    [
+      ['0%', '0%'],
+      ['0%', '0%'],
+      ['100%', '0%'],
+      ['-100%', '0%'],
+      ['-120%', '0%'],
+      ['0%', '0%'],
+    ][variant],
+  );
+
+  const card3Scale = useTransform(
+    scrollYProgress,
+    [0.66, 1],
+    [
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [0, 1],
+    ][variant],
+  );
 
   return (
-    <div ref={ref} className="relative h-[200vh]">
+    <div ref={ref} className="relative h-[300vh]">
       <div className="sticky top-0 flex h-screen items-center justify-center">
         <div className="relative h-[80vh] w-full max-w-md">
           <motion.div
-            style={{ x: card1X }}
+            style={{ x: card1X, y: card1Y, scale: card1Scale }}
             className="absolute inset-0 z-30 flex flex-col items-center justify-center rounded-xl bg-white p-6 text-center shadow-lg"
           >
             <p className="text-lg font-semibold">{seq.claim}</p>
           </motion.div>
 
           <motion.div
-            style={{ x: card2X }}
+            style={{ x: card2X, y: card2Y, scale: card2Scale }}
             className="absolute inset-0 z-20 flex flex-col items-center justify-center rounded-xl bg-gray-800 p-6 text-center text-white shadow-lg"
           >
             <p className="text-lg font-semibold">{seq.truth}</p>
           </motion.div>
 
           <motion.div
-            style={{ x: card3X }}
+            style={{ x: card3X, y: card3Y, scale: card3Scale }}
             className="absolute inset-0 z-10 flex flex-col items-center justify-center rounded-xl bg-gradient-to-br from-pink-600 to-purple-600 p-6 text-center text-white shadow-xl"
           >
             <p className="text-lg font-semibold">{seq.response}</p>
