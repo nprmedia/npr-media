@@ -24,8 +24,13 @@ export default function WhyUsPage() {
         style={{ width: progressWidth }}
       />
       <main className="w-full overflow-x-hidden">
-        {sequences.map((seq) => (
-          <TruthStack key={seq.id} seq={seq} showTestimonial={seq.id === 'outcomes'} />
+        {sequences.map((seq, i) => (
+          <TruthStack
+            key={seq.id}
+            seq={seq}
+            variant={i}
+            showTestimonial={seq.id === 'outcomes'}
+          />
         ))}
         <div className="border-t bg-gray-50 px-4 py-16 text-center">
           <h2 className="mx-auto max-w-xl text-2xl font-bold">{ctaCopy.headline}</h2>
