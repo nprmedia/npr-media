@@ -4,52 +4,51 @@ import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
 import QuoteModal from '@/components/homepage/QuoteModal'
 import Image from 'next/image'
+import { BrainCog, Code2, Handshake } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { useEffect, useRef } from 'react'
-import { BrainCog, Settings2, ShieldCheck } from 'lucide-react'
 
 const fadeIn = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.5 },
+    transition: { delay: i * 0.15, duration: 0.6 },
   }),
 }
 
-const aiItems = [
+const aiPoints = [
   {
     icon: BrainCog,
-    title: 'Human Insight',
-    text: 'We tailor each build for real people, not generic algorithms.',
+    title: 'Human Creativity',
+    text: 'Real experts craft tailored experiences that no algorithm can match.',
   },
   {
-    icon: Settings2,
-    title: 'Strategic Iteration',
-    text: 'Rapid cycles and testing deliver results AI tools can\'t match.',
+    icon: Code2,
+    title: 'Hand-Tuned Code',
+    text: 'Every line is optimized for performance and SEO.',
   },
   {
-    icon: ShieldCheck,
-    title: 'Accountability',
-    text: 'You get measurable improvements and ongoing support.',
+    icon: Handshake,
+    title: 'Personal Guidance',
+    text: 'From strategy to launch, you work with real people invested in success.',
   },
 ]
 
-const firmItems = [
+const firmPoints = [
   {
-    img: 'https://images.unsplash.com/photo-1557804506-669a67965ba0',
-    alt: 'Mock competitor agency website',
-    text: 'Lean, custom code outperforms bulky templates used elsewhere.',
+    img: 'https://images.unsplash.com/photo-1587614382346-acff9d6a3d0b',
+    alt: 'Example agency website',
+    text: 'We design from scratch while many firms lean on generic templates.',
   },
   {
-    img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0',
-    alt: 'Collaboration session',
-    text: 'We offer hands-on collaboration instead of one-size-fits-all packages.',
+    img: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1',
+    alt: 'Collaborative team',
+    text: 'Our close collaboration beats impersonal, ticket-based processes.',
   },
   {
-    img: 'https://images.unsplash.com/photo-1487611459768-bd414656ea10',
-    alt: 'Fast deployment',
-    text: 'Rapid launches keep you ahead while competitors crawl.',
+    img: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c',
+    alt: 'Fast launch illustration',
+    text: 'Lean workflows launch your project quickly, keeping you ahead.',
   },
 ]
 
@@ -70,7 +69,7 @@ export default function WhyUsPage() {
 
 function Hero() {
   return (
-    <header className="mx-auto max-w-6xl space-y-6 px-4 py-[clamp(5rem,10vw,8rem)] text-center">
+    <header className="mx-auto max-w-5xl space-y-6 px-4 py-[clamp(5rem,10vw,8rem)] text-center">
       <motion.h1
         variants={fadeIn}
         initial="hidden"
@@ -85,124 +84,53 @@ function Hero() {
         initial="hidden"
         animate="show"
         custom={1}
-        className="mx-auto max-w-3xl text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700"
+        className="mx-auto max-w-xl text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700"
       >
-        Our human experts craft bespoke websites that outperform automated tools and stand out from the crowd.
+        Hand-crafted websites built with creativity, speed and care.
       </motion.p>
       <motion.div variants={fadeIn} initial="hidden" animate="show" custom={2}>
-        <QuoteModal triggerLabel="Request a Free Quote" />
+        <QuoteModal triggerLabel="Start Your Project" />
       </motion.div>
     </header>
   )
 }
 
 function BetterThanAI() {
-  const aiListRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const el = aiListRef.current
-    if (!el) return
-
-    const root = document.documentElement
-    const body = document.body
-
-    const disablePageScroll = () => {
-      root.style.overflowY = 'hidden'
-      body.style.overflowY = 'hidden'
-    }
-    const enablePageScroll = () => {
-      root.style.overflowY = ''
-      body.style.overflowY = ''
-    }
-
-    const onWheel = (e: WheelEvent) => {
-      if (
-        e.deltaY > 0 &&
-        el.scrollTop + el.clientHeight >= el.scrollHeight
-      ) {
-        enablePageScroll()
-        const section = el.closest('section')
-        const next = section?.nextElementSibling as HTMLElement | null
-        next?.scrollIntoView({ behavior: 'smooth' })
-      }
-    }
-
-    const onScroll = () => {
-      if (el.scrollTop + el.clientHeight >= el.scrollHeight - 1) {
-        enablePageScroll()
-      }
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        const atEnd = el.scrollTop + el.clientHeight >= el.scrollHeight - 1
-        if (entry.isIntersecting && !atEnd) {
-          disablePageScroll()
-        } else {
-          enablePageScroll()
-        }
-      },
-      { rootMargin: '-50% 0px -50% 0px' }
-    )
-
-    observer.observe(el)
-    el.addEventListener('wheel', onWheel)
-    el.addEventListener('scroll', onScroll)
-
-    return () => {
-      el.removeEventListener('wheel', onWheel)
-      el.removeEventListener('scroll', onScroll)
-      observer.disconnect()
-      enablePageScroll()
-    }
-  }, [])
   return (
     <section id="against-ai" className="bg-gray-50 py-[clamp(4rem,8vw,6rem)]">
-      <div className="container mx-auto grid max-w-5xl gap-8 px-4 md:grid-cols-2">
-        <div className="space-y-4 md:sticky md:top-24 self-start">
-          <motion.h2
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            custom={0}
-            className="text-[clamp(1.5rem,3vw,2rem)] font-bold"
-          >
-            Why We Beat AI
-          </motion.h2>
-          <motion.p
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            custom={1}
-            className="max-w-md text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700"
-          >
-            Human-driven design and strategy ensure your site connects and performs beyond what any generator can do.
-          </motion.p>
-          <motion.div variants={fadeIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} custom={2}>
-            <QuoteModal triggerLabel="Start Your Project" />
-          </motion.div>
-        </div>
-        <div
-          ref={aiListRef}
-          className="no-scrollbar h-[80vh] overflow-y-auto snap-y snap-mandatory"
+      <div className="container mx-auto grid max-w-5xl gap-10 px-4 md:grid-cols-2">
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          custom={0}
+          className="space-y-4"
         >
-          {aiItems.map((item, idx) => {
-            const Icon = item.icon
+          <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold">Why We Beat AI</h2>
+          <p className="max-w-md text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700">
+            Our team delivers thoughtful design and seamless code you won’t get from automation.
+          </p>
+          <QuoteModal triggerLabel="Work with Humans" />
+        </motion.div>
+        <div className="space-y-8">
+          {aiPoints.map((point, idx) => {
+            const Icon = point.icon
             return (
               <motion.div
-                key={item.title}
+                key={point.title}
                 variants={fadeIn}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: 0.5 }}
+                viewport={{ once: true, amount: 0.3 }}
                 custom={idx}
-                className="snap-start flex min-h-[80vh] flex-col items-center justify-center space-y-3 text-center"
+                className="flex items-start gap-4"
               >
-                {Icon && <Icon className="h-12 w-12 text-[var(--color-accent)]" aria-hidden="true" />}
-                <h3 className="text-[clamp(1.1rem,2vw,1.5rem)] font-semibold">{item.title}</h3>
-                <p className="text-[clamp(0.8rem,1.2vw,0.9rem)] text-gray-700">{item.text}</p>
+                <Icon className="h-10 w-10 text-[var(--color-accent)]" aria-hidden="true" />
+                <div className="space-y-1">
+                  <h3 className="text-lg font-semibold">{point.title}</h3>
+                  <p className="text-sm text-gray-700">{point.text}</p>
+                </div>
               </motion.div>
             )
           })}
@@ -215,7 +143,7 @@ function BetterThanAI() {
 function BetterThanFirms() {
   return (
     <section id="against-firms" className="py-[clamp(4rem,8vw,6rem)]">
-      <div className="container mx-auto max-w-5xl space-y-8 px-4">
+      <div className="container mx-auto space-y-8 px-4 max-w-5xl">
         <motion.h2
           variants={fadeIn}
           initial="hidden"
@@ -227,9 +155,9 @@ function BetterThanFirms() {
           Why We Beat Other Firms
         </motion.h2>
         <div className="grid gap-6 md:grid-cols-3">
-          {firmItems.map((item, idx) => (
+          {firmPoints.map((point, idx) => (
             <motion.div
-              key={item.text}
+              key={point.img}
               variants={fadeIn}
               initial="hidden"
               whileInView="show"
@@ -237,8 +165,8 @@ function BetterThanFirms() {
               custom={idx}
               className="space-y-2 text-center"
             >
-              <Image src={item.img} alt={item.alt} width={400} height={260} className="mx-auto rounded-lg shadow-lg object-cover" />
-              <p className="text-[clamp(0.8rem,1.2vw,0.9rem)] text-gray-700">{item.text}</p>
+              <Image src={point.img} alt={point.alt} width={400} height={260} className="mx-auto rounded-lg object-cover shadow-lg" />
+              <p className="text-sm text-gray-700">{point.text}</p>
             </motion.div>
           ))}
         </div>
@@ -258,10 +186,9 @@ function FinalCTA() {
     >
       <div className="container mx-auto space-y-6 px-4">
         <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold">Ready for your next-level site?</h2>
-        <p className="mx-auto max-w-xl text-[clamp(0.9rem,1.6vw,1.125rem)]">Let our team craft a custom web presence for you.</p>
-        <QuoteModal triggerLabel="Talk with us" />
+        <p className="mx-auto max-w-xl text-[clamp(0.9rem,1.6vw,1.125rem)]">Let our experts craft a web presence that stands above the rest.</p>
+        <QuoteModal triggerLabel="Let’s Talk" />
       </div>
     </motion.section>
   )
 }
-
