@@ -3,7 +3,9 @@
 import StickyHeader from '@/components/global/Header';
 import FooterSection from '@/components/global/Footer';
 import TruthStack from '@/components/whyus/TruthStack';
+import HeroSection from '@/components/homepage/Hero';
 import { sequences, ctaCopy } from '@/content/why-us/sequences';
+import { heroWhyUs } from '@/content/why-us/hero';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { useWhyUsAnalytics } from '@/lib/hooks/useWhyUsAnalytics';
@@ -24,6 +26,7 @@ export default function WhyUsPage() {
         style={{ width: progressWidth }}
       />
       <main className="w-full overflow-x-hidden">
+        <HeroSection {...heroWhyUs} />
         {sequences.map((seq) => (
           <TruthStack key={seq.id} seq={seq} showTestimonial={seq.id === 'outcomes'} />
         ))}
