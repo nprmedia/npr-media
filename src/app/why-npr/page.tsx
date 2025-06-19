@@ -2,13 +2,35 @@
 
 import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
-import { motion } from 'framer-motion'
+import WaveDivider from '@/components/whyNpr/WaveDivider'
+import { motion, useInView } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { Ban, CheckCircle2 } from 'lucide-react'
+
+function TypingText({ text }: { text: string }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const isInView = useInView(ref, { once: true })
+  const [display, setDisplay] = useState('')
+
+  useEffect(() => {
+    if (!isInView) return
+    let i = 0
+    const id = setInterval(() => {
+      i += 1
+      setDisplay(text.slice(0, i))
+      if (i >= text.length) clearInterval(id)
+    }, 40)
+    return () => clearInterval(id)
+  }, [isInView, text])
+
+  return <div ref={ref}>{display}</div>
+}
 
 export default function WhyNprPage() {
   return (
     <section>
       <StickyHeader />
-      <main className="relative w-full overflow-x-hidden bg-white text-black space-y-32 pt-[clamp(5rem,10vw,8rem)]">
+      <main className="relative w-full overflow-x-hidden bg-gradient-to-b from-white via-white to-gray-50 text-black space-y-32 pt-[clamp(5rem,10vw,8rem)]">
         {/* SECTION 1: NPR Media vs AI */}
         <section id="vs-ai" className="relative overflow-hidden py-24">
           <div className="pointer-events-none absolute inset-0 -z-10">
@@ -28,12 +50,27 @@ export default function WhyNprPage() {
                 className="space-y-4 pr-6"
               >
                 <h2 className="text-lg font-semibold">What AI can’t do</h2>
-                <ul className="list-disc list-inside space-y-1 text-sm">
-                  <li>No strategic prioritization</li>
-                  <li>No creative foresight</li>
-                  <li>No brand context</li>
-                  <li>No performance ownership</li>
-                  <li>No ethics or accountability</li>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start gap-2">
+                    <Ban className="h-4 w-4 text-red-500" />
+                    <span>No strategic prioritization</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Ban className="h-4 w-4 text-red-500" />
+                    <span>No creative foresight</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Ban className="h-4 w-4 text-red-500" />
+                    <span>No brand context</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Ban className="h-4 w-4 text-red-500" />
+                    <span>No performance ownership</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Ban className="h-4 w-4 text-red-500" />
+                    <span>No ethics or accountability</span>
+                  </li>
                 </ul>
               </motion.div>
               <motion.div
@@ -44,16 +81,31 @@ export default function WhyNprPage() {
                 className="space-y-4 pl-6"
               >
                 <h2 className="text-lg font-semibold">How NPR delivers</h2>
-                <ul className="list-disc list-inside space-y-1 text-sm">
-                  <li>Strategic tiering based on ROI</li>
-                  <li>Behavioral conversion engineering</li>
-                  <li>Custom UX psychology per vertical</li>
-                  <li>Thought partner on growth</li>
-                  <li>Senior-level oversight—not prompts</li>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    <span>Strategic tiering based on ROI</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    <span>Behavioral conversion engineering</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    <span>Custom UX psychology per vertical</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    <span>Thought partner on growth</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    <span>Senior-level oversight—not prompts</span>
+                  </li>
                 </ul>
               </motion.div>
             </div>
-            <hr className="my-16 border-gray-200" />
+            <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
             <div className="grid gap-6 md:grid-cols-2">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -74,7 +126,7 @@ export default function WhyNprPage() {
                 <p className="font-semibold">“Our last launch doubled signups after a human-led overhaul.”</p>
               </motion.div>
             </div>
-            <hr className="my-16 border-gray-200" />
+            <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -83,12 +135,22 @@ export default function WhyNprPage() {
             >
               <div className="w-1/2 pr-4 text-sm">
                 <p className="mb-2 font-semibold">AI output</p>
-                <div className="rounded bg-gray-200 p-3">10 tips for SEO…</div>
+                <div className="rounded bg-gray-200 p-3">
+                  <TypingText text="10 tips for SEO…" />
+                </div>
               </div>
               <div className="absolute left-1/2 top-1/2 h-10 w-px -translate-y-1/2 transform bg-gray-300" />
               <div className="w-1/2 pl-4 text-sm">
                 <p className="mb-2 font-semibold">NPR Media approach</p>
-                <div className="rounded border bg-gray-50 p-3">Bold hook → stat → CTA</div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="rounded border bg-gray-50 p-3 shadow-inner"
+                >
+                  Bold hook → stat → CTA
+                </motion.div>
               </div>
             </motion.div>
             <div className="pt-8 text-center">
@@ -101,6 +163,7 @@ export default function WhyNprPage() {
             </div>
           </div>
         </section>
+        <WaveDivider className="text-gray-100" />
 
         {/* SECTION 2: NPR Media vs Other Firms */}
         <section id="vs-firms" className="relative overflow-hidden border-t border-gray-200 py-24">
@@ -112,7 +175,16 @@ export default function WhyNprPage() {
               <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">NPR Media vs Other Firms</h1>
               <p className="mt-2 text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700">Most agencies sell time. We sell outcomes.</p>
             </div>
-            <div className="space-y-6">
+            <motion.div
+              className="space-y-6"
+              variants={{
+                hidden: {},
+                show: { transition: { staggerChildren: 0.15 } },
+              }}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+            >
               {[
                 {
                   other: 'Opaque pricing',
@@ -142,10 +214,7 @@ export default function WhyNprPage() {
               ].map((row, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
                   className="grid gap-4 rounded-lg border border-gray-200 bg-white/60 p-4 shadow md:grid-cols-3"
                 >
                   <div>
@@ -162,8 +231,8 @@ export default function WhyNprPage() {
                   </div>
                 </motion.div>
               ))}
-            </div>
-            <hr className="my-16 border-gray-200" />
+            </motion.div>
+            <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
             <div className="grid gap-8 text-sm md:grid-cols-2">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -173,11 +242,23 @@ export default function WhyNprPage() {
                 className="space-y-2 rounded-lg bg-red-50/60 p-4 shadow"
               >
                 <p className="font-semibold">What other firms drag you through</p>
-                <ul className="list-disc list-inside space-y-1">
-                  <li>4-week discovery calls</li>
-                  <li>$2k wireframes</li>
-                  <li>Slow handoffs</li>
-                  <li>No CRO testing</li>
+                <ul className="space-y-1 text-sm">
+                  <li className="flex items-start gap-2">
+                    <Ban className="h-4 w-4 text-red-600" />
+                    <span>4-week discovery calls</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Ban className="h-4 w-4 text-red-600" />
+                    <span>$2k wireframes</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Ban className="h-4 w-4 text-red-600" />
+                    <span>Slow handoffs</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Ban className="h-4 w-4 text-red-600" />
+                    <span>No CRO testing</span>
+                  </li>
                 </ul>
               </motion.div>
               <motion.div
@@ -188,12 +269,27 @@ export default function WhyNprPage() {
                 className="space-y-2 rounded-lg bg-green-50/60 p-4 shadow"
               >
                 <p className="font-semibold">How we keep projects moving</p>
-                <ul className="list-disc list-inside space-y-1">
-                  <li>Production-grade homepage</li>
-                  <li>9-section CMS site</li>
-                  <li>SOP-aligned builds</li>
-                  <li>Real-time revisions</li>
-                  <li>Vercel-level hosting</li>
+                <ul className="space-y-1 text-sm">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    <span>Production-grade homepage</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    <span>9-section CMS site</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    <span>SOP-aligned builds</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    <span>Real-time revisions</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    <span>Vercel-level hosting</span>
+                  </li>
                 </ul>
               </motion.div>
             </div>
@@ -208,6 +304,7 @@ export default function WhyNprPage() {
             </div>
           </div>
         </section>
+        <WaveDivider flip className="text-gray-100" />
       </main>
       <FooterSection />
     </section>
