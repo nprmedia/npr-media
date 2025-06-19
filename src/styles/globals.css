@@ -13,12 +13,13 @@
   --font-grotesk: 'Space Grotesk', sans-serif;
 
   /* Brand Colors */
-  --color-bg-dark: #111827;
-  --color-card: #1e293b;
-  --color-text-light: #f1f5f9;
-  --color-accent: #e11d48;
-  --color-accent-rgb: 225, 29, 72;
-  --color-accent-dark: #be123c;
+  /* Deep indigo palette */
+  --color-bg-dark: #0e172a;
+  --color-card: #19233b;
+  --color-text-light: #f8fafc;
+  --color-accent: #7c3aed;
+  --color-accent-rgb: 124, 58, 237;
+  --color-accent-dark: #5b21b6;
 
   /* Neutral Palette */
   --color-gray-300: #cbd5e1;
