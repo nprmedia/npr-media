@@ -14,8 +14,8 @@ export default function WhyNprPage() {
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 opacity-30 blur-3xl" />
           </div>
-          <div className="container mx-auto max-w-6xl px-4">
-            <div className="mb-12 text-center">
+          <div className="container mx-auto max-w-6xl space-y-16 px-4">
+            <div className="text-center">
               <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">NPR Media vs AI</h1>
               <p className="mt-2 text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700">AI doesn’t think. It predicts. We build from principle, not probability.</p>
             </div>
@@ -53,7 +53,8 @@ export default function WhyNprPage() {
                 </ul>
               </motion.div>
             </div>
-            <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <hr className="my-16 border-gray-200" />
+            <div className="grid gap-6 md:grid-cols-2">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -73,6 +74,7 @@ export default function WhyNprPage() {
                 <p className="font-semibold">“Our last launch doubled signups after a human-led overhaul.”</p>
               </motion.div>
             </div>
+            <hr className="my-16 border-gray-200" />
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -105,8 +107,8 @@ export default function WhyNprPage() {
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute bottom-0 right-1/2 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-r from-blue-500 via-teal-400 to-green-300 opacity-30 blur-3xl" />
           </div>
-          <div className="container mx-auto max-w-6xl px-4">
-            <div className="mb-12 text-center">
+          <div className="container mx-auto max-w-6xl space-y-16 px-4">
+            <div className="text-center">
               <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">NPR Media vs Other Firms</h1>
               <p className="mt-2 text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700">Most agencies sell time. We sell outcomes.</p>
             </div>
@@ -148,18 +150,29 @@ export default function WhyNprPage() {
                 </tbody>
               </table>
             </div>
-            <div className="mt-10 space-y-4 text-sm">
-              <p>Typical agency bloat: 4-week discovery calls, $2k wireframes, slow handoffs, no CRO testing.</p>
-              <p className="font-semibold">Our delivery stack:</p>
-              <ul className="list-disc list-inside">
-                <li>Production-grade homepage</li>
-                <li>9-section CMS site</li>
-                <li>SOP-aligned builds</li>
-                <li>Real-time revisions</li>
-                <li>Vercel-level hosting</li>
-              </ul>
-              <p className="font-semibold italic">“94% of our clients switch from other firms—and never go back.”</p>
+            <hr className="my-16 border-gray-200" />
+            <div className="grid gap-8 text-sm md:grid-cols-2">
+              <div className="space-y-2">
+                <p className="font-semibold">Typical agency bloat:</p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>4-week discovery calls</li>
+                  <li>$2k wireframes</li>
+                  <li>Slow handoffs</li>
+                  <li>No CRO testing</li>
+                </ul>
+              </div>
+              <div className="space-y-2">
+                <p className="font-semibold">Our delivery stack:</p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Production-grade homepage</li>
+                  <li>9-section CMS site</li>
+                  <li>SOP-aligned builds</li>
+                  <li>Real-time revisions</li>
+                  <li>Vercel-level hosting</li>
+                </ul>
+              </div>
             </div>
+            <p className="mt-8 text-center text-sm font-semibold italic">“94% of our clients switch from other firms—and never go back.”</p>
             <div className="pt-8 text-center">
               <a
                 href="/about"
