@@ -37,9 +37,10 @@ export default function WhyNprPage() {
             <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 opacity-30 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl space-y-16 px-4">
-            <div className="text-center">
-              <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">NPR Media vs AI</h1>
-              <p className="mt-2 text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700">AI doesn’t think. It predicts. We build from principle, not probability.</p>
+            <div className="text-center space-y-4">
+              <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">AI Guesswork vs Human Strategy</h1>
+              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700">AI doesn’t think. It predicts. That leaves you with generic output and zero accountability.</p>
+              <p className="mx-auto max-w-xl text-sm text-gray-700">We craft every build from principle, not probability, owning the performance from concept to launch.</p>
             </div>
             <div className="relative grid gap-10 md:grid-cols-[1fr_auto_1fr]">
               <motion.div
@@ -106,6 +107,9 @@ export default function WhyNprPage() {
                 </ul>
               </motion.div>
             </div>
+            <p className="mx-auto mt-6 max-w-xl text-center text-sm text-gray-600">
+              Leaving growth to algorithms leads to cookie-cutter results. Our strategists own every outcome from start to finish.
+            </p>
             <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
             <div className="grid gap-6 md:grid-cols-2">
               <motion.div
@@ -175,9 +179,10 @@ export default function WhyNprPage() {
             <div className="absolute bottom-0 right-1/2 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-r from-blue-500 via-teal-400 to-green-300 opacity-30 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl space-y-16 px-4">
-            <div className="text-center">
-              <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">NPR Media vs Other Firms</h1>
-              <p className="mt-2 text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700">Most agencies sell time. We sell outcomes.</p>
+            <div className="text-center space-y-4">
+              <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">Agency Bloat vs NPR Media</h1>
+              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700">Most agencies sell time. We sell outcomes.</p>
+              <p className="mx-auto max-w-xl text-sm text-gray-700">Big shops pad projects with junior talent and endless steps. Our senior strike team ships fast and owns the metrics.</p>
             </div>
             <motion.div
               className="space-y-6"
