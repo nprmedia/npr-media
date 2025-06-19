@@ -11,20 +11,19 @@ interface StackProps {
 
 export default function TruthStack({ seq, showTestimonial }: StackProps) {
   const ref = useRef<HTMLDivElement>(null);
-  // Start the scroll progress when the stack enters the viewport from the bottom
-  // and finish when its center aligns with the screen center so the final card
-  // is perfectly positioned at that point.
+  // Start animating once the stack's top hits the bottom of the viewport and
+  // finish when the card row first aligns with the viewport center. The row is
+  // centered at that moment because the sticky container pins it there.
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'center center'],
+    offset: ['start end', 'start start'],
   });
 
-  // Animate each card sequentially so the third card finishes sliding when the
-  // stack reaches the center of the viewport.
-  const card1X = useTransform(scrollYProgress, [0, 0.33], ['0%', '-100%']);
-  // Card two should stop moving once centered so visitors can read it
-  const card2X = useTransform(scrollYProgress, [0, 0.33, 0.66], ['100%', '0%', '0%']);
-  const card3X = useTransform(scrollYProgress, [0.66, 1], ['100%', '0%']);
+  // Animate each card sequentially so the last card completes its slide as soon
+  // as the row is centered on screen.
+  const card1X = useTransform(scrollYProgress, [0, 0.25], ['0%', '-100%']);
+  const card2X = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.625], ['100%', '0%', '0%', '-100%']);
+  const card3X = useTransform(scrollYProgress, [0.5, 0.625], ['100%', '0%']);
 
   return (
     <div ref={ref} className="relative h-[220vh]">
