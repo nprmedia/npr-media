@@ -1,8 +1,6 @@
 'use client'
 
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const slides = [
   'Strategic tiering based on ROI',
@@ -13,42 +11,25 @@ const slides = [
 ]
 
 export default function NprCarousel() {
-  const [index, setIndex] = useState(0)
-
-  const next = () => setIndex((index + 1) % slides.length)
-  const prev = () => setIndex((index - 1 + slides.length) % slides.length)
-
   return (
-    <div className="relative mx-auto flex max-w-md flex-col items-center justify-center space-y-4">
-      <div className="relative h-40 w-full overflow-hidden">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={index}
+    <div className="h-screen overflow-hidden">
+      <div className="flex h-full snap-x snap-mandatory overflow-x-scroll scroll-smooth">
+        {slides.map((title) => (
+          <motion.section
+            key={title}
             initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -40 }}
-            transition={{ duration: 0.4 }}
-            className="absolute inset-0 flex items-center justify-center text-center"
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex min-h-screen min-w-full flex-col items-center justify-center snap-center space-y-4 bg-white px-6 text-center"
           >
-            <h2 className="text-2xl font-bold">{slides[index]}</h2>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-      <div className="flex items-center gap-4">
-        <button
-          aria-label="Previous"
-          onClick={prev}
-          className="rounded-full bg-gray-200 p-2 hover:bg-gray-300"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-        <button
-          aria-label="Next"
-          onClick={next}
-          className="rounded-full bg-gray-200 p-2 hover:bg-gray-300"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
+            <h2 className="text-2xl font-bold">{title}</h2>
+            <ul className="list-disc space-y-1 pl-5 text-left text-sm">
+              <li>Subpoint 1</li>
+              <li>Subpoint 2</li>
+              <li>Subpoint 3</li>
+            </ul>
+          </motion.section>
+        ))}
       </div>
     </div>
   )
