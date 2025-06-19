@@ -15,12 +15,12 @@ export default function TruthStack({ seq, showTestimonial }: StackProps) {
 
   const card1X = useTransform(scrollYProgress, [0, 0.33], ['0%', '-120%']);
   const card2X = useTransform(scrollYProgress, [0, 0.33, 0.66], ['100%', '0%', '-120%']);
-  // Finish the third card animation slightly earlier so the card is
-  // completely visible while centered on screen
-  const card3X = useTransform(scrollYProgress, [0.66, 0.8], ['100%', '0%']);
+  // Finish the third card animation earlier so the card is fully visible
+  // once its center aligns with the center of the viewport
+  const card3X = useTransform(scrollYProgress, [0.66, 0.75], ['100%', '0%']);
 
   return (
-    <div ref={ref} className="relative h-[220vh]">
+    <div ref={ref} className="relative h-[240vh]">
       <div className="sticky top-0 flex h-screen items-center justify-center">
         <div className="relative h-[80vh] w-full max-w-md">
           <motion.div
