@@ -13,13 +13,11 @@ export default function TruthStack({ seq, showTestimonial }: StackProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
 
-  const card1X = useTransform(scrollYProgress, [0, 0.33], ['0%', '-120%']);
-  // Move the second card offscreen a bit sooner so the last card animation can
-  // complete while still centered in the viewport.
-  const card2X = useTransform(scrollYProgress, [0, 0.33, 0.52], ['100%', '0%', '-120%']);
-  // Finish the third card animation by the time the stack's center reaches the
-  // middle of the screen so users can fully read the text.
-  const card3X = useTransform(scrollYProgress, [0.52, 0.58], ['100%', '0%']);
+  // Compress the timing so the final card settles while the stack's center
+  // aligns with the middle of the viewport.
+  const card1X = useTransform(scrollYProgress, [0, 0.12], ['0%', '-120%']);
+  const card2X = useTransform(scrollYProgress, [0, 0.12, 0.24], ['100%', '0%', '-120%']);
+  const card3X = useTransform(scrollYProgress, [0.24, 0.29], ['100%', '0%']);
 
   return (
     <div ref={ref} className="relative h-[240vh]">
