@@ -5,9 +5,10 @@ import FooterSection from '@/components/global/Footer'
 import WaveDivider from '@/components/whyNpr/WaveDivider'
 import AiCarousel from '@/components/whyNpr/AiCarousel'
 import NprCarousel from '@/components/whyNpr/NprCarousel'
+import FirmCarousel from '@/components/whyNpr/FirmCarousel'
 import { motion, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
-import { Ban, CheckCircle2, ArrowRight } from 'lucide-react'
+import { Ban, CheckCircle2 } from 'lucide-react'
 
 function TypingText({ text }: { text: string }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -143,63 +144,11 @@ export default function WhyNprPage() {
               <p className="mx-auto max-w-xl text-sm text-gray-700">Big shops pad projects with junior talent and endless steps. Our senior strike team ships fast and owns the metrics.</p>
             </div>
             <motion.div
-              className="space-y-6"
-              variants={{
-                hidden: {},
-                show: { transition: { staggerChildren: 0.15 } },
-              }}
-              initial="hidden"
-              whileInView="show"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              {[
-                {
-                  other: 'Opaque pricing',
-                  npr: 'Clear fixed rates',
-                  gain: 'Budget certainty',
-                },
-                {
-                  other: 'Junior talent',
-                  npr: 'Senior creators',
-                  gain: 'Expert execution',
-                },
-                {
-                  other: 'Design-only focus',
-                  npr: 'Strategic copy + UX',
-                  gain: 'Higher conversions',
-                },
-                {
-                  other: 'Slow handoffs',
-                  npr: 'Full stack dev',
-                  gain: 'Faster launches',
-                },
-                {
-                  other: 'No CRO testing',
-                  npr: 'Behavioral UX',
-                  gain: 'Data-driven wins',
-                },
-              ].map((row, i) => (
-                <motion.div
-                  key={i}
-                  variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
-                  className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4 rounded-lg border border-[var(--color-gray-700)] bg-[var(--color-card)]/60 p-4 shadow text-[var(--color-text-light)]"
-                >
-                  <div>
-                    <p className="text-xs font-semibold text-gray-600">Other Firms</p>
-                    <p className="text-sm">{row.other}</p>
-                  </div>
-                  <ArrowRight className="mx-auto text-gray-400" />
-                  <div>
-                    <p className="text-xs font-semibold text-gray-600">NPR Media</p>
-                    <p className="text-sm">{row.npr}</p>
-                  </div>
-                  <ArrowRight className="mx-auto text-gray-400" />
-                  <div>
-                    <p className="text-xs font-semibold text-gray-600">Your Gain</p>
-                    <p className="text-sm">{row.gain}</p>
-                  </div>
-                </motion.div>
-              ))}
+              <FirmCarousel />
             </motion.div>
             <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
             <div className="grid gap-8 text-sm md:grid-cols-2">
