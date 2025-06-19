@@ -5,7 +5,7 @@ import FooterSection from '@/components/global/Footer'
 import WaveDivider from '@/components/whyNpr/WaveDivider'
 import { motion, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
-import { Ban, CheckCircle2 } from 'lucide-react'
+import { Ban, CheckCircle2, ArrowRight } from 'lucide-react'
 
 function TypingText({ text }: { text: string }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -41,13 +41,13 @@ export default function WhyNprPage() {
               <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">NPR Media vs AI</h1>
               <p className="mt-2 text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700">AI doesn’t think. It predicts. We build from principle, not probability.</p>
             </div>
-            <div className="grid gap-10 md:grid-cols-2 md:divide-x md:divide-gray-300">
+            <div className="relative grid gap-10 md:grid-cols-[1fr_auto_1fr]">
               <motion.div
                 initial={{ x: -60, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="space-y-4 pr-6"
+                className="space-y-4 md:pr-6"
               >
                 <h2 className="text-lg font-semibold">What AI can’t do</h2>
                 <ul className="space-y-2 text-sm">
@@ -73,12 +73,13 @@ export default function WhyNprPage() {
                   </li>
                 </ul>
               </motion.div>
+              <ArrowRight className="mx-auto hidden h-6 w-6 self-center text-gray-400 md:block" />
               <motion.div
                 initial={{ x: 60, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="space-y-4 pl-6"
+                className="space-y-4 md:pl-6"
               >
                 <h2 className="text-lg font-semibold">How NPR delivers</h2>
                 <ul className="space-y-2 text-sm">
@@ -161,6 +162,9 @@ export default function WhyNprPage() {
                 Don’t get AI’d. Get outcomes.
               </a>
             </div>
+            <p className="mt-10 text-center text-sm font-semibold text-gray-600">
+              Next, see how we outperform typical agencies.
+            </p>
           </div>
         </section>
         <WaveDivider className="text-gray-100" />
@@ -215,16 +219,18 @@ export default function WhyNprPage() {
                 <motion.div
                   key={i}
                   variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
-                  className="grid gap-4 rounded-lg border border-gray-200 bg-white/60 p-4 shadow md:grid-cols-3"
+                  className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4 rounded-lg border border-gray-200 bg-white/60 p-4 shadow"
                 >
                   <div>
                     <p className="text-xs font-semibold text-gray-600">Other Firms</p>
                     <p className="text-sm">{row.other}</p>
                   </div>
+                  <ArrowRight className="mx-auto text-gray-400" />
                   <div>
                     <p className="text-xs font-semibold text-gray-600">NPR Media</p>
                     <p className="text-sm">{row.npr}</p>
                   </div>
+                  <ArrowRight className="mx-auto text-gray-400" />
                   <div>
                     <p className="text-xs font-semibold text-gray-600">Your Gain</p>
                     <p className="text-sm">{row.gain}</p>
