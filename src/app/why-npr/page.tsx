@@ -112,57 +112,82 @@ export default function WhyNprPage() {
               <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">NPR Media vs Other Firms</h1>
               <p className="mt-2 text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700">Most agencies sell time. We sell outcomes.</p>
             </div>
-            <div className="overflow-x-auto">
-              <table className="w-full border-separate border-spacing-x-0 text-sm md:border-spacing-x-6">
-                <thead>
-                  <tr className="text-left text-gray-600">
-                    <th className="pb-2">Others</th>
-                    <th className="pb-2">NPR Media</th>
-                    <th className="pb-2">Your Gain</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-300">
-                  <tr>
-                    <td className="py-3">Opaque pricing</td>
-                    <td className="py-3">Clear fixed rates</td>
-                    <td className="py-3">Budget certainty</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3">Junior talent</td>
-                    <td className="py-3">Senior creators</td>
-                    <td className="py-3">Expert execution</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3">Design-only focus</td>
-                    <td className="py-3">Strategic copy + UX</td>
-                    <td className="py-3">Higher conversions</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3">Slow handoffs</td>
-                    <td className="py-3">Full stack dev</td>
-                    <td className="py-3">Faster launches</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3">No CRO testing</td>
-                    <td className="py-3">Behavioral UX</td>
-                    <td className="py-3">Data-driven wins</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div className="space-y-6">
+              {[
+                {
+                  other: 'Opaque pricing',
+                  npr: 'Clear fixed rates',
+                  gain: 'Budget certainty',
+                },
+                {
+                  other: 'Junior talent',
+                  npr: 'Senior creators',
+                  gain: 'Expert execution',
+                },
+                {
+                  other: 'Design-only focus',
+                  npr: 'Strategic copy + UX',
+                  gain: 'Higher conversions',
+                },
+                {
+                  other: 'Slow handoffs',
+                  npr: 'Full stack dev',
+                  gain: 'Faster launches',
+                },
+                {
+                  other: 'No CRO testing',
+                  npr: 'Behavioral UX',
+                  gain: 'Data-driven wins',
+                },
+              ].map((row, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  className="grid gap-4 rounded-lg border border-gray-200 bg-white/60 p-4 shadow md:grid-cols-3"
+                >
+                  <div>
+                    <p className="text-xs font-semibold text-gray-600">Other Firms</p>
+                    <p className="text-sm">{row.other}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-gray-600">NPR Media</p>
+                    <p className="text-sm">{row.npr}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-gray-600">Your Gain</p>
+                    <p className="text-sm">{row.gain}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
             <hr className="my-16 border-gray-200" />
             <div className="grid gap-8 text-sm md:grid-cols-2">
-              <div className="space-y-2">
-                <p className="font-semibold">Typical agency bloat:</p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="space-y-2 rounded-lg bg-red-50/60 p-4 shadow"
+              >
+                <p className="font-semibold">What other firms drag you through</p>
                 <ul className="list-disc list-inside space-y-1">
                   <li>4-week discovery calls</li>
                   <li>$2k wireframes</li>
                   <li>Slow handoffs</li>
                   <li>No CRO testing</li>
                 </ul>
-              </div>
-              <div className="space-y-2">
-                <p className="font-semibold">Our delivery stack:</p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="space-y-2 rounded-lg bg-green-50/60 p-4 shadow"
+              >
+                <p className="font-semibold">How we keep projects moving</p>
                 <ul className="list-disc list-inside space-y-1">
                   <li>Production-grade homepage</li>
                   <li>9-section CMS site</li>
@@ -170,7 +195,7 @@ export default function WhyNprPage() {
                   <li>Real-time revisions</li>
                   <li>Vercel-level hosting</li>
                 </ul>
-              </div>
+              </motion.div>
             </div>
             <p className="mt-8 text-center text-sm font-semibold italic">“94% of our clients switch from other firms—and never go back.”</p>
             <div className="pt-8 text-center">
