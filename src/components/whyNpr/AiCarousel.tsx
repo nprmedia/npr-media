@@ -22,6 +22,10 @@ export default function AiCarousel() {
     if (!container) return
     const threshold = 120
     const onWheel = (e: WheelEvent) => {
+      if (index === aiSlides.length - 1 && e.deltaY > 0) {
+        // release scroll on last slide
+        return
+      }
       e.preventDefault()
       if (isMoving.current) return
       deltaRef.current += e.deltaY
@@ -54,14 +58,16 @@ export default function AiCarousel() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex min-h-screen flex-col items-center justify-center snap-start space-y-4 bg-white px-6 text-center"
+            className="flex min-h-screen items-center justify-center snap-start"
           >
-            <h2 className="text-2xl font-bold">{title}</h2>
-            <ul className="list-disc space-y-1 pl-5 text-left text-sm">
-              <li>Subpoint 1</li>
-              <li>Subpoint 2</li>
-              <li>Subpoint 3</li>
-            </ul>
+            <div className="mx-auto w-[clamp(16rem,40vw,22rem)] space-y-4 rounded-lg bg-white p-6 text-center text-black shadow-lg">
+              <h2 className="text-2xl font-bold">{title}</h2>
+              <ul className="list-disc space-y-1 pl-5 text-left text-sm">
+                <li>Subpoint 1</li>
+                <li>Subpoint 2</li>
+                <li>Subpoint 3</li>
+              </ul>
+            </div>
           </motion.section>
         ))}
       </div>
