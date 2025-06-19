@@ -3,7 +3,8 @@
 import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
 import WaveDivider from '@/components/whyNpr/WaveDivider'
-import AiVsNprCarousel from '@/components/whyNpr/AiVsNprCarousel'
+import AiCarousel from '@/components/whyNpr/AiCarousel'
+import NprCarousel from '@/components/whyNpr/NprCarousel'
 import { motion, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { Ban, CheckCircle2, ArrowRight } from 'lucide-react'
@@ -50,7 +51,18 @@ export default function WhyNprPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <AiVsNprCarousel />
+                <AiCarousel />
+              </motion.div>
+              <div className="py-12 text-center">
+                <h2 className="text-2xl font-bold">How NPR Media Delivers</h2>
+              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <NprCarousel />
               </motion.div>
             </div>
             <p className="mx-auto mt-6 max-w-xl text-center text-sm text-gray-600">
