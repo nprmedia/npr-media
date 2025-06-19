@@ -22,7 +22,8 @@ export default function TruthStack({ seq, showTestimonial }: StackProps) {
   // Animate each card sequentially so the third card finishes sliding when the
   // stack reaches the center of the viewport.
   const card1X = useTransform(scrollYProgress, [0, 0.33], ['0%', '-120%']);
-  const card2X = useTransform(scrollYProgress, [0, 0.33, 0.66], ['100%', '0%', '-120%']);
+  // Card two should stop moving once centered so visitors can read it
+  const card2X = useTransform(scrollYProgress, [0, 0.33, 0.66], ['100%', '0%', '0%']);
   const card3X = useTransform(scrollYProgress, [0.66, 1], ['100%', '0%']);
 
   return (
