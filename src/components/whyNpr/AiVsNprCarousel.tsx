@@ -38,6 +38,15 @@ export default function AiVsNprCarousel() {
             </ul>
           </motion.section>
         ))}
+        <motion.section
+          key="npr-header"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex min-h-screen flex-col items-center justify-center snap-start px-6 text-center space-y-4 bg-gray-50"
+        >
+          <h2 className="text-2xl font-bold">How NPR Media Delivers</h2>
+        </motion.section>
         {nprSlides.map((title) => (
           <motion.section
             key={title}
