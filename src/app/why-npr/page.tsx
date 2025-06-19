@@ -3,7 +3,7 @@
 import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
 import WaveDivider from '@/components/whyNpr/WaveDivider'
-import AiLimitationsCarousel from '@/components/whyNpr/AiLimitationsCarousel'
+import AiVsNprCarousel from '@/components/whyNpr/AiVsNprCarousel'
 import { motion, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { Ban, CheckCircle2, ArrowRight } from 'lucide-react'
@@ -43,48 +43,14 @@ export default function WhyNprPage() {
               <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700">AI doesn’t think. It predicts. That leaves you with generic output and zero accountability.</p>
               <p className="mx-auto max-w-xl text-sm text-gray-700">We craft every build from principle, not probability, owning the performance from concept to launch.</p>
             </div>
-            <div className="relative grid gap-10 md:grid-cols-[1fr_auto_1fr]">
+            <div className="relative">
               <motion.div
-                initial={{ x: -60, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="md:pr-6"
               >
-                <h2 className="mb-4 text-lg font-semibold">What AI can’t do</h2>
-                <AiLimitationsCarousel />
-              </motion.div>
-              <ArrowRight className="mx-auto hidden h-6 w-6 self-center text-gray-400 md:block" />
-              <motion.div
-                initial={{ x: 60, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="space-y-4 md:pl-6"
-              >
-                <h2 className="text-lg font-semibold">How NPR delivers</h2>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-600" />
-                    <span>Strategic tiering based on ROI</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-600" />
-                    <span>Behavioral conversion engineering</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-600" />
-                    <span>Custom UX psychology per vertical</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-600" />
-                    <span>Thought partner on growth</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-600" />
-                    <span>Senior-level oversight—not prompts</span>
-                  </li>
-                </ul>
+                <AiVsNprCarousel />
               </motion.div>
             </div>
             <p className="mx-auto mt-6 max-w-xl text-center text-sm text-gray-600">
