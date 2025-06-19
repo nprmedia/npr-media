@@ -32,11 +32,11 @@ export default function WhyNprPage() {
   return (
     <section>
       <StickyHeader />
-      <main className="relative w-full overflow-x-hidden bg-gradient-to-b from-white via-white to-gray-50 text-black space-y-32 pt-[clamp(5rem,10vw,8rem)]">
+      <main className="relative w-full overflow-x-hidden bg-white text-black space-y-32 pt-[clamp(5rem,10vw,8rem)]">
         {/* SECTION 1: NPR Media vs AI */}
-        <section id="vs-ai" className="relative overflow-hidden py-24 bg-purple-50/40">
+        <section id="vs-ai" className="relative overflow-hidden py-24 bg-[var(--color-bg-dark)] text-[var(--color-text-light)]">
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 opacity-30 blur-3xl" />
+            <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] opacity-30 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl space-y-16 px-4">
             <div className="text-center space-y-4">
@@ -75,7 +75,7 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="rounded-lg bg-gray-50 p-4 shadow"
+                className="rounded-lg bg-[var(--color-card)] p-4 shadow text-[var(--color-text-light)]"
               >
                 <p className="font-semibold">“Client X wouldn’t exist if we used AI.”</p>
               </motion.div>
@@ -84,7 +84,7 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="rounded-lg bg-gray-50 p-4 shadow"
+                className="rounded-lg bg-[var(--color-card)] p-4 shadow text-[var(--color-text-light)]"
               >
                 <p className="font-semibold">“Our last launch doubled signups after a human-led overhaul.”</p>
               </motion.div>
@@ -94,15 +94,15 @@ export default function WhyNprPage() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="relative mt-12 flex items-start justify-center rounded-xl bg-white p-6 shadow-lg md:p-8"
+              className="relative mt-12 flex items-start justify-center rounded-xl bg-[var(--color-card)] p-6 shadow-lg text-[var(--color-text-light)] md:p-8"
             >
               <div className="w-1/2 pr-4 text-sm">
                 <p className="mb-2 font-semibold">AI output</p>
-                <div className="rounded bg-gray-200 p-3">
+                <div className="rounded bg-[var(--color-gray-600)] p-3 text-[var(--color-text-light)]">
                   <TypingText text="10 tips for SEO…" />
                 </div>
               </div>
-              <div className="absolute left-1/2 top-1/2 h-10 w-px -translate-y-1/2 transform bg-gray-300" />
+              <div className="absolute left-1/2 top-1/2 h-10 w-px -translate-y-1/2 transform bg-[var(--color-gray-600)]" />
               <div className="w-1/2 pl-4 text-sm">
                 <p className="mb-2 font-semibold">NPR Media approach</p>
                 <motion.div
@@ -110,7 +110,7 @@ export default function WhyNprPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className="rounded border bg-gray-50 p-3 shadow-inner"
+                  className="rounded border border-[var(--color-gray-700)] bg-[var(--color-card)] p-3 shadow-inner text-[var(--color-text-light)]"
                 >
                   Bold hook → stat → CTA
                 </motion.div>
@@ -129,12 +129,12 @@ export default function WhyNprPage() {
             </p>
           </div>
         </section>
-        <WaveDivider className="text-gray-100" />
+        <WaveDivider className="text-[var(--color-bg-dark)]" />
 
         {/* SECTION 2: NPR Media vs Other Firms */}
-        <section id="vs-firms" className="relative overflow-hidden border-t border-gray-200 py-24 bg-blue-50/40">
+        <section id="vs-firms" className="relative overflow-hidden border-t border-gray-200 py-24 bg-[var(--color-bg-dark)] text-[var(--color-text-light)]">
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute bottom-0 right-1/2 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-r from-blue-500 via-teal-400 to-green-300 opacity-30 blur-3xl" />
+            <div className="absolute bottom-0 right-1/2 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] opacity-30 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl space-y-16 px-4">
             <div className="text-center space-y-4">
@@ -182,7 +182,7 @@ export default function WhyNprPage() {
                 <motion.div
                   key={i}
                   variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
-                  className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4 rounded-lg border border-gray-200 bg-white/60 p-4 shadow"
+                  className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4 rounded-lg border border-[var(--color-gray-700)] bg-[var(--color-card)]/60 p-4 shadow text-[var(--color-text-light)]"
                 >
                   <div>
                     <p className="text-xs font-semibold text-gray-600">Other Firms</p>
@@ -208,24 +208,24 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="space-y-2 rounded-lg bg-red-50/60 p-4 shadow"
+                className="space-y-2 rounded-lg bg-[var(--color-card)] p-4 shadow text-[var(--color-text-light)]"
               >
                 <p className="font-semibold">What other firms drag you through</p>
                 <ul className="space-y-1 text-sm">
                   <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-red-600" />
+                    <Ban className="h-4 w-4 text-[var(--color-accent)]" />
                     <span>4-week discovery calls</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-red-600" />
+                    <Ban className="h-4 w-4 text-[var(--color-accent)]" />
                     <span>$2k wireframes</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-red-600" />
+                    <Ban className="h-4 w-4 text-[var(--color-accent)]" />
                     <span>Slow handoffs</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-red-600" />
+                    <Ban className="h-4 w-4 text-[var(--color-accent)]" />
                     <span>No CRO testing</span>
                   </li>
                 </ul>
@@ -235,28 +235,28 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="space-y-2 rounded-lg bg-green-50/60 p-4 shadow"
+                className="space-y-2 rounded-lg bg-[var(--color-card)] p-4 shadow text-[var(--color-text-light)]"
               >
                 <p className="font-semibold">How we keep projects moving</p>
                 <ul className="space-y-1 text-sm">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    <CheckCircle2 className="h-4 w-4 text-[var(--color-accent)]" />
                     <span>Production-grade homepage</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    <CheckCircle2 className="h-4 w-4 text-[var(--color-accent)]" />
                     <span>9-section CMS site</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    <CheckCircle2 className="h-4 w-4 text-[var(--color-accent)]" />
                     <span>SOP-aligned builds</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    <CheckCircle2 className="h-4 w-4 text-[var(--color-accent)]" />
                     <span>Real-time revisions</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    <CheckCircle2 className="h-4 w-4 text-[var(--color-accent)]" />
                     <span>Vercel-level hosting</span>
                   </li>
                 </ul>
@@ -273,7 +273,7 @@ export default function WhyNprPage() {
             </div>
           </div>
         </section>
-        <WaveDivider flip className="text-gray-100" />
+        <WaveDivider flip className="text-[var(--color-bg-dark)]" />
       </main>
       <FooterSection />
     </section>
