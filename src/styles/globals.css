@@ -63,6 +63,15 @@ img {
   display: block;
 }
 
+/* Utility to hide scrollbars */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Font rendering optimization */
 * {
   -webkit-font-smoothing: antialiased;

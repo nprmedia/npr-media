@@ -15,14 +15,19 @@ export default function AiCarousel() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [index, setIndex] = useState(0)
   const isMoving = useRef(false)
+  const deltaRef = useRef(0)
 
   useEffect(() => {
     const container = containerRef.current
     if (!container) return
+    const threshold = 120
     const onWheel = (e: WheelEvent) => {
       e.preventDefault()
       if (isMoving.current) return
-      const dir = e.deltaY > 0 ? 1 : -1
+      deltaRef.current += e.deltaY
+      if (Math.abs(deltaRef.current) < threshold) return
+      const dir = deltaRef.current > 0 ? 1 : -1
+      deltaRef.current = 0
       const next = Math.max(0, Math.min(aiSlides.length - 1, index + dir))
       if (next === index) return
       isMoving.current = true
@@ -31,7 +36,7 @@ export default function AiCarousel() {
       child.scrollIntoView({ behavior: 'smooth', block: 'start' })
       setTimeout(() => {
         isMoving.current = false
-      }, 500)
+      }, 750)
     }
     container.addEventListener('wheel', onWheel, { passive: false })
     return () => container.removeEventListener('wheel', onWheel)
@@ -41,7 +46,7 @@ export default function AiCarousel() {
     <div className="h-screen overflow-hidden">
       <div
         ref={containerRef}
-        className="h-full snap-y snap-mandatory overflow-y-scroll scroll-smooth"
+        className="h-full snap-y snap-mandatory overflow-y-scroll scroll-smooth no-scrollbar"
       >
         {aiSlides.map((title) => (
           <motion.section
