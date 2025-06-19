@@ -3,6 +3,7 @@
 import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
 import WaveDivider from '@/components/whyNpr/WaveDivider'
+import AiLimitationsCarousel from '@/components/whyNpr/AiLimitationsCarousel'
 import { motion, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { Ban, CheckCircle2, ArrowRight } from 'lucide-react'
@@ -48,31 +49,10 @@ export default function WhyNprPage() {
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="space-y-4 md:pr-6"
+                className="md:pr-6"
               >
-                <h2 className="text-lg font-semibold">What AI can’t do</h2>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-red-500" />
-                    <span>No strategic prioritization</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-red-500" />
-                    <span>No creative foresight</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-red-500" />
-                    <span>No brand context</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-red-500" />
-                    <span>No performance ownership</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-red-500" />
-                    <span>No ethics or accountability</span>
-                  </li>
-                </ul>
+                <h2 className="mb-4 text-lg font-semibold">What AI can’t do</h2>
+                <AiLimitationsCarousel />
               </motion.div>
               <ArrowRight className="mx-auto hidden h-6 w-6 self-center text-gray-400 md:block" />
               <motion.div
