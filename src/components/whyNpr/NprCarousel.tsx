@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 
 const slides = [
   'Strategic tiering based on ROI',
@@ -11,9 +12,37 @@ const slides = [
 ]
 
 export default function NprCarousel() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [index, setIndex] = useState(0)
+  const isMoving = useRef(false)
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault()
+      if (isMoving.current) return
+      const dir = e.deltaY > 0 || e.deltaX > 0 ? 1 : -1
+      const next = Math.max(0, Math.min(slides.length - 1, index + dir))
+      if (next === index) return
+      isMoving.current = true
+      setIndex(next)
+      const child = container.children[next] as HTMLElement
+      child.scrollIntoView({ behavior: 'smooth', inline: 'start' })
+      setTimeout(() => {
+        isMoving.current = false
+      }, 500)
+    }
+    container.addEventListener('wheel', onWheel, { passive: false })
+    return () => container.removeEventListener('wheel', onWheel)
+  }, [index])
+
   return (
     <div className="h-screen overflow-hidden">
-      <div className="flex h-full snap-x snap-mandatory overflow-x-scroll scroll-smooth">
+      <div
+        ref={containerRef}
+        className="flex h-full snap-x snap-mandatory overflow-x-scroll scroll-smooth"
+      >
         {slides.map((title) => (
           <motion.section
             key={title}
