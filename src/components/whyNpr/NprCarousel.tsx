@@ -59,7 +59,7 @@ export default function NprCarousel() {
             viewport={{ once: true }}
             className="flex min-h-screen min-w-full items-center justify-center snap-center"
           >
-            <div className="mx-auto w-[clamp(16rem,40vw,22rem)] space-y-4 rounded-lg bg-white p-6 text-center text-black shadow-lg">
+            <div className="mx-auto w-[clamp(16rem,40vw,22rem)] space-y-4 rounded-lg bg-gradient-to-br from-indigo-800 to-purple-700 p-6 text-center text-gray-100 shadow-lg ring-1 ring-white/10">
               <h2 className="text-2xl font-bold">{title}</h2>
               <ul className="list-disc space-y-1 pl-5 text-left text-sm">
                 <li>Subpoint 1</li>

@@ -80,7 +80,7 @@ export default function FirmCarousel() {
             viewport={{ once: true }}
             className="flex min-h-screen items-center justify-center snap-start"
           >
-            <div className="mx-auto w-[clamp(18rem,60vw,28rem)] rounded-lg bg-white p-6 text-black shadow-lg">
+            <div className="mx-auto w-[clamp(18rem,60vw,28rem)] rounded-lg bg-gradient-to-br from-white to-gray-200 p-6 text-black shadow-lg ring-1 ring-black/5">
               <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4">
                 <div>
                   <p className="text-xs font-semibold text-gray-500">Other Firms</p>

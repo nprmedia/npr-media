@@ -37,15 +37,15 @@ export default function WhyNprPage() {
         className="relative w-full overflow-x-hidden bg-white text-gray-800 space-y-32 pt-[clamp(5rem,10vw,8rem)]"
       >
         {/* SECTION 1: NPR Media vs AI */}
-        <section id="vs-ai" className="relative overflow-hidden py-24 bg-gradient-to-r from-cyan-700 to-indigo-700 text-white">
+        <section id="vs-ai" className="relative overflow-hidden py-24 bg-gradient-to-b from-slate-900 via-indigo-900 to-sky-800 text-gray-100">
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-r from-teal-500 to-indigo-600 opacity-30 blur-3xl" />
+            <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 opacity-30 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl space-y-16 px-4">
             <div className="text-center space-y-4">
               <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">AI Guesswork vs Human Strategy</h1>
-              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-blue-200">AI doesn’t think. It predicts. That leaves you with generic output and zero accountability.</p>
-              <p className="mx-auto max-w-xl text-sm text-blue-200">We craft every build from principle, not probability, owning the performance from concept to launch.</p>
+              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-indigo-200">AI doesn’t think. It predicts. That leaves you with generic output and zero accountability.</p>
+              <p className="mx-auto max-w-xl text-sm text-indigo-200">We craft every build from principle, not probability, owning the performance from concept to launch.</p>
             </div>
             <div className="relative">
               <motion.div
@@ -68,7 +68,7 @@ export default function WhyNprPage() {
                 <NprCarousel />
               </motion.div>
             </div>
-            <p className="mx-auto mt-6 max-w-xl text-center text-sm text-blue-200">
+            <p className="mx-auto mt-6 max-w-xl text-center text-sm text-indigo-200">
               Leaving growth to algorithms leads to cookie-cutter results. Our strategists own every outcome from start to finish.
             </p>
             <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
@@ -135,9 +135,9 @@ export default function WhyNprPage() {
         <WaveDivider className="text-gray-100" />
 
         {/* SECTION 2: NPR Media vs Other Firms */}
-        <section id="vs-firms" className="relative overflow-hidden py-24 bg-gradient-to-r from-gray-50 to-gray-100 text-gray-800">
+        <section id="vs-firms" className="relative overflow-hidden py-24 bg-gradient-to-b from-gray-100 via-gray-50 to-white text-gray-800">
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute bottom-0 right-1/2 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 opacity-30 blur-3xl" />
+            <div className="absolute bottom-0 right-1/2 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-r from-pink-300 to-purple-400 opacity-30 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl space-y-16 px-4">
             <div className="text-center space-y-4">
