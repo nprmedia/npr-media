@@ -53,8 +53,17 @@ export default function WhyNprPage() {
             </div>
             <div className="space-y-12">
               <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
-                <div className="pb-8 text-center md:pb-0 md:text-left">
-                  <h2 className="text-2xl font-bold">What AI Can’t Do</h2>
+                <div className="pb-8 text-center md:pb-0 md:text-left space-y-2">
+                  <h2 className="text-2xl sm:text-3xl font-bold">What AI Can’t Do</h2>
+                  <p className="text-sm text-indigo-200">Where automation falls short</p>
+                  <div className="pt-2">
+                    <a
+                      href="/pricing"
+                      className="inline-block rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-2 text-xs font-semibold text-white shadow transition hover:scale-105"
+                    >
+                      View examples
+                    </a>
+                  </div>
                 </div>
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}
@@ -66,8 +75,17 @@ export default function WhyNprPage() {
                 </motion.div>
               </div>
               <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
-                <div className="pb-8 text-center md:pb-0 md:text-left">
-                  <h2 className="text-2xl font-bold">How NPR Media Delivers</h2>
+                <div className="pb-8 text-center md:pb-0 md:text-left space-y-2">
+                  <h2 className="text-2xl sm:text-3xl font-bold">How NPR Media Delivers</h2>
+                  <p className="text-sm text-indigo-200">Human-guided strategy for real results</p>
+                  <div className="pt-2">
+                    <a
+                      href="/pricing"
+                      className="inline-block rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-2 text-xs font-semibold text-white shadow transition hover:scale-105"
+                    >
+                      See our approach
+                    </a>
+                  </div>
                 </div>
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}
@@ -177,7 +195,16 @@ export default function WhyNprPage() {
                 transition={{ duration: 0.6 }}
                 className="space-y-2 rounded-xl bg-white p-6 shadow-md text-gray-800"
               >
-                <p className="font-semibold">What other firms drag you through</p>
+                <p className="text-lg font-semibold">What other firms drag you through</p>
+                <p className="text-sm text-gray-500">All the extras you don’t need</p>
+                <div className="pt-2">
+                  <a
+                    href="/about"
+                    className="inline-block rounded-full bg-gradient-to-r from-pink-500 to-purple-500 px-4 py-2 text-xs font-semibold text-white shadow transition hover:scale-105"
+                  >
+                    Choose better
+                  </a>
+                </div>
                 <ul className="space-y-1 text-sm">
                   <li className="flex items-start gap-2">
                     <Ban className="h-4 w-4 text-pink-500" />
@@ -204,7 +231,16 @@ export default function WhyNprPage() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="space-y-2 rounded-xl bg-white p-6 shadow-md text-gray-800"
               >
-                <p className="font-semibold">How we keep projects moving</p>
+                <p className="text-lg font-semibold">How we keep projects moving</p>
+                <p className="text-sm text-gray-500">The NPR no-bloat process</p>
+                <div className="pt-2">
+                  <a
+                    href="/contact"
+                    className="inline-block rounded-full bg-gradient-to-r from-pink-500 to-purple-500 px-4 py-2 text-xs font-semibold text-white shadow transition hover:scale-105"
+                  >
+                    Start your project
+                  </a>
+                </div>
                 <ul className="space-y-1 text-sm">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-purple-600" />
