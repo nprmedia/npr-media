@@ -43,7 +43,7 @@ export default function WhyNprPage() {
           className="relative overflow-hidden py-20 bg-[var(--color-bg-dark)] text-[var(--color-text-light)]"
         >
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 opacity-30 blur-3xl" />
+            <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-br from-indigo-600 via-purple-600 to-fuchsia-600 opacity-30 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl space-y-16 px-4">
             <div className="text-center space-y-2">
@@ -133,7 +133,7 @@ export default function WhyNprPage() {
             <div className="pt-8 text-center">
               <a
                 href="/pricing"
-                className="inline-block rounded-full bg-black px-6 py-3 text-sm font-semibold text-white shadow transition hover:scale-105"
+                className="inline-block rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-md ring-1 ring-white/10 transition hover:scale-105"
               >
                 Don’t get AI’d. Get outcomes.
               </a>
@@ -151,7 +151,7 @@ export default function WhyNprPage() {
           className="relative overflow-hidden py-20 bg-white text-black"
         >
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute bottom-0 right-1/2 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-r from-pink-300 to-purple-400 opacity-30 blur-3xl" />
+            <div className="absolute bottom-0 right-1/2 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-br from-pink-300 via-purple-400 to-indigo-300 opacity-30 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl space-y-16 px-4">
             <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
@@ -233,7 +233,7 @@ export default function WhyNprPage() {
             <div className="pt-8 text-center">
               <a
                 href="/about"
-                className="inline-block rounded-full bg-black px-6 py-3 text-sm font-semibold text-white shadow transition hover:scale-105"
+                className="inline-block rounded-full bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-3 text-sm font-semibold text-white shadow-md ring-1 ring-black/10 transition hover:scale-105"
               >
                 This time, don’t settle.
               </a>
