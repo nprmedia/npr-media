@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 
 const slides = [
@@ -46,28 +46,36 @@ export default function NprCarousel() {
   }, [index])
 
   return (
-    <div className="h-screen overflow-hidden">
+    <div className="relative h-screen overflow-hidden">
       <div
         ref={containerRef}
         className="flex h-full snap-x snap-mandatory overflow-x-scroll scroll-smooth no-scrollbar"
       >
         {slides.map((title) => (
-          <motion.section
+          <section
             key={title}
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
             className="flex min-h-screen min-w-full items-center justify-center snap-center"
           >
-            <div className="mx-auto w-[clamp(16rem,40vw,22rem)] space-y-4 rounded-lg bg-gradient-to-br from-indigo-800 to-purple-700 p-6 text-center text-gray-100 shadow-lg ring-1 ring-white/10">
-              <h2 className="text-2xl font-bold">{title}</h2>
-              <ul className="list-disc space-y-1 pl-5 text-left text-sm">
-                <li>Subpoint 1</li>
-                <li>Subpoint 2</li>
-                <li>Subpoint 3</li>
-              </ul>
-            </div>
-          </motion.section>
+            <AnimatePresence mode="wait" initial={false}>
+              {index === slides.indexOf(title) && (
+                <motion.div
+                  key={title}
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -30 }}
+                  transition={{ duration: 0.5 }}
+                  className="mx-auto w-[clamp(16rem,40vw,22rem)] space-y-4 rounded-lg bg-gradient-to-br from-indigo-800 to-purple-700 p-6 text-center text-gray-100 shadow-lg ring-1 ring-white/10"
+                >
+                  <h2 className="text-2xl font-bold">{title}</h2>
+                  <ul className="list-disc space-y-1 pl-5 text-left text-sm">
+                    <li>Subpoint 1</li>
+                    <li>Subpoint 2</li>
+                    <li>Subpoint 3</li>
+                  </ul>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </section>
         ))}
       </div>
     </div>
