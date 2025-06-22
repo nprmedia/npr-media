@@ -34,7 +34,7 @@ export default function WhyNprPage() {
     <section>
       <StickyHeader />
       <main
-        className="relative w-full overflow-x-hidden bg-[var(--color-bg-dark)] text-[var(--color-text-light)] space-y-20"
+        className="relative w-full overflow-x-hidden bg-[var(--color-bg-dark)] text-[var(--color-text-light)] space-y-24"
         style={{ paddingTop: 'calc(var(--header-height) + 1rem)' }}
       >
         {/* SECTION 1: NPR Media vs AI */}
@@ -45,13 +45,13 @@ export default function WhyNprPage() {
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-br from-indigo-600 via-purple-600 to-fuchsia-600 opacity-30 blur-3xl" />
           </div>
-          <div className="container mx-auto max-w-6xl space-y-16 px-4">
+          <div className="container mx-auto max-w-6xl space-y-12 px-4">
             <div className="text-center space-y-2">
               <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">AI Guesswork vs Human Strategy</h1>
               <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-indigo-200">AI doesn’t think. It predicts. That leaves you with generic output and zero accountability.</p>
               <p className="mx-auto max-w-xl text-sm text-indigo-200">We craft every build from principle, not probability, owning the performance from concept to launch.</p>
             </div>
-            <div className="space-y-16">
+            <div className="space-y-12">
               <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
                 <div className="pb-8 text-center md:pb-0 md:text-left">
                   <h2 className="text-2xl font-bold">What AI Can’t Do</h2>
@@ -89,7 +89,7 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="rounded-lg bg-white/10 p-4 shadow text-white"
+                className="rounded-xl bg-white/10 p-6 shadow-lg text-white"
               >
                 <p className="font-semibold">“Client X wouldn’t exist if we used AI.”</p>
               </motion.div>
@@ -98,7 +98,7 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="rounded-lg bg-white/10 p-4 shadow text-white"
+                className="rounded-xl bg-white/10 p-6 shadow-lg text-white"
               >
                 <p className="font-semibold">“Our last launch doubled signups after a human-led overhaul.”</p>
               </motion.div>
@@ -153,7 +153,7 @@ export default function WhyNprPage() {
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute bottom-0 right-1/2 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-br from-pink-300 via-purple-400 to-indigo-300 opacity-30 blur-3xl" />
           </div>
-          <div className="container mx-auto max-w-6xl space-y-16 px-4">
+          <div className="container mx-auto max-w-6xl space-y-12 px-4">
             <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
               <div className="text-center md:text-left space-y-4">
                 <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">Agency Bloat vs NPR Media</h1>
@@ -175,7 +175,7 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="space-y-2 rounded-lg bg-white p-4 shadow text-gray-800"
+                className="space-y-2 rounded-xl bg-white p-6 shadow-md text-gray-800"
               >
                 <p className="font-semibold">What other firms drag you through</p>
                 <ul className="space-y-1 text-sm">
@@ -202,7 +202,7 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="space-y-2 rounded-lg bg-white p-4 shadow text-gray-800"
+                className="space-y-2 rounded-xl bg-white p-6 shadow-md text-gray-800"
               >
                 <p className="font-semibold">How we keep projects moving</p>
                 <ul className="space-y-1 text-sm">
