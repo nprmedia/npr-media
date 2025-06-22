@@ -34,7 +34,7 @@ export default function WhyNprPage() {
     <section>
       <StickyHeader />
       <main
-        className="relative w-full overflow-x-hidden bg-white text-black space-y-20"
+        className="relative w-full overflow-x-hidden bg-[var(--color-bg-dark)] text-[var(--color-text-light)] space-y-20"
         style={{ paddingTop: 'calc(var(--header-height) + 1rem)' }}
       >
         {/* SECTION 1: NPR Media vs AI */}
