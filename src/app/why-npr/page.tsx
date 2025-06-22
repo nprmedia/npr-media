@@ -51,29 +51,33 @@ export default function WhyNprPage() {
               <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-indigo-200">AI doesn’t think. It predicts. That leaves you with generic output and zero accountability.</p>
               <p className="mx-auto max-w-xl text-sm text-indigo-200">We craft every build from principle, not probability, owning the performance from concept to launch.</p>
             </div>
-            <div className="relative">
-              <div className="pb-8 text-center">
-                <h2 className="text-2xl font-bold">What AI Can’t Do</h2>
+            <div className="space-y-16">
+              <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
+                <div className="pb-8 text-center md:pb-0 md:text-left">
+                  <h2 className="text-2xl font-bold">What AI Can’t Do</h2>
+                </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <AiCarousel />
+                </motion.div>
               </div>
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <AiCarousel />
-              </motion.div>
-              <div className="py-12 text-center">
-                <h2 className="text-2xl font-bold">How NPR Media Delivers</h2>
+              <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
+                <div className="pb-8 text-center md:pb-0 md:text-left">
+                  <h2 className="text-2xl font-bold">How NPR Media Delivers</h2>
+                </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <NprCarousel />
+                </motion.div>
               </div>
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <NprCarousel />
-              </motion.div>
             </div>
             <p className="mx-auto mt-6 max-w-xl text-center text-sm text-indigo-200">
               Leaving growth to algorithms leads to cookie-cutter results. Our strategists own every outcome from start to finish.
@@ -150,18 +154,20 @@ export default function WhyNprPage() {
             <div className="absolute bottom-0 right-1/2 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-r from-pink-300 to-purple-400 opacity-30 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl space-y-16 px-4">
-            <div className="text-center space-y-4">
-              <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">Agency Bloat vs NPR Media</h1>
-              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-600">Most agencies sell time. We sell outcomes.</p>
-              <p className="mx-auto max-w-xl text-sm text-gray-600">Big shops pad projects with junior talent and endless steps. Our senior strike team ships fast and owns the metrics.</p>
+            <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
+              <div className="text-center md:text-left space-y-4">
+                <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">Agency Bloat vs NPR Media</h1>
+                <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-600">Most agencies sell time. We sell outcomes.</p>
+                <p className="mx-auto max-w-xl text-sm text-gray-600 md:mx-0">Big shops pad projects with junior talent and endless steps. Our senior strike team ships fast and owns the metrics.</p>
+              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <FirmCarousel />
+              </motion.div>
             </div>
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <FirmCarousel />
-            </motion.div>
             <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-gray-400 to-transparent" />
             <div className="grid gap-8 text-sm md:grid-cols-2">
               <motion.div
