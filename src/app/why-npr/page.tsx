@@ -49,8 +49,8 @@ export default function WhyNprPage() {
           <div className="container mx-auto max-w-6xl space-y-12 px-4">
             <div className="text-center space-y-2">
               <h1 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight">Why Human Strategy Beats AI Guesswork</h1>
-              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-300">Algorithms only predict&mdash;they don&rsquo;t truly understand your customer.</p>
-              <p className="mx-auto max-w-xl text-sm text-gray-300">Our team builds on proven principles and stays accountable from concept through launch.</p>
+              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-300">AI can parse data but it can&rsquo;t read minds or context.</p>
+              <p className="mx-auto max-w-xl text-sm text-gray-300">Our strategists apply lived experience and own the results from concept to launch.</p>
             </div>
             <div className="space-y-12">
               <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
@@ -75,6 +75,7 @@ export default function WhyNprPage() {
                   <AiCarousel />
                 </motion.div>
               </div>
+              <p className="text-center text-sm font-semibold text-gray-400">Here&rsquo;s where we step in.</p>
               <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
                 <div className="pb-8 text-center md:pb-0 md:text-left space-y-2">
                   <h2 className="text-3xl sm:text-4xl font-bold">How NPR Media Delivers</h2>
@@ -99,7 +100,7 @@ export default function WhyNprPage() {
               </div>
             </div>
             <p className="mx-auto mt-6 max-w-xl text-center text-sm text-gray-300">
-              Handing growth to algorithms means more of the same. Our strategists stay accountable from first idea to final metric.
+              Leaving growth to algorithms only repeats old mistakes. We build every campaign hands-on and measure success by your metrics.
             </p>
             <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
             <div className="grid gap-6 md:grid-cols-2">
@@ -122,6 +123,7 @@ export default function WhyNprPage() {
                 <p className="font-semibold">“Our last launch doubled signups after a human-led overhaul.”</p>
               </motion.div>
             </div>
+            <p className="mt-6 text-center text-sm text-gray-600">Skip the bloat and keep momentum with a senior crew measured on outcomes.</p>
             <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
             <motion.div
               initial={{ opacity: 0 }}
@@ -227,6 +229,7 @@ export default function WhyNprPage() {
                   </li>
                 </ul>
               </motion.div>
+              <p className="text-center text-sm font-semibold text-gray-500">Here&rsquo;s how we do it differently.</p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
