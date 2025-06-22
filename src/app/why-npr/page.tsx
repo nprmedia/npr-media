@@ -9,6 +9,7 @@ import FirmCarousel from '@/components/whyNpr/FirmCarousel'
 import { motion, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { Ban, CheckCircle2 } from 'lucide-react'
+import Card from '@/components/ui/Card'
 
 function TypingText({ text }: { text: string }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -45,7 +46,7 @@ export default function WhyNprPage() {
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-br from-indigo-600 via-purple-600 to-fuchsia-600 opacity-30 blur-3xl" />
           </div>
-          <div className="container mx-auto max-w-6xl space-y-16 px-4">
+          <div className="container mx-auto max-w-6xl space-y-20 px-4">
             <div className="text-center space-y-2">
               <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">AI Guesswork vs Human Strategy</h1>
               <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-indigo-200">AI doesn’t think. It predicts. That leaves you with generic output and zero accountability.</p>
@@ -89,18 +90,20 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="rounded-lg bg-white/10 p-4 shadow text-white"
               >
-                <p className="font-semibold">“Client X wouldn’t exist if we used AI.”</p>
+                <Card className="bg-white/10 text-white ring-1 ring-white/10">
+                  <p className="font-semibold">“Client X wouldn’t exist if we used AI.”</p>
+                </Card>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="rounded-lg bg-white/10 p-4 shadow text-white"
               >
-                <p className="font-semibold">“Our last launch doubled signups after a human-led overhaul.”</p>
+                <Card className="bg-white/10 text-white ring-1 ring-white/10">
+                  <p className="font-semibold">“Our last launch doubled signups after a human-led overhaul.”</p>
+                </Card>
               </motion.div>
             </div>
             <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
@@ -108,8 +111,9 @@ export default function WhyNprPage() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="relative mt-12 flex items-start justify-center rounded-xl bg-white/5 p-6 shadow-lg text-white md:p-8"
+              className="relative mt-12 flex items-start justify-center"
             >
+              <Card className="flex w-full items-start justify-center bg-white/5 text-white p-6 md:p-8 ring-1 ring-white/10">
               <div className="w-1/2 pr-4 text-sm">
                 <p className="mb-2 font-semibold">AI output</p>
                 <div className="rounded bg-indigo-900 p-3 text-white">
@@ -129,15 +133,16 @@ export default function WhyNprPage() {
                   Bold hook → stat → CTA
                 </motion.div>
               </div>
+              </Card>
             </motion.div>
-            <div className="pt-8 text-center">
-              <a
-                href="/pricing"
-                className="inline-block rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-md ring-1 ring-white/10 transition hover:scale-105"
-              >
-                Don’t get AI’d. Get outcomes.
-              </a>
-            </div>
+              <div className="pt-8 text-center">
+                <a
+                  href="/pricing"
+                  className="inline-block rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-md ring-1 ring-white/10 transition hover:scale-105"
+                >
+                  Don’t get AI’d. Get outcomes.
+                </a>
+              </div>
             <p className="mt-10 text-center text-sm font-semibold text-gray-600">
               Next, see how we outperform typical agencies.
             </p>
@@ -153,7 +158,7 @@ export default function WhyNprPage() {
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute bottom-0 right-1/2 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-br from-pink-300 via-purple-400 to-indigo-300 opacity-30 blur-3xl" />
           </div>
-          <div className="container mx-auto max-w-6xl space-y-16 px-4">
+          <div className="container mx-auto max-w-6xl space-y-20 px-4">
             <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
               <div className="text-center md:text-left space-y-4">
                 <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">Agency Bloat vs NPR Media</h1>
@@ -175,45 +180,46 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="space-y-2 rounded-lg bg-white p-4 shadow text-gray-800"
               >
-                <p className="font-semibold">What other firms drag you through</p>
-                <ul className="space-y-1 text-sm">
-                  <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-pink-500" />
-                    <span>4-week discovery calls</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-pink-500" />
-                    <span>$2k wireframes</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-pink-500" />
-                    <span>Slow handoffs</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-pink-500" />
-                    <span>No CRO testing</span>
-                  </li>
-                </ul>
+                <Card className="space-y-2 bg-white text-gray-800 ring-1 ring-gray-200">
+                  <p className="font-semibold">What other firms drag you through</p>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-start gap-2">
+                      <Ban className="h-4 w-4 text-pink-500" />
+                      <span>4-week discovery calls</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Ban className="h-4 w-4 text-pink-500" />
+                      <span>$2k wireframes</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Ban className="h-4 w-4 text-pink-500" />
+                      <span>Slow handoffs</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Ban className="h-4 w-4 text-pink-500" />
+                      <span>No CRO testing</span>
+                    </li>
+                  </ul>
+                </Card>
               </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="space-y-2 rounded-lg bg-white p-4 shadow text-gray-800"
-              >
-                <p className="font-semibold">How we keep projects moving</p>
-                <ul className="space-y-1 text-sm">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-purple-600" />
-                    <span>Production-grade homepage</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-purple-600" />
-                    <span>9-section CMS site</span>
-                  </li>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                >
+                  <Card className="space-y-2 bg-white text-gray-800 ring-1 ring-gray-200">
+                  <p className="font-semibold">How we keep projects moving</p>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-purple-600" />
+                      <span>Production-grade homepage</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-purple-600" />
+                      <span>9-section CMS site</span>
+                    </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-purple-600" />
                     <span>SOP-aligned builds</span>
@@ -222,22 +228,23 @@ export default function WhyNprPage() {
                     <CheckCircle2 className="h-4 w-4 text-purple-600" />
                     <span>Real-time revisions</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-purple-600" />
-                    <span>Vercel-level hosting</span>
-                  </li>
-                </ul>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-purple-600" />
+                      <span>Vercel-level hosting</span>
+                    </li>
+                  </ul>
+                </Card>
               </motion.div>
             </div>
             <p className="mt-8 text-center text-sm font-semibold italic">“94% of our clients switch from other firms—and never go back.”</p>
-            <div className="pt-8 text-center">
-              <a
-                href="/about"
-                className="inline-block rounded-full bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-3 text-sm font-semibold text-white shadow-md ring-1 ring-black/10 transition hover:scale-105"
-              >
-                This time, don’t settle.
-              </a>
-            </div>
+              <div className="pt-8 text-center">
+                <a
+                  href="/about"
+                  className="inline-block rounded-full bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-3 text-sm font-semibold text-white shadow-md ring-1 ring-black/10 transition hover:scale-105"
+                >
+                  This time, don’t settle.
+                </a>
+              </div>
           </div>
         </section>
         <WaveDivider flip className="text-gray-100" />

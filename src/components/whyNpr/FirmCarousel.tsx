@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
+import Card from '@/components/ui/Card'
 
 const slides = [
   {
@@ -85,24 +86,26 @@ export default function FirmCarousel() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.5 }}
-                  className="mx-auto w-[clamp(18rem,60vw,28rem)] rounded-lg bg-gradient-to-br from-gray-50 via-white to-gray-200 p-6 text-black shadow-xl ring-1 ring-black/5"
+                  className="mx-auto w-[clamp(18rem,60vw,28rem)]"
                 >
-                  <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4">
-                    <div>
-                      <p className="text-xs font-semibold text-gray-500">Other Firms</p>
-                      <p className="text-sm">{row.other}</p>
+                  <Card className="bg-gradient-to-br from-gray-50 via-white to-gray-200 text-black ring-1 ring-black/5">
+                    <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4">
+                      <div>
+                        <p className="text-xs font-semibold text-gray-500">Other Firms</p>
+                        <p className="text-sm">{row.other}</p>
+                      </div>
+                      <ArrowRight className="mx-auto text-gray-400" />
+                      <div>
+                        <p className="text-xs font-semibold text-gray-500">NPR Media</p>
+                        <p className="text-sm">{row.npr}</p>
+                      </div>
+                      <ArrowRight className="mx-auto text-gray-400" />
+                      <div>
+                        <p className="text-xs font-semibold text-gray-500">Your Gain</p>
+                        <p className="text-sm">{row.gain}</p>
+                      </div>
                     </div>
-                    <ArrowRight className="mx-auto text-gray-400" />
-                    <div>
-                      <p className="text-xs font-semibold text-gray-500">NPR Media</p>
-                      <p className="text-sm">{row.npr}</p>
-                    </div>
-                    <ArrowRight className="mx-auto text-gray-400" />
-                    <div>
-                      <p className="text-xs font-semibold text-gray-500">Your Gain</p>
-                      <p className="text-sm">{row.gain}</p>
-                    </div>
-                  </div>
+                  </Card>
                 </motion.div>
               )}
             </AnimatePresence>

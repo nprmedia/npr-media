@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
+import Card from '@/components/ui/Card'
 
 const aiSlides = [
   'Human-Centric Problem Framing',
@@ -65,14 +66,16 @@ export default function AiCarousel() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.5 }}
-                  className="mx-auto w-[clamp(16rem,40vw,22rem)] space-y-4 rounded-lg bg-gradient-to-br from-slate-800 via-gray-800 to-gray-700 p-6 text-center text-gray-100 shadow-xl ring-1 ring-white/10"
+                  className="mx-auto w-[clamp(16rem,40vw,22rem)]"
                 >
-                  <h2 className="text-2xl font-bold">{title}</h2>
-                  <ul className="list-disc space-y-1 pl-5 text-left text-sm">
-                    <li>Subpoint 1</li>
-                    <li>Subpoint 2</li>
-                    <li>Subpoint 3</li>
-                  </ul>
+                  <Card className="space-y-4 bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 text-center text-gray-100 ring-1 ring-white/10">
+                    <h2 className="text-2xl font-bold">{title}</h2>
+                    <ul className="list-disc space-y-2 pl-5 text-left text-sm">
+                      <li>Subpoint 1</li>
+                      <li>Subpoint 2</li>
+                      <li>Subpoint 3</li>
+                    </ul>
+                  </Card>
                 </motion.div>
               )}
             </AnimatePresence>
