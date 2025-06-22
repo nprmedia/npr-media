@@ -85,7 +85,7 @@ export default function FirmCarousel() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.5 }}
-                  className="mx-auto w-[clamp(18rem,60vw,28rem)] rounded-lg bg-gradient-to-br from-gray-50 via-white to-gray-200 p-6 text-black shadow-xl ring-1 ring-black/5"
+                  className="mx-auto w-[clamp(18rem,60vw,28rem)] rounded-2xl bg-gradient-to-br from-white via-gray-50 to-gray-200 p-8 text-black shadow-2xl ring-1 ring-black/5"
                 >
                   <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4">
                     <div>

@@ -25,6 +25,10 @@
   --color-gray-400: #94a3b8;
   --color-gray-600: #475569;
   --color-gray-700: #334155;
+
+  /* UI Gradients */
+  --color-gradient-start: #6366f1;
+  --color-gradient-end: #8b5cf6;
 }
 
 html {

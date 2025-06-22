@@ -40,7 +40,7 @@ export default function WhyNprPage() {
         {/* SECTION 1: NPR Media vs AI */}
         <section
           id="vs-ai"
-          className="relative overflow-hidden py-20 bg-[var(--color-bg-dark)] text-[var(--color-text-light)]"
+          className="relative overflow-hidden py-[clamp(5rem,10vw,8rem)] bg-[var(--color-bg-dark)] text-[var(--color-text-light)]"
         >
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-br from-indigo-600 via-purple-600 to-fuchsia-600 opacity-30 blur-3xl" />
@@ -89,7 +89,7 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="rounded-lg bg-white/10 p-4 shadow text-white"
+                className="rounded-2xl bg-white/10 p-6 shadow text-white"
               >
                 <p className="font-semibold">“Client X wouldn’t exist if we used AI.”</p>
               </motion.div>
@@ -98,7 +98,7 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="rounded-lg bg-white/10 p-4 shadow text-white"
+                className="rounded-2xl bg-white/10 p-6 shadow text-white"
               >
                 <p className="font-semibold">“Our last launch doubled signups after a human-led overhaul.”</p>
               </motion.div>
@@ -124,7 +124,7 @@ export default function WhyNprPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className="rounded border border-white/30 bg-white/10 p-3 shadow-inner text-white"
+                  className="rounded-lg border border-white/20 bg-white/10 p-4 shadow-inner text-white"
                 >
                   Bold hook → stat → CTA
                 </motion.div>
@@ -148,7 +148,7 @@ export default function WhyNprPage() {
         {/* SECTION 2: NPR Media vs Other Firms */}
         <section
           id="vs-firms"
-          className="relative overflow-hidden py-20 bg-white text-black"
+          className="relative overflow-hidden py-[clamp(5rem,10vw,8rem)] bg-white text-black"
         >
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute bottom-0 right-1/2 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-br from-pink-300 via-purple-400 to-indigo-300 opacity-30 blur-3xl" />
@@ -175,7 +175,7 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="space-y-2 rounded-lg bg-white p-4 shadow text-gray-800"
+                className="space-y-2 rounded-2xl bg-white p-6 shadow text-gray-800"
               >
                 <p className="font-semibold">What other firms drag you through</p>
                 <ul className="space-y-1 text-sm">
@@ -202,7 +202,7 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="space-y-2 rounded-lg bg-white p-4 shadow text-gray-800"
+                className="space-y-2 rounded-2xl bg-white p-6 shadow text-gray-800"
               >
                 <p className="font-semibold">How we keep projects moving</p>
                 <ul className="space-y-1 text-sm">
