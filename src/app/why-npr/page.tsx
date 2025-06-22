@@ -34,10 +34,14 @@ export default function WhyNprPage() {
     <section>
       <StickyHeader />
       <main
-        className="relative w-full overflow-x-hidden bg-white text-gray-800 space-y-32 pt-[clamp(3.5rem,8vw,5rem)]"
+        className="relative w-full overflow-x-hidden bg-white text-black space-y-20"
+        style={{ paddingTop: 'calc(var(--header-height) + 1rem)' }}
       >
         {/* SECTION 1: NPR Media vs AI */}
-        <section id="vs-ai" className="relative overflow-hidden py-24 bg-gradient-to-b from-slate-900 via-indigo-900 to-sky-800 text-gray-100">
+        <section
+          id="vs-ai"
+          className="relative overflow-hidden py-20 bg-[var(--color-bg-dark)] text-[var(--color-text-light)]"
+        >
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 opacity-30 blur-3xl" />
           </div>
@@ -135,7 +139,10 @@ export default function WhyNprPage() {
         <WaveDivider className="text-gray-100" />
 
         {/* SECTION 2: NPR Media vs Other Firms */}
-        <section id="vs-firms" className="relative overflow-hidden py-24 bg-gradient-to-b from-gray-100 via-gray-50 to-white text-gray-800">
+        <section
+          id="vs-firms"
+          className="relative overflow-hidden py-20 bg-white text-black"
+        >
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute bottom-0 right-1/2 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-r from-pink-300 to-purple-400 opacity-30 blur-3xl" />
           </div>
