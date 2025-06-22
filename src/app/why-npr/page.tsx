@@ -33,7 +33,17 @@ export default function WhyNprPage() {
   return (
     <section>
       <StickyHeader />
-      <main className="relative w-full overflow-x-hidden bg-white text-black space-y-32 pt-[clamp(5rem,10vw,8rem)]">
+      <main
+        className="relative w-full overflow-x-hidden bg-white text-black space-y-32 pt-[clamp(5rem,10vw,8rem)]"
+        style={{
+          '--color-bg-dark': '#111827',
+          '--color-card': '#1e293b',
+          '--color-text-light': '#f1f5f9',
+          '--color-accent': '#e11d48',
+          '--color-accent-rgb': '225, 29, 72',
+          '--color-accent-dark': '#be123c',
+        } as React.CSSProperties}
+      >
         {/* SECTION 1: NPR Media vs AI */}
         <section id="vs-ai" className="relative overflow-hidden py-24 bg-[var(--color-bg-dark)] text-[var(--color-text-light)]">
           <div className="pointer-events-none absolute inset-0 -z-10">
@@ -42,8 +52,8 @@ export default function WhyNprPage() {
           <div className="container mx-auto max-w-6xl space-y-16 px-4">
             <div className="text-center space-y-4">
               <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">AI Guesswork vs Human Strategy</h1>
-              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700">AI doesn’t think. It predicts. That leaves you with generic output and zero accountability.</p>
-              <p className="mx-auto max-w-xl text-sm text-gray-700">We craft every build from principle, not probability, owning the performance from concept to launch.</p>
+              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-[var(--color-gray-300)]">AI doesn’t think. It predicts. That leaves you with generic output and zero accountability.</p>
+              <p className="mx-auto max-w-xl text-sm text-[var(--color-gray-300)]">We craft every build from principle, not probability, owning the performance from concept to launch.</p>
             </div>
             <div className="relative">
               <motion.div
@@ -140,8 +150,8 @@ export default function WhyNprPage() {
           <div className="container mx-auto max-w-6xl space-y-16 px-4">
             <div className="text-center space-y-4">
               <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">Agency Bloat vs NPR Media</h1>
-              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-700">Most agencies sell time. We sell outcomes.</p>
-              <p className="mx-auto max-w-xl text-sm text-gray-700">Big shops pad projects with junior talent and endless steps. Our senior strike team ships fast and owns the metrics.</p>
+              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-[var(--color-gray-300)]">Most agencies sell time. We sell outcomes.</p>
+              <p className="mx-auto max-w-xl text-sm text-[var(--color-gray-300)]">Big shops pad projects with junior talent and endless steps. Our senior strike team ships fast and owns the metrics.</p>
             </div>
             <motion.div
               initial={{ opacity: 0, y: 40 }}
