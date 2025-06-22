@@ -52,6 +52,9 @@ export default function WhyNprPage() {
               <p className="mx-auto max-w-xl text-sm text-indigo-200">We craft every build from principle, not probability, owning the performance from concept to launch.</p>
             </div>
             <div className="relative">
+              <div className="pb-8 text-center">
+                <h2 className="text-2xl font-bold">What AI Can’t Do</h2>
+              </div>
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
