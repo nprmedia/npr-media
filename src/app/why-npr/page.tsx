@@ -34,7 +34,7 @@ export default function WhyNprPage() {
     <section>
       <StickyHeader />
       <main
-        className="relative w-full overflow-x-hidden bg-white text-gray-800 space-y-32 pt-[clamp(5rem,10vw,8rem)]"
+        className="relative w-full overflow-x-hidden bg-white text-gray-800 space-y-32 pt-[clamp(3.5rem,8vw,5rem)]"
       >
         {/* SECTION 1: NPR Media vs AI */}
         <section id="vs-ai" className="relative overflow-hidden py-24 bg-gradient-to-b from-slate-900 via-indigo-900 to-sky-800 text-gray-100">
@@ -42,7 +42,7 @@ export default function WhyNprPage() {
             <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 opacity-30 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl space-y-16 px-4">
-            <div className="text-center space-y-4">
+            <div className="text-center space-y-2">
               <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">AI Guesswork vs Human Strategy</h1>
               <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-indigo-200">AI doesn’t think. It predicts. That leaves you with generic output and zero accountability.</p>
               <p className="mx-auto max-w-xl text-sm text-indigo-200">We craft every build from principle, not probability, owning the performance from concept to launch.</p>
