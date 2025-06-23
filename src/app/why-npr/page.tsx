@@ -196,6 +196,7 @@ export default function WhyNprPage() {
               </motion.div>
             </div>
             <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-gray-400 to-transparent" />
+            <p className="text-center text-sm font-semibold text-gray-500">Here&rsquo;s how we do it differently.</p>
             <div className="grid gap-8 text-sm md:grid-cols-2">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -233,7 +234,6 @@ export default function WhyNprPage() {
                   </li>
                 </ul>
               </motion.div>
-              <p className="text-center text-sm font-semibold text-gray-500">Here&rsquo;s how we do it differently.</p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
