@@ -75,8 +75,12 @@ export default function WhyNprPage() {
                   <AiCarousel />
                 </motion.div>
               </div>
-              <p className="text-center text-sm font-semibold text-gray-400">Here&rsquo;s where we step in.</p>
-              <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
+              <div className="space-y-1 text-center">
+                <h2 className="text-xl font-bold text-gray-100">Here&rsquo;s where we step in</h2>
+                <p className="text-sm text-gray-400">Real humans refine the data and own the outcome.</p>
+                <ScrollCue href="#npr-delivers" className="mx-auto mt-2 text-[var(--color-accent)]" />
+              </div>
+              <div id="npr-delivers" className="md:grid md:grid-cols-2 md:items-center md:gap-8">
                 <div className="pb-8 text-center md:pb-0 md:text-left space-y-2">
                   <h2 className="text-3xl sm:text-4xl font-bold">How NPR Media Delivers</h2>
                   <p className="text-sm text-gray-300">Hands-on strategy that actually moves the needle</p>
