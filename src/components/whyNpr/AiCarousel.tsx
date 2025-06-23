@@ -81,7 +81,7 @@ export default function AiCarousel() {
         ))}
       </div>
       <ChevronDown
-        className="pointer-events-none absolute bottom-8 left-1/2 h-8 w-8 -translate-x-1/2 animate-bounce text-[var(--color-accent)]"
+        className="pointer-events-none absolute bottom-4 left-1/2 h-8 w-8 -translate-x-1/2 animate-bounce text-[var(--color-accent)]"
       />
     </div>
   )
