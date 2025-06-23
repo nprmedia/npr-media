@@ -16,7 +16,7 @@ export default function ScrollCue({ href, className }: ScrollCueProps) {
       viewport={{ once: true }}
       animate={{ y: [0, 6, 0] }}
       transition={{ duration: 1.2, repeat: Infinity }}
-      className={`block ${className}`}
+      className={`block w-fit mx-auto text-center ${className}`}
     >
       <ChevronDown className="h-10 w-10" />
     </motion.a>
