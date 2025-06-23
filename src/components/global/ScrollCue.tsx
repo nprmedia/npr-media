@@ -18,7 +18,7 @@ export default function ScrollCue({ href, className }: ScrollCueProps) {
       transition={{ duration: 1.2, repeat: Infinity }}
       className={`block ${className}`}
     >
-      <ChevronDown className="h-6 w-6" />
+      <ChevronDown className="h-10 w-10" />
     </motion.a>
   )
 }

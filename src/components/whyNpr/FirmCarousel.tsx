@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ChevronDown, ChevronRight } from 'lucide-react'
 
 const slides = [
   {
@@ -109,6 +109,12 @@ export default function FirmCarousel() {
           </section>
         ))}
       </div>
+      <ChevronDown
+        className="pointer-events-none absolute bottom-4 left-1/2 h-8 w-8 -translate-x-1/2 animate-bounce text-[var(--color-accent)]"
+      />
+      <ChevronRight
+        className="pointer-events-none absolute right-4 top-1/2 h-8 w-8 -translate-y-1/2 animate-bounce text-[var(--color-accent)]"
+      />
     </div>
   )
 }
