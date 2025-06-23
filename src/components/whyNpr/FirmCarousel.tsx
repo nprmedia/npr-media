@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
 
 const slides = [
   {
@@ -85,7 +85,7 @@ export default function FirmCarousel() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.5 }}
-                  className="mx-auto w-[clamp(18rem,60vw,28rem)] rounded-lg bg-gradient-to-br from-gray-50 via-white to-gray-200 p-6 text-black shadow-xl ring-1 ring-black/5"
+                  className="mx-auto w-[clamp(18rem,60vw,28rem)] rounded-xl border border-black/10 bg-gradient-to-br from-gray-50 via-white to-gray-200 p-6 text-black shadow-2xl"
                 >
                   <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4">
                     <div>
@@ -109,6 +109,10 @@ export default function FirmCarousel() {
           </section>
         ))}
       </div>
+      <ChevronDown
+        style={{ bottom: '25%' }}
+        className="pointer-events-none absolute left-1/2 h-8 w-8 -translate-x-1/2 animate-bounce text-[var(--color-accent)]"
+      />
     </div>
   )
 }
