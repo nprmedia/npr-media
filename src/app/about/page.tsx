@@ -2,6 +2,8 @@
 
 import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
+import ValuesCarousel from '@/components/about/ValuesCarousel'
+import { motion } from 'framer-motion'
 
 export default function AboutPage() {
   return (
@@ -14,6 +16,35 @@ export default function AboutPage() {
           <p className="mx-auto mt-4 max-w-2xl text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-300">
             We craft high-performing websites and systems that help founders and startups scale faster.
           </p>
+        </section>
+
+        {/* Values */}
+        <section className="relative overflow-hidden py-20 bg-[var(--color-bg-dark)] text-[var(--color-text-light)]">
+          <div className="pointer-events-none absolute inset-0 -z-10">
+            <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-br from-[var(--color-accent)] via-pink-500 to-[var(--color-accent-dark)] opacity-30 blur-3xl" />
+          </div>
+          <div className="container mx-auto max-w-6xl px-4 md:grid md:grid-cols-2 md:items-center md:gap-8">
+            <div className="pb-8 text-center md:pb-0 md:text-left space-y-2">
+              <h2 className="text-3xl sm:text-4xl font-bold">Values, Culture & Beliefs</h2>
+              <p className="text-sm text-gray-300">Principles that guide every build</p>
+              <div className="pt-2">
+                <a
+                  href="/pricing"
+                  className="inline-block rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-4 py-2 text-xs font-semibold text-white shadow transition hover:scale-105"
+                >
+                  Work with us
+                </a>
+              </div>
+            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <ValuesCarousel />
+            </motion.div>
+          </div>
         </section>
 
         {/* Approach */}
