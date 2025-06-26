@@ -11,22 +11,22 @@ export default function AboutPage() {
       <StickyHeader />
       <main className="relative w-full overflow-x-hidden bg-white text-black" style={{ paddingTop: 'calc(var(--header-height) + 1rem)' }}>
         {/* Hero */}
-        <section className="bg-[var(--color-bg-dark)] text-[var(--color-text-light)] py-[clamp(5rem,10vw,8rem)] px-4 text-center">
+        <section className="bg-white text-black py-[clamp(5rem,10vw,8rem)] px-4 text-center">
           <h1 className="text-[clamp(2rem,4vw,3rem)] font-bold">About NPR Media</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-300">
+          <p className="mx-auto mt-4 max-w-2xl text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-600">
             We craft high-performing websites and systems that help founders and startups scale faster.
           </p>
         </section>
 
         {/* Values */}
-        <section className="relative overflow-hidden py-20 bg-[var(--color-bg-dark)] text-[var(--color-text-light)]">
+        <section className="relative overflow-hidden py-20 bg-white text-black">
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-br from-[var(--color-accent)] via-pink-500 to-[var(--color-accent-dark)] opacity-30 blur-3xl" />
+            <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-br from-[var(--color-accent)] via-pink-300 to-[var(--color-accent-dark)] opacity-20 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl px-4 md:grid md:grid-cols-2 md:items-center md:gap-8">
             <div className="pb-8 text-center md:pb-0 md:text-left space-y-2">
               <h2 className="text-3xl sm:text-4xl font-bold">Values, Culture & Beliefs</h2>
-              <p className="text-sm text-gray-300">Principles that guide every build</p>
+              <p className="text-sm text-gray-600">Principles that guide every build</p>
               <div className="pt-2">
                 <a
                   href="/pricing"
@@ -66,24 +66,24 @@ export default function AboutPage() {
         </section>
 
         {/* Team */}
-        <section className="bg-[var(--color-card)] text-[var(--color-text-light)] py-[clamp(4rem,8vw,6rem)] px-4">
+        <section className="bg-gray-50 text-black py-[clamp(4rem,8vw,6rem)] px-4">
           <div className="mx-auto max-w-4xl text-center space-y-8">
             <h2 className="text-2xl font-bold">Meet the Team</h2>
             <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
               <div className="space-y-2">
                 <div className="mx-auto h-32 w-32 rounded-full bg-gray-600" />
                 <p className="font-semibold">Taylor</p>
-                <p className="text-sm text-gray-300">Founder & Lead Dev</p>
+                <p className="text-sm text-gray-600">Founder & Lead Dev</p>
               </div>
               <div className="space-y-2">
                 <div className="mx-auto h-32 w-32 rounded-full bg-gray-600" />
                 <p className="font-semibold">Jordan</p>
-                <p className="text-sm text-gray-300">UX Engineer</p>
+                <p className="text-sm text-gray-600">UX Engineer</p>
               </div>
               <div className="space-y-2">
                 <div className="mx-auto h-32 w-32 rounded-full bg-gray-600" />
                 <p className="font-semibold">Alex</p>
-                <p className="text-sm text-gray-300">Growth Strategist</p>
+                <p className="text-sm text-gray-600">Growth Strategist</p>
               </div>
             </div>
           </div>
