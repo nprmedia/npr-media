@@ -89,16 +89,16 @@ export default function ValuesCarousel() {
   }, [index])
 
   return (
-    <div className="relative mx-auto h-96 max-w-sm overflow-hidden bg-white">
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10" style={{ height: '25%' }}>
+    <div className="relative mx-auto h-screen max-w-md overflow-hidden bg-white">
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10" style={{ height: '33%' }}>
         <div className="h-full bg-gradient-to-b from-white via-white/80 to-transparent" />
       </div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10" style={{ height: '25%' }}>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10" style={{ height: '33%' }}>
         <div className="h-full bg-gradient-to-t from-white via-white/80 to-transparent" />
       </div>
       <div
         ref={containerRef}
-        className="h-full snap-y snap-mandatory overflow-y-scroll scroll-smooth no-scrollbar py-6"
+        className="h-full snap-y snap-mandatory overflow-y-scroll scroll-smooth no-scrollbar py-12"
       >
         {slides.map((slide, i) => {
           const distance = Math.abs(index - i)
@@ -110,10 +110,10 @@ export default function ValuesCarousel() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
                 style={{ opacity }}
-                className="rounded-xl bg-white p-4 text-black shadow"
+                className="rounded-xl bg-white p-6 text-black shadow"
               >
-                <p className="font-bold">{slide.title}</p>
-                <p className="mt-1 text-sm text-gray-600">{slide.description}</p>
+                <p className="text-xl font-bold leading-snug">{slide.title}</p>
+                <p className="mt-2 text-lg leading-relaxed text-gray-600">{slide.description}</p>
               </motion.div>
             </section>
           )
