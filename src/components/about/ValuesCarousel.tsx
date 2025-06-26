@@ -59,35 +59,29 @@ const slides: Slide[] = [
 export default function ValuesCarousel() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
-  const isMoving = useRef(false);
-  const deltaRef = useRef(0);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const threshold = 120;
-    const onWheel = (e: WheelEvent) => {
-      if (index === slides.length - 1 && e.deltaY > 0) return;
-      e.preventDefault();
-      if (isMoving.current) return;
-      deltaRef.current += e.deltaY;
-      if (Math.abs(deltaRef.current) < threshold) return;
-      const dir = deltaRef.current > 0 ? 1 : -1;
-      deltaRef.current = 0;
-      const next = Math.max(0, Math.min(slides.length - 1, index + dir));
-      if (next === index) return;
-      isMoving.current = true;
-      setIndex(next);
-      const child = container.children[next] as HTMLElement;
-      const offset = child.offsetTop - (container.clientHeight - child.clientHeight) / 2;
-      container.scrollTo({ top: offset, behavior: 'smooth' });
-      setTimeout(() => {
-        isMoving.current = false;
-      }, 600);
+    const onScroll = () => {
+      const center = container.scrollTop + container.clientHeight / 2;
+      const children = Array.from(container.children) as HTMLElement[];
+      let closest = 0;
+      let minDistance = Infinity;
+      children.forEach((child, i) => {
+        const childCenter = child.offsetTop + child.clientHeight / 2;
+        const distance = Math.abs(childCenter - center);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closest = i;
+        }
+      });
+      setIndex(closest);
     };
-    container.addEventListener('wheel', onWheel, { passive: false });
-    return () => container.removeEventListener('wheel', onWheel);
-  }, [index]);
+    container.addEventListener('scroll', onScroll);
+    onScroll();
+    return () => container.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <div className="relative mx-auto h-screen max-w-md overflow-hidden bg-white">
