@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 
 type Slide = {
@@ -70,7 +70,7 @@ export default function ValuesCarousel() {
       isMoving.current = true
       setIndex(next)
       const child = container.children[next] as HTMLElement
-      child.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      child.scrollIntoView({ behavior: 'smooth', block: 'center' })
       setTimeout(() => {
         isMoving.current = false
       }, 600)
@@ -84,23 +84,17 @@ export default function ValuesCarousel() {
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-10 bg-gradient-to-b from-white to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-10 bg-gradient-to-t from-white to-transparent" />
       <div ref={containerRef} className="h-full snap-y snap-mandatory overflow-y-scroll scroll-smooth no-scrollbar py-6">
-        {slides.map((slide) => (
-          <section key={slide.title} className="snap-start py-4">
-            <AnimatePresence mode="wait" initial={false}>
-              {index === slides.indexOf(slide) && (
-                <motion.div
-                  key={slide.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4 }}
-                  className="rounded-xl bg-gray-50 p-4 text-black shadow"
-                >
-                  <p className="font-bold">{slide.title}</p>
-                  <p className="mt-1 text-sm text-gray-600">{slide.description}</p>
-                </motion.div>
-              )}
-            </AnimatePresence>
+        {slides.map((slide, i) => (
+          <section key={slide.title} className="snap-center py-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className={`rounded-xl bg-white p-4 text-black shadow ${i === index ? '' : 'opacity-60'}`}
+            >
+              <p className="font-bold">{slide.title}</p>
+              <p className="mt-1 text-sm text-gray-600">{slide.description}</p>
+            </motion.div>
           </section>
         ))}
       </div>
