@@ -11,39 +11,48 @@ type Slide = {
 const slides: Slide[] = [
   {
     title: 'Value: Results Over Vanity',
-    description: 'We measure success by real business growth, not just surface metrics.'
+    description:
+      'Real growth matters most. Vanity metrics may look nice but rarely move the needle. Every feature ties back to concrete business results.'
   },
   {
     title: 'Value: Transparency Always',
-    description: 'Open communication and clear expectations build trusted partnerships.'
+    description:
+      'Open communication builds trust. We share progress often so there are no surprises. Clear expectations set the stage for great partnerships.'
   },
   {
     title: 'Value: Simplicity Wins',
-    description: 'We strip away bloat so your site stays fast and easy to maintain.'
+    description:
+      'Complex sites slow teams down. We keep code lean so your product stays fast. Simple solutions are easier to maintain and extend.'
   },
   {
     title: 'Culture: Learn and Iterate',
-    description: 'Continuous improvement keeps our work fresh and effective.'
+    description:
+      'We experiment constantly to improve. Each project teaches us something new. Continuous learning keeps our work fresh and effective.'
   },
   {
     title: 'Culture: Ownership Mentality',
-    description: 'Everyone on the team is accountable for quality results.'
+    description:
+      'We step up like it is our own product. Taking responsibility yields better outcomes. Everyone on the team is accountable for quality.'
   },
   {
     title: 'Culture: Remote Friendly',
-    description: 'Flexibility in location lets us collaborate with top talent.'
+    description:
+      'Great talent lives everywhere. Our flexible approach lets us collaborate with the best people anywhere. Being remote keeps us nimble.'
   },
   {
     title: 'Belief: Partners Not Vendors',
-    description: 'We act as an extension of your team working toward shared goals.'
+    description:
+      'True success comes from collaboration. We embed with your team to understand every goal. You get a dedicated partner, not just another vendor.'
   },
   {
     title: 'Belief: People Over Process',
-    description: 'Strong relationships drive outcomes more than rigid frameworks.'
+    description:
+      'Rigid frameworks slow innovation. We adapt methods to fit your business. Strong relationships drive outcomes more than strict processes.'
   },
   {
     title: 'Belief: Long-Term Success',
-    description: 'Solutions should scale with you and stand the test of time.'
+    description:
+      'We build to last and grow. Scalable systems ensure your investment keeps delivering. Solutions should stand the test of time.'
   },
 ]
 
@@ -81,22 +90,34 @@ export default function ValuesCarousel() {
 
   return (
     <div className="relative mx-auto h-96 max-w-sm overflow-hidden bg-white">
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-10 bg-gradient-to-b from-white to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-10 bg-gradient-to-t from-white to-transparent" />
-      <div ref={containerRef} className="h-full snap-y snap-mandatory overflow-y-scroll scroll-smooth no-scrollbar py-6">
-        {slides.map((slide, i) => (
-          <section key={slide.title} className="snap-center py-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className={`rounded-xl bg-white p-4 text-black shadow ${i === index ? '' : 'opacity-60'}`}
-            >
-              <p className="font-bold">{slide.title}</p>
-              <p className="mt-1 text-sm text-gray-600">{slide.description}</p>
-            </motion.div>
-          </section>
-        ))}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10" style={{ height: '25%' }}>
+        <div className="h-full bg-gradient-to-b from-white via-white/80 to-transparent" />
+      </div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10" style={{ height: '25%' }}>
+        <div className="h-full bg-gradient-to-t from-white via-white/80 to-transparent" />
+      </div>
+      <div
+        ref={containerRef}
+        className="h-full snap-y snap-mandatory overflow-y-scroll scroll-smooth no-scrollbar py-6"
+      >
+        {slides.map((slide, i) => {
+          const distance = Math.abs(index - i)
+          const opacity = 1 - Math.min(distance * 0.4, 0.8)
+          return (
+            <section key={slide.title} className="snap-center py-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                style={{ opacity }}
+                className="rounded-xl bg-white p-4 text-black shadow"
+              >
+                <p className="font-bold">{slide.title}</p>
+                <p className="mt-1 text-sm text-gray-600">{slide.description}</p>
+              </motion.div>
+            </section>
+          )
+        })}
       </div>
     </div>
   )
