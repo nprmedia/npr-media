@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useMemo, type CSSProperties } from 'react'
 
 interface NewsBackgroundProps {
   articles?: string[]
@@ -44,23 +44,25 @@ export default function AnimatedNewsBackground({ articles }: NewsBackgroundProps
 
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden">
-      {items.map((item, i) => (
-        <div
-          key={i}
-          style={{
-            top: `${item.top}%`,
-            left: `${item.left}%`,
-            width: `${item.width}%`,
-            aspectRatio: `${item.aspect}`,
-            animationDelay: `${item.delay}s`,
-            // use CSS variable so animation doesn't override transform
-            '--rot': `${item.rotate}deg` as string,
-          }}
-          className="news-floating pointer-events-none absolute flex items-center justify-center rounded-md border border-gray-200 bg-white/80 p-3 text-[0.65rem] text-gray-700 shadow"
-        >
-          {item.text}
-        </div>
-      ))}
+      {items.map((item, i) => {
+        const style: CSSProperties & { '--rot': string } = {
+          top: `${item.top}%`,
+          left: `${item.left}%`,
+          width: `${item.width}%`,
+          aspectRatio: `${item.aspect}`,
+          animationDelay: `${item.delay}s`,
+          '--rot': `${item.rotate}deg`,
+        }
+        return (
+          <div
+            key={i}
+            style={style}
+            className="news-floating pointer-events-none absolute flex items-center justify-center rounded-md border border-gray-200 bg-white/80 p-3 text-[0.65rem] text-gray-700 shadow"
+          >
+            {item.text}
+          </div>
+        )
+      })}
     </div>
   )
 }
