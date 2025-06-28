@@ -9,6 +9,8 @@
 
   --font-heading: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
+  --font-didot: 'GFS Didot', serif;
+  --font-grotesk: 'Space Grotesk', sans-serif;
 
   /* Brand Colors */
   --color-bg-dark: #111827;
@@ -76,17 +78,3 @@ img {
   display: none;
 }
 
-
-@keyframes newsFloat {
-  0%, 100% {
-    --offset: 0px;
-  }
-  50% {
-    --offset: -20px;
-  }
-}
-
-.news-floating {
-  transform: rotate(var(--rot)) translateY(var(--offset));
-  animation: newsFloat 18s ease-in-out infinite;
-}
