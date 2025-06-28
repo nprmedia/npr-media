@@ -73,29 +73,19 @@ export default function AboutPage() {
 
         {/* Team */}
         <section className="relative bg-white text-black py-[clamp(4rem,8vw,6rem)] px-4 overflow-hidden">
-          <AnimatedNewsBackground />
+          <AnimatedNewsBackground
+            articles={[
+              'TechCrunch: NPR Media sets new bar',
+              'Awarded Top Dev Agency',
+              'Clients See 200% Growth',
+            ]}
+          />
           <div className="relative mx-auto max-w-4xl text-center space-y-8">
             <h2 className="text-2xl font-bold">Meet the Team</h2>
             <div className="flex justify-center">
               <div className="relative flex flex-col items-center space-y-2">
-                <div className="relative" style={{ width: '12rem', height: '16rem' }}>
-                  {['TechCrunch: NPR Media sets new bar', 'Awarded Top Dev Agency', 'Clients See 200% Growth'].map((text, idx) => (
-                    <div
-                      key={idx}
-                      className="pointer-events-none absolute left-1/2 top-1/2 w-[85%] -translate-x-1/2 -translate-y-1/2"
-                      style={{
-                        transform: `translate(-50%, -50%) rotate(${idx * 5 - 8}deg) translateY(${(idx - 1) * 24}px)`,
-                        zIndex: idx,
-                      }}
-                    >
-                      <div className="rounded-md border border-gray-200 bg-white/90 px-3 py-2 text-[0.7rem] text-gray-700 shadow-md">
-                        {text}
-                      </div>
-                    </div>
-                  ))}
-                  <div
-                    className="relative z-10 flex h-full w-full items-center justify-center rounded-md bg-gray-300 text-sm text-gray-600 shadow-2xl"
-                  >
+                <div className="relative" style={{ width: '15rem', height: '20rem' }}>
+                  <div className="relative z-10 flex h-full w-full items-center justify-center rounded-md bg-gray-300 text-sm text-gray-600 shadow-2xl">
                     CEO
                   </div>
                 </div>

@@ -17,29 +17,41 @@ export default function AnimatedNewsBackground({ articles }: NewsBackgroundProps
 
     const random = (min: number, max: number) => Math.random() * (max - min) + min
 
-    // duplicate each article with square and wide aspect ratios
-    return texts.flatMap((text) => {
-      return [
-        {
+    const results = [] as Array<{
+      text: string
+      width: number
+      aspect: number
+      top: number
+      left: number
+      delay: number
+      rotate: number
+    }>
+
+    // create multiple floating cards for each article
+    texts.forEach((text) => {
+      for (let i = 0; i < 2; i++) {
+        results.push({
           text,
-          width: 35 + random(-5, 5),
+          width: random(22, 38),
           aspect: 1,
-          top: random(0, 65),
-          left: random(0, 65),
+          top: random(0, 90),
+          left: random(0, 90),
           delay: random(0, 20),
           rotate: random(-10, 10),
-        },
-        {
+        })
+        results.push({
           text,
-          width: 55 + random(-5, 5),
+          width: random(45, 70),
           aspect: 16 / 9,
-          top: random(0, 65),
-          left: random(0, 65),
+          top: random(0, 90),
+          left: random(0, 90),
           delay: random(0, 20),
           rotate: random(-10, 10),
-        },
-      ]
+        })
+      }
     })
+
+    return results
   }, [articles])
 
   return (
