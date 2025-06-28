@@ -47,3 +47,9 @@ pnpm dev
 ## Binary-free assets
 
 This repo contains no binary images. Visual elements are created with CSS or sourced remotely to keep the project lightweight.
+
+## Static images
+
+If you wish to add your own graphics, place them in `public/images/`. The folder
+is kept in version control using a `.gitkeep` file so you can drop images in as
+needed without altering the project structure.
