@@ -3,6 +3,7 @@
 import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
 import ValuesCarousel from '@/components/about/ValuesCarousel'
+import AnimatedNewsBackground from '@/components/about/AnimatedNewsBackground'
 import { motion } from 'framer-motion'
 
 export default function AboutPage() {
@@ -71,8 +72,9 @@ export default function AboutPage() {
         </section>
 
         {/* Team */}
-        <section className="bg-white text-black py-[clamp(4rem,8vw,6rem)] px-4">
-          <div className="mx-auto max-w-4xl text-center space-y-8">
+        <section className="relative bg-white text-black py-[clamp(4rem,8vw,6rem)] px-4 overflow-hidden">
+          <AnimatedNewsBackground />
+          <div className="relative mx-auto max-w-4xl text-center space-y-8">
             <h2 className="text-2xl font-bold">Meet the Team</h2>
             <div className="flex justify-center">
               <div className="relative flex flex-col items-center space-y-2">

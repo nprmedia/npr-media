@@ -76,3 +76,17 @@ img {
   display: none;
 }
 
+
+@keyframes newsFloat {
+  0%, 100% {
+    --offset: 0px;
+  }
+  50% {
+    --offset: -20px;
+  }
+}
+
+.news-floating {
+  transform: rotate(var(--rot)) translateY(var(--offset));
+  animation: newsFloat 18s ease-in-out infinite;
+}
