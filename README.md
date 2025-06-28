@@ -42,8 +42,3 @@ pnpm install
 
 # Start the dev server
 pnpm dev
-```
-
-## Binary-free assets
-
-This repo contains no binary images. Visual elements are created with CSS or sourced remotely to keep the project lightweight.

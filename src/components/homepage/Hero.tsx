@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { motion, useAnimation, useReducedMotion, useScroll, useTransform } from 'framer-motion';
@@ -212,11 +213,14 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       >
         <div className="relative w-full rounded-xl">
           {image && (
-            <div
-              className="flex h-[480px] w-full items-center justify-center rounded-xl bg-gray-300 text-sm text-gray-600 shadow-2xl"
-            >
-              Screenshot
-            </div>
+            <Image
+              src={image.url}
+              alt={image.alt || 'Product Screenshot'}
+              width={image.width || 480}
+              height={image.height || 480}
+              className="h-auto w-full rounded-xl shadow-2xl"
+              priority
+            />
           )}
           <div
             className="pointer-events-none absolute top-0 left-0 h-full w-full rounded-xl"
