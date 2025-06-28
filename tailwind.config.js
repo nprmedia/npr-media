@@ -6,8 +6,6 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        didot: ['"GFS Didot"', 'serif'],
-        grotesk: ['"Space Grotesk"', 'sans-serif'],
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
         code: ['JetBrains Mono', 'monospace'],
       },
