@@ -71,7 +71,24 @@ export default function AboutPage() {
         </section>
 
         {/* Team */}
-        <section className="bg-white text-black py-[clamp(4rem,8vw,6rem)] px-4">
+        <section className="relative bg-white text-black py-[clamp(4rem,8vw,6rem)] px-4">
+          <div className="absolute inset-0 -z-10 grid grid-cols-1 sm:grid-cols-3">
+            <img
+              src="/logos/Article%201%20-%20Template.png"
+              alt="Article 1"
+              className="h-full w-full object-cover"
+            />
+            <img
+              src="/logos/Article%202%20-%20Template.png"
+              alt="Article 2"
+              className="h-full w-full object-cover"
+            />
+            <img
+              src="/logos/Article%203%20-%20Template.png"
+              alt="Article 3"
+              className="h-full w-full object-cover"
+            />
+          </div>
           <div className="mx-auto max-w-4xl text-center space-y-8">
             <h2 className="text-2xl font-bold">Meet the Team</h2>
             <div className="flex justify-center">
