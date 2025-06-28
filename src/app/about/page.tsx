@@ -72,7 +72,7 @@ export default function AboutPage() {
 
         {/* Team */}
         <section className="relative bg-white text-black py-[clamp(4rem,8vw,6rem)] px-4">
-          <div className="pointer-events-none absolute inset-0 -z-10 grid grid-cols-3">
+          <div className="pointer-events-none absolute inset-0 z-0 grid grid-cols-3 gap-0">
             <div
               className="h-full w-full bg-cover bg-center"
               style={{ backgroundImage: "url('/logos/Article 1 - Template.png')" }}
@@ -86,7 +86,7 @@ export default function AboutPage() {
               style={{ backgroundImage: "url('/logos/Article 3 - Template.png')" }}
             />
           </div>
-          <div className="mx-auto max-w-4xl text-center space-y-8 relative">
+          <div className="relative z-10 mx-auto max-w-4xl text-center space-y-8">
             <h2 className="text-2xl font-bold">Meet the Team</h2>
             <div className="flex justify-center">
               <div className="space-y-2">
