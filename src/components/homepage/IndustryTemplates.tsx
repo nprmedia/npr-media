@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { templates } from '@/content/homepage/templates';
 
 export default function IndustryTemplatesSection() {
@@ -32,14 +31,11 @@ export default function IndustryTemplatesSection() {
             className="relative mb-4 aspect-[2/3] h-[80vh] max-h-[80vh] overflow-hidden rounded-lg md:mb-0 md:mr-6"
             style={{ perspective: '1000px' }}
           >
-            <Image
-              src="/logos/Authority Platform.webp"
-              alt={`Screenshot of ${authority.title}`}
-              width={640}
-              height={960}
-              className="h-full w-full rounded-lg object-cover transition-transform duration-500 origin-left group-hover:[transform:rotateY(12deg)]"
-              priority
-            />
+            <div
+              className="flex h-full w-full items-center justify-center rounded-lg bg-gray-200 text-gray-600 text-sm transition-transform duration-500 origin-left group-hover:[transform:rotateY(12deg)]"
+            >
+              Screenshot
+            </div>
           </div>
           <div
             className="flex flex-grow flex-col md:w-1/2 origin-left transform-gpu transition-all duration-500 group-hover:[transform:translateX(1.5rem)_rotateY(-6deg)]"

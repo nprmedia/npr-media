@@ -11,12 +11,6 @@ importers:
 
   .:
     dependencies:
-      '@fontsource/gfs-didot':
-        specifier: ^5.2.6
-        version: 5.2.6
-      '@fontsource/space-grotesk':
-        specifier: ^5.2.8
-        version: 5.2.8
       '@radix-ui/react-dialog':
         specifier: ^1.1.14
         version: 1.1.14(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -1031,12 +1025,6 @@ packages:
 
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
-
-  '@fontsource/gfs-didot@5.2.6':
-    resolution: {integrity: sha512-peUsK6Pzy+saQYXNLlyQSlYQE7lyLkRzc/YkqxAIuutGjlAHVqB4FYL9yAss5Cn6oVdZB8iiB7iSdP2rzWqChA==}
-
-  '@fontsource/space-grotesk@5.2.8':
-    resolution: {integrity: sha512-8rlIzpX+lo36y0g77OlwjeBj2DPo9XOwrzqKRLHYZcWcsj73SlkVI6UdXxDCZGLO7oQti1q9QPXzMBYbzSz60w==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -8038,10 +8026,6 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
 
   '@floating-ui/utils@0.2.9': {}
-
-  '@fontsource/gfs-didot@5.2.6': {}
-
-  '@fontsource/space-grotesk@5.2.8': {}
 
   '@humanfs/core@0.19.1': {}
 
