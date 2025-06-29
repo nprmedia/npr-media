@@ -4,7 +4,6 @@ import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
 import ValuesCarousel from '@/components/about/ValuesCarousel'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 
 export default function AboutPage() {
   return (
@@ -72,18 +71,7 @@ export default function AboutPage() {
         </section>
 
         {/* Team */}
-        <section className="relative overflow-hidden bg-white text-black py-[clamp(4rem,8vw,6rem)] px-4">
-          <div className="absolute inset-0 -z-10 grid grid-cols-3 gap-0">
-            <div className="relative w-full h-full">
-              <Image src="/logos/Article 1 - Template.png" alt="Article 1" fill className="object-cover" />
-            </div>
-            <div className="relative w-full h-full">
-              <Image src="/logos/Article 2 - Template.png" alt="Article 2" fill className="object-cover" />
-            </div>
-            <div className="relative w-full h-full">
-              <Image src="/logos/Article 3 - Template.png" alt="Article 3" fill className="object-cover" />
-            </div>
-          </div>
+        <section className="bg-white text-black py-[clamp(4rem,8vw,6rem)] px-4">
           <div className="mx-auto max-w-4xl text-center space-y-8">
             <h2 className="text-2xl font-bold">Meet the Team</h2>
             <div className="flex justify-center">
