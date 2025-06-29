@@ -71,8 +71,32 @@ export default function AboutPage() {
         </section>
 
         {/* Team */}
-        <section className="bg-white text-black py-[clamp(4rem,8vw,6rem)] px-4">
-          <div className="mx-auto max-w-4xl text-center space-y-8">
+        <section className="relative bg-white text-black py-[clamp(4rem,8vw,6rem)] px-4">
+          <div className="pointer-events-none absolute inset-0 z-0 grid grid-cols-3 gap-0">
+            <div
+              className="h-full w-full bg-cover bg-center"
+              style={{
+                backgroundImage: "url('/logos/Article 1 - Template.png')",
+                filter: 'grayscale(100%) sepia(20%) brightness(110%)',
+              }}
+            />
+            <div
+              className="h-full w-full bg-cover bg-center"
+              style={{
+                backgroundImage: "url('/logos/Article 2 - Template.png')",
+                filter: 'grayscale(100%) sepia(20%) brightness(110%)',
+              }}
+            />
+            <div
+              className="h-full w-full bg-cover bg-center"
+              style={{
+                backgroundImage: "url('/logos/Article 3 - Template.png')",
+                filter: 'grayscale(100%) sepia(20%) brightness(110%)',
+              }}
+            />
+          </div>
+          <div className="pointer-events-none absolute inset-0 z-10 bg-[#f8f3e3]/60" />
+          <div className="relative z-20 mx-auto max-w-4xl text-center space-y-8">
             <h2 className="text-2xl font-bold">Meet the Team</h2>
             <div className="flex justify-center">
               <div className="space-y-2">
