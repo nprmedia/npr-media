@@ -4,6 +4,7 @@ import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
 import ValuesCarousel from '@/components/about/ValuesCarousel'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function AboutPage() {
   return (
@@ -71,8 +72,38 @@ export default function AboutPage() {
         </section>
 
         {/* Team */}
-        <section className="bg-white text-black py-[clamp(4rem,8vw,6rem)] px-4">
-          <div className="mx-auto max-w-4xl text-center space-y-8">
+        <section className="relative bg-white text-black py-[clamp(4rem,8vw,6rem)] px-4">
+          <div className="pointer-events-none absolute inset-0 z-0 grid grid-cols-3 gap-0">
+            <div className="relative h-full w-full">
+              <Image
+                src="/logos/article1.svg"
+                alt=""
+                fill
+                sizes="33vw"
+                className="object-cover object-center grayscale [filter:sepia(20%)] brightness-[110%]"
+              />
+            </div>
+            <div className="relative h-full w-full">
+              <Image
+                src="/logos/article2.svg"
+                alt=""
+                fill
+                sizes="33vw"
+                className="object-cover object-center grayscale [filter:sepia(20%)] brightness-[110%]"
+              />
+            </div>
+            <div className="relative h-full w-full">
+              <Image
+                src="/logos/article3.svg"
+                alt=""
+                fill
+                sizes="33vw"
+                className="object-cover object-center grayscale [filter:sepia(20%)] brightness-[110%]"
+              />
+            </div>
+          </div>
+          <div className="pointer-events-none absolute inset-0 z-10 bg-[#f8f3e3]/60" />
+          <div className="relative z-20 mx-auto max-w-4xl text-center space-y-8">
             <h2 className="text-2xl font-bold">Meet the Team</h2>
             <div className="flex justify-center">
               <div className="space-y-2">
