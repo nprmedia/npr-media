@@ -4,6 +4,7 @@ import StickyHeader from '@/components/global/Header'
 import FooterSection from '@/components/global/Footer'
 import ValuesCarousel from '@/components/about/ValuesCarousel'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function AboutPage() {
   return (
@@ -100,7 +101,13 @@ export default function AboutPage() {
             <h2 className="text-2xl font-bold">Meet the Team</h2>
             <div className="flex justify-center">
               <div className="space-y-2">
-                <div className="mx-auto h-40 w-40 rounded-full bg-gray-300" />
+                <Image
+                  src="/profile-placeholder.svg"
+                  alt="Taylor portrait"
+                  width={300}
+                  height={400}
+                  className="mx-auto h-64 w-48 rounded-md object-cover"
+                />
                 <p className="font-normal">Taylor</p>
                 <p className="text-sm text-gray-600">Founder & CEO</p>
               </div>
