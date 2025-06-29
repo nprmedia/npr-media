@@ -72,7 +72,7 @@ export default function AboutPage() {
 
         {/* Team */}
         <section className="relative bg-white text-black py-[clamp(4rem,8vw,6rem)] px-4">
-          <div className="pointer-events-none absolute inset-0 z-0 grid grid-cols-3 gap-0">
+          <div className="pointer-events-none absolute inset-0 z-0 grid grid-cols-1 gap-0">
             <div
               className="h-full w-full bg-cover bg-center"
               style={{
@@ -80,27 +80,13 @@ export default function AboutPage() {
                 filter: 'grayscale(100%) sepia(20%) brightness(110%)',
               }}
             />
-            <div
-              className="h-full w-full bg-cover bg-center"
-              style={{
-                backgroundImage: "url('/logos/Article 2 - Template.png')",
-                filter: 'grayscale(100%) sepia(20%) brightness(110%)',
-              }}
-            />
-            <div
-              className="h-full w-full bg-cover bg-center"
-              style={{
-                backgroundImage: "url('/logos/Article 3 - Template.png')",
-                filter: 'grayscale(100%) sepia(20%) brightness(110%)',
-              }}
-            />
           </div>
           <div className="pointer-events-none absolute inset-0 z-10 bg-[#f8f3e3]/60" />
-          <div className="relative z-20 mx-auto max-w-4xl text-center space-y-8">
+          <div className="relative z-20 mx-auto max-w-md text-center space-y-8">
             <h2 className="text-2xl font-bold">Meet the Team</h2>
             <div className="flex justify-center">
               <div className="space-y-2">
-                <div className="mx-auto h-32 w-32 rounded-full bg-gray-300" />
+                <div className="mx-auto h-40 w-40 rounded-full bg-gray-300" />
                 <p className="font-normal">Taylor</p>
                 <p className="text-sm text-gray-600">Founder & CEO</p>
               </div>
