@@ -1,14 +1,19 @@
+import { ROUTES } from '@/lib/routes';
+
 export default function FinalCTA() {
   return (
-    <section className="bg-neutral-950 text-white py-20 px-6 text-center">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">Let’s build something legendary</h2>
-      <p className="text-lg mb-6 max-w-2xl mx-auto">
+    <section className="bg-neutral-950 px-6 py-20 text-center text-white">
+      <h2 className="mb-4 text-3xl font-bold md:text-4xl">Let’s build something legendary</h2>
+      <p className="mx-auto mb-6 max-w-2xl text-lg">
         We craft websites that drive serious results. Book your strategy call today.
       </p>
-      <a href="/contact" className="inline-block bg-white text-black font-semibold py-3 px-6 rounded-lg hover:bg-neutral-200 transition">
+      <a
+        href={ROUTES.contact}
+        className="inline-block rounded-lg bg-white px-6 py-3 font-semibold text-black transition hover:bg-neutral-200"
+      >
         Book Free Discovery Call
       </a>
-      <p className="text-sm mt-4 text-neutral-400">No pressure. Just clarity and next steps.</p>
+      <p className="mt-4 text-sm text-neutral-400">No pressure. Just clarity and next steps.</p>
     </section>
   );
 }
