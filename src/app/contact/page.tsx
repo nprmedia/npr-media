@@ -87,7 +87,7 @@ export default function ContactPage() {
 
   return (
     <section className="flex min-h-screen flex-col">
-      <StickyHeader />
+      <StickyHeader light />
       <main className="flex flex-1 items-center px-6 py-12 lg:px-12">
         <div className="relative mx-auto w-full max-w-3xl space-y-8">
           <div className="pointer-events-none absolute inset-0 -z-10">
@@ -190,16 +190,16 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="flex flex-col items-center rounded-lg border bg-white p-4 shadow-sm dark:bg-neutral-800">
-              <Phone className="mb-2 h-5 w-5" />
+            <div className="flex flex-col items-center rounded-lg border bg-neutral-50 p-4 shadow-sm dark:border-neutral-700 dark:bg-neutral-800">
+              <Phone className="mb-2 h-5 w-5 text-[var(--color-accent)]" />
               <p className="text-sm">+1 (555) 123-4567</p>
             </div>
-            <div className="flex flex-col items-center rounded-lg border bg-white p-4 shadow-sm dark:bg-neutral-800">
-              <Mail className="mb-2 h-5 w-5" />
+            <div className="flex flex-col items-center rounded-lg border bg-neutral-50 p-4 shadow-sm dark:border-neutral-700 dark:bg-neutral-800">
+              <Mail className="mb-2 h-5 w-5 text-[var(--color-accent)]" />
               <p className="text-sm">contact@npr-media.com</p>
             </div>
-            <div className="flex flex-col items-center rounded-lg border bg-white p-4 shadow-sm dark:bg-neutral-800">
-              <Calendar className="mb-2 h-5 w-5" />
+            <div className="flex flex-col items-center rounded-lg border bg-neutral-50 p-4 shadow-sm dark:border-neutral-700 dark:bg-neutral-800">
+              <Calendar className="mb-2 h-5 w-5 text-[var(--color-accent)]" />
               <a
                 href="https://calendly.com"
                 target="_blank"

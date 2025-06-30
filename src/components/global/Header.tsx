@@ -5,7 +5,15 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Routes } from '@/lib/routes';
 
-export default function StickyHeader() {
+interface HeaderProps {
+  /**
+   * When true, show dark text while the header background is transparent.
+   * Useful on pages with light backgrounds so links remain visible.
+   */
+  light?: boolean;
+}
+
+export default function StickyHeader({ light = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -16,6 +24,8 @@ export default function StickyHeader() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const textColor = scrolled || !light ? 'text-[var(--color-text-light)]' : 'text-black';
+
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
@@ -23,10 +33,10 @@ export default function StickyHeader() {
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 z-50 w-full transition-all ${
         scrolled ? 'bg-[#0A0F1C]/90 shadow-md backdrop-blur-sm' : 'backdrop-blur-0 bg-transparent'
-      } text-[var(--color-text-light)]`}
+      } ${textColor}`}
     >
       <div
-        className="mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center justify-between px-3 text-[var(--color-text-light)] md:px-10 lg:px-60"
+        className={`mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center justify-between px-3 md:px-10 lg:px-60 ${textColor}`}
         style={{ backgroundColor: scrolled ? 'var(--color-bg-dark)' : 'transparent' }}
       >
         <Link
