@@ -134,7 +134,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.15 }}
       >
         <DollarSign className={iconBase} />
-        <label htmlFor="budget" className={`${labelBase} -top-2 translate-y-0 text-xs`}>
+        <label htmlFor="budget" className={`${labelBase} ${form.budget ? '-top-2 text-xs' : ''}`}>
           Budget
         </label>
         <select
@@ -143,9 +143,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           onChange={handleChange('budget')}
           className={`${inputBase} appearance-none pr-8`}
         >
-          <option value="" disabled className="text-neutral-400">
-            Select...
-          </option>
+          <option value="" disabled hidden />
           <option value="<1k">{'<1k'}</option>
           <option value="1k–5k">1k–5k</option>
           <option value="5k–15k">5k–15k</option>
@@ -180,7 +178,10 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.25 }}
       >
         <Search className={iconBase} />
-        <label htmlFor="referral" className={`${labelBase} -top-2 translate-y-0 text-xs`}>
+        <label
+          htmlFor="referral"
+          className={`${labelBase} ${form.referral ? '-top-2 text-xs' : ''}`}
+        >
           How did you hear about us?
         </label>
         <select
@@ -189,9 +190,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           onChange={handleChange('referral')}
           className={`${inputBase} appearance-none pr-8`}
         >
-          <option value="" disabled className="text-neutral-400">
-            Select...
-          </option>
+          <option value="" disabled hidden />
           <option value="Google">Google</option>
           <option value="Referral">Referral</option>
           <option value="Social Media">Social Media</option>
