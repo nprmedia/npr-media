@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, User, DollarSign, MessageSquareText, Search, Check } from 'lucide-react';
 
@@ -28,10 +28,47 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  const basePlaceholders = {
+    name: 'Full Name',
+    email: 'Work Email',
+    summary: 'Project Summary',
+  } as const;
+  const [placeholders, setPlaceholders] = useState({ ...basePlaceholders });
+  const intervals = useRef<{ [K in keyof typeof basePlaceholders]?: NodeJS.Timeout }>({});
+
+  const startErase = (field: keyof typeof basePlaceholders) => {
+    if (intervals.current[field]) return;
+    intervals.current[field] = setInterval(() => {
+      setPlaceholders((prev) => {
+        const text = prev[field];
+        if (!text) {
+          clearInterval(intervals.current[field]);
+          intervals.current[field] = undefined;
+          return prev;
+        }
+        const next = text.slice(1);
+        return { ...prev, [field]: next };
+      });
+    }, 40);
+  };
+
+  const resetPlaceholder = (field: keyof typeof basePlaceholders) => {
+    if (intervals.current[field]) {
+      clearInterval(intervals.current[field]);
+      intervals.current[field] = undefined;
+    }
+    setPlaceholders((p) => ({ ...p, [field]: basePlaceholders[field] }));
+  };
+
   const handleChange =
     (field: keyof FormState) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-      setForm((prev) => ({ ...prev, [field]: e.target.value }));
+      const value = e.target.value;
+      setForm((prev) => ({ ...prev, [field]: value }));
+      if (field in basePlaceholders) {
+        if (value) startErase(field as keyof typeof basePlaceholders);
+        else resetPlaceholder(field as keyof typeof basePlaceholders);
+      }
     };
 
   const validate = () => {
@@ -49,6 +86,9 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
   const resetForm = () => {
     setForm({ name: '', email: '', budget: '', summary: '', referral: '' });
     setErrors({});
+    (Object.keys(basePlaceholders) as (keyof typeof basePlaceholders)[]).forEach((f) =>
+      resetPlaceholder(f),
+    );
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -106,6 +146,11 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           className={inputBase}
           aria-invalid={!!errors.name}
         />
+        {placeholders.name && (
+          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-neutral-400">
+            {placeholders.name}
+          </span>
+        )}
       </motion.div>
       <motion.div
         className="relative"
@@ -126,6 +171,11 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           className={inputBase}
           aria-invalid={!!errors.email}
         />
+        {placeholders.email && (
+          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-neutral-400">
+            {placeholders.email}
+          </span>
+        )}
       </motion.div>
       <motion.div
         className="relative"
@@ -170,6 +220,11 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           className={`${inputBase} resize-none`}
           aria-invalid={!!errors.summary}
         />
+        {placeholders.summary && (
+          <span className="pointer-events-none absolute top-3 left-10 text-sm text-neutral-400">
+            {placeholders.summary}
+          </span>
+        )}
       </motion.div>
       <motion.div
         className="relative"
