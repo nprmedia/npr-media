@@ -96,11 +96,11 @@ export default function AboutPage() {
             />
           </div>
           <div className="pointer-events-none absolute inset-0 z-10 bg-[#f8f3e3]/60" />
-          <div className="relative z-20 mx-auto max-w-md text-center space-y-8">
+          <div className="relative z-20 mx-auto max-w-4xl text-center space-y-8">
             <h2 className="text-2xl font-bold">Meet the Team</h2>
             <div className="flex justify-center">
               <div className="space-y-2">
-                <div className="mx-auto h-40 w-40 rounded-full bg-gray-300" />
+                <div className="mx-auto h-32 w-32 rounded-full bg-gray-300" />
                 <p className="font-normal">Taylor</p>
                 <p className="text-sm text-gray-600">Founder & CEO</p>
               </div>
