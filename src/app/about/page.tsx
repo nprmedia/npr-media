@@ -106,7 +106,7 @@ export default function AboutPage() {
                   alt="Taylor portrait"
                   width={300}
                   height={400}
-                  className="mx-auto h-64 w-48 rounded-md object-cover"
+                  className="mx-auto h-64 w-48 rounded-md object-cover shadow-2xl shadow-black/40"
                 />
                 <p className="font-normal">Taylor</p>
                 <p className="text-sm text-gray-600">Founder & CEO</p>
