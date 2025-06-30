@@ -65,15 +65,15 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="flex flex-col items-center rounded-lg border bg-neutral-50 p-4 shadow-sm dark:border-neutral-700 dark:bg-neutral-800">
+            <div className="flex flex-col items-center rounded-xl bg-white/80 p-4 shadow-md ring-1 ring-black/10 backdrop-blur-md dark:bg-neutral-900/70 dark:ring-white/10">
               <Phone className="mb-2 h-5 w-5 text-[var(--color-accent)]" />
               <p className="text-sm">+1 (555) 123-4567</p>
             </div>
-            <div className="flex flex-col items-center rounded-lg border bg-neutral-50 p-4 shadow-sm dark:border-neutral-700 dark:bg-neutral-800">
+            <div className="flex flex-col items-center rounded-xl bg-white/80 p-4 shadow-md ring-1 ring-black/10 backdrop-blur-md dark:bg-neutral-900/70 dark:ring-white/10">
               <Mail className="mb-2 h-5 w-5 text-[var(--color-accent)]" />
               <p className="text-sm">contact@npr-media.com</p>
             </div>
-            <div className="flex flex-col items-center rounded-lg border bg-neutral-50 p-4 shadow-sm dark:border-neutral-700 dark:bg-neutral-800">
+            <div className="flex flex-col items-center rounded-xl bg-white/80 p-4 shadow-md ring-1 ring-black/10 backdrop-blur-md dark:bg-neutral-900/70 dark:ring-white/10">
               <Calendar className="mb-2 h-5 w-5 text-[var(--color-accent)]" />
               <a
                 href="https://calendly.com"
