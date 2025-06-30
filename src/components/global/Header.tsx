@@ -3,8 +3,17 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { Routes } from '@/lib/routes';
 
-export default function StickyHeader() {
+interface HeaderProps {
+  /**
+   * When true, show dark text while the header background is transparent.
+   * Useful on pages with light backgrounds so links remain visible.
+   */
+  light?: boolean;
+}
+
+export default function StickyHeader({ light = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -15,46 +24,61 @@ export default function StickyHeader() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const textColor = scrolled || !light ? 'text-[var(--color-text-light)]' : 'text-black';
+
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 w-full z-50 transition-all ${
-        scrolled
-          ? 'bg-[#0A0F1C]/90 backdrop-blur-sm shadow-md'
-          : 'bg-transparent backdrop-blur-0'
-      } text-[var(--color-text-light)]`}
+      className={`fixed top-0 left-0 z-50 w-full transition-all ${
+        scrolled ? 'bg-[#0A0F1C]/90 shadow-md backdrop-blur-sm' : 'backdrop-blur-0 bg-transparent'
+      } ${textColor}`}
     >
       <div
-        className="mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center justify-between px-3 md:px-10 lg:px-60 text-[var(--color-text-light)]"
+        className={`mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center justify-between px-3 md:px-10 lg:px-60 ${textColor}`}
         style={{ backgroundColor: scrolled ? 'var(--color-bg-dark)' : 'transparent' }}
       >
         <Link
           href="/"
-          className="text-[clamp(0.9rem,1.4vw,1.25rem)] font-bold tracking-tight hover:scale-105 transition-transform"
+          className="text-[clamp(0.9rem,1.4vw,1.25rem)] font-bold tracking-tight transition-transform hover:scale-105"
         >
           NPR MEDIA
         </Link>
-        <nav className="hidden md:flex gap-[clamp(1.25rem,3vw,2rem)] items-center">
-          <Link href="/pricing" className="text-[clamp(0.75rem,1vw,0.875rem)] hover:text-blue-600 hover:scale-105 transition-transform">
+        <nav className="hidden items-center gap-[clamp(1.25rem,3vw,2rem)] md:flex">
+          <Link
+            href="/pricing"
+            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-blue-600"
+          >
             Pricing
           </Link>
-          <Link href="/about" className="text-[clamp(0.75rem,1vw,0.875rem)] hover:text-blue-600 hover:scale-105 transition-transform">
+          <Link
+            href="/about"
+            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-blue-600"
+          >
             About
           </Link>
-          <Link href="/contact" className="text-[clamp(0.75rem,1vw,0.875rem)] hover:text-blue-600 hover:scale-105 transition-transform">
+          <Link
+            href={Routes.contact}
+            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-blue-600"
+          >
             Contact
           </Link>
-          <Link href="/blog" className="text-[clamp(0.75rem,1vw,0.875rem)] hover:text-blue-600 hover:scale-105 transition-transform">
+          <Link
+            href="/blog"
+            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-blue-600"
+          >
             Blog
           </Link>
-          <Link href="/why-npr" className="text-[clamp(0.75rem,1vw,0.875rem)] hover:text-blue-600 hover:scale-105 transition-transform">
+          <Link
+            href="/why-npr"
+            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-blue-600"
+          >
             Why NPR
           </Link>
           <Link
             href="/signup"
-            className="ml-4 inline-flex items-center gap-2 bg-black text-white px-4 py-[0.45rem] rounded-lg text-[clamp(0.65rem,0.9vw,0.75rem)] font-semibold shadow hover:brightness-110 hover:scale-105 transition-transform"
+            className="ml-4 inline-flex items-center gap-2 rounded-lg bg-black px-4 py-[0.45rem] text-[clamp(0.65rem,0.9vw,0.75rem)] font-semibold text-white shadow transition-transform hover:scale-105 hover:brightness-110"
           >
             Get Started →
           </Link>
