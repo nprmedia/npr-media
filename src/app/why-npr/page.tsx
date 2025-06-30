@@ -11,6 +11,7 @@ import FinalCTA from '@/components/sections/FinalCTA'
 import { motion, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { Ban, CheckCircle2 } from 'lucide-react'
+import { routes } from '@/lib/routes'
 
 function TypingText({ text }: { text: string }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -246,7 +247,7 @@ export default function WhyNprPage() {
                 <p className="text-sm text-gray-500">The NPR no-bloat process</p>
                 <div className="pt-2">
                   <a
-                    href="/contact"
+                    href={routes.contact}
                     className="inline-block rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-4 py-2 text-xs font-semibold text-white shadow transition hover:scale-105"
                   >
                     Start winning
