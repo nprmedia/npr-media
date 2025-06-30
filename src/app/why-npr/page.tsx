@@ -7,6 +7,7 @@ import WaveDivider from '@/components/whyNpr/WaveDivider'
 import AiCarousel from '@/components/whyNpr/AiCarousel'
 import NprCarousel from '@/components/whyNpr/NprCarousel'
 import FirmCarousel from '@/components/whyNpr/FirmCarousel'
+import FinalCTA from '@/components/sections/FinalCTA'
 import { motion, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { Ban, CheckCircle2 } from 'lucide-react'
@@ -288,6 +289,7 @@ export default function WhyNprPage() {
           </div>
         </section>
         <WaveDivider flip className="text-gray-100" />
+        <FinalCTA />
       </main>
       <FooterSection />
     </section>
