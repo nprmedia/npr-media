@@ -32,7 +32,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
     name: 'Full Name',
     email: 'Work Email',
     summary: 'Project Summary',
-  } as const;
+  };
   const [placeholders, setPlaceholders] = useState({ ...basePlaceholders });
   const intervals = useRef<{ [K in keyof typeof basePlaceholders]?: NodeJS.Timeout }>({});
 
