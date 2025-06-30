@@ -134,10 +134,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.15 }}
       >
         <DollarSign className={iconBase} />
-        <label
-          htmlFor="budget"
-          className={`${labelBase} ${form.budget ? '-top-2 translate-y-0 text-xs' : ''}`}
-        >
+        <label htmlFor="budget" className={`${labelBase} -top-2 translate-y-0 text-xs`}>
           Budget
         </label>
         <select
@@ -183,10 +180,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.25 }}
       >
         <Search className={iconBase} />
-        <label
-          htmlFor="referral"
-          className={`${labelBase} ${form.referral ? '-top-2 translate-y-0 text-xs' : ''}`}
-        >
+        <label htmlFor="referral" className={`${labelBase} -top-2 translate-y-0 text-xs`}>
           How did you hear about us?
         </label>
         <select
