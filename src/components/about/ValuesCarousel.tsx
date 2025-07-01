@@ -108,10 +108,10 @@ export default function ValuesCarousel() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
                 style={{ opacity }}
-                className="rounded-xl bg-white p-6 text-black shadow"
+                className="rounded-xl bg-antique p-6 text-charcoal shadow"
               >
                 <p className="text-xl leading-snug font-bold">{slide.title}</p>
-                <p className="mt-2 text-lg leading-relaxed text-gray-600">{slide.description}</p>
+                <p className="mt-2 text-lg leading-relaxed text-sepia">{slide.description}</p>
               </motion.div>
             </section>
           );

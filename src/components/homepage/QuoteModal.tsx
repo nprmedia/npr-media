@@ -19,23 +19,23 @@ export default function QuoteModal({
   return (
     <Dialog.Root onOpenChange={() => setSubmitted(false)}>
       <Dialog.Trigger asChild>
-        <button className="inline-flex items-center justify-center rounded-full bg-white px-6 py-2 text-sm font-semibold text-black shadow hover:bg-gray-200">
+        <button className="inline-flex items-center justify-center rounded-full bg-blood px-6 py-2 text-sm font-semibold text-white shadow hover:bg-crimson">
           {triggerLabel}
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/50" />
-        <Dialog.Content className="fixed top-1/2 left-1/2 w-[90vw] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white p-6 text-black shadow-lg">
+        <Dialog.Content className="fixed top-1/2 left-1/2 w-[90vw] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl bg-antique p-6 text-charcoal shadow-lg">
           <Dialog.Title className="text-lg font-semibold">Tell us what you need</Dialog.Title>
-          <Dialog.Description className="text-sm text-gray-600">
+          <Dialog.Description className="text-sm text-sepia">
             Your submission is reviewed by our founder — not a sales bot.
           </Dialog.Description>
-          <Dialog.Close className="absolute right-3 top-3 rounded p-1 text-gray-700 hover:bg-gray-100">
+          <Dialog.Close className="absolute right-3 top-3 rounded p-1 text-sepia hover:bg-antique">
             <X className="h-4 w-4" />
           </Dialog.Close>
           {submitted ? (
             <div className="mt-4 flex flex-col items-center space-y-2">
-              <CheckCircle2 className="h-8 w-8 text-green-600" />
+              <CheckCircle2 className="h-8 w-8 text-blood" />
               <p className="text-center text-sm">We&apos;ll respond within 24h with next steps.</p>
             </div>
           ) : (
