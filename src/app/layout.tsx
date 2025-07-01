@@ -5,10 +5,10 @@
 import '@styles/globals.css';
 import { useEffect } from 'react';
 import type { ReactNode } from 'react';
-import '@fontsource/gfs-didot/400.css';
-import '@fontsource/space-grotesk/400.css';
-import '@fontsource/space-grotesk/500.css';
-import '@fontsource/space-grotesk/700.css';
+import '@fontsource/eb-garamond/400.css';
+import '@fontsource/eb-garamond/700.css';
+import '@fontsource/merriweather/400.css';
+import '@fontsource/merriweather/700.css';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body
-        className="font-sans bg-background text-foreground antialiased"
+        className="font-serif bg-antique text-charcoal antialiased"
         style={{ overflowY: 'hidden' }}
       >
         {children}

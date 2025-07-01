@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Merriweather:wght@400;700&display=swap');
 
 /* Global CSS Variables and Base Styles */
 :root {
@@ -7,38 +7,28 @@
   --section-padding: 6rem;
   --max-content-width: 1280px;
 
-  --font-heading: 'Inter', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-didot: 'GFS Didot', serif;
-  --font-grotesk: 'Space Grotesk', sans-serif;
+  --font-heading: 'EB Garamond', 'Merriweather', serif;
+  --font-body: 'EB Garamond', 'Merriweather', serif;
 
-  /* Brand Colors */
-  --color-bg-dark: #111827;
-  --color-card: #1e293b;
-  --color-text-light: #f1f5f9;
-  --color-accent: #e11d48;
-  --color-accent-rgb: 225, 29, 72;
-  --color-accent-dark: #be123c;
+  /* Brand Colors mapped to custom palette */
+  --color-bg-dark: #3b3224; /* umber */
+  --color-card: #786c4f; /* olive */
+  --color-text-light: #d2d2d2; /* silver */
+  --color-accent: #b30000; /* blood */
+  --color-accent-rgb: 179, 0, 0;
+  --color-accent-dark: #7a0000; /* crimson */
 
-  /* Neutral Palette */
-  --color-gray-300: #cbd5e1;
-  --color-gray-400: #94a3b8;
-  --color-gray-600: #475569;
-  --color-gray-700: #334155;
+  /* Legacy gray variables mapped to new tones */
+  --color-gray-300: #d2d2d2; /* silver */
+  --color-gray-400: #b7a077; /* sepia */
+  --color-gray-600: #786c4f; /* olive */
+  --color-gray-700: #2f2f2f; /* charcoal */
 }
 
-html {
-  scroll-behavior: smooth;
-  font-family: var(--font-body);
-  overflow-x: hidden;
-}
-
+html,
 body {
-  line-height: 1.5;
-  font-family: var(--font-body);
-  font-weight: 400;
-  margin: 0;
-  padding: 0;
+  @apply bg-antique text-charcoal font-serif;
+  scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
@@ -77,4 +67,3 @@ img {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
-

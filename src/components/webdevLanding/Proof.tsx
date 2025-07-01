@@ -40,11 +40,11 @@ export default function Proof() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="rounded-2xl bg-white/70 p-6 shadow-xl ring-1 ring-black/10 backdrop-blur-md hover:shadow-2xl"
+              className="rounded-2xl bg-antique/70 p-6 shadow-xl ring-1 ring-umber/10 backdrop-blur-md hover:shadow-2xl"
             >
               <p className="text-sm italic">&ldquo;{t.quote}&rdquo;</p>
               <p className="mt-4 font-semibold">{t.name}</p>
-              <p className="text-xs text-neutral-500">{t.title}</p>
+              <p className="text-xs text-sepia">{t.title}</p>
             </motion.div>
           ))}
         </div>

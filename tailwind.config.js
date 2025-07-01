@@ -1,14 +1,21 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,html}'],
   theme: {
     extend: {
+      colors: {
+        antique: '#d7c7a5',
+        sepia: '#b7a077',
+        olive: '#786c4f',
+        umber: '#3b3224',
+        silver: '#d2d2d2',
+        charcoal: '#2f2f2f',
+        blood: '#b30000',
+        crimson: '#7a0000',
+      },
       fontFamily: {
-        didot: ['"GFS Didot"', 'serif'],
-        grotesk: ['"Space Grotesk"', 'sans-serif'],
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        serif: ['"EB Garamond"', '"Merriweather"', 'serif'],
         code: ['JetBrains Mono', 'monospace'],
       },
 
