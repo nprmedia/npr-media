@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, User, DollarSign, MessageSquareText, Search, Check } from 'lucide-react';
 
@@ -28,10 +28,47 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  const basePlaceholders = {
+    name: 'Full Name',
+    email: 'Work Email',
+    summary: 'Project Summary',
+  };
+  const [placeholders, setPlaceholders] = useState({ ...basePlaceholders });
+  const intervals = useRef<{ [K in keyof typeof basePlaceholders]?: NodeJS.Timeout }>({});
+
+  const startErase = (field: keyof typeof basePlaceholders) => {
+    if (intervals.current[field]) return;
+    intervals.current[field] = setInterval(() => {
+      setPlaceholders((prev) => {
+        const text = prev[field];
+        if (!text) {
+          clearInterval(intervals.current[field]);
+          intervals.current[field] = undefined;
+          return prev;
+        }
+        const next = text.slice(1);
+        return { ...prev, [field]: next };
+      });
+    }, 30);
+  };
+
+  const resetPlaceholder = (field: keyof typeof basePlaceholders) => {
+    if (intervals.current[field]) {
+      clearInterval(intervals.current[field]);
+      intervals.current[field] = undefined;
+    }
+    setPlaceholders((p) => ({ ...p, [field]: basePlaceholders[field] }));
+  };
+
   const handleChange =
     (field: keyof FormState) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-      setForm((prev) => ({ ...prev, [field]: e.target.value }));
+      const value = e.target.value;
+      setForm((prev) => ({ ...prev, [field]: value }));
+      if (field in basePlaceholders) {
+        if (value) startErase(field as keyof typeof basePlaceholders);
+        else resetPlaceholder(field as keyof typeof basePlaceholders);
+      }
     };
 
   const validate = () => {
@@ -49,6 +86,9 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
   const resetForm = () => {
     setForm({ name: '', email: '', budget: '', summary: '', referral: '' });
     setErrors({});
+    (Object.keys(basePlaceholders) as (keyof typeof basePlaceholders)[]).forEach((f) =>
+      resetPlaceholder(f),
+    );
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -71,10 +111,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
   };
 
   const inputBase =
-    'peer w-full rounded-md bg-white/80 dark:bg-neutral-800/80 px-10 py-3 text-sm text-black dark:text-white placeholder-transparent shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40';
-
-  const labelBase =
-    'pointer-events-none absolute left-10 top-1/2 -translate-y-1/2 text-sm text-neutral-500 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-neutral-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-blue-600';
+    'w-full rounded-md bg-white/80 dark:bg-neutral-800/80 px-10 py-3 text-sm text-black dark:text-white shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40';
 
   const iconBase = 'absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400';
 
@@ -94,7 +131,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.05 }}
       >
         <User className={iconBase} />
-        <label htmlFor="name" className={labelBase}>
+        <label htmlFor="name" className="sr-only">
           Full Name
         </label>
         <input
@@ -102,10 +139,14 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           type="text"
           value={form.name}
           onChange={handleChange('name')}
-          placeholder="Full Name"
           className={inputBase}
           aria-invalid={!!errors.name}
         />
+        {placeholders.name && (
+          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-neutral-400">
+            {placeholders.name}
+          </span>
+        )}
       </motion.div>
       <motion.div
         className="relative"
@@ -114,7 +155,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.1 }}
       >
         <Mail className={iconBase} />
-        <label htmlFor="email" className={labelBase}>
+        <label htmlFor="email" className="sr-only">
           Work Email
         </label>
         <input
@@ -122,10 +163,14 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           type="email"
           value={form.email}
           onChange={handleChange('email')}
-          placeholder="Work Email"
           className={inputBase}
           aria-invalid={!!errors.email}
         />
+        {placeholders.email && (
+          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-neutral-400">
+            {placeholders.email}
+          </span>
+        )}
       </motion.div>
       <motion.div
         className="relative"
@@ -134,7 +179,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.15 }}
       >
         <DollarSign className={iconBase} />
-        <label htmlFor="budget" className={labelBase}>
+        <label htmlFor="budget" className="sr-only">
           Budget
         </label>
         <select
@@ -143,15 +188,18 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           onChange={handleChange('budget')}
           className={`${inputBase} appearance-none pr-8`}
         >
-          <option value="" disabled className="text-neutral-400">
-            Select...
-          </option>
+          <option value="" disabled hidden />
           <option value="<1k">{'<1k'}</option>
           <option value="1k–5k">1k–5k</option>
           <option value="5k–15k">5k–15k</option>
           <option value="15k+">15k+</option>
           <option value="Not Sure">Not Sure</option>
         </select>
+        {!form.budget && (
+          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-neutral-400">
+            Budget
+          </span>
+        )}
       </motion.div>
       <motion.div
         className="relative"
@@ -160,7 +208,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         <MessageSquareText className={iconBase} />
-        <label htmlFor="summary" className={labelBase}>
+        <label htmlFor="summary" className="sr-only">
           Project Summary
         </label>
         <textarea
@@ -168,10 +216,14 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           rows={4}
           value={form.summary}
           onChange={handleChange('summary')}
-          placeholder="Project Summary"
           className={`${inputBase} resize-none`}
           aria-invalid={!!errors.summary}
         />
+        {placeholders.summary && (
+          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-neutral-400">
+            {placeholders.summary}
+          </span>
+        )}
       </motion.div>
       <motion.div
         className="relative"
@@ -180,7 +232,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.25 }}
       >
         <Search className={iconBase} />
-        <label htmlFor="referral" className={labelBase}>
+        <label htmlFor="referral" className="sr-only">
           How did you hear about us?
         </label>
         <select
@@ -189,14 +241,17 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           onChange={handleChange('referral')}
           className={`${inputBase} appearance-none pr-8`}
         >
-          <option value="" disabled className="text-neutral-400">
-            Select...
-          </option>
+          <option value="" disabled hidden />
           <option value="Google">Google</option>
           <option value="Referral">Referral</option>
           <option value="Social Media">Social Media</option>
           <option value="Other">Other</option>
         </select>
+        {!form.referral && (
+          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-neutral-400">
+            How did you hear about us?
+          </span>
+        )}
       </motion.div>
       <motion.button
         type="submit"
