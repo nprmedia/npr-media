@@ -13,18 +13,18 @@
   --font-grotesk: 'Space Grotesk', sans-serif;
 
   /* Brand Colors */
-  --color-bg-dark: #111827;
-  --color-card: #1e293b;
-  --color-text-light: #f1f5f9;
-  --color-accent: #e11d48;
-  --color-accent-rgb: 225, 29, 72;
-  --color-accent-dark: #be123c;
+  --color-bg-dark: #3b3224; /* umber */
+  --color-card: #786c4f; /* olive */
+  --color-text-light: #d2d2d2; /* silver */
+  --color-accent: #b30000; /* blood */
+  --color-accent-rgb: 179, 0, 0;
+  --color-accent-dark: #7a0000; /* crimson */
 
-  /* Neutral Palette */
-  --color-gray-300: #cbd5e1;
-  --color-gray-400: #94a3b8;
-  --color-gray-600: #475569;
-  --color-gray-700: #334155;
+  /* Neutral Palette mapped to new tones */
+  --color-gray-300: #d7c7a5; /* antique */
+  --color-gray-400: #b7a077; /* sepia */
+  --color-gray-600: #786c4f; /* olive */
+  --color-gray-700: #2f2f2f; /* charcoal */
 }
 
 html {

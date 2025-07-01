@@ -85,7 +85,7 @@ export default function FirmCarousel() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.5 }}
-                  className="mx-auto w-[clamp(18rem,60vw,28rem)] rounded-xl border border-black/10 bg-gradient-to-br from-gray-50 via-white to-gray-200 p-6 text-black shadow-2xl"
+                  className="mx-auto w-[clamp(18rem,60vw,28rem)] rounded-xl border border-[var(--color-charcoal)]/10 bg-gradient-to-br from-[var(--color-antique)] via-[var(--color-antique)] to-[var(--color-silver)] p-6 text-[var(--color-charcoal)] shadow-2xl"
                 >
                   <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4">
                     <div>

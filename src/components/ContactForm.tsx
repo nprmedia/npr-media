@@ -111,9 +111,9 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
   };
 
   const inputBase =
-    'w-full rounded-md bg-white/80 dark:bg-neutral-800/80 px-10 py-3 text-sm text-black dark:text-white shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40';
+    'w-full rounded-md bg-[var(--color-antique)]/80 px-10 py-3 text-sm text-[var(--color-charcoal)] shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-blood)]/40';
 
-  const iconBase = 'absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400';
+  const iconBase = 'absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--color-sepia)]';
 
   return (
     <motion.form
@@ -122,7 +122,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="space-y-6 rounded-2xl bg-white/80 p-6 shadow-xl ring-1 shadow-black/10 ring-transparent backdrop-blur-md hover:ring-blue-500/20 dark:bg-neutral-900/80"
+      className="space-y-6 rounded-2xl bg-[var(--color-antique)]/80 p-6 shadow-xl ring-1 shadow-[var(--color-charcoal)]/10 ring-transparent backdrop-blur-md hover:ring-[var(--color-blood)]/20"
     >
       <motion.div
         className="relative"

@@ -46,17 +46,17 @@ export default function WhyNprPage() {
           className="relative overflow-hidden bg-[var(--color-bg-dark)] py-20 text-[var(--color-text-light)]"
         >
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-br from-[var(--color-accent)] via-pink-500 to-[var(--color-accent-dark)] opacity-30 blur-3xl" />
+            <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-br from-[var(--color-blood)] to-[var(--color-crimson)] opacity-30 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl space-y-12 px-4">
             <div className="space-y-2 text-center">
               <h1 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight">
                 Why Human Strategy Beats AI Guesswork
               </h1>
-              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-300">
+              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-[var(--color-antique)]">
                 AI can parse data but it can&rsquo;t read minds or context.
               </p>
-              <p className="mx-auto max-w-xl text-sm text-gray-300">
+              <p className="mx-auto max-w-xl text-sm text-[var(--color-antique)]">
                 Our strategists apply lived experience and own the results from concept to launch.
               </p>
             </div>
@@ -64,14 +64,14 @@ export default function WhyNprPage() {
               <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
                 <div className="space-y-2 pb-8 text-center md:pb-0 md:text-left">
                   <h2 className="text-3xl font-bold sm:text-4xl">What AI Can’t Do</h2>
-                  <p className="text-sm text-gray-300">
+                  <p className="text-sm text-[var(--color-antique)]">
                     Where automation simply can&rsquo;t compete
                   </p>
                   <div className="pt-2">
                     <a
                       href="/webdev-landing"
                       data-event="cta-social-proof"
-                      className="inline-block rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-4 py-2 text-xs font-semibold text-white shadow transition hover:scale-105"
+                      className="inline-block rounded-full bg-gradient-to-r from-[var(--color-blood)] to-[var(--color-crimson)] px-4 py-2 text-xs font-semibold text-[var(--color-silver)] shadow transition hover:scale-105"
                     >
                       See the difference
                     </a>
@@ -87,26 +87,26 @@ export default function WhyNprPage() {
                 </motion.div>
               </div>
               <div className="space-y-1 text-center">
-                <h2 className="text-xl font-bold text-gray-100">Here&rsquo;s where we step in</h2>
-                <p className="text-sm text-gray-400">
+                <h2 className="text-xl font-bold text-[var(--color-silver)]">Here&rsquo;s where we step in</h2>
+                <p className="text-sm text-[var(--color-sepia)]">
                   Real humans refine the data and own the outcome.
                 </p>
                 <ScrollCue
                   href="#npr-delivers"
-                  className="mx-auto mt-2 text-[var(--color-accent)]"
+                  className="mx-auto mt-2 text-[var(--color-blood)]"
                 />
               </div>
               <div id="npr-delivers" className="md:grid md:grid-cols-2 md:items-center md:gap-8">
                 <div className="space-y-2 pb-8 text-center md:pb-0 md:text-left">
                   <h2 className="text-3xl font-bold sm:text-4xl">How NPR Media Delivers</h2>
-                  <p className="text-sm text-gray-300">
+                  <p className="text-sm text-[var(--color-antique)]">
                     Hands-on strategy that actually moves the needle
                   </p>
                   <div className="pt-2">
                     <a
                       href="/webdev-landing"
                       data-event="cta-social-proof"
-                      className="inline-block rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-4 py-2 text-xs font-semibold text-white shadow transition hover:scale-105"
+                      className="inline-block rounded-full bg-gradient-to-r from-[var(--color-blood)] to-[var(--color-crimson)] px-4 py-2 text-xs font-semibold text-[var(--color-silver)] shadow transition hover:scale-105"
                     >
                       Explore our approach
                     </a>
@@ -122,7 +122,7 @@ export default function WhyNprPage() {
                 </motion.div>
               </div>
             </div>
-            <p className="mx-auto mt-6 max-w-xl text-center text-sm text-gray-300">
+            <p className="mx-auto mt-6 max-w-xl text-center text-sm text-[var(--color-antique)]">
               Leaving growth to algorithms only repeats old mistakes. We build every campaign
               hands-on and measure success by your metrics.
             </p>
@@ -133,7 +133,7 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="rounded-xl bg-white/10 p-6 text-white shadow-lg"
+                className="rounded-xl bg-[var(--color-antique)]/10 p-6 text-[var(--color-silver)] shadow-lg"
               >
                 <p className="font-semibold">“Client X wouldn’t exist if we used AI.”</p>
               </motion.div>
@@ -142,14 +142,14 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="rounded-xl bg-white/10 p-6 text-white shadow-lg"
+                className="rounded-xl bg-[var(--color-antique)]/10 p-6 text-[var(--color-silver)] shadow-lg"
               >
                 <p className="font-semibold">
                   “Our last launch doubled signups after a human-led overhaul.”
                 </p>
               </motion.div>
             </div>
-            <p className="mt-6 text-center text-sm text-gray-600">
+            <p className="mt-6 text-center text-sm text-[var(--color-charcoal)]">
               Skip the bloat and keep momentum with a senior crew measured on outcomes.
             </p>
             <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
@@ -157,7 +157,7 @@ export default function WhyNprPage() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="relative mt-12 flex items-start justify-center rounded-xl bg-white/5 p-6 text-white shadow-lg md:p-8"
+              className="relative mt-12 flex items-start justify-center rounded-xl bg-[var(--color-antique)]/5 p-6 text-[var(--color-silver)] shadow-lg md:p-8"
             >
               <div className="w-1/2 pr-4 text-sm">
                 <p className="mb-2 font-semibold">AI output</p>
@@ -165,7 +165,7 @@ export default function WhyNprPage() {
                   <TypingText text="10 tips for SEO…" />
                 </div>
               </div>
-              <div className="absolute top-1/2 left-1/2 h-10 w-px -translate-y-1/2 transform bg-white/30" />
+              <div className="absolute top-1/2 left-1/2 h-10 w-px -translate-y-1/2 transform bg-[var(--color-silver)]/30" />
               <div className="w-1/2 pl-4 text-sm">
                 <p className="mb-2 font-semibold">NPR Media approach</p>
                 <motion.div
@@ -173,7 +173,7 @@ export default function WhyNprPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className="rounded border border-white/30 bg-white/10 p-3 text-white shadow-inner"
+                  className="rounded border border-[var(--color-silver)]/30 bg-[var(--color-antique)]/10 p-3 text-[var(--color-silver)] shadow-inner"
                 >
                   Bold hook → stat → CTA
                 </motion.div>
@@ -183,24 +183,24 @@ export default function WhyNprPage() {
               <a
                 href="/webdev-landing"
                 data-event="cta-social-proof"
-                className="inline-block rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-6 py-3 text-sm font-semibold text-white shadow-md ring-1 ring-white/10 transition hover:scale-105"
+                className="inline-block rounded-full bg-gradient-to-r from-[var(--color-blood)] to-[var(--color-crimson)] px-6 py-3 text-sm font-semibold text-[var(--color-silver)] shadow-md ring-1 ring-white/10 transition hover:scale-105"
               >
                 Don’t get AI’d. Get outcomes.
               </a>
             </div>
-            <p className="mt-10 text-center text-sm font-semibold text-gray-600">
+            <p className="mt-10 text-center text-sm font-semibold text-[var(--color-charcoal)]">
               AI isn&rsquo;t your only risk. Bloated agencies drain budgets and momentum. Keep
               scrolling to see how our lean team drives faster wins.
             </p>
-            <ScrollCue href="#vs-firms" className="mx-auto mt-4 text-[var(--color-accent)]" />
+            <ScrollCue href="#vs-firms" className="mx-auto mt-4 text-[var(--color-blood)]" />
           </div>
         </section>
-        <WaveDivider className="text-gray-100" />
+        <WaveDivider className="text-[var(--color-silver)]" />
 
         {/* SECTION 2: NPR Media vs Other Firms */}
-        <section id="vs-firms" className="relative overflow-hidden bg-white py-20 text-black">
+        <section id="vs-firms" className="relative overflow-hidden bg-[var(--color-antique)] py-20 text-[var(--color-charcoal)]">
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute right-1/2 bottom-0 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-br from-[var(--color-accent)] via-pink-400 to-[var(--color-accent-dark)] opacity-30 blur-3xl" />
+            <div className="absolute right-1/2 bottom-0 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-br from-[var(--color-blood)] to-[var(--color-crimson)] opacity-30 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl space-y-12 px-4">
             <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
@@ -208,11 +208,11 @@ export default function WhyNprPage() {
                 <h1 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight">
                   Agency Bloat vs NPR Media
                 </h1>
-                <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-600">
+                <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-[var(--color-charcoal)]">
                   AI tools won&rsquo;t own your numbers&mdash;and neither will bloated agencies.
                   While others bill hours, we deliver outcomes.
                 </p>
-                <p className="mx-auto max-w-xl text-sm text-gray-600 md:mx-0">
+                <p className="mx-auto max-w-xl text-sm text-[var(--color-charcoal)] md:mx-0">
                   Large firms pad projects with juniors and endless steps. Our senior strike team
                   ships fast and stands behind every metric.
                 </p>
@@ -226,7 +226,7 @@ export default function WhyNprPage() {
               </motion.div>
             </div>
             <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-gray-400 to-transparent" />
-            <p className="text-center text-sm font-semibold text-gray-500">
+            <p className="text-center text-sm font-semibold text-[var(--color-sepia)]">
               Here&rsquo;s how we do it differently.
             </p>
             <div className="grid gap-8 text-sm md:grid-cols-2">
@@ -235,15 +235,15 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="space-y-2 rounded-xl bg-white p-6 text-gray-800 shadow-md"
+                className="space-y-2 rounded-xl bg-[var(--color-antique)] p-6 text-[var(--color-charcoal)] shadow-md"
               >
                 <p className="text-lg font-semibold">What other firms drag you through</p>
-                <p className="text-sm text-gray-500">Extras you don&rsquo;t actually need</p>
+                <p className="text-sm text-[var(--color-sepia)]">Extras you don&rsquo;t actually need</p>
                 <div className="pt-2">
                   <a
                     href="/webdev-landing"
                     data-event="cta-social-proof"
-                    className="inline-block rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-4 py-2 text-xs font-semibold text-white shadow transition hover:scale-105"
+                    className="inline-block rounded-full bg-gradient-to-r from-[var(--color-blood)] to-[var(--color-crimson)] px-4 py-2 text-xs font-semibold text-[var(--color-silver)] shadow transition hover:scale-105"
                   >
                     Break free
                   </a>
@@ -272,38 +272,38 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="space-y-2 rounded-xl bg-white p-6 text-gray-800 shadow-md"
+                className="space-y-2 rounded-xl bg-[var(--color-antique)] p-6 text-[var(--color-charcoal)] shadow-md"
               >
                 <p className="text-lg font-semibold">How we keep projects moving</p>
-                <p className="text-sm text-gray-500">The NPR no-bloat process</p>
+                <p className="text-sm text-[var(--color-sepia)]">The NPR no-bloat process</p>
                 <div className="pt-2">
                   <a
                     href={Routes.contact}
                     data-event="cta-service"
-                    className="inline-block rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-4 py-2 text-xs font-semibold text-white shadow transition hover:scale-105"
+                    className="inline-block rounded-full bg-gradient-to-r from-[var(--color-blood)] to-[var(--color-crimson)] px-4 py-2 text-xs font-semibold text-[var(--color-silver)] shadow transition hover:scale-105"
                   >
                     Start winning
                   </a>
                 </div>
                 <ul className="space-y-1 text-sm">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-[var(--color-accent)]" />
+                    <CheckCircle2 className="h-4 w-4 text-[var(--color-blood)]" />
                     <span>Production-grade homepage</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-[var(--color-accent)]" />
+                    <CheckCircle2 className="h-4 w-4 text-[var(--color-blood)]" />
                     <span>9-section CMS site</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-[var(--color-accent)]" />
+                    <CheckCircle2 className="h-4 w-4 text-[var(--color-blood)]" />
                     <span>SOP-aligned builds</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-[var(--color-accent)]" />
+                    <CheckCircle2 className="h-4 w-4 text-[var(--color-blood)]" />
                     <span>Real-time revisions</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-[var(--color-accent)]" />
+                    <CheckCircle2 className="h-4 w-4 text-[var(--color-blood)]" />
                     <span>Vercel-level hosting</span>
                   </li>
                 </ul>
@@ -316,15 +316,15 @@ export default function WhyNprPage() {
               <a
                 href="/webdev-landing"
                 data-event="cta-social-proof"
-                className="inline-block rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-6 py-3 text-sm font-semibold text-white shadow-md ring-1 ring-black/10 transition hover:scale-105"
+                className="inline-block rounded-full bg-gradient-to-r from-[var(--color-blood)] to-[var(--color-crimson)] px-6 py-3 text-sm font-semibold text-[var(--color-silver)] shadow-md ring-1 ring-black/10 transition hover:scale-105"
               >
                 This time, don’t settle.
               </a>
             </div>
-            <ScrollCue href="#footer" className="mx-auto mt-4 text-[var(--color-accent)]" />
+            <ScrollCue href="#footer" className="mx-auto mt-4 text-[var(--color-blood)]" />
           </div>
         </section>
-        <WaveDivider flip className="text-gray-100" />
+        <WaveDivider flip className="text-[var(--color-silver)]" />
       </main>
       <FinalCTA />
       <FooterSection />

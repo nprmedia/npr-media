@@ -4,6 +4,21 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,html}'],
   theme: {
+    colors: {
+      antique: '#d7c7a5',
+      sepia: '#b7a077',
+      olive: '#786c4f',
+      umber: '#3b3224',
+      silver: '#d2d2d2',
+      charcoal: '#2f2f2f',
+      blood: '#b30000',
+      crimson: '#7a0000',
+      background: '#d7c7a5',
+      foreground: '#2f2f2f',
+      transparent: 'transparent',
+      current: 'currentColor',
+      inherit: 'inherit',
+    },
     extend: {
       fontFamily: {
         didot: ['"GFS Didot"', 'serif'],

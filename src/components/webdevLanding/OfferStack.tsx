@@ -31,11 +31,11 @@ export default function OfferStack() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="rounded-2xl bg-white/70 p-6 text-center shadow-xl ring-1 ring-black/10 backdrop-blur-md hover:shadow-2xl"
+              className="rounded-2xl bg-[var(--color-antique)]/70 p-6 text-center shadow-xl ring-1 ring-[var(--color-charcoal)]/10 backdrop-blur-md hover:shadow-2xl"
             >
-              <item.icon className="mx-auto mb-3 h-6 w-6 text-indigo-600" />
+              <item.icon className="mx-auto mb-3 h-6 w-6 text-[var(--color-blood)]" />
               <h3 className="mb-1 font-semibold text-[clamp(1rem,1.6vw,1.25rem)]">{item.label}</h3>
-              <p className="text-sm text-neutral-700">{item.text}</p>
+              <p className="text-sm text-[var(--color-charcoal)]">{item.text}</p>
             </motion.div>
           ))}
         </div>
