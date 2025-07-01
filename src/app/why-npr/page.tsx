@@ -69,7 +69,8 @@ export default function WhyNprPage() {
                   </p>
                   <div className="pt-2">
                     <a
-                      href="/pricing"
+                      href="/webdev-landing"
+                      data-event="cta-social-proof"
                       className="inline-block rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-4 py-2 text-xs font-semibold text-white shadow transition hover:scale-105"
                     >
                       See the difference
@@ -103,7 +104,8 @@ export default function WhyNprPage() {
                   </p>
                   <div className="pt-2">
                     <a
-                      href="/pricing"
+                      href="/webdev-landing"
+                      data-event="cta-social-proof"
                       className="inline-block rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-4 py-2 text-xs font-semibold text-white shadow transition hover:scale-105"
                     >
                       Explore our approach
@@ -179,7 +181,8 @@ export default function WhyNprPage() {
             </motion.div>
             <div className="pt-8 text-center">
               <a
-                href="/pricing"
+                href="/webdev-landing"
+                data-event="cta-social-proof"
                 className="inline-block rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-6 py-3 text-sm font-semibold text-white shadow-md ring-1 ring-white/10 transition hover:scale-105"
               >
                 Don’t get AI’d. Get outcomes.
@@ -238,7 +241,8 @@ export default function WhyNprPage() {
                 <p className="text-sm text-gray-500">Extras you don&rsquo;t actually need</p>
                 <div className="pt-2">
                   <a
-                    href="/about"
+                    href="/webdev-landing"
+                    data-event="cta-social-proof"
                     className="inline-block rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-4 py-2 text-xs font-semibold text-white shadow transition hover:scale-105"
                   >
                     Break free
@@ -275,6 +279,7 @@ export default function WhyNprPage() {
                 <div className="pt-2">
                   <a
                     href={Routes.contact}
+                    data-event="cta-service"
                     className="inline-block rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-4 py-2 text-xs font-semibold text-white shadow transition hover:scale-105"
                   >
                     Start winning
@@ -309,7 +314,8 @@ export default function WhyNprPage() {
             </p>
             <div className="pt-8 text-center">
               <a
-                href="/about"
+                href="/webdev-landing"
+                data-event="cta-social-proof"
                 className="inline-block rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-6 py-3 text-sm font-semibold text-white shadow-md ring-1 ring-black/10 transition hover:scale-105"
               >
                 This time, don’t settle.

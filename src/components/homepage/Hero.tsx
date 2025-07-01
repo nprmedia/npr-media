@@ -164,6 +164,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               <Link
                 ref={ctaRef}
                 href={ctaLink}
+                data-event="cta-hero"
                 className="inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-black shadow-lg ring-1 bg-primary transition"
               >
                 {ctaText}

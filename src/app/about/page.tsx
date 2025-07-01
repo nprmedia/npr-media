@@ -5,6 +5,7 @@ import FooterSection from '@/components/global/Footer'
 import ValuesCarousel from '@/components/about/ValuesCarousel'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import CTAButton from '@/components/CTAButton'
 
 export default function AboutPage() {
   return (
@@ -34,12 +35,13 @@ export default function AboutPage() {
               <h2 className="text-3xl sm:text-4xl font-bold">Values, Culture & Beliefs</h2>
               <p className="text-sm text-gray-600">Principles that guide every build</p>
               <div className="pt-2">
-                <a
-                  href="/pricing"
+                <CTAButton
+                  href="/webdev-landing"
+                  event="cta-about-values"
                   className="inline-block rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-4 py-2 text-xs font-normal text-white shadow transition hover:scale-105"
                 >
                   Work with us
-                </a>
+                </CTAButton>
               </div>
             </div>
             <motion.div
@@ -120,9 +122,13 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold">Ready to accelerate?</h2>
           <p className="mx-auto mt-2 max-w-xl text-sm text-gray-300">Let&rsquo;s craft a website that scales with you. See how our process works.</p>
           <div className="pt-6">
-            <a href="/pricing" className="inline-block rounded-full bg-[var(--color-accent)] px-6 py-3 text-sm font-normal text-white shadow-md transition hover:scale-105 hover:bg-[var(--color-accent-dark)]">
-              View Pricing
-            </a>
+            <CTAButton
+              href="/webdev-landing"
+              event="cta-about-final"
+              className="inline-block rounded-full bg-[var(--color-accent)] px-6 py-3 text-sm font-normal text-white shadow-md transition hover:scale-105 hover:bg-[var(--color-accent-dark)]"
+            >
+              See Our Process
+            </CTAButton>
           </div>
         </section>
       </main>

@@ -3,8 +3,8 @@ export const contactSection = {
   subtitle:
     'Backed by proven UX strategy, real conversions, and startup-tested code. See why 50+ founders trust us.',
   cta: {
-    label: 'Book Your Free Strategy Call',
-    href: '#booking',
+    label: 'Let\'s Talk',
+    href: '/contact',
   },
   trust: 'No obligation. Just real insights.',
   urgency: 'Currently booking June projects',
