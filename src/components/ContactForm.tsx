@@ -111,10 +111,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
   };
 
   const inputBase =
-    'peer w-full rounded-md bg-white/80 dark:bg-neutral-800/80 px-10 py-3 text-sm text-black dark:text-white placeholder-transparent shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40';
-
-  const labelBase =
-    'pointer-events-none absolute left-10 top-1/2 -translate-y-1/2 text-sm text-neutral-500 transition-all peer-focus:-top-2 peer-focus:text-xs peer-focus:text-blue-600';
+    'w-full rounded-md bg-white/80 dark:bg-neutral-800/80 px-10 py-3 text-sm text-black dark:text-white shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40';
 
   const iconBase = 'absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400';
 
@@ -134,7 +131,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.05 }}
       >
         <User className={iconBase} />
-        <label htmlFor="name" className={`${labelBase} -top-2 text-xs`}>
+        <label htmlFor="name" className="sr-only">
           Full Name
         </label>
         <input
@@ -158,7 +155,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.1 }}
       >
         <Mail className={iconBase} />
-        <label htmlFor="email" className={`${labelBase} -top-2 text-xs`}>
+        <label htmlFor="email" className="sr-only">
           Work Email
         </label>
         <input
@@ -182,7 +179,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.15 }}
       >
         <DollarSign className={iconBase} />
-        <label htmlFor="budget" className={`${labelBase} ${form.budget ? '-top-2 text-xs' : ''}`}>
+        <label htmlFor="budget" className="sr-only">
           Budget
         </label>
         <select
@@ -206,7 +203,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         <MessageSquareText className={iconBase} />
-        <label htmlFor="summary" className={`${labelBase} -top-2 text-xs`}>
+        <label htmlFor="summary" className="sr-only">
           Project Summary
         </label>
         <textarea
@@ -218,7 +215,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           aria-invalid={!!errors.summary}
         />
         {placeholders.summary && (
-          <span className="pointer-events-none absolute top-3 left-10 text-sm text-neutral-400">
+          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-neutral-400">
             {placeholders.summary}
           </span>
         )}
@@ -230,10 +227,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.25 }}
       >
         <Search className={iconBase} />
-        <label
-          htmlFor="referral"
-          className={`${labelBase} ${form.referral ? '-top-2 text-xs' : ''}`}
-        >
+        <label htmlFor="referral" className="sr-only">
           How did you hear about us?
         </label>
         <select
