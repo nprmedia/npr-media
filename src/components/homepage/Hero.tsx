@@ -160,12 +160,12 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               custom={2}
               className="group relative inline-block hover:scale-105"
             >
-              <div className="bg-primary/20 absolute -inset-1.5 z-[-1] animate-pulse rounded-full" />
+              <div className="bg-blood/20 absolute -inset-1.5 z-[-1] animate-pulse rounded-full" />
               <Link
                 ref={ctaRef}
                 href={ctaLink}
                 data-event="cta-hero"
-                className="inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-black shadow-lg ring-1 bg-primary transition"
+                className="inline-flex items-center justify-center rounded-full bg-blood px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-silver shadow-lg ring-1 transition hover:bg-crimson"
               >
                 {ctaText}
               </Link>
@@ -233,13 +233,13 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       </motion.div>
 
       <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 transform">
-        <div className="text-primary animate-bounce text-lg drop-shadow-[0_0_4px_rgba(255,255,255,0.5)]">
+        <div className="text-blood animate-bounce text-lg drop-shadow-[0_0_4px_rgba(255,255,255,0.5)]">
           ↓
         </div>
       </div>
 
       {isStickyVisible && (
-        <div className="fixed bottom-36 left-1/2 z-50 -translate-x-1/2 rounded-full bg-black px-4 py-2 text-sm font-bold text-white opacity-90 shadow-xl hover:scale-105">
+        <div className="fixed bottom-36 left-1/2 z-50 -translate-x-1/2 rounded-full bg-umber px-4 py-2 text-sm font-bold text-silver opacity-90 shadow-xl hover:scale-105">
           Still thinking? Start your free trial now →
         </div>
       )}

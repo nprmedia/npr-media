@@ -65,7 +65,7 @@ export default function NprCarousel() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -30 }}
                   transition={{ duration: 0.5 }}
-                  className="mx-auto w-[clamp(16rem,40vw,22rem)] space-y-4 rounded-xl border border-white/10 bg-gradient-to-br from-[var(--color-accent)] via-pink-600 to-[var(--color-accent-dark)] p-6 text-center text-gray-100 shadow-2xl"
+                  className="mx-auto w-[clamp(16rem,40vw,22rem)] space-y-4 rounded-xl border border-silver/10 bg-gradient-to-br from-[var(--color-accent)] via-blood to-[var(--color-accent-dark)] p-6 text-center text-silver shadow-2xl"
                 >
                   <h2 className="text-2xl font-bold">{title}</h2>
                   <ul className="list-disc space-y-1 pl-5 text-left text-sm">

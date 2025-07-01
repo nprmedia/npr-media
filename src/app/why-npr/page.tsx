@@ -46,17 +46,17 @@ export default function WhyNprPage() {
           className="relative overflow-hidden bg-[var(--color-bg-dark)] py-20 text-[var(--color-text-light)]"
         >
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-br from-[var(--color-accent)] via-pink-500 to-[var(--color-accent-dark)] opacity-30 blur-3xl" />
+            <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-br from-[var(--color-accent)] via-blood to-[var(--color-accent-dark)] opacity-30 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl space-y-12 px-4">
             <div className="space-y-2 text-center">
               <h1 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight">
                 Why Human Strategy Beats AI Guesswork
               </h1>
-              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-300">
+              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-silver">
                 AI can parse data but it can&rsquo;t read minds or context.
               </p>
-              <p className="mx-auto max-w-xl text-sm text-gray-300">
+              <p className="mx-auto max-w-xl text-sm text-silver">
                 Our strategists apply lived experience and own the results from concept to launch.
               </p>
             </div>
@@ -64,7 +64,7 @@ export default function WhyNprPage() {
               <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
                 <div className="space-y-2 pb-8 text-center md:pb-0 md:text-left">
                   <h2 className="text-3xl font-bold sm:text-4xl">What AI Can’t Do</h2>
-                  <p className="text-sm text-gray-300">
+                  <p className="text-sm text-silver">
                     Where automation simply can&rsquo;t compete
                   </p>
                   <div className="pt-2">
@@ -87,8 +87,8 @@ export default function WhyNprPage() {
                 </motion.div>
               </div>
               <div className="space-y-1 text-center">
-                <h2 className="text-xl font-bold text-gray-100">Here&rsquo;s where we step in</h2>
-                <p className="text-sm text-gray-400">
+                <h2 className="text-xl font-bold text-silver">Here&rsquo;s where we step in</h2>
+                <p className="text-sm text-olive">
                   Real humans refine the data and own the outcome.
                 </p>
                 <ScrollCue
@@ -99,7 +99,7 @@ export default function WhyNprPage() {
               <div id="npr-delivers" className="md:grid md:grid-cols-2 md:items-center md:gap-8">
                 <div className="space-y-2 pb-8 text-center md:pb-0 md:text-left">
                   <h2 className="text-3xl font-bold sm:text-4xl">How NPR Media Delivers</h2>
-                  <p className="text-sm text-gray-300">
+                  <p className="text-sm text-silver">
                     Hands-on strategy that actually moves the needle
                   </p>
                   <div className="pt-2">
@@ -122,7 +122,7 @@ export default function WhyNprPage() {
                 </motion.div>
               </div>
             </div>
-            <p className="mx-auto mt-6 max-w-xl text-center text-sm text-gray-300">
+            <p className="mx-auto mt-6 max-w-xl text-center text-sm text-silver">
               Leaving growth to algorithms only repeats old mistakes. We build every campaign
               hands-on and measure success by your metrics.
             </p>
@@ -149,7 +149,7 @@ export default function WhyNprPage() {
                 </p>
               </motion.div>
             </div>
-            <p className="mt-6 text-center text-sm text-gray-600">
+            <p className="mt-6 text-center text-sm text-charcoal">
               Skip the bloat and keep momentum with a senior crew measured on outcomes.
             </p>
             <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
@@ -188,19 +188,19 @@ export default function WhyNprPage() {
                 Don’t get AI’d. Get outcomes.
               </a>
             </div>
-            <p className="mt-10 text-center text-sm font-semibold text-gray-600">
+            <p className="mt-10 text-center text-sm font-semibold text-charcoal">
               AI isn&rsquo;t your only risk. Bloated agencies drain budgets and momentum. Keep
               scrolling to see how our lean team drives faster wins.
             </p>
             <ScrollCue href="#vs-firms" className="mx-auto mt-4 text-[var(--color-accent)]" />
           </div>
         </section>
-        <WaveDivider className="text-gray-100" />
+        <WaveDivider className="text-silver" />
 
         {/* SECTION 2: NPR Media vs Other Firms */}
         <section id="vs-firms" className="relative overflow-hidden bg-white py-20 text-black">
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute right-1/2 bottom-0 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-br from-[var(--color-accent)] via-pink-400 to-[var(--color-accent-dark)] opacity-30 blur-3xl" />
+            <div className="absolute right-1/2 bottom-0 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-br from-[var(--color-accent)] via-blood to-[var(--color-accent-dark)] opacity-30 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl space-y-12 px-4">
             <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
@@ -208,11 +208,11 @@ export default function WhyNprPage() {
                 <h1 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight">
                   Agency Bloat vs NPR Media
                 </h1>
-                <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-600">
+                <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-charcoal">
                   AI tools won&rsquo;t own your numbers&mdash;and neither will bloated agencies.
                   While others bill hours, we deliver outcomes.
                 </p>
-                <p className="mx-auto max-w-xl text-sm text-gray-600 md:mx-0">
+                <p className="mx-auto max-w-xl text-sm text-charcoal md:mx-0">
                   Large firms pad projects with juniors and endless steps. Our senior strike team
                   ships fast and stands behind every metric.
                 </p>
@@ -225,8 +225,8 @@ export default function WhyNprPage() {
                 <FirmCarousel />
               </motion.div>
             </div>
-            <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-gray-400 to-transparent" />
-            <p className="text-center text-sm font-semibold text-gray-500">
+            <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-olive to-transparent" />
+            <p className="text-center text-sm font-semibold text-olive">
               Here&rsquo;s how we do it differently.
             </p>
             <div className="grid gap-8 text-sm md:grid-cols-2">
@@ -235,10 +235,10 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="space-y-2 rounded-xl bg-white p-6 text-gray-800 shadow-md"
+                className="space-y-2 rounded-xl bg-antique p-6 text-charcoal shadow-md"
               >
                 <p className="text-lg font-semibold">What other firms drag you through</p>
-                <p className="text-sm text-gray-500">Extras you don&rsquo;t actually need</p>
+                <p className="text-sm text-olive">Extras you don&rsquo;t actually need</p>
                 <div className="pt-2">
                   <a
                     href="/webdev-landing"
@@ -250,19 +250,19 @@ export default function WhyNprPage() {
                 </div>
                 <ul className="space-y-1 text-sm">
                   <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-pink-500" />
+                    <Ban className="h-4 w-4 text-blood" />
                     <span>4-week discovery calls</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-pink-500" />
+                    <Ban className="h-4 w-4 text-blood" />
                     <span>$2k wireframes</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-pink-500" />
+                    <Ban className="h-4 w-4 text-blood" />
                     <span>Slow handoffs</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Ban className="h-4 w-4 text-pink-500" />
+                    <Ban className="h-4 w-4 text-blood" />
                     <span>No CRO testing</span>
                   </li>
                 </ul>
@@ -272,10 +272,10 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="space-y-2 rounded-xl bg-white p-6 text-gray-800 shadow-md"
+                className="space-y-2 rounded-xl bg-antique p-6 text-charcoal shadow-md"
               >
                 <p className="text-lg font-semibold">How we keep projects moving</p>
-                <p className="text-sm text-gray-500">The NPR no-bloat process</p>
+                <p className="text-sm text-olive">The NPR no-bloat process</p>
                 <div className="pt-2">
                   <a
                     href={Routes.contact}
@@ -324,7 +324,7 @@ export default function WhyNprPage() {
             <ScrollCue href="#footer" className="mx-auto mt-4 text-[var(--color-accent)]" />
           </div>
         </section>
-        <WaveDivider flip className="text-gray-100" />
+        <WaveDivider flip className="text-silver" />
       </main>
       <FinalCTA />
       <FooterSection />

@@ -3,6 +3,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { useState } from 'react';
 import { X, CheckCircle2 } from 'lucide-react';
+import CTAButton from '../CTAButton';
 
 export default function QuoteModal({
   triggerLabel = 'Request a Quote',
@@ -19,18 +20,18 @@ export default function QuoteModal({
   return (
     <Dialog.Root onOpenChange={() => setSubmitted(false)}>
       <Dialog.Trigger asChild>
-        <button className="inline-flex items-center justify-center rounded-full bg-white px-6 py-2 text-sm font-semibold text-black shadow hover:bg-gray-200">
+        <CTAButton className="px-6 py-2" href="#" event="quote-open">
           {triggerLabel}
-        </button>
+        </CTAButton>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-black/50" />
-        <Dialog.Content className="fixed top-1/2 left-1/2 w-[90vw] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white p-6 text-black shadow-lg">
+        <Dialog.Overlay className="fixed inset-0 bg-umber/80" />
+        <Dialog.Content className="fixed top-1/2 left-1/2 w-[90vw] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl bg-antique p-6 text-charcoal shadow-lg">
           <Dialog.Title className="text-lg font-semibold">Tell us what you need</Dialog.Title>
-          <Dialog.Description className="text-sm text-gray-600">
+          <Dialog.Description className="text-sm text-charcoal">
             Your submission is reviewed by our founder — not a sales bot.
           </Dialog.Description>
-          <Dialog.Close className="absolute right-3 top-3 rounded p-1 text-gray-700 hover:bg-gray-100">
+          <Dialog.Close className="absolute right-3 top-3 rounded p-1 text-charcoal hover:bg-sepia">
             <X className="h-4 w-4" />
           </Dialog.Close>
           {submitted ? (
@@ -39,10 +40,10 @@ export default function QuoteModal({
               <p className="text-center text-sm">We&apos;ll respond within 24h with next steps.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="mt-4 space-y-3">
+            <form onSubmit={handleSubmit} className="mt-4 space-y-3 text-charcoal">
               <label className="block text-sm">
                 Project Type
-                <select className="mt-1 w-full rounded border px-2 py-1" required>
+                <select className="mt-1 w-full rounded border border-olive px-2 py-1" required>
                   <option value="website">Website</option>
                   <option value="automation">Automation</option>
                   <option value="other">Other</option>
@@ -50,7 +51,7 @@ export default function QuoteModal({
               </label>
               <label className="block text-sm">
                 Budget Range
-                <select className="mt-1 w-full rounded border px-2 py-1">
+                <select className="mt-1 w-full rounded border border-olive px-2 py-1">
                   <option value="1-4k">$1K – $4K</option>
                   <option value="4-7k">$4K – $7K</option>
                   <option value="7-10k">$7K – $10K</option>
@@ -59,11 +60,11 @@ export default function QuoteModal({
               </label>
               <label className="block text-sm">
                 Business Type / Industry
-                <input className="mt-1 w-full rounded border px-2 py-1" required />
+                <input className="mt-1 w-full rounded border border-olive px-2 py-1" required />
               </label>
               <label className="block text-sm">
                 Desired Launch Timeline
-                <select className="mt-1 w-full rounded border px-2 py-1">
+                <select className="mt-1 w-full rounded border border-olive px-2 py-1">
                   <option value="asap">ASAP</option>
                   <option value="1month">1 Month</option>
                   <option value="3months">3 Months</option>
@@ -71,9 +72,9 @@ export default function QuoteModal({
               </label>
               <label className="block text-sm">
                 Details
-                <textarea className="mt-1 w-full rounded border px-2 py-1" rows={3} required></textarea>
+                <textarea className="mt-1 w-full rounded border border-olive px-2 py-1" rows={3} required></textarea>
               </label>
-              <button type="submit" className="mt-2 w-full rounded bg-black px-4 py-2 text-white">
+              <button type="submit" className="mt-2 w-full rounded bg-blood px-4 py-2 text-silver hover:bg-crimson">
                 Send Request
               </button>
             </form>
