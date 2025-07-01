@@ -16,7 +16,7 @@ export default function PricingSection() {
           <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">
             Our Packages
           </h2>
-          <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-300">
+          <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-silver">
             {pricing.headline}
           </p>
         </div>

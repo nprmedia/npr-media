@@ -12,19 +12,27 @@
   --font-didot: 'GFS Didot', serif;
   --font-grotesk: 'Space Grotesk', sans-serif;
 
-  /* Brand Colors */
-  --color-bg-dark: #111827;
-  --color-card: #1e293b;
-  --color-text-light: #f1f5f9;
-  --color-accent: #e11d48;
-  --color-accent-rgb: 225, 29, 72;
-  --color-accent-dark: #be123c;
+  /* NPR Media Palette */
+  --color-antique: #d7c7a5;
+  --color-sepia: #b7a077;
+  --color-olive: #786c4f;
+  --color-umber: #3b3224;
+  --color-silver: #d2d2d2;
+  --color-charcoal: #2f2f2f;
+  --color-blood: #b30000;
+  --color-crimson: #7a0000;
 
-  /* Neutral Palette */
-  --color-gray-300: #cbd5e1;
-  --color-gray-400: #94a3b8;
-  --color-gray-600: #475569;
-  --color-gray-700: #334155;
+  /* Legacy variable names mapped to new palette */
+  --color-bg-dark: var(--color-umber);
+  --color-card: var(--color-sepia);
+  --color-text-light: var(--color-silver);
+  --color-accent: var(--color-blood);
+  --color-accent-rgb: 179, 0, 0;
+  --color-accent-dark: var(--color-crimson);
+  --color-gray-300: var(--color-silver);
+  --color-gray-400: var(--color-olive);
+  --color-gray-600: var(--color-olive);
+  --color-gray-700: var(--color-olive);
 }
 
 html {
