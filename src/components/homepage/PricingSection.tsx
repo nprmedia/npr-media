@@ -16,7 +16,7 @@ export default function PricingSection() {
           <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">
             Our Packages
           </h2>
-          <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-300">
+          <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-silver">
             {pricing.headline}
           </p>
         </div>
@@ -60,7 +60,7 @@ export default function PricingSection() {
                 {tier.features.map((feature, i) => (
                   <li
                     key={i}
-                    className={i === 0 ? 'font-semibold text-white' : ''}
+                    className={i === 0 ? 'font-semibold text-silver' : ''}
                   >
                     <span className="mr-1 text-[var(--color-accent)]">
                       {i === 0 ? '✅' : '✓'}
@@ -73,7 +73,7 @@ export default function PricingSection() {
                 <Link
                   href="/contact"
                   data-event="cta-pricing"
-                  className="block w-full rounded-full border border-[var(--color-gray-600)] bg-[var(--color-bg-dark)] px-[clamp(1rem,2.5vw,1.25rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-center text-[clamp(0.8rem,1vw,0.9rem)] font-medium text-[var(--color-text-light)] shadow-sm transition hover:scale-105 hover:bg-[var(--color-gray-700)]"
+                  className="block w-full rounded-full border border-olive bg-blood px-[clamp(1rem,2.5vw,1.25rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-center text-[clamp(0.8rem,1vw,0.9rem)] font-medium text-silver shadow-sm transition hover:scale-105 hover:bg-crimson"
                 >
                   {tier.cta}
                 </Link>

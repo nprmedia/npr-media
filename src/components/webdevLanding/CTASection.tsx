@@ -4,7 +4,7 @@ import MiniForm from './MiniForm'
 
 export default function CTASection() {
   return (
-    <section id="cta" className="relative bg-gradient-to-br from-indigo-900 via-purple-800 to-blue-900 py-24 text-white">
+    <section id="cta" className="relative bg-gradient-to-br from-umber via-olive to-charcoal py-24 text-silver">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 md:px-12 lg:px-20 md:grid-cols-2">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -15,12 +15,12 @@ export default function CTASection() {
         >
           <h2 className="text-[clamp(2rem,5vw,3rem)] font-bold">Get Your Free Strategy Mockup</h2>
           <p className="text-[clamp(1rem,2vw,1.25rem)]">Share your goals and we’ll map a high-converting website approach—free.</p>
-          <ul className="list-disc pl-5 text-sm marker:text-indigo-300">
+          <ul className="list-disc pl-5 text-sm marker:text-blood">
             <li>Actionable page-level insights</li>
             <li>Senior dev & design expertise</li>
             <li>100% obligation-free</li>
           </ul>
-          <p className="text-sm text-indigo-200">Prefer to schedule a call? <a href="https://calendly.com" target="_blank" className="underline">Book via Calendly</a></p>
+          <p className="text-sm text-silver">Prefer to schedule a call? <a href="https://calendly.com" target="_blank" className="underline hover:text-crimson">Book via Calendly</a></p>
         </motion.div>
         <MiniForm />
       </div>
