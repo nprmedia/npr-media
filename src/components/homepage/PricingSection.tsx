@@ -16,7 +16,7 @@ export default function PricingSection() {
           <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">
             Our Packages
           </h2>
-          <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-300">
+          <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-antique">
             {pricing.headline}
           </p>
         </div>
@@ -60,7 +60,7 @@ export default function PricingSection() {
                 {tier.features.map((feature, i) => (
                   <li
                     key={i}
-                    className={i === 0 ? 'font-semibold text-white' : ''}
+                    className={i === 0 ? 'font-semibold text-silver' : ''}
                   >
                     <span className="mr-1 text-[var(--color-accent)]">
                       {i === 0 ? '✅' : '✓'}
