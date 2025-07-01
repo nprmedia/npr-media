@@ -46,7 +46,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           intervals.current[field] = undefined;
           return prev;
         }
-        const next = text.slice(0, -1);
+        const next = text.slice(1);
         return { ...prev, [field]: next };
       });
     }, 30);
