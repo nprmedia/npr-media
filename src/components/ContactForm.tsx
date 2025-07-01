@@ -114,7 +114,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
     'peer w-full rounded-md bg-white/80 dark:bg-neutral-800/80 px-10 py-3 text-sm text-black dark:text-white placeholder-transparent shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40';
 
   const labelBase =
-    'pointer-events-none absolute left-10 top-1/2 -translate-y-1/2 text-sm text-neutral-500 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-neutral-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-blue-600 peer-[&:not(:placeholder-shown)]:-top-2 peer-[&:not(:placeholder-shown)]:text-xs';
+    'pointer-events-none absolute left-10 top-1/2 -translate-y-1/2 text-sm text-neutral-500 transition-all peer-focus:-top-2 peer-focus:text-xs peer-focus:text-blue-600';
 
   const iconBase = 'absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400';
 
@@ -134,7 +134,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.05 }}
       >
         <User className={iconBase} />
-        <label htmlFor="name" className={labelBase}>
+        <label htmlFor="name" className={`${labelBase} -top-2 text-xs`}>
           Full Name
         </label>
         <input
@@ -142,7 +142,6 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           type="text"
           value={form.name}
           onChange={handleChange('name')}
-          placeholder="Full Name"
           className={inputBase}
           aria-invalid={!!errors.name}
         />
@@ -159,7 +158,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.1 }}
       >
         <Mail className={iconBase} />
-        <label htmlFor="email" className={labelBase}>
+        <label htmlFor="email" className={`${labelBase} -top-2 text-xs`}>
           Work Email
         </label>
         <input
@@ -167,7 +166,6 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           type="email"
           value={form.email}
           onChange={handleChange('email')}
-          placeholder="Work Email"
           className={inputBase}
           aria-invalid={!!errors.email}
         />
@@ -208,7 +206,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         <MessageSquareText className={iconBase} />
-        <label htmlFor="summary" className={labelBase}>
+        <label htmlFor="summary" className={`${labelBase} -top-2 text-xs`}>
           Project Summary
         </label>
         <textarea
@@ -216,7 +214,6 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           rows={4}
           value={form.summary}
           onChange={handleChange('summary')}
-          placeholder="Project Summary"
           className={`${inputBase} resize-none`}
           aria-invalid={!!errors.summary}
         />
