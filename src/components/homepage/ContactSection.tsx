@@ -22,6 +22,7 @@ export default function ContactSection() {
         <div className="pt-4">
           <Link
             href={cta.href}
+            data-event="cta-final"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-[clamp(1.25rem,3vw,1.5rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-[clamp(0.8rem,1vw,0.9rem)] font-semibold text-black shadow-lg transition hover:scale-105 hover:shadow-xl"
           >
             {cta.label}

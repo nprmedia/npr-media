@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Routes } from '@/lib/routes';
+import CTAButton from '../CTAButton';
 
 interface HeaderProps {
   /**
@@ -76,12 +77,13 @@ export default function StickyHeader({ light = false }: HeaderProps) {
           >
             Why NPR
           </Link>
-          <Link
-            href="/signup"
+          <CTAButton
+            href="/webdev-landing"
+            event="cta-navbar"
             className="ml-4 inline-flex items-center gap-2 rounded-lg bg-black px-4 py-[0.45rem] text-[clamp(0.65rem,0.9vw,0.75rem)] font-semibold text-white shadow transition-transform hover:scale-105 hover:brightness-110"
           >
             Get Started →
-          </Link>
+          </CTAButton>
         </nav>
       </div>
     </motion.header>

@@ -9,6 +9,7 @@ export default function FinalCTA() {
       </p>
       <a
         href={Routes.contact}
+        data-event="cta-final"
         className="inline-block rounded-lg bg-white px-6 py-3 font-semibold text-black transition hover:bg-neutral-200"
       >
         Book Free Discovery Call

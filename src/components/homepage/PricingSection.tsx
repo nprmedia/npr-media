@@ -3,6 +3,7 @@
 import { pricing } from '@/content/homepage/pricing'
 import QuoteModal from './QuoteModal'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 export default function PricingSection() {
   return (
@@ -69,9 +70,13 @@ export default function PricingSection() {
                 ))}
               </ul>
               <div className="pt-4">
-                <button className="w-full rounded-full border border-[var(--color-gray-600)] bg-[var(--color-bg-dark)] px-[clamp(1rem,2.5vw,1.25rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-[clamp(0.8rem,1vw,0.9rem)] font-medium text-[var(--color-text-light)] shadow-sm transition hover:scale-105 hover:bg-[var(--color-gray-700)]">
+                <Link
+                  href="/contact"
+                  data-event="cta-pricing"
+                  className="block w-full rounded-full border border-[var(--color-gray-600)] bg-[var(--color-bg-dark)] px-[clamp(1rem,2.5vw,1.25rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-center text-[clamp(0.8rem,1vw,0.9rem)] font-medium text-[var(--color-text-light)] shadow-sm transition hover:scale-105 hover:bg-[var(--color-gray-700)]"
+                >
                   {tier.cta}
-                </button>
+                </Link>
               </div>
             </motion.div>
           ))}
