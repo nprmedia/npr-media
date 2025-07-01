@@ -9,14 +9,14 @@ export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="w-full border-t bg-[var(--color-bg-dark)] text-[var(--color-text-light)] py-[clamp(5rem,10vw,8rem)]"
+      className="w-full border-t bg-umber text-silver py-[clamp(5rem,10vw,8rem)]"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl space-y-4 text-center">
           <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">
             Our Packages
           </h2>
-          <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-300">
+          <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-antique">
             {pricing.headline}
           </p>
         </div>
@@ -60,7 +60,7 @@ export default function PricingSection() {
                 {tier.features.map((feature, i) => (
                   <li
                     key={i}
-                    className={i === 0 ? 'font-semibold text-white' : ''}
+                    className={i === 0 ? 'font-semibold text-silver' : ''}
                   >
                     <span className="mr-1 text-[var(--color-accent)]">
                       {i === 0 ? '✅' : '✓'}

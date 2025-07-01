@@ -14,6 +14,21 @@ This is the front-end platform for **NPR Media**, a premium digital services fir
 
 Built with **Next.js**, **Tailwind CSS**, and optimized for deployment on **Vercel** with zero-config CI/CD.
 
+### 🎨 Color Palette
+
+The UI uses a custom 8-color system defined in `tailwind.config.js`:
+
+- `antique` `#d7c7a5`
+- `sepia` `#b7a077`
+- `olive` `#786c4f`
+- `umber` `#3b3224`
+- `silver` `#d2d2d2`
+- `charcoal` `#2f2f2f`
+- `blood` `#b30000`
+- `crimson` `#7a0000`
+
+These replace all default colors to provide a timeless, serious aesthetic.
+
 ---
 
 ## 🛠️ Tech Stack
