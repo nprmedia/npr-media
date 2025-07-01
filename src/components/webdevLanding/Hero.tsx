@@ -14,7 +14,7 @@ const textVariants = {
 
 export default function Hero({ headline, subheadline, cta }: HeroProps) {
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-800 to-blue-900 text-center text-white">
+    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-umber via-olive to-umber text-center text-silver">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -38,7 +38,7 @@ export default function Hero({ headline, subheadline, cta }: HeroProps) {
           variants={textVariants}
           href="#cta"
           data-event="webdev-scroll-trigger"
-          className="mt-8 inline-block rounded-full bg-white px-6 py-3 font-semibold text-black shadow-lg ring-1 ring-white/10 transition hover:scale-105"
+          className="mt-8 inline-block rounded-full bg-antique px-6 py-3 font-semibold text-charcoal shadow-lg ring-1 ring-silver/10 transition hover:scale-105"
         >
           {cta}
         </motion.a>
