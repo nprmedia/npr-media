@@ -53,10 +53,10 @@ export default function WhyNprPage() {
               <h1 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight">
                 Why Human Strategy Beats AI Guesswork
               </h1>
-              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-gray-300">
+              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-silver">
                 AI can parse data but it can&rsquo;t read minds or context.
               </p>
-              <p className="mx-auto max-w-xl text-sm text-gray-300">
+              <p className="mx-auto max-w-xl text-sm text-silver">
                 Our strategists apply lived experience and own the results from concept to launch.
               </p>
             </div>
@@ -64,7 +64,7 @@ export default function WhyNprPage() {
               <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
                 <div className="space-y-2 pb-8 text-center md:pb-0 md:text-left">
                   <h2 className="text-3xl font-bold sm:text-4xl">What AI Can’t Do</h2>
-                  <p className="text-sm text-gray-300">
+                  <p className="text-sm text-silver">
                     Where automation simply can&rsquo;t compete
                   </p>
                   <div className="pt-2">
@@ -87,7 +87,7 @@ export default function WhyNprPage() {
                 </motion.div>
               </div>
               <div className="space-y-1 text-center">
-                <h2 className="text-xl font-bold text-gray-100">Here&rsquo;s where we step in</h2>
+                <h2 className="text-xl font-bold text-silver">Here&rsquo;s where we step in</h2>
                 <p className="text-sm text-gray-400">
                   Real humans refine the data and own the outcome.
                 </p>
@@ -122,7 +122,7 @@ export default function WhyNprPage() {
                 </motion.div>
               </div>
             </div>
-            <p className="mx-auto mt-6 max-w-xl text-center text-sm text-gray-300">
+              <p className="mx-auto mt-6 max-w-xl text-center text-sm text-silver">
               Leaving growth to algorithms only repeats old mistakes. We build every campaign
               hands-on and measure success by your metrics.
             </p>
@@ -149,7 +149,7 @@ export default function WhyNprPage() {
                 </p>
               </motion.div>
             </div>
-            <p className="mt-6 text-center text-sm text-gray-600">
+              <p className="mt-6 text-center text-sm text-charcoal">
               Skip the bloat and keep momentum with a senior crew measured on outcomes.
             </p>
             <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
@@ -188,17 +188,17 @@ export default function WhyNprPage() {
                 Don’t get AI’d. Get outcomes.
               </a>
             </div>
-            <p className="mt-10 text-center text-sm font-semibold text-gray-600">
+            <p className="mt-10 text-center text-sm font-semibold text-charcoal">
               AI isn&rsquo;t your only risk. Bloated agencies drain budgets and momentum. Keep
               scrolling to see how our lean team drives faster wins.
             </p>
             <ScrollCue href="#vs-firms" className="mx-auto mt-4 text-[var(--color-accent)]" />
           </div>
         </section>
-        <WaveDivider className="text-gray-100" />
+        <WaveDivider className="text-silver" />
 
         {/* SECTION 2: NPR Media vs Other Firms */}
-        <section id="vs-firms" className="relative overflow-hidden bg-white py-20 text-black">
+        <section id="vs-firms" className="relative overflow-hidden bg-antique py-20 text-charcoal">
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute right-1/2 bottom-0 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-br from-[var(--color-accent)] via-pink-400 to-[var(--color-accent-dark)] opacity-30 blur-3xl" />
           </div>
@@ -324,7 +324,7 @@ export default function WhyNprPage() {
             <ScrollCue href="#footer" className="mx-auto mt-4 text-[var(--color-accent)]" />
           </div>
         </section>
-        <WaveDivider flip className="text-gray-100" />
+        <WaveDivider flip className="text-silver" />
       </main>
       <FinalCTA />
       <FooterSection />

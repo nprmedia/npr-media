@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className="border-t bg-[var(--color-bg-dark)] px-[clamp(1rem,4vw,3rem)] py-[clamp(2.5rem,6vw,4rem)] text-center text-[clamp(0.75rem,1vw,0.875rem)] text-[var(--color-text-light)]"
+      className="border-t border-olive bg-[var(--color-bg-dark)] px-[clamp(1rem,4vw,3rem)] py-[clamp(2.5rem,6vw,4rem)] text-center text-[clamp(0.75rem,1vw,0.875rem)] text-[var(--color-text-light)]"
     >
       <div className="mx-auto max-w-6xl space-y-8">
         <div className="space-y-4">
@@ -15,7 +15,7 @@ export default function Footer() {
           <CTAButton
             href="/webdev-landing"
             event="cta-footer-get-started"
-            className="inline-block rounded-full bg-white px-6 py-3 text-sm font-semibold text-black shadow-md transition hover:scale-105"
+            className="inline-block rounded-full bg-[var(--color-blood)] px-6 py-3 text-sm font-semibold text-[var(--color-text-light)] shadow-md transition hover:scale-105 hover:bg-[var(--color-crimson)]"
           >
             Get Started
           </CTAButton>
