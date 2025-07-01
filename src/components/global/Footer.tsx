@@ -15,7 +15,7 @@ export default function Footer() {
           <CTAButton
             href="/webdev-landing"
             event="cta-footer-get-started"
-            className="inline-block rounded-full bg-white px-6 py-3 text-sm font-semibold text-black shadow-md transition hover:scale-105"
+            className="inline-block rounded-full bg-[var(--color-blood)] px-6 py-3 text-sm font-semibold text-[var(--color-silver)] shadow-md transition hover:scale-105 hover:bg-[var(--color-crimson)]"
           >
             Get Started
           </CTAButton>
