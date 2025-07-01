@@ -195,6 +195,11 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           <option value="15k+">15k+</option>
           <option value="Not Sure">Not Sure</option>
         </select>
+        {!form.budget && (
+          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-neutral-400">
+            Budget
+          </span>
+        )}
       </motion.div>
       <motion.div
         className="relative"
@@ -242,6 +247,11 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           <option value="Social Media">Social Media</option>
           <option value="Other">Other</option>
         </select>
+        {!form.referral && (
+          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-neutral-400">
+            How did you hear about us?
+          </span>
+        )}
       </motion.div>
       <motion.button
         type="submit"
