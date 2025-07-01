@@ -12,19 +12,16 @@
   --font-didot: 'GFS Didot', serif;
   --font-grotesk: 'Space Grotesk', sans-serif;
 
-  /* Brand Colors */
-  --color-bg-dark: #111827;
-  --color-card: #1e293b;
-  --color-text-light: #f1f5f9;
-  --color-accent: #e11d48;
-  --color-accent-rgb: 225, 29, 72;
-  --color-accent-dark: #be123c;
-
-  /* Neutral Palette */
-  --color-gray-300: #cbd5e1;
-  --color-gray-400: #94a3b8;
-  --color-gray-600: #475569;
-  --color-gray-700: #334155;
+  /* Custom Palette */
+  --antique: #d7c7a5;
+  --sepia: #b7a077;
+  --olive: #786c4f;
+  --umber: #3b3224;
+  --silver: #d2d2d2;
+  --charcoal: #2f2f2f;
+  --blood: #b30000;
+  --blood-rgb: 179, 0, 0;
+  --crimson: #7a0000;
 }
 
 html {
