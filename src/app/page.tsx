@@ -16,7 +16,7 @@ export default function Page() {
   return (
     <section>
       <StickyHeader light />
-      <main key={pathname} className="relative w-full overflow-x-hidden bg-antique text-charcoal">
+      <main key={pathname} className="relative w-full overflow-x-hidden bg-background text-foreground">
         <Suspense>
           <HeroSection {...hero} />
         </Suspense>
