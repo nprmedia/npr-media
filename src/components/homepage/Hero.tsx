@@ -116,7 +116,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       id="hero"
       ref={heroRef}
       aria-label="Hero Section"
-      className="relative min-h-screen pb-[5vh] flex items-center justify-center bg-[var(--color-bg-dark)] font-sans overflow-hidden"
+      className="relative min-h-screen pb-[5vh] flex items-center justify-center bg-background font-sans overflow-hidden"
     >
       <div
         ref={containerRef}
@@ -133,7 +133,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         <motion.div
           variants={textVariants}
           custom={0}
-          className="ml-[10vw] mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-[var(--color-accent)]"
+          className="ml-[10vw] mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-accent"
         >
           HELLO, WE ARE NPR MEDIA
         </motion.div>
@@ -160,12 +160,12 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               custom={2}
               className="group relative inline-block hover:scale-105"
             >
-              <div className="bg-blood/20 absolute -inset-1.5 z-[-1] animate-pulse rounded-full" />
+              <div className="bg-primary/20 absolute -inset-1.5 z-[-1] animate-pulse rounded-full" />
               <Link
                 ref={ctaRef}
                 href={ctaLink}
                 data-event="cta-hero"
-                className="inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-silver shadow-lg ring-1 bg-blood transition hover:bg-crimson"
+                className="inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-foreground shadow-lg ring-1 bg-primary transition hover:bg-primary/90"
               >
                 {ctaText}
               </Link>
@@ -194,7 +194,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               style={{ fontSize: 'min(48vh,32vw)' }}
               variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.6, y: 0 } }}
               transition={{ duration: 0.6 }}
-              className="block font-extrabold text-[var(--color-accent)] leading-none"
+              className="block font-extrabold text-accent leading-none"
             >
               {letter}
             </motion.span>
@@ -233,13 +233,13 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       </motion.div>
 
       <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 transform">
-        <div className="text-blood animate-bounce text-lg drop-shadow-[0_0_4px_rgba(255,255,255,0.5)]">
+        <div className="text-primary animate-bounce text-lg drop-shadow-[0_0_4px_rgba(255,255,255,0.5)]">
           ↓
         </div>
       </div>
 
       {isStickyVisible && (
-        <div className="fixed bottom-36 left-1/2 z-50 -translate-x-1/2 rounded-full bg-blood px-4 py-2 text-sm font-bold text-silver opacity-90 shadow-xl hover:scale-105 hover:bg-crimson">
+        <div className="fixed bottom-36 left-1/2 z-50 -translate-x-1/2 rounded-full bg-primary px-4 py-2 text-sm font-bold text-foreground opacity-90 shadow-xl hover:scale-105 hover:bg-primary/90">
           Still thinking? Start your free trial now →
         </div>
       )}

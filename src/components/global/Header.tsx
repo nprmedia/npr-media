@@ -25,7 +25,7 @@ export default function StickyHeader({ light = false }: HeaderProps) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const textColor = scrolled || !light ? 'text-[var(--color-text-light)]' : 'text-charcoal';
+  const textColor = scrolled || !light ? 'text-foreground' : 'text-foreground';
 
   return (
     <motion.header
@@ -33,12 +33,11 @@ export default function StickyHeader({ light = false }: HeaderProps) {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 z-50 w-full transition-all ${
-        scrolled ? 'bg-[#0A0F1C]/90 shadow-md backdrop-blur-sm' : 'backdrop-blur-0 bg-transparent'
+        scrolled ? 'bg-background/90 shadow-md backdrop-blur-sm' : 'backdrop-blur-0 bg-transparent'
       } ${textColor}`}
     >
       <div
-        className={`mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center justify-between px-3 md:px-10 lg:px-60 ${textColor}`}
-        style={{ backgroundColor: scrolled ? 'var(--color-bg-dark)' : 'transparent' }}
+        className={`mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center justify-between px-3 md:px-10 lg:px-60 ${textColor} ${scrolled ? 'bg-background' : 'bg-transparent'}`}
       >
         <Link
           href="/"
@@ -49,38 +48,38 @@ export default function StickyHeader({ light = false }: HeaderProps) {
         <nav className="hidden items-center gap-[clamp(1.25rem,3vw,2rem)] md:flex">
           <Link
             href="/pricing"
-            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-blood"
+            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-primary"
           >
             Pricing
           </Link>
           <Link
             href="/about"
-            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-blood"
+            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-primary"
           >
             About
           </Link>
           <Link
             href={Routes.contact}
-            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-blood"
+            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-primary"
           >
             Contact
           </Link>
           <Link
             href="/blog"
-            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-blood"
+            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-primary"
           >
             Blog
           </Link>
           <Link
             href="/why-npr"
-            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-blood"
+            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-primary"
           >
             Why NPR
           </Link>
           <CTAButton
             href="/webdev-landing"
             event="cta-navbar"
-            className="ml-4 inline-flex items-center gap-2 rounded-lg bg-blood px-4 py-[0.45rem] text-[clamp(0.65rem,0.9vw,0.75rem)] font-semibold text-silver shadow transition-transform hover:scale-105 hover:bg-crimson"
+            className="ml-4 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-[0.45rem] text-[clamp(0.65rem,0.9vw,0.75rem)] font-semibold text-foreground shadow transition-transform hover:scale-105 hover:bg-primary/90"
           >
             Get Started →
           </CTAButton>

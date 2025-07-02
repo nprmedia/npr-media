@@ -26,7 +26,7 @@ export default function StickyCTA() {
           exit={{ opacity: 0 }}
           whileHover={{ scale: 1.05 }}
           onClick={handleClick}
-          className="fixed right-4 bottom-4 z-50 flex items-center gap-2 rounded-full bg-blood px-4 py-2 text-sm font-semibold text-silver shadow-lg md:hidden hover:bg-crimson"
+          className="fixed right-4 bottom-4 z-50 flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-foreground shadow-lg md:hidden hover:bg-primary/90"
         >
           <MessageCircle className="h-4 w-4" /> Message Us
         </motion.button>

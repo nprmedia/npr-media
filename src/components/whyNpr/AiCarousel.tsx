@@ -66,7 +66,7 @@ export default function AiCarousel() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.5 }}
-                  className="mx-auto w-[clamp(16rem,40vw,22rem)] space-y-4 rounded-xl border border-silver/20 bg-[var(--color-card)] p-6 text-center text-silver shadow-2xl"
+                  className="mx-auto w-[clamp(16rem,40vw,22rem)] space-y-4 rounded-xl border border-silver/20 bg-surface p-6 text-center text-foreground shadow-2xl"
                 >
                   <h2 className="text-2xl font-bold">{title}</h2>
                   <ul className="list-disc space-y-1 pl-5 text-left text-sm">
@@ -82,7 +82,7 @@ export default function AiCarousel() {
       </div>
       <ChevronDown
         style={{ bottom: '25%' }}
-        className="pointer-events-none absolute left-1/2 h-8 w-8 -translate-x-1/2 animate-bounce text-[var(--color-accent)]"
+        className="pointer-events-none absolute left-1/2 h-8 w-8 -translate-x-1/2 animate-bounce text-accent"
       />
     </div>
   )
