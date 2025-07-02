@@ -9,14 +9,14 @@ export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="w-full border-t bg-[var(--color-bg-dark)] text-[var(--color-text-light)] py-[clamp(5rem,10vw,8rem)]"
+      className="w-full border-t bg-background text-foreground py-[clamp(5rem,10vw,8rem)]"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl space-y-4 text-center">
           <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">
             Our Packages
           </h2>
-          <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-silver">
+          <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-muted-foreground">
             {pricing.headline}
           </p>
         </div>
@@ -29,7 +29,7 @@ export default function PricingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative flex flex-col overflow-hidden rounded-2xl border border-[var(--color-olive)] bg-[var(--color-card)] p-6 ${tier.highlight ? 'ring-2 ring-[var(--color-accent)]' : ''}`}
+              className={`relative flex flex-col overflow-hidden rounded-2xl border border-muted bg-surface p-6 ${tier.highlight ? 'ring-2 ring-primary' : ''}`}
             >
               {tier.highlight && (
                 <motion.div
@@ -46,23 +46,23 @@ export default function PricingSection() {
                 <h3 className="text-[clamp(1rem,1.8vw,1.25rem)] font-semibold">
                   {tier.title}
                 </h3>
-                <span className="text-[clamp(1rem,1.8vw,1.25rem)] font-bold text-[var(--color-text-light)]">
+                <span className="text-[clamp(1rem,1.8vw,1.25rem)] font-bold text-foreground">
                   {tier.price}
                 </span>
               </div>
-              <p className="mt-1 text-[clamp(0.8rem,1.2vw,0.9rem)] italic text-[var(--color-text-light)]">
+              <p className="mt-1 text-[clamp(0.8rem,1.2vw,0.9rem)] italic text-foreground">
                 {tier.microcopy}
               </p>
-              <p className="mt-2 text-[clamp(0.8rem,1.2vw,0.9rem)] text-[var(--color-text-light)]">
+              <p className="mt-2 text-[clamp(0.8rem,1.2vw,0.9rem)] text-foreground">
                 {tier.description}
               </p>
-              <ul className="mt-4 flex-1 space-y-1 text-[clamp(0.8rem,1.2vw,0.9rem)] text-[var(--color-text-light)]">
+              <ul className="mt-4 flex-1 space-y-1 text-[clamp(0.8rem,1.2vw,0.9rem)] text-foreground">
                 {tier.features.map((feature, i) => (
                   <li
                     key={i}
-                    className={i === 0 ? 'font-semibold text-silver' : ''}
+                    className={i === 0 ? 'font-semibold text-muted-foreground' : ''}
                   >
-                    <span className="mr-1 text-[var(--color-accent)]">
+                    <span className="mr-1 text-accent">
                       {i === 0 ? '✅' : '✓'}
                     </span>
                     {feature}
@@ -73,7 +73,7 @@ export default function PricingSection() {
                 <Link
                   href="/contact"
                   data-event="cta-pricing"
-                  className="block w-full rounded-full border border-[var(--color-olive)] bg-[var(--color-bg-dark)] px-[clamp(1rem,2.5vw,1.25rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-center text-[clamp(0.8rem,1vw,0.9rem)] font-medium text-[var(--color-text-light)] shadow-sm transition hover:scale-105 hover:bg-[var(--color-olive)]"
+                  className="block w-full rounded-full border border-muted bg-background px-[clamp(1rem,2.5vw,1.25rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-center text-[clamp(0.8rem,1vw,0.9rem)] font-medium text-foreground shadow-sm transition hover:scale-105 hover:bg-muted"
                 >
                   {tier.cta}
                 </Link>

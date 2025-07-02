@@ -39,12 +39,12 @@ export default function ContactPage() {
 
   return (
     <section className="flex min-h-screen flex-col">
-      <StickyHeader light />
+      <StickyHeader />
       <main className="flex flex-1 items-center px-6 py-12 lg:px-12">
         <div className="relative mx-auto w-full max-w-3xl space-y-8">
           <div className="pointer-events-none absolute inset-0 -z-10">
             <motion.div
-              className="h-72 w-72 rounded-full bg-blood/30 blur-3xl"
+              className="h-72 w-72 rounded-full bg-primary/30 blur-3xl"
               animate={{ opacity: [0.5, 1, 0.5], scale: [0.9, 1.1, 0.9] }}
               transition={{ duration: 8, repeat: Infinity }}
             />
@@ -65,16 +65,16 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="flex flex-col items-center rounded-xl bg-antique/80 p-4 shadow-md ring-1 ring-umber/20 backdrop-blur-md">
-              <Phone className="mb-2 h-5 w-5 text-[var(--color-accent)]" />
+            <div className="flex flex-col items-center rounded-xl bg-surface/80 p-4 shadow-md ring-1 ring-muted/20 backdrop-blur-md">
+              <Phone className="mb-2 h-5 w-5 text-accent" />
               <p className="text-sm">+1 (555) 123-4567</p>
             </div>
-            <div className="flex flex-col items-center rounded-xl bg-antique/80 p-4 shadow-md ring-1 ring-umber/20 backdrop-blur-md">
-              <Mail className="mb-2 h-5 w-5 text-[var(--color-accent)]" />
+            <div className="flex flex-col items-center rounded-xl bg-surface/80 p-4 shadow-md ring-1 ring-muted/20 backdrop-blur-md">
+              <Mail className="mb-2 h-5 w-5 text-accent" />
               <p className="text-sm">contact@npr-media.com</p>
             </div>
-            <div className="flex flex-col items-center rounded-xl bg-antique/80 p-4 shadow-md ring-1 ring-umber/20 backdrop-blur-md">
-              <Calendar className="mb-2 h-5 w-5 text-[var(--color-accent)]" />
+            <div className="flex flex-col items-center rounded-xl bg-surface/80 p-4 shadow-md ring-1 ring-muted/20 backdrop-blur-md">
+              <Calendar className="mb-2 h-5 w-5 text-accent" />
               <a
                 href="https://calendly.com"
                 target="_blank"

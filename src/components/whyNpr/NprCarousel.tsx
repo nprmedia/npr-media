@@ -65,7 +65,7 @@ export default function NprCarousel() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -30 }}
                   transition={{ duration: 0.5 }}
-                  className="mx-auto w-[clamp(16rem,40vw,22rem)] space-y-4 rounded-xl border border-silver/20 bg-gradient-to-br from-[var(--color-accent)] via-crimson to-[var(--color-accent-dark)] p-6 text-center text-silver shadow-2xl"
+                  className="mx-auto w-[clamp(16rem,40vw,22rem)] space-y-4 rounded-xl border border-muted/20 bg-gradient-to-br from-accent via-accent/90 to-accent p-6 text-center text-muted-foreground shadow-2xl"
                 >
                   <h2 className="text-2xl font-bold">{title}</h2>
                   <ul className="list-disc space-y-1 pl-5 text-left text-sm">
@@ -80,7 +80,7 @@ export default function NprCarousel() {
         ))}
       </div>
       <ChevronRight
-        className="pointer-events-none absolute right-2 top-1/2 h-8 w-8 -translate-y-1/2 animate-bounce text-[var(--color-accent)]"
+        className="pointer-events-none absolute right-2 top-1/2 h-8 w-8 -translate-y-1/2 animate-bounce text-accent"
       />
     </div>
   )

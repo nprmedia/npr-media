@@ -6,8 +6,8 @@ import FinalCTA from '@/components/sections/FinalCTA';
 export default function PricingPage() {
   return (
     <section>
-      <StickyHeader light />
-      <main className="relative w-full overflow-x-hidden bg-antique text-charcoal">
+      <StickyHeader />
+      <main className="relative w-full overflow-x-hidden bg-surface text-foreground">
         <PricingSection />
       </main>
       <FinalCTA />
