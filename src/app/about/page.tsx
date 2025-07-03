@@ -78,24 +78,15 @@ export default function AboutPage() {
           <div className="pointer-events-none absolute inset-0 z-0 grid grid-cols-3 gap-0">
             <div
               className="h-full w-full bg-cover bg-center"
-              style={{
-                backgroundImage: "url('/logos/Article 1 - Template.png')",
-                filter: 'grayscale(100%) sepia(20%) brightness(110%)',
-              }}
+              style={{ backgroundImage: "url('/logos/Article 1 - Template.png')" }}
             />
             <div
               className="h-full w-full bg-cover bg-center"
-              style={{
-                backgroundImage: "url('/logos/Article 2 - Template.png')",
-                filter: 'grayscale(100%) sepia(20%) brightness(110%)',
-              }}
+              style={{ backgroundImage: "url('/logos/Article 2 - Template.png')" }}
             />
             <div
               className="h-full w-full bg-cover bg-center"
-              style={{
-                backgroundImage: "url('/logos/Article 3 - Template.png')",
-                filter: 'grayscale(100%) sepia(20%) brightness(110%)',
-              }}
+              style={{ backgroundImage: "url('/logos/Article 3 - Template.png')" }}
             />
           </div>
           <div className="pointer-events-none absolute inset-0 z-10 bg-olive/60" />
