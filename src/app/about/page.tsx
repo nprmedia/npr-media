@@ -12,33 +12,33 @@ export default function AboutPage() {
     <section>
       <StickyHeader />
       <main
-        className="relative w-full overflow-x-hidden bg-background text-foreground"
+        className="relative w-full overflow-x-hidden bg-antique text-charcoal"
         style={{ paddingTop: 'calc(var(--header-height) + 1rem)' }}
       >
         {/* Hero */}
         <section
-          className="bg-background text-foreground py-[clamp(5rem,10vw,8rem)] px-4 text-center"
+          className="bg-antique text-charcoal py-[clamp(5rem,10vw,8rem)] px-4 text-center"
         >
           <h1 className="text-[clamp(2rem,4vw,3rem)] font-bold">About NPR Media</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-[clamp(0.9rem,1.6vw,1.125rem)] text-muted">
+          <p className="mx-auto mt-4 max-w-2xl text-[clamp(0.9rem,1.6vw,1.125rem)] text-silver">
             We craft high-performing websites and systems that help founders and startups scale faster.
           </p>
         </section>
 
         {/* Values */}
-        <section className="relative overflow-hidden py-20 bg-surface text-foreground">
+        <section className="relative overflow-hidden py-20 bg-olive text-charcoal">
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-br from-accent via-accent to-accent opacity-20 blur-3xl" />
+            <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-br from-blood via-blood to-blood opacity-20 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl px-4 md:grid md:grid-cols-2 md:items-center md:gap-8">
             <div className="pb-8 text-center md:pb-0 md:text-left space-y-2">
               <h2 className="text-3xl sm:text-4xl font-bold">Values, Culture & Beliefs</h2>
-              <p className="text-sm text-foreground">Principles that guide every build</p>
+              <p className="text-sm text-charcoal">Principles that guide every build</p>
               <div className="pt-2">
                 <CTAButton
                   href="/webdev-landing"
                   event="cta-about-values"
-                  className="inline-block rounded-full bg-gradient-to-r from-accent to-accent px-4 py-2 text-xs font-normal text-foreground shadow transition hover:scale-105"
+                  className="inline-block rounded-full bg-gradient-to-r from-blood to-blood px-4 py-2 text-xs font-normal text-charcoal shadow transition hover:scale-105"
                 >
                   Work with us
                 </CTAButton>
@@ -56,25 +56,25 @@ export default function AboutPage() {
         </section>
 
         {/* Approach */}
-        <section className="bg-background text-foreground py-[clamp(4rem,8vw,6rem)] px-4">
+        <section className="bg-antique text-charcoal py-[clamp(4rem,8vw,6rem)] px-4">
           <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-3 text-center">
             <div className="space-y-2">
               <h3 className="text-xl font-bold">Strategy First</h3>
-              <p className="text-sm text-muted">Every build starts with clear goals so your site drives real revenue.</p>
+              <p className="text-sm text-silver">Every build starts with clear goals so your site drives real revenue.</p>
             </div>
             <div className="space-y-2">
               <h3 className="text-xl font-bold">Senior Expertise</h3>
-              <p className="text-sm text-muted">A compact team of vets ships faster than bloated agencies.</p>
+              <p className="text-sm text-silver">A compact team of vets ships faster than bloated agencies.</p>
             </div>
             <div className="space-y-2">
               <h3 className="text-xl font-bold">Proven Results</h3>
-              <p className="text-sm text-muted">From SaaS dashboards to marketing sites, our work converts.</p>
+              <p className="text-sm text-silver">From SaaS dashboards to marketing sites, our work converts.</p>
             </div>
           </div>
         </section>
 
         {/* Team */}
-        <section className="relative bg-surface text-foreground py-[clamp(4rem,8vw,6rem)] px-4">
+        <section className="relative bg-olive text-charcoal py-[clamp(4rem,8vw,6rem)] px-4">
           <div className="pointer-events-none absolute inset-0 z-0 grid grid-cols-3 gap-0">
             <div
               className="h-full w-full bg-cover bg-center"
@@ -98,7 +98,7 @@ export default function AboutPage() {
               }}
             />
           </div>
-          <div className="pointer-events-none absolute inset-0 z-10 bg-surface/60" />
+          <div className="pointer-events-none absolute inset-0 z-10 bg-olive/60" />
           <div className="relative z-20 mx-auto max-w-md text-center space-y-8">
             <h2 className="text-2xl font-bold">Meet the Team</h2>
             <div className="flex justify-center">
@@ -108,24 +108,24 @@ export default function AboutPage() {
                   alt="Taylor portrait"
                   width={300}
                   height={400}
-                  className="mx-auto h-64 w-48 rounded-md object-cover shadow-2xl shadow-muted/40"
+                  className="mx-auto h-64 w-48 rounded-md object-cover shadow-2xl shadow-silver/40"
                 />
                 <p className="font-normal">Taylor</p>
-                <p className="text-sm text-foreground">Founder & CEO</p>
+                <p className="text-sm text-charcoal">Founder & CEO</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="bg-background text-foreground py-[clamp(4rem,8vw,6rem)] px-4 text-center">
+        <section className="bg-antique text-charcoal py-[clamp(4rem,8vw,6rem)] px-4 text-center">
           <h2 className="text-2xl font-bold">Ready to accelerate?</h2>
-          <p className="mx-auto mt-2 max-w-xl text-sm text-muted">Let&rsquo;s craft a website that scales with you. See how our process works.</p>
+          <p className="mx-auto mt-2 max-w-xl text-sm text-silver">Let&rsquo;s craft a website that scales with you. See how our process works.</p>
           <div className="pt-6">
             <CTAButton
               href="/webdev-landing"
               event="cta-about-final"
-              className="inline-block rounded-full bg-primary px-6 py-3 text-sm font-normal text-foreground shadow-md transition hover:scale-105 hover:bg-primary"
+              className="inline-block rounded-full bg-blood px-6 py-3 text-sm font-normal text-charcoal shadow-md transition hover:scale-105 hover:bg-blood"
             >
               See Our Process
             </CTAButton>

@@ -12,7 +12,7 @@ const items = [
 
 export default function OfferStack() {
   return (
-    <section className="bg-surface py-24">
+    <section className="bg-olive py-24">
       <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-20">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -31,11 +31,11 @@ export default function OfferStack() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="rounded-2xl bg-surface/70 p-6 text-center shadow-xl ring-1 ring-muted/20 backdrop-blur-md hover:shadow-2xl"
+              className="rounded-2xl bg-olive/70 p-6 text-center shadow-xl ring-1 ring-silver/20 backdrop-blur-md hover:shadow-2xl"
             >
-              <item.icon className="mx-auto mb-3 h-6 w-6 text-primary" />
+              <item.icon className="mx-auto mb-3 h-6 w-6 text-blood" />
               <h3 className="mb-1 font-semibold text-[clamp(1rem,1.6vw,1.25rem)]">{item.label}</h3>
-              <p className="text-sm text-foreground">{item.text}</p>
+              <p className="text-sm text-charcoal">{item.text}</p>
             </motion.div>
           ))}
         </div>
