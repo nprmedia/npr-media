@@ -34,13 +34,13 @@ export default function PainPoints() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="rounded-2xl bg-surface/60 p-6 text-center shadow-xl ring-1 ring-muted/20 backdrop-blur-md hover:shadow-2xl"
+            className="rounded-2xl bg-olive/60 p-6 text-center shadow-xl ring-1 ring-silver/20 backdrop-blur-md hover:shadow-2xl"
           >
-            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary">
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-antique/20 text-antique">
               {p.icon}
             </div>
             <h3 className="mb-2 font-semibold text-[clamp(1.1rem,1.8vw,1.25rem)]">{p.title}</h3>
-            <p className="text-sm text-foreground">{p.text}</p>
+            <p className="text-sm text-charcoal">{p.text}</p>
           </motion.div>
         ))}
       </div>

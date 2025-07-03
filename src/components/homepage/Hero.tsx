@@ -116,7 +116,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       id="hero"
       ref={heroRef}
       aria-label="Hero Section"
-      className="relative min-h-screen pb-[5vh] flex items-center justify-center bg-[var(--color-bg-dark)] font-sans overflow-hidden"
+      className="relative min-h-screen pb-[5vh] flex items-center justify-center bg-umber font-sans overflow-hidden"
     >
       <div
         ref={containerRef}
@@ -133,7 +133,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         <motion.div
           variants={textVariants}
           custom={0}
-          className="ml-[10vw] mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-accent"
+          className="ml-[10vw] mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-blood"
         >
           HELLO, WE ARE NPR MEDIA
         </motion.div>
@@ -149,7 +149,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             <motion.p
               variants={textVariants}
               custom={1.5}
-              className="text-textLight mb-4 max-w-xl text-[clamp(0.75rem,1.6vw,1rem)] hover:scale-102"
+              className="text-silver mb-4 max-w-xl text-[clamp(0.75rem,1.6vw,1rem)] hover:scale-102"
             >
               {subheadline}
             </motion.p>
@@ -160,21 +160,21 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               custom={2}
               className="group relative inline-block hover:scale-105"
             >
-              <div className="bg-primary/20 absolute -inset-1.5 z-[-1] animate-pulse rounded-full" />
+              <div className="bg-antique/20 absolute -inset-1.5 z-[-1] animate-pulse rounded-full" />
               <Link
                 ref={ctaRef}
                 href={ctaLink}
                 data-event="cta-hero"
-                className="inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-foreground shadow-lg ring-1 bg-primary transition hover:bg-primary"
+                className="inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-charcoal shadow-lg ring-1 bg-antique transition hover:bg-antique"
               >
                 {ctaText}
               </Link>
-              <div className="text-muted relative top-full left-0 mt-1 text-[0.65rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+              <div className="text-silver relative top-full left-0 mt-1 text-[0.65rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                 No card required. Cancel anytime.
               </div>
             </motion.div>
           )}
-          <div className="text-muted mt-4 text-[0.6rem] hover:scale-101">
+          <div className="text-silver mt-4 text-[0.6rem] hover:scale-101">
             SOC2 Certified • GDPR Ready • Trusted by 10,000+ users
           </div>
         </motion.div>
@@ -194,7 +194,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               style={{ fontSize: 'min(48vh,32vw)' }}
               variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.6, y: 0 } }}
               transition={{ duration: 0.6 }}
-              className="block font-extrabold text-accent leading-none"
+              className="block font-extrabold text-blood leading-none"
             >
               {letter}
             </motion.span>
@@ -224,8 +224,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             />
           )}
           <div
-            className="pointer-events-none absolute top-0 left-0 h-full w-full rounded-xl"
-            style={{ background: 'linear-gradient(270deg, rgba(0, 0, 0, 0.15), transparent 60%)' }}
+            className="pointer-events-none absolute top-0 left-0 h-full w-full rounded-xl bg-gradient-to-l from-charcoal/15 to-transparent"
           />
         </div>
       </motion.div>
@@ -233,13 +232,13 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       </motion.div>
 
       <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 transform">
-        <div className="text-accent animate-bounce text-lg drop-shadow-[0_0_4px_rgba(255,255,255,0.5)]">
+        <div className="text-blood animate-bounce text-lg drop-shadow-sm">
           ↓
         </div>
       </div>
 
       {isStickyVisible && (
-        <div className="fixed bottom-36 left-1/2 z-50 -translate-x-1/2 rounded-full bg-primary px-4 py-2 text-sm font-bold text-foreground opacity-90 shadow-xl hover:scale-105 hover:bg-primary">
+        <div className="fixed bottom-36 left-1/2 z-50 -translate-x-1/2 rounded-full bg-antique px-4 py-2 text-sm font-bold text-charcoal opacity-90 shadow-xl hover:scale-105 hover:bg-antique">
           Still thinking? Start your free trial now →
         </div>
       )}

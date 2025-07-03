@@ -21,9 +21,9 @@ export default function MiniForm() {
     setTimeout(() => setSuccess(false), 2500)
   }
 
-  const baseInput = 'peer w-full rounded-md bg-surface/80 px-10 py-3 text-sm text-foreground shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 placeholder-transparent'
-  const iconBase = 'absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted pointer-events-none'
-  const labelBase = 'pointer-events-none absolute left-10 top-1/2 -translate-y-1/2 text-sm text-muted transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-2 peer-focus:-translate-y-0 peer-focus:text-xs'
+  const baseInput = 'peer w-full rounded-md bg-olive/80 px-10 py-3 text-sm text-charcoal shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-antique/40 placeholder-transparent'
+  const iconBase = 'absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-silver pointer-events-none'
+  const labelBase = 'pointer-events-none absolute left-10 top-1/2 -translate-y-1/2 text-sm text-silver transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-2 peer-focus:-translate-y-0 peer-focus:text-xs'
 
   return (
     <motion.form
@@ -32,7 +32,7 @@ export default function MiniForm() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="space-y-4 rounded-2xl bg-surface/20 p-6 shadow-xl ring-1 ring-muted/20 backdrop-blur"
+      className="space-y-4 rounded-2xl bg-olive/20 p-6 shadow-xl ring-1 ring-silver/20 backdrop-blur"
     >
       <div className="relative">
         <User className={iconBase} />
@@ -65,11 +65,11 @@ export default function MiniForm() {
         data-event="webdev-cta-submit"
         whileHover={{ scale: !loading && !success ? 1.05 : 1 }}
         disabled={loading || success}
-        className="relative flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3 font-semibold text-foreground shadow-md transition hover:bg-primary"
+        className="relative flex w-full items-center justify-center gap-2 rounded-xl bg-antique py-3 font-semibold text-charcoal shadow-md transition hover:bg-antique"
       >
-        {loading ? <span className="h-5 w-5 animate-spin rounded-full border-2 border-muted border-t-transparent" /> : success ? <Check className="h-5 w-5" /> : 'Start My Mockup'}
+        {loading ? <span className="h-5 w-5 animate-spin rounded-full border-2 border-silver border-t-transparent" /> : success ? <Check className="h-5 w-5" /> : 'Start My Mockup'}
       </motion.button>
-      {success && <p className="pt-2 text-center text-sm text-muted">We’ll be in touch shortly.</p>}
+      {success && <p className="pt-2 text-center text-sm text-silver">We’ll be in touch shortly.</p>}
     </motion.form>
   )
 }

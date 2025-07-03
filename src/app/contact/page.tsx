@@ -44,7 +44,7 @@ export default function ContactPage() {
         <div className="relative mx-auto w-full max-w-3xl space-y-8">
           <div className="pointer-events-none absolute inset-0 -z-10">
             <motion.div
-              className="h-72 w-72 rounded-full bg-primary/30 blur-3xl"
+              className="h-72 w-72 rounded-full bg-antique/30 blur-3xl"
               animate={{ opacity: [0.5, 1, 0.5], scale: [0.9, 1.1, 0.9] }}
               transition={{ duration: 8, repeat: Infinity }}
             />
@@ -55,7 +55,7 @@ export default function ContactPage() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl font-bold md:text-5xl">{copy.headline}</h1>
-            <p className="mt-2 text-neutral-600 dark:text-neutral-400">{copy.subtext}</p>
+            <p className="mt-2 text-charcoal dark:text-silver">{copy.subtext}</p>
           </motion.div>
           <ContactForm />
           <StickyCTA />
@@ -65,16 +65,16 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="flex flex-col items-center rounded-xl bg-surface/80 p-4 shadow-md ring-1 ring-muted/20 backdrop-blur-md">
-              <Phone className="mb-2 h-5 w-5 text-accent" />
+            <div className="flex flex-col items-center rounded-xl bg-olive/80 p-4 shadow-md ring-1 ring-silver/20 backdrop-blur-md">
+              <Phone className="mb-2 h-5 w-5 text-blood" />
               <p className="text-sm">+1 (555) 123-4567</p>
             </div>
-            <div className="flex flex-col items-center rounded-xl bg-surface/80 p-4 shadow-md ring-1 ring-muted/20 backdrop-blur-md">
-              <Mail className="mb-2 h-5 w-5 text-accent" />
+            <div className="flex flex-col items-center rounded-xl bg-olive/80 p-4 shadow-md ring-1 ring-silver/20 backdrop-blur-md">
+              <Mail className="mb-2 h-5 w-5 text-blood" />
               <p className="text-sm">contact@npr-media.com</p>
             </div>
-            <div className="flex flex-col items-center rounded-xl bg-surface/80 p-4 shadow-md ring-1 ring-muted/20 backdrop-blur-md">
-              <Calendar className="mb-2 h-5 w-5 text-accent" />
+            <div className="flex flex-col items-center rounded-xl bg-olive/80 p-4 shadow-md ring-1 ring-silver/20 backdrop-blur-md">
+              <Calendar className="mb-2 h-5 w-5 text-blood" />
               <a
                 href="https://calendly.com"
                 target="_blank"

@@ -111,9 +111,9 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
   };
 
   const inputBase =
-    'w-full rounded-md bg-surface px-10 py-3 text-sm text-foreground shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40';
+    'w-full rounded-md bg-olive px-10 py-3 text-sm text-charcoal shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-antique/40';
 
-  const iconBase = 'absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted';
+  const iconBase = 'absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-silver';
 
   return (
     <motion.form
@@ -122,7 +122,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="space-y-6 rounded-2xl bg-surface/80 p-6 shadow-xl ring-1 shadow-muted/20 ring-transparent backdrop-blur-md hover:ring-primary/40"
+      className="space-y-6 rounded-2xl bg-olive/80 p-6 shadow-xl ring-1 shadow-silver/20 ring-transparent backdrop-blur-md hover:ring-antique/40"
     >
       <motion.div
         className="relative"
@@ -143,7 +143,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           aria-invalid={!!errors.name}
         />
         {placeholders.name && (
-          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-muted">
+          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-silver">
             {placeholders.name}
           </span>
         )}
@@ -167,7 +167,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           aria-invalid={!!errors.email}
         />
         {placeholders.email && (
-          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-muted">
+          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-silver">
             {placeholders.email}
           </span>
         )}
@@ -196,7 +196,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           <option value="Not Sure">Not Sure</option>
         </select>
         {!form.budget && (
-          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-muted">
+          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-silver">
             Budget
           </span>
         )}
@@ -220,7 +220,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           aria-invalid={!!errors.summary}
         />
         {placeholders.summary && (
-          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-muted">
+          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-silver">
             {placeholders.summary}
           </span>
         )}
@@ -248,7 +248,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           <option value="Other">Other</option>
         </select>
         {!form.referral && (
-          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-muted">
+          <span className="pointer-events-none absolute top-1/2 left-10 -translate-y-1/2 text-sm text-silver">
             How did you hear about us?
           </span>
         )}
@@ -257,7 +257,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         type="submit"
         whileHover={{ scale: !loading && !success ? 1.04 : 1 }}
         disabled={loading}
-        className="relative flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3 font-semibold text-foreground shadow-md ring-2 ring-primary/50 transition-transform hover:shadow-lg disabled:opacity-60"
+        className="relative flex w-full items-center justify-center gap-2 rounded-xl bg-antique py-3 font-semibold text-charcoal shadow-md ring-2 ring-antique/50 transition-transform hover:shadow-lg disabled:opacity-60"
       >
         {loading ? (
           <span className="h-5 w-5 animate-spin rounded-full border-2 border-silver border-t-transparent" />
@@ -267,7 +267,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           'Send Message'
         )}
       </motion.button>
-      <div className="space-y-1 text-center text-xs text-foreground">
+      <div className="space-y-1 text-center text-xs text-charcoal">
         <p>No spam. No obligation. Just clarity.</p>
         <p>Trusted by 25+ SaaS, DTC, and consulting brands</p>
       </div>
@@ -275,7 +275,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-center text-sm text-accent"
+          className="text-center text-sm text-blood"
         >
           We&apos;ll reach out within 1 business day.
           <div className="pt-2">
@@ -283,7 +283,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
               href="https://calendly.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent underline"
+              className="text-blood underline"
             >
               Book a Call
             </a>
