@@ -24,7 +24,7 @@
   --color-blood-rgb: 179, 0, 0;
 
   /* Semantic Mappings */
-  --color-bg-primary: var(--color-antique);
+  --color-bg-antique: var(--color-antique);
   --color-bg-secondary: var(--color-sepia);
   --color-text-dark: var(--color-charcoal);
   --color-text-light: var(--color-silver);

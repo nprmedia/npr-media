@@ -2,7 +2,7 @@ import { Routes } from '@/lib/routes';
 
 export default function FinalCTA() {
   return (
-    <section className="bg-background px-6 py-20 text-center text-foreground">
+    <section className="bg-antique px-6 py-20 text-center text-charcoal">
       <h2 className="mb-4 text-3xl font-bold md:text-4xl">Let’s build something legendary</h2>
       <p className="mx-auto mb-6 max-w-2xl text-lg">
         We craft websites that drive serious results. Book your strategy call today.
@@ -10,11 +10,11 @@ export default function FinalCTA() {
       <a
         href={Routes.contact}
         data-event="cta-final"
-        className="inline-block rounded-lg bg-primary px-6 py-3 font-semibold text-foreground transition hover:bg-primary"
+        className="inline-block rounded-lg bg-antique px-6 py-3 font-semibold text-charcoal transition hover:bg-antique"
       >
         Book Free Discovery Call
       </a>
-      <p className="mt-4 text-sm text-muted">No pressure. Just clarity and next steps.</p>
+      <p className="mt-4 text-sm text-silver">No pressure. Just clarity and next steps.</p>
     </section>
   );
 }

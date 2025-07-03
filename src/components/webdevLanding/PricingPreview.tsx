@@ -30,7 +30,7 @@ export default function PricingPreview() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-8 inline-block rounded-full bg-primary px-6 py-3 font-semibold text-foreground shadow-lg transition hover:scale-105 hover:bg-primary"
+          className="mt-8 inline-block rounded-full bg-antique px-6 py-3 font-semibold text-charcoal shadow-lg transition hover:scale-105 hover:bg-antique"
         >
           Let’s Build Your Quote
         </motion.a>
@@ -39,7 +39,7 @@ export default function PricingPreview() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-4 text-sm text-foreground"
+          className="mt-4 text-sm text-charcoal"
         >
           We respond to every serious request within 1 business day.
         </motion.p>
