@@ -13,15 +13,15 @@
   --font-grotesk: 'Space Grotesk', sans-serif;
 
   /* Brand Colors */
-  --color-antique: #fff4e6;
-  --color-sepia: #dfc79c;
-  --color-olive: #92845c;
-  --color-umber: #453829;
-  --color-silver: #e5e5e5;
-  --color-charcoal: #333333;
-  --color-blood: #cc0000;
-  --color-crimson: #990000;
-  --color-blood-rgb: 204, 0, 0;
+  --color-antique: #d7c7a5;
+  --color-sepia: #b7a077;
+  --color-olive: #786c4f;
+  --color-umber: #3b3224;
+  --color-silver: #d2d2d2;
+  --color-charcoal: #2f2f2f;
+  --color-blood: #b30000;
+  --color-crimson: #7a0000;
+  --color-blood-rgb: 179, 0, 0;
 
   /* Semantic Mappings */
   --color-bg-primary: var(--color-antique);
