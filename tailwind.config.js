@@ -75,5 +75,18 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/line-clamp'),
+    require('tailwindcss/plugin')(function ({ addUtilities, theme }) {
+      const colors = theme('colors');
+      const utilities = {};
+      Object.entries(colors).forEach(([name, value]) => {
+        if (typeof value === 'string') {
+          utilities[`.bg-${name}`] = { backgroundColor: value };
+          utilities[`.text-${name}`] = { color: value };
+          utilities[`.border-${name}`] = { borderColor: value };
+          utilities[`.ring-${name}`] = { '--tw-ring-color': value };
+        }
+      });
+      addUtilities(utilities, ['responsive', 'hover']);
+    }),
   ],
 };
