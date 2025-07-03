@@ -7,7 +7,7 @@ export default function PricingPage() {
   return (
     <section>
       <StickyHeader light />
-      <main className="relative w-full overflow-x-hidden bg-background text-foreground">
+      <main className="relative w-full overflow-x-hidden bg-antique text-charcoal">
         <PricingSection />
       </main>
       <FinalCTA />

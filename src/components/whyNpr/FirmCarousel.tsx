@@ -85,21 +85,21 @@ export default function FirmCarousel() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.5 }}
-                  className="mx-auto w-[clamp(18rem,60vw,28rem)] rounded-xl border border-muted/20 bg-gradient-to-br from-surface via-surface to-surface p-6 text-foreground shadow-2xl"
+                  className="mx-auto w-[clamp(18rem,60vw,28rem)] rounded-xl border border-silver/20 bg-gradient-to-br from-sepia via-sepia to-sepia p-6 text-charcoal shadow-2xl"
                 >
                   <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4">
                     <div>
-                      <p className="text-xs font-semibold text-foreground">Other Firms</p>
+                      <p className="text-xs font-semibold text-charcoal">Other Firms</p>
                       <p className="text-sm">{row.other}</p>
                     </div>
                     <ArrowRight className="mx-auto text-muted" />
                     <div>
-                      <p className="text-xs font-semibold text-foreground">NPR Media</p>
+                      <p className="text-xs font-semibold text-charcoal">NPR Media</p>
                       <p className="text-sm">{row.npr}</p>
                     </div>
                     <ArrowRight className="mx-auto text-muted" />
                     <div>
-                      <p className="text-xs font-semibold text-foreground">Your Gain</p>
+                      <p className="text-xs font-semibold text-charcoal">Your Gain</p>
                       <p className="text-sm">{row.gain}</p>
                     </div>
                   </div>
@@ -111,7 +111,7 @@ export default function FirmCarousel() {
       </div>
       <ChevronDown
         style={{ bottom: '25%' }}
-        className="pointer-events-none absolute left-1/2 h-8 w-8 -translate-x-1/2 animate-bounce text-accent"
+        className="pointer-events-none absolute left-1/2 h-8 w-8 -translate-x-1/2 animate-bounce text-blood"
       />
     </div>
   )
