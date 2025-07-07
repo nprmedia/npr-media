@@ -85,14 +85,17 @@ export default function ValuesCarousel() {
 
   return (
     <div className="relative mx-auto h-screen max-w-md overflow-hidden bg-olive">
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10" style={{ height: '33%' }}>
-        <div className="h-full bg-gradient-to-b from-white via-white/80 to-transparent" />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 z-10"
+        style={{ height: '33%' }}
+      >
+        <div className="h-full bg-gradient-to-b from-antique via-antique/80 to-transparent" />
       </div>
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 z-10"
         style={{ height: '33%' }}
       >
-        <div className="h-full bg-gradient-to-t from-white via-white/80 to-transparent" />
+        <div className="h-full bg-gradient-to-t from-antique via-antique/80 to-transparent" />
       </div>
       <div
         ref={containerRef}
