@@ -14,14 +14,21 @@
 
   /* Brand Colors */
   --color-antique: #d7c7a5;
+  --color-antique-rgb: 215, 199, 165;
   --color-sepia: #b7a077;
+  --color-sepia-rgb: 183, 160, 119;
   --color-olive: #786c4f;
+  --color-olive-rgb: 120, 108, 79;
   --color-umber: #3b3224;
+  --color-umber-rgb: 59, 50, 36;
   --color-silver: #d2d2d2;
+  --color-silver-rgb: 210, 210, 210;
   --color-charcoal: #2f2f2f;
+  --color-charcoal-rgb: 47, 47, 47;
   --color-blood: #b30000;
-  --color-crimson: #7a0000;
   --color-blood-rgb: 179, 0, 0;
+  --color-crimson: #7a0000;
+  --color-crimson-rgb: 122, 0, 0;
 
   /* Semantic Mappings */
   --color-bg-primary: var(--color-antique);

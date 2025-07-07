@@ -1,19 +1,28 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
+function withOpacity(variable) {
+  return ({ opacityValue }) => {
+    if (opacityValue !== undefined) {
+      return `rgb(var(${variable}) / ${opacityValue})`;
+    }
+    return `rgb(var(${variable}))`;
+  };
+}
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,html}'],
   theme: {
     extend: {
       colors: {
-        antique: '#d7c7a5',
-        sepia: '#b7a077',
-        olive: '#786c4f',
-        umber: '#3b3224',
-        silver: '#d2d2d2',
-        charcoal: '#2f2f2f',
-        blood: '#b30000',
-        crimson: '#7a0000',
+        antique: withOpacity('--color-antique-rgb'),
+        sepia: withOpacity('--color-sepia-rgb'),
+        olive: withOpacity('--color-olive-rgb'),
+        umber: withOpacity('--color-umber-rgb'),
+        silver: withOpacity('--color-silver-rgb'),
+        charcoal: withOpacity('--color-charcoal-rgb'),
+        blood: withOpacity('--color-blood-rgb'),
+        crimson: withOpacity('--color-crimson-rgb'),
         transparent: 'transparent',
         current: 'currentColor',
       },
