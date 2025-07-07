@@ -6,6 +6,14 @@
 
 /* Global CSS Variables and Base Styles */
 :root {
+  --spacing: 0.25rem;
+  --container-md: 28rem;
+  --container-xl: 36rem;
+  --container-2xl: 42rem;
+  --container-3xl: 48rem;
+  --container-4xl: 56rem;
+  --container-6xl: 72rem;
+  --container-7xl: 80rem;
   --header-height: 4rem;
   --section-padding: 6rem;
   --max-content-width: 1280px;
