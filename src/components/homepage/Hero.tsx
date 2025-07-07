@@ -160,12 +160,11 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               custom={2}
               className="group relative inline-block hover:scale-105"
             >
-              <div className="bg-blood/20 absolute -inset-1.5 z-[-1] animate-pulse rounded-full" />
               <Link
                 ref={ctaRef}
                 href={ctaLink}
                 data-event="cta-hero"
-                className="inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-charcoal shadow-lg ring-1 bg-blood transition hover:bg-blood"
+                className="inline-flex items-center justify-center rounded-full bg-blood px-5 py-2 text-[clamp(0.75rem,1.2vw,1rem)] font-semibold text-charcoal shadow-lg ring-1 transition hover:bg-blood"
               >
                 {ctaText}
               </Link>
@@ -238,7 +237,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       </div>
 
       {isStickyVisible && (
-        <div className="fixed bottom-36 left-1/2 z-50 -translate-x-1/2 rounded-full bg-blood px-4 py-2 text-sm font-bold text-charcoal opacity-90 shadow-xl hover:scale-105 hover:bg-blood">
+        <div className="fixed bottom-36 left-1/2 z-50 -translate-x-1/2 rounded-full bg-blood/90 px-4 py-2 text-sm font-bold text-charcoal shadow-xl hover:scale-105 hover:bg-blood">
           Still thinking? Start your free trial now →
         </div>
       )}

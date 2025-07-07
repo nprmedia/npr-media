@@ -35,7 +35,7 @@ export default function PricingSection() {
                 <motion.div
                   animate={{ opacity: [0.4, 0.8, 0.4] }}
                   transition={{ duration: 6, repeat: Infinity }}
-                  className="pointer-events-none absolute inset-0 -z-10 rounded-2xl bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-blood/25 to-transparent"
+                  className="pointer-events-none absolute inset-0 -z-10 rounded-2xl bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-blood/10 to-transparent"
                 />
               )}
               <div className="flex items-baseline justify-between">
@@ -46,13 +46,13 @@ export default function PricingSection() {
                   {tier.price}
                 </span>
               </div>
-              <p className="mt-1 text-[clamp(0.8rem,1.2vw,0.9rem)] italic text-charcoal">
+              <p className="mt-1 break-words text-[clamp(0.8rem,1.2vw,0.9rem)] italic text-charcoal">
                 {tier.microcopy}
               </p>
-              <p className="mt-2 text-[clamp(0.8rem,1.2vw,0.9rem)] text-charcoal">
+              <p className="mt-2 break-words text-[clamp(0.8rem,1.2vw,0.9rem)] text-charcoal">
                 {tier.description}
               </p>
-              <ul className="mt-4 flex-1 space-y-1 text-[clamp(0.8rem,1.2vw,0.9rem)] text-charcoal">
+              <ul className="mt-4 flex-1 space-y-1 break-words text-[clamp(0.8rem,1.2vw,0.9rem)] text-charcoal">
                 {tier.features.map((feature, i) => (
                   <li
                     key={i}
