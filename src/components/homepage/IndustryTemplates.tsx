@@ -25,7 +25,9 @@ export default function IndustryTemplatesSection() {
           </p>
         </div>
 
-        <div className="group mx-auto flex max-w-4xl flex-col gap-6 md:flex-row md:items-start">
+        <div
+          className="group mx-auto flex max-w-4xl flex-col gap-6 md:flex-row md:items-start"
+        >
           <div
             className="relative mb-4 aspect-[2/3] h-[80vh] max-h-[80vh] overflow-hidden rounded-lg md:mb-0 md:mr-6"
             style={{ perspective: '1000px' }}
@@ -35,11 +37,13 @@ export default function IndustryTemplatesSection() {
               alt={`Screenshot of ${authority.title}`}
               width={640}
               height={960}
-              className="h-full w-full origin-left rounded-lg object-cover transition-transform duration-500 group-hover:[transform:rotateY(12deg)]"
+              className="h-full w-full rounded-lg object-cover transition-transform duration-500 origin-left group-hover:[transform:rotateY(12deg)]"
               priority
             />
           </div>
-          <div className="flex flex-grow flex-col md:w-1/2 origin-left transform-gpu transition-all duration-500 group-hover:[transform:translateX(1.5rem)_rotateY(-6deg)]">
+          <div
+            className="flex flex-grow flex-col md:w-1/2 origin-left transform-gpu transition-all duration-500 group-hover:[transform:translateX(1.5rem)_rotateY(-6deg)]"
+          >
             <h4 className="text-charcoal mb-1 truncate text-[clamp(1rem,1.8vw,1.25rem)] font-semibold">
               {authority.title}
             </h4>

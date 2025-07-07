@@ -33,7 +33,7 @@ export default function StickyHeader({ light = false }: HeaderProps) {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 z-50 w-full transition-all ${
-        scrolled ? 'bg-antique/90 shadow-md backdrop-blur-sm' : 'backdrop-blur-0 bg-transparent'
+        scrolled ? 'bg-antique/90 shadow-md backdrop-blur-sm' : 'bg-transparent backdrop-blur-0'
       } ${textColor}`}
     >
       <div
@@ -48,38 +48,38 @@ export default function StickyHeader({ light = false }: HeaderProps) {
         <nav className="hidden items-center gap-[clamp(1.25rem,3vw,2rem)] md:flex">
           <Link
             href="/pricing"
-            className="hover:text-blood text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105"
+            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-blood"
           >
             Pricing
           </Link>
           <Link
             href="/about"
-            className="hover:text-blood text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105"
+            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-blood"
           >
             About
           </Link>
           <Link
             href={Routes.contact}
-            className="hover:text-blood text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105"
+            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-blood"
           >
             Contact
           </Link>
           <Link
             href="/blog"
-            className="hover:text-blood text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105"
+            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-blood"
           >
             Blog
           </Link>
           <Link
             href="/why-npr"
-            className="hover:text-blood text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105"
+            className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-blood"
           >
             Why NPR
           </Link>
           <CTAButton
             href="/webdev-landing"
             event="cta-navbar"
-            className="bg-blood text-charcoal hover:bg-blood ml-4 inline-flex items-center gap-2 rounded-lg px-4 py-[0.45rem] text-[clamp(0.65rem,0.9vw,0.75rem)] font-semibold shadow transition-transform hover:scale-105"
+            className="ml-4 inline-flex items-center gap-2 rounded-lg bg-blood px-4 py-[0.45rem] text-[clamp(0.65rem,0.9vw,0.75rem)] font-semibold text-charcoal shadow transition-transform hover:scale-105 hover:bg-blood"
           >
             Get Started →
           </CTAButton>
