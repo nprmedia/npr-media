@@ -79,7 +79,16 @@ module.exports = {
   safelist: [
     'text-2xl', 'text-3xl', 'text-4xl',
     'pt-10', 'pt-12', 'pt-16',
-    'max-w-[800px]', 'w-full', 'object-contain'
+    'max-w-[800px]', 'w-full', 'object-contain',
+    // Ensure custom color utilities are always generated
+    'bg-antique', 'text-antique',
+    'bg-sepia', 'text-sepia',
+    'bg-olive', 'text-olive',
+    'bg-umber', 'text-umber',
+    'bg-silver', 'text-silver',
+    'bg-charcoal', 'text-charcoal',
+    'bg-blood', 'text-blood',
+    'bg-crimson', 'text-crimson'
   ],
 
   plugins: [

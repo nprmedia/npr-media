@@ -1,4 +1,7 @@
-@import 'tailwindcss';
+@import 'tailwindcss/theme';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 /* Global CSS Variables and Base Styles */
@@ -91,3 +94,22 @@ img {
   display: none;
 }
 
+
+@layer utilities {
+  .bg-antique { background-color: rgb(var(--color-antique-rgb)); }
+  .text-antique { color: rgb(var(--color-antique-rgb)); }
+  .bg-sepia { background-color: rgb(var(--color-sepia-rgb)); }
+  .text-sepia { color: rgb(var(--color-sepia-rgb)); }
+  .bg-olive { background-color: rgb(var(--color-olive-rgb)); }
+  .text-olive { color: rgb(var(--color-olive-rgb)); }
+  .bg-umber { background-color: rgb(var(--color-umber-rgb)); }
+  .text-umber { color: rgb(var(--color-umber-rgb)); }
+  .bg-silver { background-color: rgb(var(--color-silver-rgb)); }
+  .text-silver { color: rgb(var(--color-silver-rgb)); }
+  .bg-charcoal { background-color: rgb(var(--color-charcoal-rgb)); }
+  .text-charcoal { color: rgb(var(--color-charcoal-rgb)); }
+  .bg-blood { background-color: rgb(var(--color-blood-rgb)); }
+  .text-blood { color: rgb(var(--color-blood-rgb)); }
+  .bg-crimson { background-color: rgb(var(--color-crimson-rgb)); }
+  .text-crimson { color: rgb(var(--color-crimson-rgb)); }
+}
