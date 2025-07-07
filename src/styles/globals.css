@@ -6,6 +6,14 @@
 
 /* Global CSS Variables and Base Styles */
 :root {
+  --spacing: 0.25rem;
+  --container-md: 28rem;
+  --container-xl: 36rem;
+  --container-2xl: 42rem;
+  --container-3xl: 48rem;
+  --container-4xl: 56rem;
+  --container-6xl: 72rem;
+  --container-7xl: 80rem;
   --header-height: 4rem;
   --section-padding: 6rem;
   --max-content-width: 1280px;
@@ -17,21 +25,21 @@
 
   /* Brand Colors */
   --color-antique: #d7c7a5;
-  --color-antique-rgb: 215, 199, 165;
+  --color-antique-rgb: 215 199 165;
   --color-sepia: #b7a077;
-  --color-sepia-rgb: 183, 160, 119;
+  --color-sepia-rgb: 183 160 119;
   --color-olive: #786c4f;
-  --color-olive-rgb: 120, 108, 79;
+  --color-olive-rgb: 120 108 79;
   --color-umber: #3b3224;
-  --color-umber-rgb: 59, 50, 36;
+  --color-umber-rgb: 59 50 36;
   --color-silver: #d2d2d2;
-  --color-silver-rgb: 210, 210, 210;
+  --color-silver-rgb: 210 210 210;
   --color-charcoal: #2f2f2f;
-  --color-charcoal-rgb: 47, 47, 47;
+  --color-charcoal-rgb: 47 47 47;
   --color-blood: #b30000;
-  --color-blood-rgb: 179, 0, 0;
+  --color-blood-rgb: 179 0 0;
   --color-crimson: #7a0000;
-  --color-crimson-rgb: 122, 0, 0;
+  --color-crimson-rgb: 122 0 0;
 
   /* Semantic Mappings */
   --color-bg-primary: var(--color-antique);
@@ -112,4 +120,20 @@ img {
   .text-blood { color: rgb(var(--color-blood-rgb)); }
   .bg-crimson { background-color: rgb(var(--color-crimson-rgb)); }
   .text-crimson { color: rgb(var(--color-crimson-rgb)); }
+  /* Opacity variants */
+  .bg-blood\/20 { background-color: rgb(var(--color-blood-rgb) / 0.2); }
+  .bg-blood\/30 { background-color: rgb(var(--color-blood-rgb) / 0.3); }
+  .bg-olive\/20 { background-color: rgb(var(--color-olive-rgb) / 0.2); }
+  .bg-olive\/60 { background-color: rgb(var(--color-olive-rgb) / 0.6); }
+  .bg-olive\/70 { background-color: rgb(var(--color-olive-rgb) / 0.7); }
+  .bg-olive\/80 { background-color: rgb(var(--color-olive-rgb) / 0.8); }
+  .bg-silver\/5 { background-color: rgb(var(--color-silver-rgb) / 0.05); }
+  .bg-silver\/10 { background-color: rgb(var(--color-silver-rgb) / 0.1); }
+  .bg-silver\/30 { background-color: rgb(var(--color-silver-rgb) / 0.3); }
+  .ring-blood\/40 { box-shadow: 0 0 0 2px rgb(var(--color-blood-rgb) / 0.4); }
+  .ring-blood\/50 { box-shadow: 0 0 0 2px rgb(var(--color-blood-rgb) / 0.5); }
+  .ring-silver\/10 { box-shadow: 0 0 0 1px rgb(var(--color-silver-rgb) / 0.1); }
+  .ring-silver\/20 { box-shadow: 0 0 0 1px rgb(var(--color-silver-rgb) / 0.2); }
+  .shadow-silver\/20 { box-shadow: 0 1px 3px 0 rgb(var(--color-silver-rgb) / 0.2); }
+  .shadow-silver\/40 { box-shadow: 0 2px 6px 0 rgb(var(--color-silver-rgb) / 0.4); }
 }
