@@ -1,13 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
-function withOpacity(variable) {
-  return ({ opacityValue }) => {
-    if (opacityValue !== undefined) {
-      return `rgb(var(${variable}) / ${opacityValue})`;
-    }
-    return `rgb(var(${variable}))`;
-  };
-}
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -15,14 +7,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        antique: withOpacity('--color-antique-rgb'),
-        sepia: withOpacity('--color-sepia-rgb'),
-        olive: withOpacity('--color-olive-rgb'),
-        umber: withOpacity('--color-umber-rgb'),
-        silver: withOpacity('--color-silver-rgb'),
-        charcoal: withOpacity('--color-charcoal-rgb'),
-        blood: withOpacity('--color-blood-rgb'),
-        crimson: withOpacity('--color-crimson-rgb'),
+        antique: 'rgb(var(--color-antique-rgb) / <alpha-value>)',
+        sepia: 'rgb(var(--color-sepia-rgb) / <alpha-value>)',
+        olive: 'rgb(var(--color-olive-rgb) / <alpha-value>)',
+        umber: 'rgb(var(--color-umber-rgb) / <alpha-value>)',
+        silver: 'rgb(var(--color-silver-rgb) / <alpha-value>)',
+        charcoal: 'rgb(var(--color-charcoal-rgb) / <alpha-value>)',
+        blood: 'rgb(var(--color-blood-rgb) / <alpha-value>)',
+        crimson: 'rgb(var(--color-crimson-rgb) / <alpha-value>)',
         transparent: 'transparent',
         current: 'currentColor',
       },
@@ -88,7 +80,11 @@ module.exports = {
     'bg-silver', 'text-silver',
     'bg-charcoal', 'text-charcoal',
     'bg-blood', 'text-blood',
-    'bg-crimson', 'text-crimson'
+    'bg-crimson', 'text-crimson',
+    // Opacity variants used in the project
+    'bg-blood/20', 'bg-blood/30', 'ring-blood/40', 'ring-blood/50',
+    'bg-olive/20', 'bg-olive/60', 'bg-olive/70', 'bg-olive/80',
+    'bg-silver/5', 'bg-silver/10', 'bg-silver/30', 'ring-silver/10', 'ring-silver/20', 'shadow-silver/20', 'shadow-silver/40',
   ],
 
   plugins: [
