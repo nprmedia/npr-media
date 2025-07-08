@@ -160,7 +160,6 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               custom={2}
               className="group relative inline-block hover:scale-105"
             >
-              <div className="bg-blood/20 absolute -inset-1.5 z-[-1] animate-pulse rounded-full" />
               <Link
                 ref={ctaRef}
                 href={ctaLink}
