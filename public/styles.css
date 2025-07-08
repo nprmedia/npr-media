@@ -255,8 +255,8 @@
 .ml-\[15vw\] {
   margin-left: 15vw;
 }
-.ml-\[50vw\] {
-  margin-left: 50vw;
+.ml-\[calc\(50vw-1rem\)\] {
+  margin-left: calc(50vw - 1rem);
 }
 .block {
   display: block;
@@ -1307,6 +1307,11 @@
     margin-bottom: calc(var(--spacing) * 0);
   }
 }
+.md\:ml-\[calc\(50vw-2\.5rem\)\] {
+  @media (width >= 48rem) {
+    margin-left: calc(50vw - 2.5rem);
+  }
+}
 .md\:flex {
   @media (width >= 48rem) {
     display: flex;
@@ -1402,6 +1407,11 @@
   @media (width >= 48rem) {
     font-size: var(--text-5xl);
     line-height: var(--tw-leading, var(--text-5xl--line-height));
+  }
+}
+.lg\:ml-\[calc\(50vw-5rem\)\] {
+  @media (width >= 64rem) {
+    margin-left: calc(50vw - 5rem);
   }
 }
 .lg\:grid-cols-4 {
