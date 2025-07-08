@@ -44,6 +44,7 @@
   --radius-xl: 0.75rem;
   --radius-2xl: 1rem;
   --animate-spin: spin 1s linear infinite;
+  --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-bounce: bounce 1s infinite;
   --blur-sm: 8px;
   --blur-md: 12px;
@@ -76,6 +77,9 @@
 }
 .relative {
   position: relative;
+}
+.-inset-1\.5 {
+  inset: calc(var(--spacing) * -1.5);
 }
 .inset-0 {
   inset: calc(var(--spacing) * 0);
@@ -160,6 +164,9 @@
 }
 .z-50 {
   z-index: 50;
+}
+.z-\[-1\] {
+  z-index: -1;
 }
 .z-\[3\] {
   z-index: 3;
@@ -247,9 +254,6 @@
 }
 .ml-\[15vw\] {
   margin-left: 15vw;
-}
-.ml-auto {
-  margin-left: auto;
 }
 .block {
   display: block;
@@ -446,6 +450,9 @@
 }
 .animate-bounce {
   animation: var(--animate-bounce);
+}
+.animate-pulse {
+  animation: var(--animate-pulse);
 }
 .animate-spin {
   animation: var(--animate-spin);
@@ -726,9 +733,6 @@
 .px-4 {
   padding-inline: calc(var(--spacing) * 4);
 }
-.px-5 {
-  padding-inline: calc(var(--spacing) * 5);
-}
 .px-6 {
   padding-inline: calc(var(--spacing) * 6);
 }
@@ -741,6 +745,9 @@
 .px-\[clamp\(1\.25rem\,3vw\,1\.5rem\)\] {
   padding-inline: clamp(1.25rem, 3vw, 1.5rem);
 }
+.px-\[clamp\(1rem\,2\.5vw\,1\.25rem\)\] {
+  padding-inline: clamp(1rem, 2.5vw, 1.25rem);
+}
 .px-\[clamp\(1rem\,4vw\,2rem\)\] {
   padding-inline: clamp(1rem, 4vw, 2rem);
 }
@@ -749,9 +756,6 @@
 }
 .py-1 {
   padding-block: calc(var(--spacing) * 1);
-}
-.py-1\.5 {
-  padding-block: calc(var(--spacing) * 1.5);
 }
 .py-2 {
   padding-block: calc(var(--spacing) * 2);
@@ -771,6 +775,9 @@
 .py-24 {
   padding-block: calc(var(--spacing) * 24);
 }
+.py-\[0\.4rem\] {
+  padding-block: 0.4rem;
+}
 .py-\[0\.45rem\] {
   padding-block: 0.45rem;
 }
@@ -779,9 +786,6 @@
 }
 .py-\[clamp\(0\.6rem\,1\.2vw\,0\.75rem\)\] {
   padding-block: clamp(0.6rem, 1.2vw, 0.75rem);
-}
-.py-\[clamp\(0\.45rem\,1vw\,0\.6rem\)\] {
-  padding-block: clamp(0.45rem, 1vw, 0.6rem);
 }
 .py-\[clamp\(2\.5rem\,6vw\,4rem\)\] {
   padding-block: clamp(2.5rem, 6vw, 4rem);
@@ -815,9 +819,6 @@
 }
 .pr-4 {
   padding-right: calc(var(--spacing) * 4);
-}
-.pr-6 {
-  padding-right: calc(var(--spacing) * 6);
 }
 .pr-8 {
   padding-right: calc(var(--spacing) * 8);
@@ -880,11 +881,11 @@
 .text-\[0\.65rem\] {
   font-size: 0.65rem;
 }
-.text-\[0\.85rem\] {
-  font-size: 0.85rem;
-}
 .text-\[clamp\(0\.7rem\,1vw\,0\.8rem\)\] {
   font-size: clamp(0.7rem, 1vw, 0.8rem);
+}
+.text-\[clamp\(0\.7rem\,1vw\,0\.9rem\)\] {
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
 }
 .text-\[clamp\(0\.8rem\,1\.2vw\,0\.9rem\)\] {
   font-size: clamp(0.8rem, 1.2vw, 0.9rem);
@@ -900,12 +901,6 @@
 }
 .text-\[clamp\(0\.65rem\,0\.9vw\,0\.75rem\)\] {
   font-size: clamp(0.65rem, 0.9vw, 0.75rem);
-}
-.text-\[clamp\(0\.75rem\,0\.9vw\,0\.85rem\)\] {
-  font-size: clamp(0.75rem, 0.9vw, 0.85rem);
-}
-.text-\[clamp\(0\.75rem\,1\.2vw\,1rem\)\] {
-  font-size: clamp(0.75rem, 1.2vw, 1rem);
 }
 .text-\[clamp\(0\.75rem\,1\.6vw\,1rem\)\] {
   font-size: clamp(0.75rem, 1.6vw, 1rem);
@@ -994,9 +989,6 @@
   --tw-tracking: var(--tracking-widest);
   letter-spacing: var(--tracking-widest);
 }
-.break-words {
-  overflow-wrap: break-word;
-}
 .italic {
   font-style: italic;
 }
@@ -1026,6 +1018,9 @@
 }
 .opacity-30 {
   opacity: 30%;
+}
+.opacity-90 {
+  opacity: 90%;
 }
 .shadow {
   --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
@@ -1374,24 +1369,19 @@
     padding: calc(var(--spacing) * 8);
   }
 }
+.md\:px-10 {
+  @media (width >= 48rem) {
+    padding-inline: calc(var(--spacing) * 10);
+  }
+}
 .md\:px-12 {
   @media (width >= 48rem) {
     padding-inline: calc(var(--spacing) * 12);
   }
 }
-.md\:pr-16 {
-  @media (width >= 48rem) {
-    padding-right: calc(var(--spacing) * 16);
-  }
-}
 .md\:pb-0 {
   @media (width >= 48rem) {
     padding-bottom: calc(var(--spacing) * 0);
-  }
-}
-.md\:pl-10 {
-  @media (width >= 48rem) {
-    padding-left: calc(var(--spacing) * 10);
   }
 }
 .md\:text-left {
@@ -1431,18 +1421,16 @@
     padding-inline: calc(var(--spacing) * 20);
   }
 }
-.lg\:pr-28 {
-  @media (width >= 64rem) {
-    padding-right: calc(var(--spacing) * 28);
-  }
-}
-.lg\:pl-20 {
-  @media (width >= 64rem) {
-    padding-left: calc(var(--spacing) * 20);
-  }
-}
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 :root {
+  --spacing: 0.25rem;
+  --container-md: 28rem;
+  --container-xl: 36rem;
+  --container-2xl: 42rem;
+  --container-3xl: 48rem;
+  --container-4xl: 56rem;
+  --container-6xl: 72rem;
+  --container-7xl: 80rem;
   --header-height: 4rem;
   --section-padding: 6rem;
   --max-content-width: 1280px;
@@ -1891,6 +1879,11 @@ img {
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
   }
 }
 @keyframes bounce {
