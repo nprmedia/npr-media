@@ -44,7 +44,6 @@
   --radius-xl: 0.75rem;
   --radius-2xl: 1rem;
   --animate-spin: spin 1s linear infinite;
-  --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-bounce: bounce 1s infinite;
   --blur-sm: 8px;
   --blur-md: 12px;
@@ -243,14 +242,14 @@
 .ml-4 {
   margin-left: calc(var(--spacing) * 4);
 }
-.ml-8 {
-  margin-left: calc(var(--spacing) * 8);
-}
 .ml-\[10vw\] {
   margin-left: 10vw;
 }
 .ml-\[15vw\] {
   margin-left: 15vw;
+}
+.ml-auto {
+  margin-left: auto;
 }
 .block {
   display: block;
@@ -733,6 +732,9 @@
 .px-10 {
   padding-inline: calc(var(--spacing) * 10);
 }
+.px-\[clamp\(0\.5rem\,1\.5vw\,0\.75rem\)\] {
+  padding-inline: clamp(0.5rem, 1.5vw, 0.75rem);
+}
 .px-\[clamp\(0\.75rem\,2vw\,1rem\)\] {
   padding-inline: clamp(0.75rem, 2vw, 1rem);
 }
@@ -778,8 +780,8 @@
 .py-\[clamp\(0\.6rem\,1\.2vw\,0\.75rem\)\] {
   padding-block: clamp(0.6rem, 1.2vw, 0.75rem);
 }
-.py-\[clamp\(0\.45rem\,0\.9vw\,0\.6rem\)\] {
-  padding-block: clamp(0.45rem, 0.9vw, 0.6rem);
+.py-\[clamp\(0\.35rem\,0\.7vw\,0\.5rem\)\] {
+  padding-block: clamp(0.35rem, 0.7vw, 0.5rem);
 }
 .py-\[clamp\(2\.5rem\,6vw\,4rem\)\] {
   padding-block: clamp(2.5rem, 6vw, 4rem);
@@ -875,6 +877,9 @@
 .text-\[0\.65rem\] {
   font-size: 0.65rem;
 }
+.text-\[clamp\(0\.7rem\,0\.8vw\,0\.8rem\)\] {
+  font-size: clamp(0.7rem, 0.8vw, 0.8rem);
+}
 .text-\[clamp\(0\.7rem\,1vw\,0\.8rem\)\] {
   font-size: clamp(0.7rem, 1vw, 0.8rem);
 }
@@ -895,9 +900,6 @@
 }
 .text-\[clamp\(0\.65rem\,0\.9vw\,0\.75rem\)\] {
   font-size: clamp(0.65rem, 0.9vw, 0.75rem);
-}
-.text-\[clamp\(0\.75rem\,0\.9vw\,0\.85rem\)\] {
-  font-size: clamp(0.75rem, 0.9vw, 0.85rem);
 }
 .text-\[clamp\(0\.75rem\,1\.6vw\,1rem\)\] {
   font-size: clamp(0.75rem, 1.6vw, 1rem);
@@ -1876,11 +1878,6 @@ img {
 @keyframes spin {
   to {
     transform: rotate(360deg);
-  }
-}
-@keyframes pulse {
-  50% {
-    opacity: 0.5;
   }
 }
 @keyframes bounce {

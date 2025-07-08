@@ -45,7 +45,7 @@ export default function StickyHeader({ light = false }: HeaderProps) {
         >
           NPR MEDIA
         </Link>
-        <nav className="hidden items-center gap-[clamp(1rem,3vw,1.75rem)] md:flex ml-8">
+        <nav className="hidden ml-auto items-center gap-[clamp(1rem,3vw,1.75rem)] md:flex">
           <Link
             href="/pricing"
             className="hover:text-blood text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105"
