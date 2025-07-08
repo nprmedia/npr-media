@@ -19,7 +19,7 @@ export default function QuoteModal({
   return (
     <Dialog.Root onOpenChange={() => setSubmitted(false)}>
       <Dialog.Trigger asChild>
-        <button className="inline-flex items-center justify-center rounded-full bg-olive px-6 py-2 text-sm font-semibold text-charcoal shadow hover:bg-olive">
+        <button className="inline-flex items-center justify-center rounded-full bg-olive px-5 py-1.5 text-[0.85rem] font-semibold text-charcoal shadow hover:bg-olive">
           {triggerLabel}
         </button>
       </Dialog.Trigger>

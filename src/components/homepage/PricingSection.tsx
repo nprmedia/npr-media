@@ -69,7 +69,7 @@ export default function PricingSection() {
                 <Link
                   href="/contact"
                   data-event="cta-pricing"
-                  className="block w-full rounded-full border border-silver bg-antique px-[clamp(1rem,2.5vw,1.25rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-center text-[clamp(0.8rem,1vw,0.9rem)] font-medium text-charcoal shadow-sm transition hover:scale-105 hover:bg-silver"
+                  className="block w-full rounded-full border border-silver bg-antique px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.45rem,1vw,0.6rem)] text-center text-[clamp(0.75rem,0.9vw,0.85rem)] font-medium text-charcoal shadow-sm transition hover:scale-105 hover:bg-silver"
                 >
                   {tier.cta}
                 </Link>

@@ -37,7 +37,7 @@ export default function StickyHeader({ light = false }: HeaderProps) {
       } ${textColor}`}
     >
       <div
-        className={`mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center justify-between px-4 md:px-10 lg:px-20 ${textColor} ${scrolled ? 'bg-antique' : 'bg-transparent'}`}
+        className={`mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center pl-4 pr-6 md:pl-10 md:pr-16 lg:pl-20 lg:pr-28 ${textColor} ${scrolled ? 'bg-antique' : 'bg-transparent'}`}
       >
         <Link
           href="/"
@@ -45,7 +45,7 @@ export default function StickyHeader({ light = false }: HeaderProps) {
         >
           NPR MEDIA
         </Link>
-        <nav className="hidden items-center gap-[clamp(1rem,3vw,1.75rem)] md:flex">
+        <nav className="ml-auto hidden items-center gap-[clamp(1rem,3vw,1.75rem)] md:flex">
           <Link
             href="/pricing"
             className="text-[clamp(0.75rem,1vw,0.875rem)] transition-transform hover:scale-105 hover:text-blood"
