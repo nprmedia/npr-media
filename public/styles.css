@@ -255,6 +255,9 @@
 .ml-\[15vw\] {
   margin-left: 15vw;
 }
+.ml-\[50vw\] {
+  margin-left: 50vw;
+}
 .block {
   display: block;
 }
