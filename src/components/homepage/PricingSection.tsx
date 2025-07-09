@@ -11,7 +11,7 @@ export default function PricingSection() {
       id="pricing"
       className="bg-antique text-charcoal w-full border-t py-[clamp(5rem,10vw,8rem)]"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto box-border px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl space-y-4 text-center">
           <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">
             Our Packages
@@ -19,7 +19,7 @@ export default function PricingSection() {
           <p className="text-silver text-[clamp(0.9rem,1.6vw,1.125rem)]">{pricing.headline}</p>
         </div>
 
-        <div className="mx-auto mt-12 grid max-w-7xl gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto mt-12 grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
           {pricing.tiers.map((tier, index) => (
             <motion.div
               key={tier.title}
