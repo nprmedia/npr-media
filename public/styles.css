@@ -1269,6 +1269,11 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+.sm\:gap-8 {
+  @media (width >= 40rem) {
+    gap: calc(var(--spacing) * 8);
+  }
+}
 .sm\:px-6 {
   @media (width >= 40rem) {
     padding-inline: calc(var(--spacing) * 6);

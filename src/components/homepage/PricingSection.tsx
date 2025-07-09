@@ -19,7 +19,7 @@ export default function PricingSection() {
           <p className="text-silver text-[clamp(0.9rem,1.6vw,1.125rem)]">{pricing.headline}</p>
         </div>
 
-        <div className="mx-auto mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto mt-12 grid max-w-7xl gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
           {pricing.tiers.map((tier, index) => (
             <motion.div
               key={tier.title}
