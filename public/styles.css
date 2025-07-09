@@ -44,7 +44,6 @@
   --radius-xl: 0.75rem;
   --radius-2xl: 1rem;
   --animate-spin: spin 1s linear infinite;
-  --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-bounce: bounce 1s infinite;
   --blur-sm: 8px;
   --blur-md: 12px;
@@ -77,9 +76,6 @@
 }
 .relative {
   position: relative;
-}
-.-inset-1\.5 {
-  inset: calc(var(--spacing) * -1.5);
 }
 .inset-0 {
   inset: calc(var(--spacing) * 0);
@@ -164,9 +160,6 @@
 }
 .z-50 {
   z-index: 50;
-}
-.z-\[-1\] {
-  z-index: -1;
 }
 .z-\[3\] {
   z-index: 3;
@@ -254,6 +247,12 @@
 }
 .ml-\[15vw\] {
   margin-left: 15vw;
+}
+.ml-\[calc\(50vw-1rem\)\] {
+  margin-left: calc(50vw - 1rem);
+}
+.box-border {
+  box-sizing: border-box;
 }
 .block {
   display: block;
@@ -451,9 +450,6 @@
 .animate-bounce {
   animation: var(--animate-bounce);
 }
-.animate-pulse {
-  animation: var(--animate-pulse);
-}
 .animate-spin {
   animation: var(--animate-spin);
 }
@@ -531,8 +527,8 @@
 .gap-12 {
   gap: calc(var(--spacing) * 12);
 }
-.gap-\[clamp\(1\.25rem\,3vw\,2rem\)\] {
-  gap: clamp(1.25rem, 3vw, 2rem);
+.gap-\[clamp\(1rem\,3vw\,1\.75rem\)\] {
+  gap: clamp(1rem, 3vw, 1.75rem);
 }
 .gap-\[clamp\(2rem\,6vw\,5rem\)\] {
   gap: clamp(2rem, 6vw, 5rem);
@@ -729,9 +725,6 @@
 }
 .px-2 {
   padding-inline: calc(var(--spacing) * 2);
-}
-.px-3 {
-  padding-inline: calc(var(--spacing) * 3);
 }
 .px-4 {
   padding-inline: calc(var(--spacing) * 4);
@@ -1276,6 +1269,11 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+.sm\:gap-8 {
+  @media (width >= 40rem) {
+    gap: calc(var(--spacing) * 8);
+  }
+}
 .sm\:px-6 {
   @media (width >= 40rem) {
     padding-inline: calc(var(--spacing) * 6);
@@ -1305,6 +1303,11 @@
 .md\:mb-0 {
   @media (width >= 48rem) {
     margin-bottom: calc(var(--spacing) * 0);
+  }
+}
+.md\:ml-\[calc\(50vw-2\.5rem\)\] {
+  @media (width >= 48rem) {
+    margin-left: calc(50vw - 2.5rem);
   }
 }
 .md\:flex {
@@ -1404,6 +1407,11 @@
     line-height: var(--tw-leading, var(--text-5xl--line-height));
   }
 }
+.lg\:ml-\[calc\(50vw-5rem\)\] {
+  @media (width >= 64rem) {
+    margin-left: calc(50vw - 5rem);
+  }
+}
 .lg\:grid-cols-4 {
   @media (width >= 64rem) {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1422,11 +1430,6 @@
 .lg\:px-20 {
   @media (width >= 64rem) {
     padding-inline: calc(var(--spacing) * 20);
-  }
-}
-.lg\:px-60 {
-  @media (width >= 64rem) {
-    padding-inline: calc(var(--spacing) * 60);
   }
 }
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
@@ -1887,11 +1890,6 @@ img {
 @keyframes spin {
   to {
     transform: rotate(360deg);
-  }
-}
-@keyframes pulse {
-  50% {
-    opacity: 0.5;
   }
 }
 @keyframes bounce {
