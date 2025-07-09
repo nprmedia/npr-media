@@ -24,6 +24,8 @@
   --font-grotesk: 'Space Grotesk', sans-serif;
 
   /* Brand Colors */
+  --color-offwhite: #f5f1e8;
+  --color-offwhite-rgb: 245, 241, 232;
   --color-antique: #d7c7a5;
   --color-antique-rgb: 215 199 165;
   --color-sepia: #b7a077;
@@ -104,6 +106,8 @@ img {
 
 
 @layer utilities {
+  .bg-offwhite { background-color: rgb(var(--color-offwhite-rgb)); }
+  .text-offwhite { color: rgb(var(--color-offwhite-rgb)); }
   .bg-antique { background-color: rgb(var(--color-antique-rgb)); }
   .text-antique { color: rgb(var(--color-antique-rgb)); }
   .bg-sepia { background-color: rgb(var(--color-sepia-rgb)); }

@@ -13,11 +13,11 @@ export default function IndustryTemplatesSection() {
   return (
     <section
       id="templates"
-      className="bg-olive text-charcoal w-full scroll-mt-[120px] overflow-x-hidden py-[clamp(5rem,10vw,8rem)]"
+      className="bg-offwhite text-charcoal w-full scroll-mt-[120px] overflow-x-hidden py-[clamp(5rem,10vw,8rem)]"
     >
       <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="text-charcoal text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">
+          <h2 className="text-blood text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">
             Authority Platform Demo
           </h2>
           <p className="text-charcoal mt-2 text-[clamp(0.9rem,1.6vw,1.125rem)]">

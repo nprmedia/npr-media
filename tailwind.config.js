@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        offwhite: 'rgb(var(--color-offwhite-rgb) / <alpha-value>)',
         antique: 'rgb(var(--color-antique-rgb) / <alpha-value>)',
         sepia: 'rgb(var(--color-sepia-rgb) / <alpha-value>)',
         olive: 'rgb(var(--color-olive-rgb) / <alpha-value>)',
@@ -73,6 +74,7 @@ module.exports = {
     'pt-10', 'pt-12', 'pt-16',
     'max-w-[800px]', 'w-full', 'object-contain',
     // Ensure custom color utilities are always generated
+    'bg-offwhite', 'text-offwhite',
     'bg-antique', 'text-antique',
     'bg-sepia', 'text-sepia',
     'bg-olive', 'text-olive',

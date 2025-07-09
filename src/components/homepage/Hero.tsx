@@ -116,7 +116,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       id="hero"
       ref={heroRef}
       aria-label="Hero Section"
-      className="relative min-h-screen pb-[5vh] flex items-center justify-center bg-charcoal font-sans overflow-hidden"
+      className="relative min-h-screen pb-[5vh] flex items-center justify-center bg-antique font-sans overflow-hidden"
     >
       <div
         ref={containerRef}
@@ -133,7 +133,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         <motion.div
           variants={textVariants}
           custom={0}
-          className="ml-[10vw] mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-blood"
+          className="ml-[10vw] mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal"
         >
           HELLO, WE ARE NPR MEDIA
         </motion.div>
@@ -141,7 +141,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           <motion.h1
             variants={textVariants}
             custom={1}
-            className="mb-4 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-tight font-extrabold tracking-tight hover:scale-103"
+            className="text-blood mb-4 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-tight font-extrabold tracking-tight hover:scale-103"
           >
             {personalizedHeadline || headline}
           </motion.h1>
@@ -149,7 +149,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             <motion.p
               variants={textVariants}
               custom={1.5}
-              className="text-silver mb-4 max-w-xl text-[clamp(0.75rem,1.6vw,1rem)] hover:scale-102"
+              className="text-charcoal mb-4 max-w-xl text-[clamp(0.75rem,1.6vw,1rem)] hover:scale-102"
             >
               {subheadline}
             </motion.p>
@@ -164,16 +164,16 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
                 ref={ctaRef}
                 href={ctaLink}
                 data-event="cta-hero"
-                className="inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-charcoal shadow-lg ring-1 bg-blood transition hover:bg-blood"
+                className="inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-charcoal shadow-lg ring-1 bg-olive transition hover:bg-olive"
               >
                 {ctaText}
               </Link>
-              <div className="text-silver relative top-full left-0 mt-1 text-[0.65rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+              <div className="text-olive relative top-full left-0 mt-1 text-[0.65rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                 No card required. Cancel anytime.
               </div>
             </motion.div>
           )}
-          <div className="text-silver mt-4 text-[0.6rem] hover:scale-101">
+          <div className="text-sepia mt-4 text-[0.6rem] hover:scale-101">
             SOC2 Certified • GDPR Ready • Trusted by 10,000+ users
           </div>
         </motion.div>
@@ -193,7 +193,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               style={{ fontSize: 'min(48vh,32vw)' }}
               variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.6, y: 0 } }}
               transition={{ duration: 0.6 }}
-              className="block font-extrabold text-blood leading-none"
+              className="block font-extrabold text-sepia leading-none"
             >
               {letter}
             </motion.span>
