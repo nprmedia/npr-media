@@ -25,7 +25,7 @@ export default function StickyHeader({ light = false }: HeaderProps) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const textColor = light ? 'text-charcoal' : 'text-charcoal';
+  const textColor = scrolled || light ? 'text-charcoal' : 'text-offwhite';
 
   return (
     <motion.header
