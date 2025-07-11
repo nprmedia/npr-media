@@ -41,9 +41,17 @@ export default function StickyHeader({ light = false }: HeaderProps) {
       >
         <Link
           href="/"
-          className="logo-glow text-[clamp(0.9rem,1.4vw,1.25rem)] font-bold tracking-tight transition-transform hover:scale-105"
+          className="logo-glow flex text-[clamp(0.9rem,1.4vw,1.25rem)] font-bold tracking-tight transition-transform hover:scale-105"
         >
-          NPR MEDIA
+          {"NPR MEDIA".split("").map((ch, i) =>
+            ch === " " ? (
+              <span key={i} className="mx-[0.15em]" />
+            ) : (
+              <span key={i} className="logo-letter">
+                {ch}
+              </span>
+            )
+          )}
         </Link>
         <nav
           className="hidden items-center gap-[clamp(1rem,3vw,1.75rem)] md:flex ml-[calc(50vw-1rem)] md:ml-[calc(50vw-2.5rem)] lg:ml-[calc(50vw-5rem)]"

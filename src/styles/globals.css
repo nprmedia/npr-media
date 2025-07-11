@@ -205,9 +205,12 @@ img {
     font-variant-caps: all-small-caps;
   }
   .logo-glow {
+    display: inline-flex;
+  }
+  .logo-letter {
     position: relative;
   }
-  .logo-glow::before {
+  .logo-letter::before {
     content: '';
     position: absolute;
     left: 0;
@@ -219,7 +222,7 @@ img {
     transform: scaleY(0);
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
-  .logo-glow:hover::before {
+  .logo-glow:hover .logo-letter::before {
     opacity: 1;
     transform: scaleY(1);
   }
