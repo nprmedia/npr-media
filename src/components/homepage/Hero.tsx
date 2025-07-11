@@ -45,6 +45,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
   const [isStickyVisible, setIsStickyVisible] = useState(false);
   const [personalizedHeadline, setPersonalizedHeadline] = useState('');
+  const headlineWords = (personalizedHeadline || headline).split(' ');
 
   useParticleBackground(containerRef);
   useHeroAnalytics({ heroRef, ctaRef });
@@ -122,10 +123,11 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         ref={containerRef}
         className="pointer-events-none absolute inset-0 z-[3] h-full w-full"
       />
+      <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-white/20 to-transparent" />
 
 
       <motion.div
-        className="relative z-10 mx-auto grid w-full max-w-[88rem] grid-cols-1 items-center gap-[clamp(2rem,6vw,5rem)] px-[clamp(1rem,4vw,2rem)] py-[clamp(4rem,8vw,6rem)] md:grid-cols-2"
+        className="relative z-10 mx-auto grid w-full max-w-[88rem] grid-cols-1 items-center gap-[clamp(2rem,6vw,5rem)] px-[clamp(1rem,4vw,2rem)] py-[clamp(2rem,6vw,4rem)] md:grid-cols-2"
         initial="hidden"
         animate={controls}
       >
@@ -133,23 +135,29 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         <motion.div
           variants={textVariants}
           custom={0}
-          className="ml-[10vw] mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal"
+          className="ml-[10vw] mb-6 text-[clamp(0.95rem,1.4vw,1rem)] font-thin tracking-widest text-[#999]"
         >
           HELLO, WE ARE NPR MEDIA
         </motion.div>
-        <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }} className="ml-[15vw] w-full">
+        <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }} className="w-full">
           <motion.h1
             variants={textVariants}
             custom={1}
-            className="text-blood mb-4 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-tight font-extrabold tracking-tight hover:scale-103"
+            className="text-blood mb-6 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-[1.1] font-extrabold tracking-tight hover:scale-103 font-grotesk drop-shadow-md"
           >
-            {personalizedHeadline || headline}
+            {headlineWords.map((word, i) => (
+              <motion.span key={i} variants={textVariants} custom={1 + i * 0.1} className="mr-1 inline-block">
+                {word}
+              </motion.span>
+            ))}
           </motion.h1>
           {subheadline && (
             <motion.p
               variants={textVariants}
               custom={1.5}
-              className="text-charcoal mb-4 max-w-xl text-[clamp(0.75rem,1.6vw,1rem)] hover:scale-102"
+              initial="hidden"
+              animate="visible"
+              className="text-[#333] mb-4 max-w-xl text-[clamp(0.8rem,1.8vw,1.1rem)]"
             >
               {subheadline}
             </motion.p>
@@ -164,16 +172,21 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
                 ref={ctaRef}
                 href={ctaLink}
                 data-event="cta-hero"
-                className="inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-charcoal shadow-lg ring-1 bg-olive transition hover:bg-olive"
+                className="relative inline-flex items-center justify-center rounded-full px-5 py-[0.5rem] text-[clamp(0.7rem,1vw,0.9rem)] font-bold text-charcoal shadow-lg ring-1 bg-olive transition hover:ring-2 hover:ring-blood/60"
               >
-                {ctaText}
+                <span className="pointer-events-none absolute -inset-px rounded-full bg-blood/40 opacity-0 blur-lg transition group-hover:opacity-70" />
+                <span className="relative z-10">{ctaText}</span>
+                <span className="absolute inset-0 rounded-full ring-0 transition group-hover:animate-ping group-hover:ring-2 group-hover:ring-blood/40" />
               </Link>
               <div className="text-olive relative top-full left-0 mt-1 text-[0.65rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                 No card required. Cancel anytime.
               </div>
             </motion.div>
           )}
-          <div className="text-sepia mt-4 text-[0.6rem] hover:scale-101">
+          <div
+            className="text-sepia mt-6 text-[0.7rem] hover:scale-101"
+            style={{ fontVariant: 'small-caps' }}
+          >
             SOC2 Certified • GDPR Ready • Trusted by 10,000+ users
           </div>
         </motion.div>
@@ -191,7 +204,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             <motion.span
               key={letter}
               style={{ fontSize: 'min(48vh,32vw)' }}
-              variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.6, y: 0 } }}
+              variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.45, y: 0 } }}
               transition={{ duration: 0.6 }}
               className="block font-extrabold text-sepia leading-none"
             >

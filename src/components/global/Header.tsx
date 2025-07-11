@@ -41,12 +41,13 @@ export default function StickyHeader({ light = false }: HeaderProps) {
       >
         <Link
           href="/"
-          className="text-[clamp(0.9rem,1.4vw,1.25rem)] font-bold tracking-tight transition-transform hover:scale-105"
+          className="relative text-[clamp(0.9rem,1.4vw,1.25rem)] font-bold tracking-tight transition-transform hover:scale-105 hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.7)]"
         >
           NPR MEDIA
+          <span className="absolute left-0 top-1/2 h-[2px] w-0 bg-blood transition-all duration-300 hover:w-full" />
         </Link>
         <nav
-          className="hidden items-center gap-[clamp(1rem,3vw,1.75rem)] md:flex ml-[calc(50vw-1rem)] md:ml-[calc(50vw-2.5rem)] lg:ml-[calc(50vw-5rem)]"
+          className="hidden items-center gap-[clamp(1rem,3vw,1.75rem)] md:flex ml-[calc(50vw-1rem)] md:ml-[calc(50vw-2.5rem)] lg:ml-[calc(50vw-5rem)] pt-2"
         >
           <Link
             href="/pricing"
@@ -81,7 +82,7 @@ export default function StickyHeader({ light = false }: HeaderProps) {
           <CTAButton
             href="/webdev-landing"
             event="cta-navbar"
-            className="bg-blood text-charcoal hover:bg-blood ml-4 inline-flex items-center gap-2 rounded-lg px-4 py-[0.45rem] text-[clamp(0.65rem,0.9vw,0.75rem)] font-semibold shadow transition-transform hover:scale-105"
+            className="bg-blood text-charcoal ml-4 inline-flex items-center gap-2 rounded-lg px-4 py-[0.45rem] text-[clamp(0.65rem,0.9vw,0.75rem)] font-semibold shadow transition-transform hover:scale-105 hover:bg-transparent hover:text-blood hover:ring-1 hover:ring-blood"
           >
             Get Started →
           </CTAButton>
