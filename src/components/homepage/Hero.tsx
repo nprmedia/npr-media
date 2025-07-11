@@ -125,7 +125,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
 
       <motion.div
-        className="relative z-10 mx-auto grid w-full max-w-[88rem] grid-cols-1 items-center gap-[clamp(2rem,6vw,5rem)] px-[clamp(1rem,4vw,2rem)] py-[clamp(4rem,8vw,6rem)] md:grid-cols-2"
+        className="relative z-10 mx-auto grid w-full max-w-[88rem] grid-cols-1 items-center gap-[clamp(2rem,6vw,5rem)] px-[clamp(1rem,4vw,2rem)] pt-[clamp(2rem,6vw,4rem)] pb-[clamp(4rem,8vw,6rem)] md:grid-cols-2"
         initial="hidden"
         animate={controls}
       >
@@ -141,7 +141,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           <motion.h1
             variants={textVariants}
             custom={1}
-            className="text-blood mb-4 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-tight font-extrabold tracking-tight hover:scale-103"
+            className="text-blood mb-4 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-tight font-grotesk font-bold tracking-tight hover:scale-103"
           >
             {personalizedHeadline || headline}
           </motion.h1>
