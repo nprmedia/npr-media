@@ -141,7 +141,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           <motion.h1
             variants={textVariants}
             custom={1}
-            className="text-blood mb-4 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-tight font-grotesk font-bold tracking-tight hover:scale-103"
+            className="text-blood mb-4 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-tight font-grotesk font-bold tracking-tight text-shadow glow-blood hover:scale-103"
           >
             {personalizedHeadline || headline}
           </motion.h1>

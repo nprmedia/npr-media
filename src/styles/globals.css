@@ -145,4 +145,6 @@ img {
   .ring-silver\/20 { box-shadow: 0 0 0 1px rgb(var(--color-silver-rgb) / 0.2); }
   .shadow-silver\/20 { box-shadow: 0 1px 3px 0 rgb(var(--color-silver-rgb) / 0.2); }
   .shadow-silver\/40 { box-shadow: 0 2px 6px 0 rgb(var(--color-silver-rgb) / 0.4); }
+  .text-shadow { text-shadow: 0 2px 4px rgb(var(--color-charcoal-rgb) / 0.3); }
+  .glow-blood { text-shadow: 0 0 8px rgb(var(--color-blood-rgb) / 0.8); }
 }
