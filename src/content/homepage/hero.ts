@@ -14,9 +14,9 @@ export interface HeroProps {
 }
 
 export const hero: HeroProps = {
-  headline: 'Automate Reporting. Save 12+ Hours Weekly.',
-  subheadline: 'Built for SaaS teams who want cleaner dashboards and less spreadsheet chaos. Try it free — no card required.',
-  ctaText: 'Get Started',
+  headline: 'Trusted by Founders Who Don’t Get a Second Shot.',
+  subheadline: '70% of startups fail between years 2–5 — a weak website is one of the fastest ways to join them.',
+  ctaText: 'Make Sure Your Website Isn’t the Reason',
   ctaLink: '/webdev-landing',
   // Preview image removed to avoid bundling binary assets
 };
