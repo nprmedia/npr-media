@@ -37,11 +37,11 @@ export default function StickyHeader({ light = false }: HeaderProps) {
       } ${textColor}`}
     >
       <div
-        className={`mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center px-4 md:px-10 lg:px-20 ${textColor} ${scrolled ? 'bg-antique' : 'bg-transparent'}`}
+        className={`mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center pt-2 px-4 md:px-10 lg:px-20 ${textColor} ${scrolled ? 'bg-antique' : 'bg-transparent'}`}
       >
         <Link
           href="/"
-          className="text-[clamp(0.9rem,1.4vw,1.25rem)] font-bold tracking-tight transition-transform hover:scale-105"
+          className="logo-glow text-[clamp(0.9rem,1.4vw,1.25rem)] font-bold tracking-tight transition-transform hover:scale-105"
         >
           NPR MEDIA
         </Link>
@@ -81,7 +81,7 @@ export default function StickyHeader({ light = false }: HeaderProps) {
           <CTAButton
             href="/webdev-landing"
             event="cta-navbar"
-            className="bg-blood text-charcoal hover:bg-blood ml-4 inline-flex items-center gap-2 rounded-lg px-4 py-[0.45rem] text-[clamp(0.65rem,0.9vw,0.75rem)] font-semibold shadow transition-transform hover:scale-105"
+            className="border border-blood bg-blood text-charcoal hover:bg-transparent hover:text-blood ml-4 inline-flex items-center gap-2 rounded-lg px-4 py-[0.45rem] text-[clamp(0.65rem,0.9vw,0.75rem)] font-semibold shadow transition-transform hover:scale-105 cta-glow ripple-hover"
           >
             Get Started →
           </CTAButton>
