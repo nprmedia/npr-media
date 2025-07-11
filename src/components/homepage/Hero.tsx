@@ -103,7 +103,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   }, []);
 
   const textVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 15 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
@@ -125,7 +125,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
 
       <motion.div
-        className="relative z-10 mx-auto grid w-full max-w-[88rem] grid-cols-1 items-center gap-[clamp(2rem,6vw,5rem)] px-[clamp(1rem,4vw,2rem)] pt-[clamp(2rem,6vw,4rem)] pb-[clamp(4rem,8vw,6rem)] md:grid-cols-2"
+        className="relative z-10 mx-auto grid w-full max-w-[88rem] grid-cols-1 items-center gap-[clamp(2rem,6vw,5rem)] px-[clamp(1rem,4vw,2rem)] pt-[clamp(1rem,5vw,3rem)] pb-[clamp(4rem,8vw,6rem)] md:grid-cols-2"
         initial="hidden"
         animate={controls}
       >
@@ -149,7 +149,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             <motion.p
               variants={textVariants}
               custom={1.5}
-              className="text-charcoal mb-4 max-w-xl text-[clamp(0.75rem,1.6vw,1rem)] hover:scale-102"
+              className="text-charcoal mb-7 max-w-xl text-[clamp(0.75rem,1.6vw,1rem)] hover:scale-102"
             >
               {subheadline}
             </motion.p>
@@ -164,7 +164,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
                 ref={ctaRef}
                 href={ctaLink}
                 data-event="cta-hero"
-                className="inline-flex items-center justify-center rounded-full px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-charcoal shadow-lg ring-1 bg-olive transition hover:bg-olive"
+                className="inline-flex items-center justify-center rounded-[6px] px-4 py-[0.4rem] text-[clamp(0.7rem,1vw,0.9rem)] font-semibold text-charcoal shadow-lg ring-1 bg-olive transition hover:bg-olive hover:glow-blood"
               >
                 {ctaText}
               </Link>

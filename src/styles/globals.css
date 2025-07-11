@@ -38,8 +38,8 @@
   --color-silver-rgb: 210 210 210;
   --color-charcoal: #2f2f2f;
   --color-charcoal-rgb: 47 47 47;
-  --color-blood: #b30000;
-  --color-blood-rgb: 179 0 0;
+  --color-blood: #cc0000;
+  --color-blood-rgb: 204 0 0;
   --color-crimson: #7a0000;
   --color-crimson-rgb: 122 0 0;
 
@@ -156,21 +156,22 @@ img {
     z-index: -1;
     border-radius: inherit;
     background:
+      radial-gradient(circle, rgba(255, 0, 0, 0.05), transparent 180%),
       radial-gradient(circle, rgb(var(--color-blood-rgb) / 0.3), transparent 60%),
       radial-gradient(circle, rgb(var(--color-blood-rgb) / 0.15), transparent 70%);
-    filter: blur(4px);
-    opacity: 0.6;
-    animation: glow-pulse 4s ease-in-out infinite;
+    filter: blur(6px);
+    opacity: 0.25;
+    animation: glow-pulse 3s ease-in-out infinite;
   }
 }
 
 @keyframes glow-pulse {
   0%, 100% {
     transform: scale(1);
-    opacity: 0.6;
+    opacity: 0.25;
   }
   50% {
     transform: scale(1.3);
-    opacity: 0.9;
+    opacity: 0.5;
   }
 }
