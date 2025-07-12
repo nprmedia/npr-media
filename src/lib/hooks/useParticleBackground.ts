@@ -43,7 +43,7 @@ export function useParticleBackground(containerRef: React.RefObject<HTMLDivEleme
 
       positions.set([x, y, z], i * 3);
       velocities.set(
-        [(Math.random() - 0.5) * 0.1, (Math.random() - 0.5) * 0.1, (Math.random() - 0.5) * 0.1],
+        [(Math.random() - 0.5) * 0.05, (Math.random() - 0.5) * 0.05, (Math.random() - 0.5) * 0.05],
         i * 3
       );
       sizes[i] = Math.random() * 1 + 0.5;
@@ -90,7 +90,7 @@ export function useParticleBackground(containerRef: React.RefObject<HTMLDivEleme
         const i3 = i * 3;
         pos[i3] += velocities[i3];
         pos[i3 + 1] += velocities[i3 + 1];
-        pos[i3 + 2] += velocities[i3 + 2] + Math.sin(performance.now() * 0.001 + i) * 0.002;
+        pos[i3 + 2] += velocities[i3 + 2] + Math.sin(performance.now() * 0.001 + i) * 0.001;
 
         // Reset out-of-bounds
         if (
@@ -109,7 +109,7 @@ export function useParticleBackground(containerRef: React.RefObject<HTMLDivEleme
       // Smooth parallax camera motion
       camera.position.x += (targetX - camera.position.x) * 0.05;
       camera.position.y += (targetY - camera.position.y) * 0.05;
-      scene.rotation.y += 0.0005; // subtle orbital swirl
+      scene.rotation.y += 0.0003; // subtle orbital swirl
       renderer.render(scene, camera);
     };
 
