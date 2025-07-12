@@ -151,16 +151,17 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           <motion.h1
             variants={textVariants}
             custom={1}
-            className="text-blood mb-6 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-[1.15] font-grotesk font-bold tracking-tight glow-blood hover:scale-103"
+            className="text-blood mb-6 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-[1.15] font-grotesk font-bold tracking-tight hover:scale-103"
           >
             {headlineLines.map((line, li) => (
               <span key={li} className="block overflow-hidden">
                 {line.split(' ').map((word, wi) => (
                   <motion.span
                     key={wi}
-                    className="inline-block"
+                    className="inline-block glow-blood"
                     variants={wordVariants}
                     custom={wi + li * 10}
+                    style={{ animationDelay: `${wi * 0.2}s` }}
                   >
                     {word}&nbsp;
                   </motion.span>
