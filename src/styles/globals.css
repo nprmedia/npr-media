@@ -209,22 +209,21 @@ img {
   }
   .logo-letter {
     position: relative;
+    display: inline-block;
   }
-  .logo-letter::before {
+  .logo-letter::after {
     content: '';
     position: absolute;
-    left: 0;
-    top: 20%;
-    bottom: 20%;
-    width: 2px;
-    background: rgb(var(--color-blood-rgb));
+    inset: -2px;
+    border-radius: 4px;
+    background: radial-gradient(circle, rgb(var(--color-blood-rgb) / 0.4), transparent 70%);
     opacity: 0;
-    transform: scaleY(0);
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    filter: blur(4px);
+    transition: opacity 0.3s ease;
   }
-  .logo-glow:hover .logo-letter::before {
-    opacity: 1;
-    transform: scaleY(1);
+  .logo-glow:hover .logo-letter::after {
+    opacity: 0.5;
+    animation: glow-pulse 4s ease-in-out infinite;
   }
 }
 
