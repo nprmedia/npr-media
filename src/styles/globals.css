@@ -235,6 +235,35 @@ img {
     opacity: 0.5;
     animation: glow-pulse 4s ease-in-out infinite;
   }
+
+  .logo-hover {
+    position: relative;
+    overflow: hidden;
+  }
+  .logo-hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgb(var(--color-blood-rgb) / 0.3), transparent);
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+  .logo-hover:hover::before {
+    animation: logo-shimmer 2s linear infinite;
+  }
+  .logo-hover::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 25%;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s ease;
+  }
+  .logo-hover:hover::after {
+    width: 50%;
+  }
 }
 
 @keyframes glow-pulse {
@@ -243,5 +272,14 @@ img {
   }
   50% {
     opacity: 0.25;
+  }
+}
+
+@keyframes logo-shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
   }
 }

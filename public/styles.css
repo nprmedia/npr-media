@@ -1013,6 +1013,10 @@
   --tw-font-weight: var(--font-weight-thin);
   font-weight: var(--font-weight-thin);
 }
+.tracking-\[0\.5px\] {
+  --tw-tracking: 0.5px;
+  letter-spacing: 0.5px;
+}
 .tracking-tight {
   --tw-tracking: var(--tracking-tight);
   letter-spacing: var(--tracking-tight);
@@ -1023,6 +1027,9 @@
 }
 .text-\[\#333\] {
   color: #333;
+}
+.text-\[\#666\] {
+  color: #666;
 }
 .italic {
   font-style: italic;
@@ -1134,6 +1141,11 @@
 }
 .transition-all {
   transition-property: all;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+}
+.transition-colors {
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
   transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
   transition-duration: var(--tw-duration, var(--default-transition-duration));
 }
@@ -1255,6 +1267,13 @@
   &:hover {
     @media (hover: hover) {
       background-color: transparent;
+    }
+  }
+}
+.hover\:text-\[\#222\] {
+  &:hover {
+    @media (hover: hover) {
+      color: #222;
     }
   }
 }
@@ -1756,6 +1775,34 @@ img {
     opacity: 0.5;
     animation: glow-pulse 4s ease-in-out infinite;
   }
+  .logo-hover {
+    position: relative;
+    overflow: hidden;
+  }
+  .logo-hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgb(var(--color-blood-rgb) / 0.3), transparent);
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+  .logo-hover:hover::before {
+    animation: logo-shimmer 2s linear infinite;
+  }
+  .logo-hover::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 25%;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s ease;
+  }
+  .logo-hover:hover::after {
+    width: 50%;
+  }
 }
 @keyframes glow-pulse {
   0%, 100% {
@@ -1763,6 +1810,14 @@ img {
   }
   50% {
     opacity: 0.25;
+  }
+}
+@keyframes logo-shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
   }
 }
 @property --tw-translate-x {
