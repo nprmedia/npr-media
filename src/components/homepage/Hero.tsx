@@ -39,6 +39,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   // section. Moving about 53% of the wrapper height leaves roughly 5% padding
   // below the final "R" while keeping it hidden once the hero scrolls away.
   const overlayY = useTransform(scrollYProgress, [0, 1], ['0%', '-53%']);
+  const rOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   const searchParams = useSearchParams();
   const controls = useAnimation();
@@ -244,7 +245,10 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         </motion.div>
       </div>
 
-      <div className="pointer-events-none absolute bottom-0 left-0 z-0 hidden md:flex w-full justify-center mix-blend-overlay">
+      <div
+        className="pointer-events-none absolute bottom-0 z-0 hidden -translate-x-1/2 md:flex justify-center mix-blend-overlay"
+        style={{ left: '62.5%', width: '25%' }}
+      >
         <motion.div
           ref={overlayRef}
           style={{ y: overlayY }}
@@ -255,10 +259,10 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           {['N', 'P', 'R'].map((letter) => (
             <motion.span
               key={letter}
-              initial="hidden"
-              animate="visible"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ y: 0, transition: { delay: 1, duration: 1, ease: 'easeOut' } }}
+              style={letter === 'R' ? { opacity: rOpacity } : {}}
               className="block font-grotesk font-extrabold uppercase leading-none text-black/50 dark:text-white/50 text-[clamp(10rem,25vw,18rem)]"
-              variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0, transition: { delay: 1, duration: 1, ease: 'easeOut' } } }}
             >
               {letter}
             </motion.span>
