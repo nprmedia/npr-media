@@ -152,9 +152,6 @@
 .left-10 {
   left: calc(var(--spacing) * 10);
 }
-.left-\[-1rem\] {
-  left: -1rem;
-}
 .-z-10 {
   z-index: calc(10 * -1);
 }
