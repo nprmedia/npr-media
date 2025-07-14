@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useSearchParams, useRouter } from 'next/navigation';
+import { ShieldCheck } from 'lucide-react';
 import { motion, useAnimation, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
@@ -134,6 +135,14 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       transition: { delay: 1.5, duration: 0.6 },
     },
   };
+  const badgeVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { delay: 1.8, duration: 0.6, ease: 'easeOut' },
+    },
+  };
   const headlineLines = (personalizedHeadline || headline).split('\n');
 
   return (
@@ -223,9 +232,15 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               </div>
             </motion.div>
           )}
-          <div className="text-sepia mt-4 text-[0.6rem] font-smallcaps hover:scale-101">
-            SOC2 Certified • GDPR Ready • Trusted by 10,000+ users
-          </div>
+          <motion.p
+            role="note"
+            aria-label="SOC2 certified and founder-backed"
+            variants={badgeVariants}
+            className="mt-6 sm:mt-8 text-center sm:text-left flex items-center justify-center sm:justify-start text-neutral-500 dark:text-neutral-400 text-[clamp(0.75rem,0.9vw,0.875rem)] font-medium uppercase tracking-wider font-smallcaps"
+          >
+            <ShieldCheck className="mr-2 h-4 w-4 flex-shrink-0" />
+            <span>SOC2 Certified • GDPR Ready • Trusted by 10,000+ users</span>
+          </motion.p>
         </motion.div>
       </div>
 
