@@ -118,6 +118,14 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       transition: { delay: i * 0.15, duration: 0.6 },
     }),
   };
+  const subheadlineVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 0.9,
+      y: 0,
+      transition: { delay: 1, duration: 0.6 },
+    },
+  };
   const headlineLines = (personalizedHeadline || headline).split('\n');
 
   return (
@@ -149,6 +157,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         </motion.div>
         <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }} className="w-full">
           <motion.h1
+            id="hero-headline"
             data-scroll
             variants={textVariants}
             custom={1}
@@ -171,9 +180,10 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           </motion.h1>
           {subheadline && (
             <motion.p
-              variants={textVariants}
-              custom={1.5}
-              className="text-[#333] mb-7 max-w-xl text-[clamp(0.85rem,1.8vw,1.1rem)] hover:scale-102"
+              id="hero-subheadline"
+              aria-describedby="hero-headline"
+              variants={subheadlineVariants}
+              className="font-grotesk font-medium text-neutral-700 dark:text-neutral-300 opacity-90 md:opacity-100 mt-4 sm:mt-6 lg:mt-8 mb-7 mx-auto max-w-[60ch] text-center text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]"
             >
               {subheadline}
             </motion.p>
