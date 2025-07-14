@@ -260,8 +260,8 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             <motion.span
               key={letter}
               initial={{ opacity: 0, y: -20 }}
-              animate={{ y: 0, transition: { delay: 1, duration: 1, ease: 'easeOut' } }}
-              style={letter === 'R' ? { opacity: rOpacity } : {}}
+              animate={{ opacity: 1, y: 0, transition: { delay: 1, duration: 1, ease: 'easeOut' } }}
+              style={{ opacity: letter === 'R' ? rOpacity : 1 }}
               className="block font-grotesk font-extrabold uppercase leading-none text-black/50 dark:text-white/50 text-[clamp(10rem,25vw,18rem)]"
             >
               {letter}
