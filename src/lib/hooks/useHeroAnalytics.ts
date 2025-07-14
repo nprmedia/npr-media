@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 export function useHeroAnalytics(refs: {
   heroRef: React.RefObject<HTMLElement | null>;
-  ctaRef: React.RefObject<HTMLAnchorElement | null>;
+  ctaRef: React.RefObject<HTMLButtonElement | null>;
 }) {
   useEffect(() => {
     const ttfStart = performance.now();

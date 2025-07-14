@@ -2,8 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { motion, useAnimation, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
@@ -25,7 +24,8 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
-  const ctaRef = useRef<HTMLAnchorElement>(null);
+  const ctaRef = useRef<HTMLButtonElement>(null);
+  const router = useRouter();
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -126,6 +126,14 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       transition: { delay: 1, duration: 0.6 },
     },
   };
+  const ctaVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { delay: 1.5, duration: 0.6 },
+    },
+  };
   const headlineLines = (personalizedHeadline || headline).split('\n');
 
   return (
@@ -190,18 +198,26 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           )}
           {ctaText && ctaLink && (
             <motion.div
-              variants={textVariants}
-              custom={2}
-              className="group relative inline-block hover:scale-105"
+              variants={ctaVariants}
+              className="group relative inline-block mx-auto md:mx-0"
             >
-              <Link
+              <motion.button
+                type="button"
                 ref={ctaRef}
-                href={ctaLink}
-                data-event="cta-hero"
-                className="cta-glow ripple-hover inline-flex items-center justify-center rounded-[6px] px-5 py-[0.5rem] text-[clamp(0.7rem,1vw,0.9rem)] font-bold text-charcoal shadow-lg ring-1 bg-olive transition hover:bg-olive"
+                aria-label="Start your project with NPR Media"
+                onClick={() => router.push(ctaLink)}
+                className="cta-glow ripple-hover inline-flex items-center justify-center rounded-full border border-[#b30000] ring-1 ring-inset ring-red-500/20 px-[clamp(1.5rem,3vw,2rem)] py-[clamp(0.75rem,1.25vw,1rem)] text-[clamp(0.875rem,1vw,1rem)] font-semibold uppercase tracking-wide text-charcoal shadow-[0_0_20px_rgba(255,0,0,0.2)] transition-transform duration-300 hover:scale-105 hover:bg-[#b30000] hover:text-white focus-visible:outline focus-visible:outline-red-500"
               >
-                {ctaText}
-              </Link>
+                <span>{ctaText}</span>
+                <motion.span
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.6, duration: 0.5 }}
+                  className="ml-1 transition-transform group-hover:translate-x-1"
+                >
+                  →
+                </motion.span>
+              </motion.button>
               <div className="text-olive relative top-full left-0 mt-1 text-[0.65rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                 No card required. Cancel anytime.
               </div>
