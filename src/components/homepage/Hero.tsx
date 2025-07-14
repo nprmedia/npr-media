@@ -245,7 +245,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
       <div
         className="pointer-events-none absolute bottom-0 z-0 hidden -translate-x-1/2 md:flex justify-center mix-blend-overlay"
-        style={{ left: '58.5%', width: '25%' }}
+        style={{ left: '80%', width: '25%' }}
       >
         <motion.div
           ref={overlayRef}
