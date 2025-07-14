@@ -244,7 +244,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         </motion.div>
       </div>
 
-      <div className="pointer-events-none absolute top-[-2rem] left-[-1rem] z-0 hidden md:flex mix-blend-soft-light">
+      <div className="pointer-events-none absolute top-[-2rem] left-[-1rem] z-0 hidden md:flex mix-blend-overlay">
         <motion.div
           ref={overlayRef}
           style={{ y: overlayY }}
@@ -255,8 +255,10 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           {['N', 'P', 'R'].map((letter) => (
             <motion.span
               key={letter}
-              className="block font-grotesk font-extrabold uppercase leading-none text-black/20 dark:text-white/20 text-[clamp(10rem,25vw,18rem)]"
-              variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.5, y: 0, transition: { delay: 1, duration: 1, ease: 'easeOut' } } }}
+              initial="hidden"
+              animate="visible"
+              className="block font-grotesk font-extrabold uppercase leading-none text-black/50 dark:text-white/50 text-[clamp(10rem,25vw,18rem)]"
+              variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0, transition: { delay: 1, duration: 1, ease: 'easeOut' } } }}
             >
               {letter}
             </motion.span>
