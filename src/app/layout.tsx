@@ -22,10 +22,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body
-        className="font-sans bg-antique text-charcoal antialiased"
+        className="font-sans bg-antique text-charcoal antialiased overflow-x-hidden"
         style={{ overflowY: 'hidden' }}
       >
-        {children}
+        <a href="#main" className="skip-link">Skip to Content</a>
+        <div id="main">{children}</div>
       </body>
     </html>
   );

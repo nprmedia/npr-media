@@ -159,7 +159,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       id="hero"
       ref={heroRef}
       aria-label="Hero Section"
-      style={{ scale: heroScale, opacity: heroOpacity }}
+      style={{ scale: heroScale, opacity: heroOpacity, willChange: 'transform, opacity' }}
       className="relative min-h-[100svh] pb-[5vh] flex items-center justify-center bg-antique font-sans overflow-hidden"
     >
       <div
@@ -260,7 +260,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       >
         <motion.div
           ref={overlayRef}
-          style={{ y: overlayY }}
+          style={{ y: overlayY, willChange: 'transform' }}
           initial="hidden"
           animate="visible"
           className="flex h-[200%] flex-col items-center pb-[5vh]"

@@ -19,6 +19,7 @@ export default function StickyHeader({ light = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('');
 
   useEffect(() => {
     const onScroll = () => {
@@ -30,6 +31,22 @@ export default function StickyHeader({ light = false }: HeaderProps) {
     };
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll('section[id]');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-50% 0px -50% 0px', threshold: 0.1 }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -104,30 +121,35 @@ export default function StickyHeader({ light = false }: HeaderProps) {
         >
           <Link
             href="/pricing" aria-label="Navigate to Pricing section"
+            aria-current={activeSection === 'pricing' ? 'true' : undefined}
             className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-[#b30000] focus-visible:outline outline-offset-2"
           >
             Pricing
           </Link>
           <Link
             href="/about" aria-label="Navigate to About section"
+            aria-current={activeSection === 'about' ? 'true' : undefined}
             className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-[#b30000] focus-visible:outline outline-offset-2"
           >
             About
           </Link>
           <Link
             href={Routes.contact} aria-label="Navigate to Contact section"
+            aria-current={activeSection === 'contact' ? 'true' : undefined}
             className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-[#b30000] focus-visible:outline outline-offset-2"
           >
             Contact
           </Link>
           <Link
             href="/blog" aria-label="Navigate to Blog section"
+            aria-current={activeSection === 'blog' ? 'true' : undefined}
             className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-[#b30000] focus-visible:outline outline-offset-2"
           >
             Blog
           </Link>
           <Link
             href="/why-npr" aria-label="Navigate to Why NPR section"
+            aria-current={activeSection === 'why-npr' ? 'true' : undefined}
             className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-[#b30000] focus-visible:outline outline-offset-2"
           >
             Why NPR
