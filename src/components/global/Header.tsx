@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
 import { Routes } from '@/lib/routes';
 import CTAButton from '../CTAButton';
 
@@ -17,6 +18,8 @@ interface HeaderProps {
 export default function StickyHeader({ light = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('');
 
   useEffect(() => {
     const onScroll = () => {
@@ -29,6 +32,30 @@ export default function StickyHeader({ light = false }: HeaderProps) {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll('section[id]');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-50% 0px -50% 0px', threshold: 0.1 }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [menuOpen]);
 
   const scrollToTop = (e: React.MouseEvent | React.KeyboardEvent) => {
     e.preventDefault();
@@ -82,35 +109,47 @@ export default function StickyHeader({ light = false }: HeaderProps) {
               )}
             </Link>
           </motion.div>
+        <button
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label="Toggle menu"
+          className="ml-auto flex md:hidden"
+        >
+          {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
         <nav
           className="hidden items-center gap-x-6 md:flex ml-[calc(50vw-1rem)] md:ml-[calc(50vw-2.5rem)] lg:ml-[calc(50vw-5rem)]"
         >
           <Link
             href="/pricing" aria-label="Navigate to Pricing section"
+            aria-current={activeSection === 'pricing' ? 'true' : undefined}
             className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-[#b30000] focus-visible:outline outline-offset-2"
           >
             Pricing
           </Link>
           <Link
             href="/about" aria-label="Navigate to About section"
+            aria-current={activeSection === 'about' ? 'true' : undefined}
             className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-[#b30000] focus-visible:outline outline-offset-2"
           >
             About
           </Link>
           <Link
             href={Routes.contact} aria-label="Navigate to Contact section"
+            aria-current={activeSection === 'contact' ? 'true' : undefined}
             className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-[#b30000] focus-visible:outline outline-offset-2"
           >
             Contact
           </Link>
           <Link
             href="/blog" aria-label="Navigate to Blog section"
+            aria-current={activeSection === 'blog' ? 'true' : undefined}
             className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-[#b30000] focus-visible:outline outline-offset-2"
           >
             Blog
           </Link>
           <Link
             href="/why-npr" aria-label="Navigate to Why NPR section"
+            aria-current={activeSection === 'why-npr' ? 'true' : undefined}
             className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-[#b30000] focus-visible:outline outline-offset-2"
           >
             Why NPR
@@ -125,6 +164,29 @@ export default function StickyHeader({ light = false }: HeaderProps) {
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </CTAButton>
         </nav>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-6 bg-antique text-charcoal md:hidden"
+          >
+            <Link onClick={() => setMenuOpen(false)} href="/pricing">Pricing</Link>
+            <Link onClick={() => setMenuOpen(false)} href="/about">About</Link>
+            <Link onClick={() => setMenuOpen(false)} href={Routes.contact}>Contact</Link>
+            <Link onClick={() => setMenuOpen(false)} href="/blog">Blog</Link>
+            <Link onClick={() => setMenuOpen(false)} href="/why-npr">Why NPR</Link>
+            <CTAButton
+              href="/webdev-landing"
+              event="cta-navbar"
+              aria-label="Start your project"
+              className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#b30000] bg-transparent px-6 py-3 text-sm font-bold text-[#b30000] shadow-none hover:bg-[#b30000] hover:text-white"
+            >
+              <span>Get Started</span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </CTAButton>
+          </motion.div>
+        )}
         <div className="absolute bottom-0 left-0 h-0.5 bg-blood transition-[width] duration-300" style={{ width: `${progress}%` }} />
         </div>
       </motion.div>

@@ -17,15 +17,17 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <html lang="en" style={{ overflowY: 'hidden' }}>
+    <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body
-        className="font-sans bg-antique text-charcoal antialiased"
-        style={{ overflowY: 'hidden' }}
+        className="font-sans bg-antique text-charcoal antialiased overflow-x-hidden"
       >
-        {children}
+        <a href="#main" className="skip-link">Skip to Content</a>
+        <main id="main" className="w-full overflow-x-hidden">
+          {children}
+        </main>
       </body>
     </html>
   );
