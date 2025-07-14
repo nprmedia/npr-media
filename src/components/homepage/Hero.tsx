@@ -156,7 +156,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         ref={containerRef}
         className="pointer-events-none absolute inset-0 z-[3] h-full w-full"
       />
-      <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-black/10 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-black/20 via-transparent to-transparent" />
 
 
       <motion.div
@@ -200,7 +200,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               id="hero-subheadline"
               aria-describedby="hero-headline"
               variants={subheadlineVariants}
-              className="font-grotesk font-medium text-neutral-700 dark:text-neutral-300 opacity-90 md:opacity-100 mt-4 sm:mt-6 lg:mt-8 mb-7 mx-auto max-w-[60ch] text-center text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]"
+              className="font-grotesk font-medium text-[#333] dark:text-neutral-300 opacity-90 md:opacity-100 mt-6 sm:mt-8 lg:mt-10 mb-7 mx-auto max-w-[60ch] text-center text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]"
             >
               {subheadline}
             </motion.p>
@@ -215,7 +215,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
                 ref={ctaRef}
                 aria-label="Start your project with NPR Media"
                 onClick={() => router.push(ctaLink)}
-                className="cta-glow ripple-hover inline-flex items-center justify-center rounded-full border border-[#b30000] ring-1 ring-inset ring-red-500/20 px-[clamp(1.5rem,3vw,2rem)] py-[clamp(0.75rem,1.25vw,1rem)] text-[clamp(0.875rem,1vw,1rem)] font-semibold uppercase tracking-wide text-charcoal shadow-[0_0_20px_rgba(255,0,0,0.2)] transition-transform duration-300 hover:scale-105 hover:bg-[#b30000] hover:text-white focus-visible:outline focus-visible:outline-red-500"
+                className="cta-glow ripple-hover inline-flex items-center justify-center rounded-full border border-[#b30000] ring-1 ring-inset ring-red-500/20 px-[clamp(1.875rem,3.75vw,2.5rem)] py-[clamp(0.9rem,1.5vw,1.25rem)] text-[clamp(0.875rem,1vw,1rem)] font-bold uppercase tracking-wide text-charcoal shadow-[0_0_20px_rgba(255,0,0,0.2)] transition-transform duration-300 hover:scale-105 hover:bg-[#b30000] hover:text-white focus-visible:outline focus-visible:outline-red-500"
               >
                 <span>{ctaText}</span>
                 <motion.span
@@ -244,7 +244,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         </motion.div>
       </div>
 
-      <div className="pointer-events-none absolute inset-y-0 right-[15%] z-[5] hidden md:flex">
+      <div className="pointer-events-none absolute top-[-2rem] left-[-1rem] z-0 hidden md:flex mix-blend-soft-light">
         <motion.div
           ref={overlayRef}
           style={{ y: overlayY }}
@@ -255,10 +255,8 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           {['N', 'P', 'R'].map((letter) => (
             <motion.span
               key={letter}
-              style={{ fontSize: 'min(48vh,32vw)' }}
-              variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.5, y: 0 } }}
-              transition={{ duration: 0.6 }}
-              className="block font-extrabold text-sepia leading-none"
+              className="block font-grotesk font-extrabold uppercase leading-none text-black/5 dark:text-white/5 text-[clamp(10rem,25vw,18rem)]"
+              variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.35, y: 0, transition: { delay: 1, duration: 1, ease: 'easeOut' } } }}
             >
               {letter}
             </motion.span>

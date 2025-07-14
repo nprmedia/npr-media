@@ -96,9 +96,6 @@
 .inset-x-0 {
   inset-inline: calc(var(--spacing) * 0);
 }
-.inset-y-0 {
-  inset-block: calc(var(--spacing) * 0);
-}
 .-top-10 {
   top: calc(var(--spacing) * -10);
 }
@@ -110,6 +107,9 @@
 }
 .top-3 {
   top: calc(var(--spacing) * 3);
+}
+.top-\[-2rem\] {
+  top: -2rem;
 }
 .top-full {
   top: 100%;
@@ -125,9 +125,6 @@
 }
 .right-4 {
   right: calc(var(--spacing) * 4);
-}
-.right-\[15\%\] {
-  right: 15%;
 }
 .bottom-0 {
   bottom: calc(var(--spacing) * 0);
@@ -156,6 +153,9 @@
 .left-10 {
   left: calc(var(--spacing) * 10);
 }
+.left-\[-1rem\] {
+  left: -1rem;
+}
 .-z-10 {
   z-index: calc(10 * -1);
 }
@@ -179,9 +179,6 @@
 }
 .z-\[3\] {
   z-index: 3;
-}
-.z-\[5\] {
-  z-index: 5;
 }
 .container {
   width: 100%;
@@ -726,10 +723,10 @@
   --tw-gradient-from: #b30000;
   --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
 }
-.from-black\/10 {
-  --tw-gradient-from: color-mix(in srgb, #000 10%, transparent);
+.from-black\/20 {
+  --tw-gradient-from: color-mix(in srgb, #000 20%, transparent);
   @supports (color: color-mix(in lab, red, red)) {
-    --tw-gradient-from: color-mix(in oklab, var(--color-black) 10%, transparent);
+    --tw-gradient-from: color-mix(in oklab, var(--color-black) 20%, transparent);
   }
   --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
 }
@@ -807,8 +804,8 @@
 .px-6 {
   padding-inline: calc(var(--spacing) * 6);
 }
-.px-7 {
-  padding-inline: calc(var(--spacing) * 7);
+.px-8 {
+  padding-inline: calc(var(--spacing) * 8);
 }
 .px-10 {
   padding-inline: calc(var(--spacing) * 10);
@@ -816,11 +813,11 @@
 .px-\[clamp\(0\.75rem\,2vw\,1rem\)\] {
   padding-inline: clamp(0.75rem, 2vw, 1rem);
 }
-.px-\[clamp\(1\.5rem\,3vw\,2rem\)\] {
-  padding-inline: clamp(1.5rem, 3vw, 2rem);
-}
 .px-\[clamp\(1\.25rem\,3vw\,1\.5rem\)\] {
   padding-inline: clamp(1.25rem, 3vw, 1.5rem);
+}
+.px-\[clamp\(1\.875rem\,3\.75vw\,2\.5rem\)\] {
+  padding-inline: clamp(1.875rem, 3.75vw, 2.5rem);
 }
 .px-\[clamp\(1rem\,2\.5vw\,1\.5rem\)\] {
   padding-inline: clamp(1rem, 2.5vw, 1.5rem);
@@ -846,6 +843,9 @@
 .py-4 {
   padding-block: calc(var(--spacing) * 4);
 }
+.py-5 {
+  padding-block: calc(var(--spacing) * 5);
+}
 .py-12 {
   padding-block: calc(var(--spacing) * 12);
 }
@@ -864,8 +864,8 @@
 .py-\[clamp\(0\.6rem\,1\.2vw\,0\.75rem\)\] {
   padding-block: clamp(0.6rem, 1.2vw, 0.75rem);
 }
-.py-\[clamp\(0\.75rem\,1\.25vw\,1rem\)\] {
-  padding-block: clamp(0.75rem, 1.25vw, 1rem);
+.py-\[clamp\(0\.9rem\,1\.5vw\,1\.25rem\)\] {
+  padding-block: clamp(0.9rem, 1.5vw, 1.25rem);
 }
 .py-\[clamp\(2\.5rem\,6vw\,4rem\)\] {
   padding-block: clamp(2.5rem, 6vw, 4rem);
@@ -878,6 +878,9 @@
 }
 .pt-2 {
   padding-top: calc(var(--spacing) * 2);
+}
+.pt-3 {
+  padding-top: calc(var(--spacing) * 3);
 }
 .pt-4 {
   padding-top: calc(var(--spacing) * 4);
@@ -1024,6 +1027,9 @@
 .text-\[clamp\(2rem\,5vw\,3rem\)\] {
   font-size: clamp(2rem, 5vw, 3rem);
 }
+.text-\[clamp\(10rem\,25vw\,18rem\)\] {
+  font-size: clamp(10rem, 25vw, 18rem);
+}
 .leading-\[1\.1\] {
   --tw-leading: 1.1;
   line-height: 1.1;
@@ -1088,14 +1094,23 @@
   --tw-tracking: var(--tracking-widest);
   letter-spacing: var(--tracking-widest);
 }
+.text-\[\#333\] {
+  color: #333;
+}
 .text-\[\#666\] {
   color: #666;
 }
+.text-\[\#b30000\] {
+  color: #b30000;
+}
+.text-black\/5 {
+  color: color-mix(in srgb, #000 5%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    color: color-mix(in oklab, var(--color-black) 5%, transparent);
+  }
+}
 .text-neutral-500 {
   color: var(--color-neutral-500);
-}
-.text-neutral-700 {
-  color: var(--color-neutral-700);
 }
 .text-transparent {
   color: transparent;
@@ -1136,16 +1151,15 @@
 .opacity-90 {
   opacity: 90%;
 }
+.mix-blend-soft-light {
+  mix-blend-mode: soft-light;
+}
 .shadow {
   --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 }
 .shadow-2xl {
   --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
-  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-}
-.shadow-\[0_0_12px_rgba\(255\,0\,0\,0\.3\)\] {
-  --tw-shadow: 0 0 12px var(--tw-shadow-color, rgba(255,0,0,0.3));
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 }
 .shadow-\[0_0_20px_rgba\(255\,0\,0\,0\.2\)\] {
@@ -1162,6 +1176,10 @@
 }
 .shadow-md {
   --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.shadow-none {
+  --tw-shadow: 0 0 #0000;
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 }
 .shadow-sm {
@@ -1507,11 +1525,6 @@
     opacity: 60%;
   }
 }
-.sm\:mt-6 {
-  @media (width >= 40rem) {
-    margin-top: calc(var(--spacing) * 6);
-  }
-}
 .sm\:mt-8 {
   @media (width >= 40rem) {
     margin-top: calc(var(--spacing) * 8);
@@ -1670,9 +1683,9 @@
     opacity: 100%;
   }
 }
-.lg\:mt-8 {
+.lg\:mt-10 {
   @media (width >= 64rem) {
-    margin-top: calc(var(--spacing) * 8);
+    margin-top: calc(var(--spacing) * 10);
   }
 }
 .lg\:ml-\[calc\(50vw-5rem\)\] {
@@ -1716,6 +1729,14 @@
 .dark\:text-neutral-400 {
   @media (prefers-color-scheme: dark) {
     color: var(--color-neutral-400);
+  }
+}
+.dark\:text-white\/5 {
+  @media (prefers-color-scheme: dark) {
+    color: color-mix(in srgb, #fff 5%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-white) 5%, transparent);
+    }
   }
 }
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');

@@ -56,7 +56,7 @@ export default function StickyHeader({ light = false }: HeaderProps) {
         } ${textColor}`}
       >
         <div
-          className={`mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center pt-2 px-[clamp(1rem,4vw,3rem)] ${textColor}`}
+          className={`mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center pt-3 px-[clamp(1rem,4vw,3rem)] ${textColor}`}
         >
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -119,7 +119,7 @@ export default function StickyHeader({ light = false }: HeaderProps) {
             href="/webdev-landing"
             event="cta-navbar"
             aria-label="Start your project"
-            className="group relative ml-4 inline-flex items-center gap-2 rounded-full border border-[#b30000] bg-blood px-[clamp(1rem,2.5vw,1.5rem)] py-[clamp(0.5rem,1.2vh,0.75rem)] text-[clamp(0.875rem,1.2vw,1rem)] font-bold text-charcoal shadow-[0_0_12px_rgba(255,0,0,0.3)] transition-all duration-300 hover:scale-105 hover:bg-[#b30000] hover:text-white focus-visible:outline focus-visible:outline-red-500 cta-glow ripple-hover"
+            className="group relative ml-4 inline-flex items-center gap-2 rounded-full border border-[#b30000] bg-transparent px-[clamp(1rem,2.5vw,1.5rem)] py-[clamp(0.5rem,1.2vh,0.75rem)] text-[clamp(0.875rem,1.2vw,1rem)] font-bold text-[#b30000] shadow-none transition-all duration-300 hover:scale-105 hover:bg-[#b30000] hover:text-white focus-visible:outline focus-visible:outline-red-500 cta-glow ripple-hover"
           >
             <span>Get Started</span>
             <span className="transition-transform group-hover:translate-x-1">→</span>
