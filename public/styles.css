@@ -107,9 +107,6 @@
 .top-3 {
   top: calc(var(--spacing) * 3);
 }
-.top-\[-2rem\] {
-  top: -2rem;
-}
 .top-full {
   top: 100%;
 }

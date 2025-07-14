@@ -244,7 +244,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         </motion.div>
       </div>
 
-      <div className="pointer-events-none absolute top-[-2rem] left-1/2 -translate-x-1/2 z-0 hidden md:flex w-full justify-center mix-blend-overlay">
+      <div className="pointer-events-none absolute bottom-0 left-0 z-0 hidden md:flex w-full justify-center mix-blend-overlay">
         <motion.div
           ref={overlayRef}
           style={{ y: overlayY }}
