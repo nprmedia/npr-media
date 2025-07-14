@@ -957,6 +957,9 @@
 .text-\[0\.65rem\] {
   font-size: 0.65rem;
 }
+.text-\[33vh\] {
+  font-size: 33vh;
+}
 .text-\[clamp\(0\.7rem\,1vw\,0\.8rem\)\] {
   font-size: clamp(0.7rem, 1vw, 0.8rem);
 }
@@ -1019,9 +1022,6 @@
 }
 .text-\[clamp\(2rem\,5vw\,3rem\)\] {
   font-size: clamp(2rem, 5vw, 3rem);
-}
-.text-\[clamp\(10rem\,25vw\,18rem\)\] {
-  font-size: clamp(10rem, 25vw, 18rem);
 }
 .leading-\[1\.1\] {
   --tw-leading: 1.1;
