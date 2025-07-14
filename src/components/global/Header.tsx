@@ -118,9 +118,11 @@ export default function StickyHeader({ light = false }: HeaderProps) {
           <CTAButton
             href="/webdev-landing"
             event="cta-navbar"
-            className="border border-blood bg-blood text-charcoal hover:bg-transparent hover:text-blood ml-4 inline-flex items-center gap-2 rounded-lg px-4 py-[0.45rem] text-[clamp(0.65rem,0.9vw,0.75rem)] font-semibold shadow transition-transform hover:scale-105 cta-glow ripple-hover"
+            aria-label="Start your project"
+            className="group relative ml-4 inline-flex items-center gap-2 rounded-full border border-[#b30000] bg-blood px-[clamp(1rem,2.5vw,1.5rem)] py-[clamp(0.5rem,1.2vh,0.75rem)] text-[clamp(0.875rem,1.2vw,1rem)] font-bold text-charcoal shadow-[0_0_12px_rgba(255,0,0,0.3)] transition-all duration-300 hover:scale-105 hover:bg-[#b30000] hover:text-white focus-visible:outline focus-visible:outline-red-500 cta-glow ripple-hover"
           >
-            Get Started →
+            <span>Get Started</span>
+            <span className="transition-transform group-hover:translate-x-1">→</span>
           </CTAButton>
         </nav>
         <div className="absolute bottom-0 left-0 h-0.5 bg-blood transition-[width] duration-300" style={{ width: `${progress}%` }} />

@@ -210,6 +210,7 @@ img {
   .ripple-hover:hover::after {
     opacity: 1;
     transform: scale(1.1);
+    animation: ring-pulse 1.2s ease-out infinite;
   }
   .font-smallcaps {
     font-variant-caps: all-small-caps;
@@ -281,5 +282,20 @@ img {
   }
   to {
     transform: translateX(100%);
+  }
+}
+
+@keyframes ring-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(var(--color-blood-rgb) / 0.4);
+    opacity: 0.6;
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgb(var(--color-blood-rgb) / 0);
+    opacity: 0;
+  }
+  100% {
+    box-shadow: 0 0 0 12px rgb(var(--color-blood-rgb) / 0);
+    opacity: 0;
   }
 }

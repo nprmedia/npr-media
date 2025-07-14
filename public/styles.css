@@ -3,6 +3,7 @@
 :root, :host {
   --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
+  --color-red-500: oklch(63.7% 0.237 25.331);
   --color-neutral-50: oklch(98.5% 0 0);
   --color-neutral-900: oklch(20.5% 0 0);
   --color-black: #000;
@@ -48,7 +49,6 @@
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   --animate-spin: spin 1s linear infinite;
   --animate-bounce: bounce 1s infinite;
-  --blur-sm: 8px;
   --blur-md: 12px;
   --blur-3xl: 64px;
   --default-transition-duration: 150ms;
@@ -669,6 +669,9 @@
   border-top-style: var(--tw-border-style);
   border-top-width: 1px;
 }
+.border-\[\#b30000\] {
+  border-color: #b30000;
+}
 .border-t-transparent {
   border-top-color: transparent;
 }
@@ -791,6 +794,9 @@
 .px-\[clamp\(1\.25rem\,3vw\,1\.5rem\)\] {
   padding-inline: clamp(1.25rem, 3vw, 1.5rem);
 }
+.px-\[clamp\(1rem\,2\.5vw\,1\.5rem\)\] {
+  padding-inline: clamp(1rem, 2.5vw, 1.5rem);
+}
 .px-\[clamp\(1rem\,2\.5vw\,1\.25rem\)\] {
   padding-inline: clamp(1rem, 2.5vw, 1.25rem);
 }
@@ -824,11 +830,11 @@
 .py-\[0\.5rem\] {
   padding-block: 0.5rem;
 }
-.py-\[0\.45rem\] {
-  padding-block: 0.45rem;
-}
 .py-\[clamp\(0\.4rem\,1vw\,0\.6rem\)\] {
   padding-block: clamp(0.4rem, 1vw, 0.6rem);
+}
+.py-\[clamp\(0\.5rem\,1\.2vh\,0\.75rem\)\] {
+  padding-block: clamp(0.5rem, 1.2vh, 0.75rem);
 }
 .py-\[clamp\(0\.6rem\,1\.2vw\,0\.75rem\)\] {
   padding-block: clamp(0.6rem, 1.2vw, 0.75rem);
@@ -951,9 +957,6 @@
 .text-\[clamp\(0\.9rem\,1\.6vw\,1\.125rem\)\] {
   font-size: clamp(0.9rem, 1.6vw, 1.125rem);
 }
-.text-\[clamp\(0\.65rem\,0\.9vw\,0\.75rem\)\] {
-  font-size: clamp(0.65rem, 0.9vw, 0.75rem);
-}
 .text-\[clamp\(0\.75rem\,1vw\,0\.875rem\)\] {
   font-size: clamp(0.75rem, 1vw, 0.875rem);
 }
@@ -962,6 +965,9 @@
 }
 .text-\[clamp\(0\.85rem\,1\.8vw\,1\.1rem\)\] {
   font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+}
+.text-\[clamp\(0\.875rem\,1\.2vw\,1rem\)\] {
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
 }
 .text-\[clamp\(1\.1rem\,1\.8vw\,1\.25rem\)\] {
   font-size: clamp(1.1rem, 1.8vw, 1.25rem);
@@ -1092,6 +1098,10 @@
   --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 }
+.shadow-\[0_0_12px_rgba\(255\,0\,0\,0\.3\)\] {
+  --tw-shadow: 0 0 12px var(--tw-shadow-color, rgba(255,0,0,0.3));
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
 .shadow-inner {
   --tw-shadow: inset 0 2px 4px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.05));
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -1197,6 +1207,14 @@
 .ease-in-out {
   --tw-ease: var(--ease-in-out);
   transition-timing-function: var(--ease-in-out);
+}
+.group-hover\:translate-x-1 {
+  &:is(:where(.group):hover *) {
+    @media (hover: hover) {
+      --tw-translate-x: calc(var(--spacing) * 1);
+      translate: var(--tw-translate-x) var(--tw-translate-y);
+    }
+  }
 }
 .group-hover\:\[transform\:rotateY\(12deg\)\] {
   &:is(:where(.group):hover *) {
@@ -1369,10 +1387,10 @@
     }
   }
 }
-.hover\:bg-transparent {
+.hover\:bg-\[\#b30000\] {
   &:hover {
     @media (hover: hover) {
-      background-color: transparent;
+      background-color: #b30000;
     }
   }
 }
@@ -1387,6 +1405,13 @@
   &:hover {
     @media (hover: hover) {
       color: #b30000;
+    }
+  }
+}
+.hover\:text-white {
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-white);
     }
   }
 }
@@ -1435,6 +1460,11 @@
   &:focus-visible {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
+  }
+}
+.focus-visible\:outline-red-500 {
+  &:focus-visible {
+    outline-color: var(--color-red-500);
   }
 }
 .focus-visible\:outline-none {
@@ -1872,6 +1902,7 @@ img {
   .ripple-hover:hover::after {
     opacity: 1;
     transform: scale(1.1);
+    animation: ring-pulse 1.2s ease-out infinite;
   }
   .font-smallcaps {
     font-variant-caps: all-small-caps;
@@ -1940,6 +1971,20 @@ img {
   }
   to {
     transform: translateX(100%);
+  }
+}
+@keyframes ring-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(var(--color-blood-rgb) / 0.4);
+    opacity: 0.6;
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgb(var(--color-blood-rgb) / 0);
+    opacity: 0;
+  }
+  100% {
+    box-shadow: 0 0 0 12px rgb(var(--color-blood-rgb) / 0);
+    opacity: 0;
   }
 }
 @property --tw-translate-x {
