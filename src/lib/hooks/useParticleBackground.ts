@@ -43,12 +43,12 @@ export function useParticleBackground(containerRef: React.RefObject<HTMLDivEleme
 
       positions.set([x, y, z], i * 3);
       velocities.set(
-        [(Math.random() - 0.5) * 0.1, (Math.random() - 0.5) * 0.1, (Math.random() - 0.5) * 0.1],
+        [(Math.random() - 0.5) * 0.02, (Math.random() - 0.5) * 0.02, (Math.random() - 0.5) * 0.02],
         i * 3
       );
       sizes[i] = Math.random() * 1 + 0.5;
 
-      const color = new THREE.Color(0xffffff);
+      const color = new THREE.Color(0xcc0000);
       colors.set([color.r, color.g, color.b], i * 3);
     }
 
@@ -59,9 +59,9 @@ export function useParticleBackground(containerRef: React.RefObject<HTMLDivEleme
     // Material
     const material = new THREE.PointsMaterial({
       size: 0.2,
-      color: 0xffffff,
+      color: 0xcc0000,
       transparent: true,
-      opacity: 0.4,
+      opacity: 0.15,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
       alphaTest: 0.1,
@@ -90,7 +90,7 @@ export function useParticleBackground(containerRef: React.RefObject<HTMLDivEleme
         const i3 = i * 3;
         pos[i3] += velocities[i3];
         pos[i3 + 1] += velocities[i3 + 1];
-        pos[i3 + 2] += velocities[i3 + 2] + Math.sin(performance.now() * 0.001 + i) * 0.002;
+        pos[i3 + 2] += velocities[i3 + 2] + Math.sin(performance.now() * 0.001 + i) * 0.0005;
 
         // Reset out-of-bounds
         if (
@@ -109,7 +109,7 @@ export function useParticleBackground(containerRef: React.RefObject<HTMLDivEleme
       // Smooth parallax camera motion
       camera.position.x += (targetX - camera.position.x) * 0.05;
       camera.position.y += (targetY - camera.position.y) * 0.05;
-      scene.rotation.y += 0.0005; // subtle orbital swirl
+      scene.rotation.y += 0.0001; // subtle orbital swirl
       renderer.render(scene, camera);
     };
 
