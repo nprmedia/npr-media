@@ -681,6 +681,10 @@
   border-top-style: var(--tw-border-style);
   border-top-width: 1px;
 }
+.border-none {
+  --tw-border-style: none;
+  border-style: none;
+}
 .border-\[\#b30000\] {
   border-color: #b30000;
 }
