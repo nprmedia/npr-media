@@ -314,7 +314,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         variants={cueVariants}
         initial="hidden"
         animate="visible"
-        className="absolute bottom-[2vh] left-1/2 z-20 -translate-x-1/2 rounded-full border border-blood/30 bg-white/60 p-2 text-blood backdrop-blur-md opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blood dark:bg-charcoal/60"
+        className="absolute bottom-[2vh] left-1/2 z-20 -translate-x-1/2 p-2 text-blood opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blood"
       >
         <ChevronDown className="h-[clamp(1.5rem,2vw,2rem)] w-[clamp(1.5rem,2vw,2rem)] animate-[bounce_2.5s_infinite]" />
       </motion.button>
