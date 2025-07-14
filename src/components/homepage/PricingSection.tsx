@@ -9,7 +9,7 @@ export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="bg-antique text-charcoal w-full border-t py-[clamp(5rem,10vw,8rem)]"
+      className="bg-antique text-charcoal w-full border-t scroll-mt-[80px] overflow-x-hidden py-[clamp(5rem,10vw,8rem)]"
     >
       <div className="container mx-auto box-border px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl space-y-4 text-center">

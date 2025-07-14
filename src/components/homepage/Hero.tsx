@@ -38,6 +38,8 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   // section scrolls away.
   const overlayY = useTransform(scrollYProgress, [0, 1], ['10%', '-43%']);
   const rOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.98]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
 
   const searchParams = useSearchParams();
   const controls = useAnimation();
@@ -153,11 +155,12 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   const headlineLines = (personalizedHeadline || headline).split('\n');
 
   return (
-    <section
+    <motion.section
       id="hero"
       ref={heroRef}
       aria-label="Hero Section"
-      className="relative min-h-screen pb-[5vh] flex items-center justify-center bg-antique font-sans overflow-hidden"
+      style={{ scale: heroScale, opacity: heroOpacity }}
+      className="relative min-h-[100svh] pb-[5vh] flex items-center justify-center bg-antique font-sans overflow-hidden"
     >
       <div
         ref={containerRef}
@@ -324,7 +327,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           Still thinking? Start your free trial now →
         </div>
       )}
-    </section>
+    </motion.section>
   );
 };
 
