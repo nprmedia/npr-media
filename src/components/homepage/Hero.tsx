@@ -111,11 +111,11 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
     }),
   };
   const wordVariants = {
-    hidden: { opacity: 0, y: 8 },
+    hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.05, duration: 0.6 },
+      transition: { delay: i * 0.15, duration: 0.6 },
     }),
   };
   const headlineLines = (personalizedHeadline || headline).split('\n');
@@ -139,29 +139,29 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         initial="hidden"
         animate={controls}
       >
-        <div className="pl-[clamp(1.25rem,3vw,2rem)]">
+        <div className="px-0">
         <motion.div
           variants={textVariants}
           custom={0}
-          className="ml-[10vw] mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal"
+          className="mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal"
         >
           HELLO, WE ARE NPR MEDIA
         </motion.div>
-        <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }} className="ml-[15vw] w-full">
+        <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }} className="w-full">
           <motion.h1
+            data-scroll
             variants={textVariants}
             custom={1}
-            className="text-blood mb-6 text-[clamp(1.5rem,3.6vw,2.8rem)] leading-[1.15] font-grotesk font-bold tracking-tight hover:scale-103"
+            className="glow-blood mb-6 w-full text-transparent bg-gradient-to-r from-[#b30000] to-orange-500 bg-clip-text text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
           >
             {headlineLines.map((line, li) => (
               <span key={li} className="block overflow-hidden">
                 {line.split(' ').map((word, wi) => (
                   <motion.span
                     key={wi}
-                    className="inline-block glow-blood"
+                    className="inline-block"
                     variants={wordVariants}
                     custom={wi + li * 10}
-                    style={{ animationDelay: `${wi * 0.2}s` }}
                   >
                     {word}&nbsp;
                   </motion.span>

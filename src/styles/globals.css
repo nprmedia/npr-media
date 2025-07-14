@@ -160,20 +160,20 @@ img {
     pointer-events: none;
     z-index: -1;
     border-radius: inherit;
-    opacity: 0.2;
+    opacity: 0.15;
     animation: glow-pulse 4s ease-in-out infinite;
   }
   .glow-blood::before {
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.25), transparent 60%);
+    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.2), transparent 60%);
     filter: blur(10px);
   }
   .glow-blood::after {
-    width: 130%;
-    height: 130%;
-    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.1), transparent 80%);
-    filter: blur(32px);
+    width: 140%;
+    height: 140%;
+    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.08), transparent 80%);
+    filter: blur(40px);
   }
   .cta-glow {
     position: relative;
@@ -269,7 +269,7 @@ img {
 
 @keyframes glow-pulse {
   0%, 100% {
-    opacity: 0.2;
+    opacity: 0.15;
   }
   50% {
     opacity: 0.25;

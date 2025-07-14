@@ -4,6 +4,7 @@
   --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
   --color-red-500: oklch(63.7% 0.237 25.331);
+  --color-orange-500: oklch(70.5% 0.213 47.604);
   --color-neutral-50: oklch(98.5% 0 0);
   --color-neutral-900: oklch(20.5% 0 0);
   --color-black: #000;
@@ -256,12 +257,6 @@
 }
 .ml-4 {
   margin-left: calc(var(--spacing) * 4);
-}
-.ml-\[10vw\] {
-  margin-left: 10vw;
-}
-.ml-\[15vw\] {
-  margin-left: 15vw;
 }
 .ml-\[calc\(50vw-1rem\)\] {
   margin-left: calc(50vw - 1rem);
@@ -709,6 +704,10 @@
 .bg-\[radial-gradient\(circle_at_center\,var\(--tw-gradient-stops\)\)\] {
   background-image: radial-gradient(circle at center,var(--tw-gradient-stops));
 }
+.from-\[\#b30000\] {
+  --tw-gradient-from: #b30000;
+  --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
 .from-black\/10 {
   --tw-gradient-from: color-mix(in srgb, #000 10%, transparent);
   @supports (color: color-mix(in lab, red, red)) {
@@ -737,12 +736,20 @@
   --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-via-stops);
 }
+.to-orange-500 {
+  --tw-gradient-to: var(--color-orange-500);
+  --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
 .to-transparent {
   --tw-gradient-to: transparent;
   --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
 }
 .bg-cover {
   background-size: cover;
+}
+.bg-clip-text {
+  -webkit-background-clip: text;
+          background-clip: text;
 }
 .bg-center {
   background-position: center;
@@ -769,6 +776,9 @@
 }
 .p-6 {
   padding: calc(var(--spacing) * 6);
+}
+.px-0 {
+  padding-inline: calc(var(--spacing) * 0);
 }
 .px-2 {
   padding-inline: calc(var(--spacing) * 2);
@@ -893,9 +903,6 @@
 .pl-5 {
   padding-left: calc(var(--spacing) * 5);
 }
-.pl-\[clamp\(1\.25rem\,3vw\,2rem\)\] {
-  padding-left: clamp(1.25rem, 3vw, 2rem);
-}
 .text-center {
   text-align: center;
 }
@@ -972,9 +979,6 @@
 .text-\[clamp\(1\.1rem\,1\.8vw\,1\.25rem\)\] {
   font-size: clamp(1.1rem, 1.8vw, 1.25rem);
 }
-.text-\[clamp\(1\.5rem\,3\.6vw\,2\.8rem\)\] {
-  font-size: clamp(1.5rem, 3.6vw, 2.8rem);
-}
 .text-\[clamp\(1\.75rem\,3\.5vw\,2\.5rem\)\] {
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
 }
@@ -990,6 +994,9 @@
 .text-\[clamp\(1rem\,2vw\,1\.25rem\)\] {
   font-size: clamp(1rem, 2vw, 1.25rem);
 }
+.text-\[clamp\(2\.5rem\,6vw\,4\.5rem\)\] {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+}
 .text-\[clamp\(2\.5rem\,6vw\,4rem\)\] {
   font-size: clamp(2.5rem, 6vw, 4rem);
 }
@@ -999,9 +1006,9 @@
 .text-\[clamp\(2rem\,5vw\,3rem\)\] {
   font-size: clamp(2rem, 5vw, 3rem);
 }
-.leading-\[1\.15\] {
-  --tw-leading: 1.15;
-  line-height: 1.15;
+.leading-\[1\.1\] {
+  --tw-leading: 1.1;
+  line-height: 1.1;
 }
 .leading-none {
   --tw-leading: 1;
@@ -1056,6 +1063,9 @@
 }
 .text-\[\#666\] {
   color: #666;
+}
+.text-transparent {
+  color: transparent;
 }
 .italic {
   font-style: italic;
@@ -1363,16 +1373,6 @@
       --tw-scale-x: 102%;
       --tw-scale-y: 102%;
       --tw-scale-z: 102%;
-      scale: var(--tw-scale-x) var(--tw-scale-y);
-    }
-  }
-}
-.hover\:scale-103 {
-  &:hover {
-    @media (hover: hover) {
-      --tw-scale-x: 103%;
-      --tw-scale-y: 103%;
-      --tw-scale-z: 103%;
       scale: var(--tw-scale-x) var(--tw-scale-y);
     }
   }
@@ -1853,20 +1853,20 @@ img {
     pointer-events: none;
     z-index: -1;
     border-radius: inherit;
-    opacity: 0.2;
+    opacity: 0.15;
     animation: glow-pulse 4s ease-in-out infinite;
   }
   .glow-blood::before {
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.25), transparent 60%);
+    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.2), transparent 60%);
     filter: blur(10px);
   }
   .glow-blood::after {
-    width: 130%;
-    height: 130%;
-    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.1), transparent 80%);
-    filter: blur(32px);
+    width: 140%;
+    height: 140%;
+    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.08), transparent 80%);
+    filter: blur(40px);
   }
   .cta-glow {
     position: relative;
@@ -1959,7 +1959,7 @@ img {
 }
 @keyframes glow-pulse {
   0%, 100% {
-    opacity: 0.2;
+    opacity: 0.15;
   }
   50% {
     opacity: 0.25;
