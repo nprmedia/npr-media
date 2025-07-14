@@ -255,8 +255,8 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
           {['N', 'P', 'R'].map((letter) => (
             <motion.span
               key={letter}
-              className="block font-grotesk font-extrabold uppercase leading-none text-black/5 dark:text-white/5 text-[clamp(10rem,25vw,18rem)]"
-              variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.35, y: 0, transition: { delay: 1, duration: 1, ease: 'easeOut' } } }}
+              className="block font-grotesk font-extrabold uppercase leading-none text-black/20 dark:text-white/20 text-[clamp(10rem,25vw,18rem)]"
+              variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 0.5, y: 0, transition: { delay: 1, duration: 1, ease: 'easeOut' } } }}
             >
               {letter}
             </motion.span>

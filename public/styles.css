@@ -9,7 +9,6 @@
   --color-neutral-300: oklch(87% 0 0);
   --color-neutral-400: oklch(70.8% 0 0);
   --color-neutral-500: oklch(55.6% 0 0);
-  --color-neutral-700: oklch(37.1% 0 0);
   --color-neutral-900: oklch(20.5% 0 0);
   --color-black: #000;
   --color-white: #fff;
@@ -1103,10 +1102,10 @@
 .text-\[\#b30000\] {
   color: #b30000;
 }
-.text-black\/5 {
-  color: color-mix(in srgb, #000 5%, transparent);
+.text-black\/20 {
+  color: color-mix(in srgb, #000 20%, transparent);
   @supports (color: color-mix(in lab, red, red)) {
-    color: color-mix(in oklab, var(--color-black) 5%, transparent);
+    color: color-mix(in oklab, var(--color-black) 20%, transparent);
   }
 }
 .text-neutral-500 {
@@ -1731,11 +1730,11 @@
     color: var(--color-neutral-400);
   }
 }
-.dark\:text-white\/5 {
+.dark\:text-white\/20 {
   @media (prefers-color-scheme: dark) {
-    color: color-mix(in srgb, #fff 5%, transparent);
+    color: color-mix(in srgb, #fff 20%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
-      color: color-mix(in oklab, var(--color-white) 5%, transparent);
+      color: color-mix(in oklab, var(--color-white) 20%, transparent);
     }
   }
 }
