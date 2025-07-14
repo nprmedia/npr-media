@@ -32,13 +32,11 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
     target: heroRef,
     offset: ['start start', 'end start'],
   });
-  // Scroll the overlay fully offscreen so the last letter ends flush with the
-  // bottom of the hero section. This accounts for bottom padding restrictions
-  // from the moving background.
-  // Scroll the overlay so the letters end slightly above the bottom of the hero
-  // section. Moving about 53% of the wrapper height leaves roughly 5% padding
-  // below the final "R" while keeping it hidden once the hero scrolls away.
-  const overlayY = useTransform(scrollYProgress, [0, 1], ['0%', '-53%']);
+  // Offset the overlay downward so the "N" sits fully below the sticky header
+  // when the page loads. The letters then travel roughly 53% of their wrapper
+  // height so the "R" finishes just above the hero's bottom padding as the
+  // section scrolls away.
+  const overlayY = useTransform(scrollYProgress, [0, 1], ['10%', '-43%']);
   const rOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   const searchParams = useSearchParams();
@@ -247,7 +245,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
       <div
         className="pointer-events-none absolute bottom-0 z-0 hidden -translate-x-1/2 md:flex justify-center mix-blend-overlay"
-        style={{ left: '62.5%', width: '25%' }}
+        style={{ left: '58.5%', width: '25%' }}
       >
         <motion.div
           ref={overlayRef}
