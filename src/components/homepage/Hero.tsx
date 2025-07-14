@@ -142,6 +142,14 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       transition: { delay: 1.8, duration: 0.6, ease: 'easeOut' },
     },
   };
+  const cueVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 0.7,
+      y: 0,
+      transition: { delay: 2.2, duration: 0.6, ease: 'easeOut' },
+    },
+  };
   const headlineLines = (personalizedHeadline || headline).split('\n');
 
   return (
@@ -297,11 +305,19 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
 
       </motion.div>
 
-      <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 transform">
-        <div className="text-blood animate-bounce text-lg drop-shadow">
-          ↓
-        </div>
-      </div>
+      <motion.button
+        aria-label="Scroll to next section"
+        onClick={() =>
+          document
+            .getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
+        }
+        variants={cueVariants}
+        initial="hidden"
+        animate="visible"
+        className="absolute bottom-[2vh] left-1/2 z-20 -translate-x-1/2 text-[clamp(1.5rem,2vw,2rem)] opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blood"
+      >
+        <span className="animate-[bounce_2.5s_infinite]">↓</span>
+      </motion.button>
 
       {isStickyVisible && (
         <div className="fixed bottom-36 left-1/2 z-50 -translate-x-1/2 rounded-full bg-blood px-4 py-2 text-sm font-bold text-charcoal opacity-90 shadow-xl hover:scale-105 hover:bg-blood">
