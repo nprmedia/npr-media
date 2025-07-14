@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { ShieldCheck } from 'lucide-react';
+import { ShieldCheck, ChevronDown } from 'lucide-react';
 import { motion, useAnimation, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
@@ -309,14 +309,14 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
         aria-label="Scroll to next section"
         onClick={() =>
           document
-            .getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
+            .getElementById('templates')?.scrollIntoView({ behavior: 'smooth' })
         }
         variants={cueVariants}
         initial="hidden"
         animate="visible"
-        className="absolute bottom-[2vh] left-1/2 z-20 -translate-x-1/2 text-[clamp(1.5rem,2vw,2rem)] opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blood"
+        className="absolute bottom-[2vh] left-1/2 z-20 -translate-x-1/2 rounded-full border border-blood/30 bg-white/60 p-2 text-blood backdrop-blur-md opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blood dark:bg-charcoal/60"
       >
-        <span className="animate-[bounce_2.5s_infinite]">↓</span>
+        <ChevronDown className="h-[clamp(1.5rem,2vw,2rem)] w-[clamp(1.5rem,2vw,2rem)] animate-[bounce_2.5s_infinite]" />
       </motion.button>
 
       {isStickyVisible && (

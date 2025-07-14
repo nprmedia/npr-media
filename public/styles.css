@@ -326,6 +326,9 @@
 .h-\[200\%\] {
   height: 200%;
 }
+.h-\[clamp\(1\.5rem\,2vw\,2rem\)\] {
+  height: clamp(1.5rem, 2vw, 2rem);
+}
 .h-\[clamp\(3rem\,6vw\,3\.75rem\)\] {
   height: clamp(3rem, 6vw, 3.75rem);
 }
@@ -382,6 +385,9 @@
 }
 .w-\[90vw\] {
   width: 90vw;
+}
+.w-\[clamp\(1\.5rem\,2vw\,2rem\)\] {
+  width: clamp(1.5rem, 2vw, 2rem);
 }
 .w-\[clamp\(16rem\,40vw\,22rem\)\] {
   width: clamp(16rem, 40vw, 22rem);
@@ -690,6 +696,12 @@
 .bg-transparent {
   background-color: transparent;
 }
+.bg-white\/60 {
+  background-color: color-mix(in srgb, #fff 60%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-white) 60%, transparent);
+  }
+}
 .bg-gradient-to-b {
   --tw-gradient-position: to bottom in oklab;
   background-image: linear-gradient(var(--tw-gradient-stops));
@@ -778,6 +790,9 @@
 }
 .p-1 {
   padding: calc(var(--spacing) * 1);
+}
+.p-2 {
+  padding: calc(var(--spacing) * 2);
 }
 .p-3 {
   padding: calc(var(--spacing) * 3);
@@ -995,9 +1010,6 @@
 }
 .text-\[clamp\(1\.1rem\,1\.8vw\,1\.25rem\)\] {
   font-size: clamp(1.1rem, 1.8vw, 1.25rem);
-}
-.text-\[clamp\(1\.5rem\,2vw\,2rem\)\] {
-  font-size: clamp(1.5rem, 2vw, 2rem);
 }
 .text-\[clamp\(1\.75rem\,3\.5vw\,2\.5rem\)\] {
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
