@@ -36,7 +36,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   // when the page loads. The letters then travel roughly 53% of their wrapper
   // height so the "R" finishes just above the hero's bottom padding as the
   // section scrolls away.
-  const overlayY = useTransform(scrollYProgress, [0, 1], ['10%', '-43%']);
+  const overlayY = useTransform(scrollYProgress, [0, 1], ['15%', '-43%']);
   const rOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.98]);
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
@@ -188,7 +188,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             data-scroll
             variants={textVariants}
             custom={1}
-            className="glow-blood mb-6 w-full text-transparent bg-gradient-to-r from-blood to-crimson bg-clip-text text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
+            className="glow-blood mb-6 w-full text-charcoal bg-gradient-to-r from-blood to-crimson bg-clip-text text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
           >
             {headlineLines.map((line, li) => (
               <span key={li} className="block overflow-hidden">
@@ -269,9 +269,9 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             <motion.span
               key={letter}
               initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0, transition: { delay: 1, duration: 1, ease: 'easeOut' } }}
+              animate={{ opacity: 1, y: 0, transition: { delay: 1, duration: 1, ease: 'easeIn' } }}
               style={{ opacity: letter === 'R' ? rOpacity : 1 }}
-              className="block font-grotesk font-extrabold uppercase leading-none text-charcoal/50 text-[33vh]"
+              className="block font-grotesk font-extrabold uppercase leading-none text-sepia text-[45vh]"
             >
               {letter}
             </motion.span>
