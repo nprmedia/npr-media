@@ -8,24 +8,8 @@ import { ShieldCheck, ChevronDown } from 'lucide-react';
 import { motion, useAnimation, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
+import { parseTaggedText } from '../common/HighlightedText';
 
-function parseHeadline(text: string) {
-  const regex = /\[blood\](.*?)\[\/blood\]/g;
-  const segments: { text: string; highlight: boolean }[] = [];
-  let lastIndex = 0;
-  let match;
-  while ((match = regex.exec(text)) !== null) {
-    if (match.index > lastIndex) {
-      segments.push({ text: text.slice(lastIndex, match.index), highlight: false });
-    }
-    segments.push({ text: match[1], highlight: true });
-    lastIndex = regex.lastIndex;
-  }
-  if (lastIndex < text.length) {
-    segments.push({ text: text.slice(lastIndex), highlight: false });
-  }
-  return segments;
-}
 
 interface HeroProps {
   headline: string;
@@ -172,7 +156,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
     },
   };
   const rawHeadline = personalizedHeadline || headline;
-  const headlineSegments = parseHeadline(rawHeadline);
+  const headlineSegments = parseTaggedText(rawHeadline);
 
   return (
     <motion.section
