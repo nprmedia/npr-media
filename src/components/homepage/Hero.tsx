@@ -208,15 +208,18 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             data-scroll
             variants={textVariants}
             custom={1}
-            className="glow-blood mb-6 w-full text-charcoal bg-gradient-to-r from-blood to-crimson bg-clip-text text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
+            className="glow-blood mb-6 w-full text-charcoal text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
           >
             {(() => {
               let idx = 0;
-              return headlineSegments.map((seg, si) => (
-                <span key={si} className="block overflow-hidden">
-                  {seg.text.trim().split(/\s+/).map((word) => {
+              const words: React.ReactNode[] = [];
+              headlineSegments.forEach((seg) => {
+                seg.text
+                  .trim()
+                  .split(/\s+/)
+                  .forEach((word) => {
                     const current = idx++;
-                    return (
+                    words.push(
                       <motion.span
                         key={current}
                         className={clsx('inline-block', seg.highlight ? 'text-blood' : 'text-charcoal')}
@@ -226,9 +229,9 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
                         {word}&nbsp;
                       </motion.span>
                     );
-                  })}
-                </span>
-              ));
+                  });
+              });
+              return words;
             })()}
           </motion.h1>
           {subheadline && (
