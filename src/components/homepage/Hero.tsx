@@ -1,12 +1,31 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import clsx from 'clsx';
 import Image from 'next/image';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { ShieldCheck, ChevronDown } from 'lucide-react';
 import { motion, useAnimation, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
+
+function parseHeadline(text: string) {
+  const regex = /\[blood\](.*?)\[\/blood\]/g;
+  const segments: { text: string; highlight: boolean }[] = [];
+  let lastIndex = 0;
+  let match;
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      segments.push({ text: text.slice(lastIndex, match.index), highlight: false });
+    }
+    segments.push({ text: match[1], highlight: true });
+    lastIndex = regex.lastIndex;
+  }
+  if (lastIndex < text.length) {
+    segments.push({ text: text.slice(lastIndex), highlight: false });
+  }
+  return segments;
+}
 
 interface HeroProps {
   headline: string;
@@ -152,7 +171,8 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       transition: { delay: 2.2, duration: 0.6, ease: 'easeOut' },
     },
   };
-  const headlineLines = (personalizedHeadline || headline).split('\n');
+  const rawHeadline = personalizedHeadline || headline;
+  const headlineSegments = parseHeadline(rawHeadline);
 
   return (
     <motion.section
@@ -190,20 +210,26 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             custom={1}
             className="glow-blood mb-6 w-full text-charcoal bg-gradient-to-r from-blood to-crimson bg-clip-text text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
           >
-            {headlineLines.map((line, li) => (
-              <span key={li} className="block overflow-hidden">
-                {line.split(' ').map((word, wi) => (
-                  <motion.span
-                    key={wi}
-                    className="inline-block"
-                    variants={wordVariants}
-                    custom={wi + li * 10}
-                  >
-                    {word}&nbsp;
-                  </motion.span>
-                ))}
-              </span>
-            ))}
+            {(() => {
+              let idx = 0;
+              return headlineSegments.map((seg, si) => (
+                <span key={si} className="block overflow-hidden">
+                  {seg.text.trim().split(/\s+/).map((word) => {
+                    const current = idx++;
+                    return (
+                      <motion.span
+                        key={current}
+                        className={clsx('inline-block', seg.highlight ? 'text-blood' : 'text-charcoal')}
+                        variants={wordVariants}
+                        custom={current}
+                      >
+                        {word}&nbsp;
+                      </motion.span>
+                    );
+                  })}
+                </span>
+              ));
+            })()}
           </motion.h1>
           {subheadline && (
             <motion.p
