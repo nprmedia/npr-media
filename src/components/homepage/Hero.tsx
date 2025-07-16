@@ -188,7 +188,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             data-scroll
             variants={textVariants}
             custom={1}
-            className="glow-blood mb-6 w-full text-transparent bg-gradient-to-r from-[#b30000] to-orange-500 bg-clip-text text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
+            className="glow-blood mb-6 w-full text-transparent bg-gradient-to-r from-blood to-crimson bg-clip-text text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
           >
             {headlineLines.map((line, li) => (
               <span key={li} className="block overflow-hidden">
@@ -210,7 +210,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               id="hero-subheadline"
               aria-describedby="hero-headline"
               variants={subheadlineVariants}
-              className="font-grotesk font-medium text-[#333] dark:text-neutral-300 opacity-90 md:opacity-100 mt-6 sm:mt-8 lg:mt-10 mb-7 mx-auto max-w-[60ch] text-center text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]"
+              className="font-grotesk font-medium text-charcoal opacity-90 md:opacity-100 mt-6 sm:mt-8 lg:mt-10 mb-7 mx-auto max-w-[60ch] text-center text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]"
             >
               {subheadline}
             </motion.p>
@@ -225,7 +225,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
                 ref={ctaRef}
                 aria-label="Start your project with NPR Media"
                 onClick={() => router.push(ctaLink)}
-                className="cta-glow ripple-hover inline-flex items-center justify-center rounded-full border border-[#b30000] ring-1 ring-inset ring-red-500/20 px-[clamp(1.875rem,3.75vw,2.5rem)] py-[clamp(0.9rem,1.5vw,1.25rem)] text-[clamp(0.875rem,1vw,1rem)] font-bold uppercase tracking-wide text-charcoal shadow-[0_0_20px_rgba(255,0,0,0.2)] transition-transform duration-300 hover:scale-105 hover:bg-[#b30000] hover:text-white focus-visible:outline focus-visible:outline-red-500"
+                className="cta-glow ripple-hover inline-flex items-center justify-center rounded-full border border-blood bg-blood px-[clamp(1.875rem,3.75vw,2.5rem)] py-[clamp(0.9rem,1.5vw,1.25rem)] text-[clamp(0.875rem,1vw,1rem)] font-bold uppercase tracking-wide text-silver shadow-[0_0_20px_rgba(179,0,0,0.2)] transition-transform duration-300 hover:scale-105 hover:bg-crimson focus-visible:outline focus-visible:outline-crimson"
               >
                 <span>{ctaText}</span>
                 <motion.span
@@ -246,7 +246,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             role="note"
             aria-label="SOC2 certified and founder-backed"
             variants={badgeVariants}
-            className="mt-6 sm:mt-8 text-center sm:text-left flex items-center justify-center sm:justify-start text-neutral-500 dark:text-neutral-400 text-[clamp(0.75rem,0.9vw,0.875rem)] font-medium uppercase tracking-wider font-smallcaps"
+            className="mt-6 sm:mt-8 text-center sm:text-left flex items-center justify-center sm:justify-start text-olive text-[clamp(0.75rem,0.9vw,0.875rem)] font-medium uppercase tracking-wider font-smallcaps"
           >
             <ShieldCheck className="mr-2 h-4 w-4 flex-shrink-0" />
             <span>SOC2 Certified • GDPR Ready • Trusted by 10,000+ users</span>
@@ -271,7 +271,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 1, duration: 1, ease: 'easeOut' } }}
               style={{ opacity: letter === 'R' ? rOpacity : 1 }}
-              className="block font-grotesk font-extrabold uppercase leading-none text-black/50 dark:text-white/50 text-[33vh]"
+              className="block font-grotesk font-extrabold uppercase leading-none text-charcoal/50 text-[33vh]"
             >
               {letter}
             </motion.span>
