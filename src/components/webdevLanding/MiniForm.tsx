@@ -32,7 +32,7 @@ export default function MiniForm() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="space-y-4 rounded-2xl bg-olive/20 p-6 shadow-xl ring-1 ring-silver/20 backdrop-blur"
+      className="space-y-4 rounded-2xl bg-olive/20 p-6 shadow-xl ring-1 ring-olive/20 backdrop-blur"
     >
       <div className="relative">
         <User className={iconBase} />

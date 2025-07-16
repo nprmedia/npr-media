@@ -31,7 +31,7 @@ export default function OfferStack() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="rounded-2xl bg-olive/70 p-6 text-center shadow-xl ring-1 ring-silver/20 backdrop-blur-md hover:shadow-2xl"
+              className="rounded-2xl bg-olive/70 p-6 text-center shadow-xl ring-1 ring-olive/20 backdrop-blur-md hover:shadow-2xl"
             >
               <item.icon className="mx-auto mb-3 h-6 w-6 text-blood" />
               <h3 className="mb-1 font-semibold text-[clamp(1rem,1.6vw,1.25rem)]">{item.label}</h3>
