@@ -208,12 +208,12 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             data-scroll
             variants={textVariants}
             custom={1}
-            className="glow-blood mb-6 w-full text-charcoal text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
+            className="mb-6 w-full text-charcoal text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
           >
             {headlineSegments.map((seg, si) => (
               <motion.span
                 key={si}
-                className={clsx(seg.highlight ? 'text-blood' : 'text-charcoal')}
+                className={clsx(seg.highlight ? 'text-blood glow-blood' : 'text-charcoal')}
                 variants={wordVariants}
                 custom={si}
               >
