@@ -67,7 +67,7 @@ export default function MiniForm() {
         disabled={loading || success}
         className="relative flex w-full items-center justify-center gap-2 rounded-xl bg-blood py-3 font-semibold text-charcoal shadow-md transition hover:bg-blood"
       >
-        {loading ? <span className="h-5 w-5 animate-spin rounded-full border-2 border-silver border-t-transparent" /> : success ? <Check className="h-5 w-5" /> : 'Start My Mockup'}
+        {loading ? <span className="h-5 w-5 animate-spin rounded-full border-2 border-olive border-t-transparent" /> : success ? <Check className="h-5 w-5" /> : 'Start My Mockup'}
       </motion.button>
       {success && <p className="pt-2 text-center text-sm text-silver">We’ll be in touch shortly.</p>}
     </motion.form>

@@ -9,7 +9,7 @@ export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="bg-antique text-charcoal w-full border-t scroll-mt-[80px] overflow-x-hidden py-[clamp(5rem,10vw,8rem)]"
+      className="bg-antique text-charcoal w-full border-t border-umber scroll-mt-[80px] overflow-x-hidden py-[clamp(5rem,10vw,8rem)]"
     >
       <div className="container mx-auto box-border px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl space-y-4 text-center">
@@ -27,7 +27,7 @@ export default function PricingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`border-silver bg-olive relative flex flex-col overflow-hidden rounded-2xl border p-6 ${tier.highlight ? 'ring-blood ring-2' : ''}`}
+              className={`border-olive bg-olive relative flex flex-col overflow-hidden rounded-2xl border p-6 ${tier.highlight ? 'ring-blood ring-2' : ''}`}
             >
               {tier.highlight && (
                 <motion.div
@@ -60,7 +60,7 @@ export default function PricingSection() {
                 <Link
                   href="/contact"
                   data-event="cta-pricing"
-                  className="border-silver bg-antique text-charcoal hover:bg-silver block w-full box-border rounded-full border px-[clamp(1rem,2.5vw,1.25rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-center text-[clamp(0.8rem,1vw,0.9rem)] font-medium shadow-sm transition hover:scale-105"
+                  className="border-olive bg-antique text-charcoal hover:bg-silver block w-full box-border rounded-full border px-[clamp(1rem,2.5vw,1.25rem)] py-[clamp(0.6rem,1.2vw,0.75rem)] text-center text-[clamp(0.8rem,1vw,0.9rem)] font-medium shadow-sm transition hover:scale-105"
                 >
                   {tier.cta}
                 </Link>

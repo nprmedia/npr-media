@@ -260,7 +260,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         className="relative flex w-full items-center justify-center gap-2 rounded-xl bg-blood py-3 font-semibold text-charcoal shadow-md ring-2 ring-blood/50 transition-transform hover:shadow-lg disabled:opacity-60"
       >
         {loading ? (
-          <span className="h-5 w-5 animate-spin rounded-full border-2 border-silver border-t-transparent" />
+          <span className="h-5 w-5 animate-spin rounded-full border-2 border-olive border-t-transparent" />
         ) : success ? (
           <Check className="h-5 w-5" />
         ) : (

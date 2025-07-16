@@ -173,7 +173,7 @@ export default function WhyNprPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className="rounded border border-silver/30 bg-silver/10 p-3 text-silver shadow-inner"
+                  className="rounded border border-olive/30 bg-silver/10 p-3 text-silver shadow-inner"
                 >
                   Bold hook → stat → CTA
                 </motion.div>
