@@ -84,9 +84,12 @@ module.exports = {
     'bg-blood', 'text-blood',
     'bg-crimson', 'text-crimson',
     // Opacity variants used in the project
-    'bg-blood/20', 'bg-blood/30', 'ring-blood/40', 'ring-blood/50',
+    'bg-blood/20', 'bg-blood/30',
+    'ring-blood', 'ring-blood/40', 'ring-blood/50',
     'bg-olive/20', 'bg-olive/60', 'bg-olive/70', 'bg-olive/80',
-    'bg-silver/5', 'bg-silver/10', 'bg-silver/30', 'ring-olive/10', 'ring-olive/20', 'shadow-silver/20', 'shadow-silver/40',
+    'ring-olive', 'ring-olive/10', 'ring-olive/20',
+    'bg-silver/5', 'bg-silver/10', 'bg-silver/30',
+    'shadow-silver/20', 'shadow-silver/40',
   ],
 
   plugins: [
