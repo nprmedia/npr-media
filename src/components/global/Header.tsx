@@ -78,7 +78,7 @@ export default function StickyHeader({ light = false }: HeaderProps) {
         transition={{ duration: 0.6 }}
         className={`w-full transition-all duration-500 ease-in-out ${
           scrolled
-            ? 'bg-neutral-50/80 dark:bg-neutral-900/80 shadow-md backdrop-blur-md rounded-b-lg'
+            ? 'bg-sepia/80 shadow-md backdrop-blur-md rounded-b-lg'
             : 'bg-transparent backdrop-blur-0'
         } ${textColor}`}
       >
@@ -96,7 +96,7 @@ export default function StickyHeader({ light = false }: HeaderProps) {
               tabIndex={0}
               onClick={scrollToTop}
               onKeyDown={handleKey}
-              className="logo-glow logo-hover flex text-[clamp(0.9rem,1.4vw,1.25rem)] font-bold tracking-[0.5px] transition-transform transition-colors text-[#666] hover:text-[#222] hover:scale-105"
+              className="logo-glow logo-hover flex text-[clamp(0.9rem,1.4vw,1.25rem)] font-bold tracking-[0.5px] transition-transform transition-colors text-charcoal hover:text-olive hover:scale-105"
             >
               {"NPR MEDIA".split("").map((ch, i) =>
                 ch === " " ? (
@@ -122,44 +122,44 @@ export default function StickyHeader({ light = false }: HeaderProps) {
           <Link
             href="/pricing" aria-label="Navigate to Pricing section"
             aria-current={activeSection === 'pricing' ? 'true' : undefined}
-            className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-[#b30000] focus-visible:outline outline-offset-2"
+            className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-olive focus-visible:outline outline-offset-2"
           >
             Pricing
           </Link>
           <Link
             href="/about" aria-label="Navigate to About section"
             aria-current={activeSection === 'about' ? 'true' : undefined}
-            className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-[#b30000] focus-visible:outline outline-offset-2"
+            className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-olive focus-visible:outline outline-offset-2"
           >
             About
           </Link>
           <Link
             href={Routes.contact} aria-label="Navigate to Contact section"
             aria-current={activeSection === 'contact' ? 'true' : undefined}
-            className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-[#b30000] focus-visible:outline outline-offset-2"
+            className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-olive focus-visible:outline outline-offset-2"
           >
             Contact
           </Link>
           <Link
             href="/blog" aria-label="Navigate to Blog section"
             aria-current={activeSection === 'blog' ? 'true' : undefined}
-            className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-[#b30000] focus-visible:outline outline-offset-2"
+            className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-olive focus-visible:outline outline-offset-2"
           >
             Blog
           </Link>
           <Link
             href="/why-npr" aria-label="Navigate to Why NPR section"
             aria-current={activeSection === 'why-npr' ? 'true' : undefined}
-            className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-[#b30000] focus-visible:outline outline-offset-2"
+            className="group font-grotesk font-medium text-[clamp(0.75rem,1vw,0.875rem)] relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100 hover:text-olive focus-visible:outline outline-offset-2"
           >
             Why NPR
           </Link>
-          <CTAButton
-            href="/webdev-landing"
-            event="cta-navbar"
-            aria-label="Start your project"
-            className="group relative ml-4 inline-flex items-center gap-2 rounded-full border border-[#b30000] bg-transparent px-[clamp(1rem,2.5vw,1.5rem)] py-[clamp(0.5rem,1.2vh,0.75rem)] text-[clamp(0.875rem,1.2vw,1rem)] font-bold text-[#b30000] shadow-none transition-all duration-300 hover:scale-105 hover:bg-[#b30000] hover:text-white focus-visible:outline focus-visible:outline-red-500 cta-glow ripple-hover"
-          >
+            <CTAButton
+              href="/webdev-landing"
+              event="cta-navbar"
+              aria-label="Start your project"
+              className="group relative ml-4 inline-flex items-center gap-2 rounded-full border border-blood bg-blood px-[clamp(1rem,2.5vw,1.5rem)] py-[clamp(0.5rem,1.2vh,0.75rem)] text-[clamp(0.875rem,1.2vw,1rem)] font-bold text-silver shadow-none transition-all duration-300 hover:scale-105 hover:bg-crimson focus-visible:outline focus-visible:outline-crimson cta-glow ripple-hover"
+            >
             <span>Get Started</span>
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </CTAButton>
@@ -176,12 +176,12 @@ export default function StickyHeader({ light = false }: HeaderProps) {
             <Link onClick={() => setMenuOpen(false)} href={Routes.contact}>Contact</Link>
             <Link onClick={() => setMenuOpen(false)} href="/blog">Blog</Link>
             <Link onClick={() => setMenuOpen(false)} href="/why-npr">Why NPR</Link>
-            <CTAButton
-              href="/webdev-landing"
-              event="cta-navbar"
-              aria-label="Start your project"
-              className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#b30000] bg-transparent px-6 py-3 text-sm font-bold text-[#b30000] shadow-none hover:bg-[#b30000] hover:text-white"
-            >
+              <CTAButton
+                href="/webdev-landing"
+                event="cta-navbar"
+                aria-label="Start your project"
+                className="mt-4 inline-flex items-center gap-2 rounded-full border border-blood bg-blood px-6 py-3 text-sm font-bold text-silver shadow-none hover:bg-crimson"
+              >
               <span>Get Started</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </CTAButton>
