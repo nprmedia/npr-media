@@ -210,29 +210,16 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             custom={1}
             className="glow-blood mb-6 w-full text-charcoal text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
           >
-            {(() => {
-              let idx = 0;
-              const words: React.ReactNode[] = [];
-              headlineSegments.forEach((seg) => {
-                seg.text
-                  .trim()
-                  .split(/\s+/)
-                  .forEach((word) => {
-                    const current = idx++;
-                    words.push(
-                      <motion.span
-                        key={current}
-                        className={clsx('inline-block', seg.highlight ? 'text-blood' : 'text-charcoal')}
-                        variants={wordVariants}
-                        custom={current}
-                      >
-                        {word}&nbsp;
-                      </motion.span>
-                    );
-                  });
-              });
-              return words;
-            })()}
+            {headlineSegments.map((seg, si) => (
+              <motion.span
+                key={si}
+                className={clsx(seg.highlight ? 'text-blood' : 'text-charcoal')}
+                variants={wordVariants}
+                custom={si}
+              >
+                {seg.text}
+              </motion.span>
+            ))}
           </motion.h1>
           {subheadline && (
             <motion.p
