@@ -286,6 +286,12 @@ img {
   .logo-hover:hover::after {
     width: 50%;
   }
+  .clip-reveal-hidden {
+    clip-path: polygon(0 100%, 0 100%, 0 100%, 0 100%);
+  }
+  .clip-reveal-full {
+    clip-path: polygon(0 100%, 100% 0, 100% 0, 0 100%);
+  }
 }
 
 @keyframes glow-pulse {
