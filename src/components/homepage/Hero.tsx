@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import Image from 'next/image';
@@ -9,7 +10,6 @@ import { motion, useAnimation, useReducedMotion, useScroll, useTransform } from 
 import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
 import { parseTaggedText } from '@/components/common/HighlightedText';
-
 
 interface HeroProps {
   headline: string;
@@ -157,6 +157,8 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
   };
   const rawHeadline = personalizedHeadline || headline;
   const headlineSegments = parseTaggedText(rawHeadline);
+  console.log('Parsed headline segments →', headlineSegments);
+
 
   return (
     <motion.section
