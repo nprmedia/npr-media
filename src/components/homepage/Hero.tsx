@@ -1,12 +1,15 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import clsx from 'clsx';
 import Image from 'next/image';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { ShieldCheck, ChevronDown } from 'lucide-react';
 import { motion, useAnimation, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
+import { parseTaggedText } from '@/components/common/HighlightedText';
+
 
 interface HeroProps {
   headline: string;
@@ -152,7 +155,8 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
       transition: { delay: 2.2, duration: 0.6, ease: 'easeOut' },
     },
   };
-  const headlineLines = (personalizedHeadline || headline).split('\n');
+  const rawHeadline = personalizedHeadline || headline;
+  const headlineSegments = parseTaggedText(rawHeadline);
 
   return (
     <motion.section
@@ -188,21 +192,17 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             data-scroll
             variants={textVariants}
             custom={1}
-            className="glow-blood mb-6 w-full text-charcoal bg-gradient-to-r from-blood to-crimson bg-clip-text text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
+            className="mb-6 w-full text-charcoal text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
           >
-            {headlineLines.map((line, li) => (
-              <span key={li} className="block overflow-hidden">
-                {line.split(' ').map((word, wi) => (
-                  <motion.span
-                    key={wi}
-                    className="inline-block"
-                    variants={wordVariants}
-                    custom={wi + li * 10}
-                  >
-                    {word}&nbsp;
-                  </motion.span>
-                ))}
-              </span>
+            {headlineSegments.map((seg, si) => (
+              <motion.span
+                key={si}
+                className={clsx('inline-block', seg.highlight ? 'text-blood glow-blood' : 'text-charcoal')}
+                variants={wordVariants}
+                custom={si}
+              >
+                {seg.text}
+              </motion.span>
             ))}
           </motion.h1>
           {subheadline && (
