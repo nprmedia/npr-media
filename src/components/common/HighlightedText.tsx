@@ -8,10 +8,7 @@ export interface HighlightedSegment {
   highlight: boolean;
 }
 
-export function parseTaggedText(
-  text: string,
-  tag: string = 'blood',
-): HighlightedSegment[] {
+export function parseTaggedText(text: string, tag: string = 'blood'): HighlightedSegment[] {
   const regex = new RegExp(`\\[${tag}\\](.*?)\\[\\/${tag}\\]`, 'g');
   const segments: HighlightedSegment[] = [];
   let lastIndex = 0;
@@ -36,6 +33,7 @@ interface HighlightedTextProps {
   text: string;
   tag?: string;
   highlightClassName?: string;
+  defaultClassName?: string;
   className?: string;
 }
 
@@ -43,13 +41,17 @@ const HighlightedText: React.FC<HighlightedTextProps> = ({
   text,
   tag = 'blood',
   highlightClassName = 'text-blood glow-blood',
+  defaultClassName = 'text-charcoal',
   className,
 }) => {
   const segments = parseTaggedText(text, tag);
   return (
     <span className={className}>
       {segments.map((seg, idx) => (
-        <span key={idx} className={clsx(seg.highlight && highlightClassName)}>
+        <span
+          key={idx}
+          className={clsx('inline', seg.highlight ? highlightClassName : defaultClassName)}
+        >
           {seg.text}
         </span>
       ))}
