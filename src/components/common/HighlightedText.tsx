@@ -36,6 +36,9 @@ interface HighlightedTextProps {
   text: string;
   tag?: string;
   highlightClassName?: string;
+  /** class applied to non-highlighted segments */
+  defaultClassName?: string;
+  /** wrapper element class */
   className?: string;
 }
 
@@ -43,13 +46,17 @@ const HighlightedText: React.FC<HighlightedTextProps> = ({
   text,
   tag = 'blood',
   highlightClassName = 'text-blood glow-blood',
+  defaultClassName = 'text-charcoal',
   className,
 }) => {
   const segments = parseTaggedText(text, tag);
   return (
     <span className={className}>
       {segments.map((seg, idx) => (
-        <span key={idx} className={clsx(seg.highlight && highlightClassName)}>
+        <span
+          key={idx}
+          className={clsx('inline', seg.highlight ? highlightClassName : defaultClassName)}
+        >
           {seg.text}
         </span>
       ))}
