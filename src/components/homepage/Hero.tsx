@@ -8,7 +8,7 @@ import { ShieldCheck, ChevronDown } from 'lucide-react';
 import { motion, useAnimation, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
-import { parseTaggedText } from '../common/HighlightedText';
+import { parseTaggedText } from '@/components/common/HighlightedText';
 
 
 interface HeroProps {
