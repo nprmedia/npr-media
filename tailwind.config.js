@@ -46,6 +46,11 @@ module.exports = {
         bold: '700',
       },
 
+      clipPath: {
+        'reveal-hidden': 'polygon(0 100%, 0 100%, 0 100%, 0 100%)',
+        'reveal-full': 'polygon(0 100%, 100% 0, 100% 0, 0 100%)',
+      },
+
       container: {
         center: true,
         padding: '1rem',
