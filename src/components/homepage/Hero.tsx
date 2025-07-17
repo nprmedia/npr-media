@@ -197,7 +197,7 @@ const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaL
             {headlineSegments.map((seg, si) => (
               <motion.span
                 key={si}
-                className={clsx(seg.highlight ? 'text-blood glow-blood' : 'text-charcoal')}
+                className={clsx('inline-block', seg.highlight ? 'text-blood glow-blood' : 'text-charcoal')}
                 variants={wordVariants}
                 custom={si}
               >

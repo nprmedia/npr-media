@@ -8,21 +8,27 @@ export interface HighlightedSegment {
   highlight: boolean;
 }
 
-export function parseTaggedText(text: string, tag: string = 'blood'): HighlightedSegment[] {
+export function parseTaggedText(
+  text: string,
+  tag: string = 'blood',
+): HighlightedSegment[] {
   const regex = new RegExp(`\\[${tag}\\](.*?)\\[\\/${tag}\\]`, 'g');
   const segments: HighlightedSegment[] = [];
   let lastIndex = 0;
-  let match;
-  while ((match = regex.exec(text)) !== null) {
-    if (match.index > lastIndex) {
-      segments.push({ text: text.slice(lastIndex, match.index), highlight: false });
+
+  for (const match of text.matchAll(regex)) {
+    const index = match.index ?? 0;
+    if (index > lastIndex) {
+      segments.push({ text: text.slice(lastIndex, index), highlight: false });
     }
     segments.push({ text: match[1], highlight: true });
-    lastIndex = regex.lastIndex;
+    lastIndex = index + match[0].length;
   }
+
   if (lastIndex < text.length) {
     segments.push({ text: text.slice(lastIndex), highlight: false });
   }
+
   return segments;
 }
 
