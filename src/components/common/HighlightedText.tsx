@@ -9,7 +9,7 @@ export interface HighlightedSegment {
 }
 
 export function parseTaggedText(text: string, tag: string = 'blood'): HighlightedSegment[] {
-  const regex = new RegExp(`\\[${tag}\\](.*?)\\[\\/${tag}\\]`, 'g');
+  const regex = new RegExp(`\\[${tag}\\]([\\s\\S]*?)\\[\\/${tag}\\]`, 'gs');
   const segments: HighlightedSegment[] = [];
   let lastIndex = 0;
 
