@@ -388,23 +388,22 @@ export default function HeroSection(props: HeroProps) {
       <div className="absolute inset-0 grayscale z-10 pointer-events-none">
         <HeroContent {...props} forceGray enableEffects={false} />
       </div>
-      <div className="absolute inset-0 z-20 pointer-events-none">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
-          className="relative mx-auto grid w-full max-w-[88rem] grid-cols-1 items-center gap-[clamp(2rem,6vw,5rem)] px-[clamp(1rem,4vw,2rem)] pt-[clamp(1rem,5vw,3rem)] pb-[clamp(4rem,8vw,6rem)] md:grid-cols-2"
-        >
+      <motion.div
+        className="absolute inset-0 z-20 pointer-events-none"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: reveal ? 0 : 1, y: 0, transition: { duration: 0.6 } }}
+      >
+        <div className="relative mx-auto grid w-full max-w-[88rem] grid-cols-1 items-center gap-[clamp(2rem,6vw,5rem)] px-[clamp(1rem,4vw,2rem)] pt-[clamp(1rem,5vw,3rem)] pb-[clamp(4rem,8vw,6rem)] md:grid-cols-2">
           <div className="px-0">
-            <motion.h1
-              className="mb-6 w-full text-blood text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
-            >
+            <div className="mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal invisible">
+              HELLO, WE ARE NPR MEDIA
+            </div>
+            <h1 className="mb-6 w-full text-blood text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight">
               Trusted by
-            </motion.h1>
+            </h1>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
       <div
         className={clsx(
           'relative z-20 transition-[clip-path] duration-[2000ms] ease-in-out',
