@@ -38,7 +38,7 @@ export default function Hero({ headline, subheadline, cta }: HeroProps) {
           variants={textVariants}
           href="#cta"
           data-event="webdev-scroll-trigger"
-          className="mt-8 inline-block rounded-full bg-olive px-6 py-3 font-semibold text-charcoal shadow-lg ring-1 ring-silver/20 transition hover:scale-105 hover:bg-olive"
+          className="mt-8 inline-block rounded-full bg-olive px-6 py-3 font-semibold text-charcoal shadow-lg ring-1 ring-olive/20 transition hover:scale-105 hover:bg-olive"
         >
           {cta}
         </motion.a>

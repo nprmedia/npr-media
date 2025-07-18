@@ -173,7 +173,7 @@ export default function WhyNprPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className="rounded border border-silver/30 bg-silver/10 p-3 text-silver shadow-inner"
+                  className="rounded border border-olive/30 bg-silver/10 p-3 text-silver shadow-inner"
                 >
                   Bold hook → stat → CTA
                 </motion.div>
@@ -183,7 +183,7 @@ export default function WhyNprPage() {
               <a
                 href="/webdev-landing"
                 data-event="cta-social-proof"
-                className="inline-block rounded-full bg-gradient-to-r from-blood to-blood px-6 py-3 text-sm font-semibold text-silver shadow-md ring-1 ring-silver/10 transition hover:scale-105"
+                className="inline-block rounded-full bg-gradient-to-r from-blood to-blood px-6 py-3 text-sm font-semibold text-silver shadow-md ring-1 ring-olive/10 transition hover:scale-105"
               >
                 Don’t get AI’d. Get outcomes.
               </a>
@@ -316,7 +316,7 @@ export default function WhyNprPage() {
               <a
                 href="/webdev-landing"
                 data-event="cta-social-proof"
-                className="inline-block rounded-full bg-gradient-to-r from-blood to-blood px-6 py-3 text-sm font-semibold text-silver shadow-md ring-1 ring-silver/20 transition hover:scale-105"
+                className="inline-block rounded-full bg-gradient-to-r from-blood to-blood px-6 py-3 text-sm font-semibold text-silver shadow-md ring-1 ring-olive/20 transition hover:scale-105"
               >
                 This time, don’t settle.
               </a>

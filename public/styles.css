@@ -1853,17 +1853,23 @@ img {
   .bg-silver\/30 {
     background-color: rgb(var(--color-silver-rgb) / 0.3);
   }
+  .ring-blood {
+    box-shadow: 0 0 0 2px rgb(var(--color-blood-rgb));
+  }
   .ring-blood\/40 {
     box-shadow: 0 0 0 2px rgb(var(--color-blood-rgb) / 0.4);
   }
   .ring-blood\/50 {
     box-shadow: 0 0 0 2px rgb(var(--color-blood-rgb) / 0.5);
   }
-  .ring-silver\/10 {
-    box-shadow: 0 0 0 1px rgb(var(--color-silver-rgb) / 0.1);
+  .ring-olive\/10 {
+    box-shadow: 0 0 0 1px rgb(var(--color-olive-rgb) / 0.1);
   }
-  .ring-silver\/20 {
-    box-shadow: 0 0 0 1px rgb(var(--color-silver-rgb) / 0.2);
+  .ring-olive\/20 {
+    box-shadow: 0 0 0 1px rgb(var(--color-olive-rgb) / 0.2);
+  }
+  .ring-olive {
+    box-shadow: 0 0 0 1px rgb(var(--color-olive-rgb));
   }
   .shadow-silver\/20 {
     box-shadow: 0 1px 3px 0 rgb(var(--color-silver-rgb) / 0.2);

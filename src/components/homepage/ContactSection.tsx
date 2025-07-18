@@ -11,7 +11,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative border-t bg-antique text-charcoal scroll-mt-[80px] py-[clamp(5rem,10vw,8rem)] px-[clamp(1rem,4vw,3rem)] overflow-hidden"
+      className="relative border-t border-umber bg-antique text-charcoal scroll-mt-[80px] py-[clamp(5rem,10vw,8rem)] px-[clamp(1rem,4vw,3rem)] overflow-hidden"
     >
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div className="absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-blood opacity-20 blur-3xl" />
