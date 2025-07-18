@@ -172,7 +172,6 @@ export function HeroContent({
   };
   const rawHeadline = personalizedHeadline || headline;
   const headlineSegments = parseTaggedText(rawHeadline);
-  console.log('Parsed headline segments →', headlineSegments);
 
 
   return (
@@ -380,7 +379,7 @@ export default function HeroSection(props: HeroProps) {
   const overlaySegments = parseTaggedText(props.headline);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setReveal(true), 1800);
+    const timeout = setTimeout(() => setReveal(true), 1600);
     return () => clearTimeout(timeout);
   }, []);
 
