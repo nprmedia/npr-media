@@ -288,6 +288,15 @@ img {
   }
 }
 
+/* Utilities for the hero reveal effect */
+.clip-reveal-hidden {
+  clip-path: polygon(0 100%, 0 100%, 0 100%, 0 100%);
+}
+
+.clip-reveal-full {
+  clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+}
+
 @keyframes glow-pulse {
   0%, 100% {
     opacity: 0.15;
