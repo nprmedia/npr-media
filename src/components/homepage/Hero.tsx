@@ -11,7 +11,7 @@ import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
 import { parseTaggedText } from '@/components/common/HighlightedText';
 
-export interface HeroProps {
+interface HeroProps {
   headline: string;
   subheadline?: string;
   ctaText?: string;
@@ -24,23 +24,12 @@ export interface HeroProps {
   };
 }
 
-export function HeroContent({
-  headline,
-  subheadline,
-  ctaText,
-  ctaLink,
-  image,
-  forceGray = false,
-  enableEffects = true,
-}: HeroProps & { forceGray?: boolean; enableEffects?: boolean }) {
+const HeroSection: React.FC<HeroProps> = ({ headline, subheadline, ctaText, ctaLink, image }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLButtonElement>(null);
   const router = useRouter();
-  const disabledContainerRef = useRef<HTMLDivElement>(null);
-  const disabledHeroRef = useRef<HTMLElement>(null);
-  const disabledCtaRef = useRef<HTMLButtonElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -62,11 +51,8 @@ export function HeroContent({
   const [isStickyVisible, setIsStickyVisible] = useState(false);
   const [personalizedHeadline, setPersonalizedHeadline] = useState('');
 
-  useParticleBackground(enableEffects ? containerRef : disabledContainerRef);
-  useHeroAnalytics({
-    heroRef: enableEffects ? heroRef : disabledHeroRef,
-    ctaRef: enableEffects ? ctaRef : disabledCtaRef,
-  });
+  useParticleBackground(containerRef);
+  useHeroAnalytics({ heroRef, ctaRef });
 
 
   useEffect(() => {
@@ -92,7 +78,7 @@ export function HeroContent({
   }, [searchParams]);
 
   useEffect(() => {
-    if (prefersReducedMotion || !enableEffects) return;
+    if (prefersReducedMotion) return;
 
     const original = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -104,11 +90,10 @@ export function HeroContent({
     return () => {
       document.body.style.overflow = original;
     };
-  }, [controls, prefersReducedMotion, enableEffects]);
+  }, [controls, prefersReducedMotion]);
 
 
   useEffect(() => {
-    if (!enableEffects) return;
     let timer: NodeJS.Timeout;
     const onScroll = () => {
       setIsStickyVisible(false);
@@ -120,7 +105,7 @@ export function HeroContent({
       clearTimeout(timer);
       window.removeEventListener('scroll', onScroll);
     };
-  }, [enableEffects]);
+  }, []);
 
   const textVariants = {
     hidden: { opacity: 0, y: 15 },
@@ -214,16 +199,7 @@ export function HeroContent({
             {headlineSegments.map((seg, si) => (
               <motion.span
                 key={si}
-                className={clsx(
-                  'inline-block transition-colors duration-700',
-                  forceGray
-                    ? seg.text.trim() === 'Trusted by'
-                      ? 'text-blood glow-blood filter-none'
-                      : 'text-gray-400 filter grayscale'
-                    : seg.highlight
-                      ? 'text-blood glow-blood'
-                      : 'text-charcoal'
-                )}
+                className={clsx('inline-block', seg.highlight ? 'text-blood glow-blood' : 'text-charcoal')}
                 variants={wordVariants}
                 custom={si}
               >
@@ -357,27 +333,4 @@ export function HeroContent({
   );
 };
 
-export default function HeroSection(props: HeroProps) {
-  const [reveal, setReveal] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setReveal(true), 500);
-    return () => clearTimeout(timeout);
-  }, []);
-
-  return (
-    <div className="relative w-full overflow-hidden">
-      <div className="absolute inset-0 grayscale z-10 pointer-events-none">
-        <HeroContent {...props} forceGray enableEffects={false} />
-      </div>
-      <div
-        className={clsx(
-          'relative z-20 transition-[clip-path] duration-[2000ms] ease-in-out',
-          reveal ? 'clip-reveal-full' : 'clip-reveal-hidden'
-        )}
-      >
-        <HeroContent {...props} />
-      </div>
-    </div>
-  );
-}
+export default HeroSection;
