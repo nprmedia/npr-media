@@ -361,7 +361,7 @@ export default function HeroSection(props: HeroProps) {
   const [reveal, setReveal] = useState(false);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setReveal(true), 500);
+    const timeout = setTimeout(() => setReveal(true), 1800);
     return () => clearTimeout(timeout);
   }, []);
 
