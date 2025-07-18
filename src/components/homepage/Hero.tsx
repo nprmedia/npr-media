@@ -377,6 +377,7 @@ export function HeroContent({
 
 export default function HeroSection(props: HeroProps) {
   const [reveal, setReveal] = useState(false);
+  const overlaySegments = parseTaggedText(props.headline);
 
   useEffect(() => {
     const timeout = setTimeout(() => setReveal(true), 1800);
@@ -399,7 +400,16 @@ export default function HeroSection(props: HeroProps) {
               HELLO, WE ARE NPR MEDIA
             </div>
             <h1 className="mb-6 w-full text-blood text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight">
-              Trusted by
+              {overlaySegments.map((seg, i) => (
+                <span
+                  key={i}
+                  className={clsx(
+                    seg.text.trim() === 'Trusted by' ? 'text-blood' : 'text-transparent'
+                  )}
+                >
+                  {seg.text}
+                </span>
+              ))}
             </h1>
           </div>
         </div>

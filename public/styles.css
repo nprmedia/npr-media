@@ -1094,6 +1094,9 @@
 .text-gray-400 {
   color: var(--color-gray-400);
 }
+.text-transparent {
+  color: transparent;
+}
 .uppercase {
   text-transform: uppercase;
 }
