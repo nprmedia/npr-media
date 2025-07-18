@@ -199,19 +199,11 @@ export function HeroContent({
         <motion.div
           variants={textVariants}
           custom={0}
-          className={clsx(
-            'mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal',
-            forceGray && 'text-gray-400 filter grayscale'
-          )}
+          className="mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal"
         >
           HELLO, WE ARE NPR MEDIA
         </motion.div>
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
-          className={clsx('w-full', forceGray && 'grayscale')}
-        >
+        <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }} className="w-full">
           <motion.h1
             id="hero-headline"
             data-scroll
@@ -244,10 +236,7 @@ export function HeroContent({
               id="hero-subheadline"
               aria-describedby="hero-headline"
               variants={subheadlineVariants}
-              className={clsx(
-                'font-grotesk font-medium text-charcoal opacity-90 md:opacity-100 mt-6 sm:mt-8 lg:mt-10 mb-7 mx-auto max-w-[60ch] text-center text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]',
-                forceGray && 'text-gray-400 filter grayscale'
-              )}
+              className="font-grotesk font-medium text-charcoal opacity-90 md:opacity-100 mt-6 sm:mt-8 lg:mt-10 mb-7 mx-auto max-w-[60ch] text-center text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]"
             >
               {subheadline}
             </motion.p>
@@ -255,10 +244,7 @@ export function HeroContent({
           {ctaText && ctaLink && (
             <motion.div
               variants={ctaVariants}
-              className={clsx(
-                'group relative inline-block mx-auto md:mx-0',
-                forceGray && 'filter grayscale'
-              )}
+              className="group relative inline-block mx-auto md:mx-0"
             >
               <motion.button
                 type="button"
@@ -286,10 +272,7 @@ export function HeroContent({
             role="note"
             aria-label="SOC2 certified and founder-backed"
             variants={badgeVariants}
-            className={clsx(
-              'mt-6 sm:mt-8 text-center sm:text-left flex items-center justify-center sm:justify-start text-olive text-[clamp(0.75rem,0.9vw,0.875rem)] font-medium uppercase tracking-wider font-smallcaps',
-              forceGray && 'text-gray-400 filter grayscale'
-            )}
+            className="mt-6 sm:mt-8 text-center sm:text-left flex items-center justify-center sm:justify-start text-olive text-[clamp(0.75rem,0.9vw,0.875rem)] font-medium uppercase tracking-wider font-smallcaps"
           >
             <ShieldCheck className="mr-2 h-4 w-4 flex-shrink-0" />
             <span>SOC2 Certified • GDPR Ready • Trusted by 10,000+ users</span>
@@ -306,10 +289,7 @@ export function HeroContent({
           style={{ y: overlayY, willChange: 'transform' }}
           initial="hidden"
           animate="visible"
-          className={clsx(
-            'flex h-[200%] flex-col items-center pb-[5vh]',
-            forceGray && 'filter grayscale'
-          )}
+          className="flex h-[200%] flex-col items-center pb-[5vh]"
         >
           {['N', 'P', 'R'].map((letter) => (
             <motion.span
@@ -328,15 +308,10 @@ export function HeroContent({
       <motion.div
         variants={textVariants}
         custom={2.5}
-        className={clsx(
-          'group absolute left-1/2 z-30 w-full max-w-[clamp(22rem,38vw,38rem)] -translate-x-1/2 transform hover:scale-105 md:left-[74%] md:transform-none',
-          forceGray && 'filter grayscale'
-        )}
+        className="group absolute left-1/2 z-30 w-full max-w-[clamp(22rem,38vw,38rem)] -translate-x-1/2 transform hover:scale-105 md:left-[74%] md:transform-none"
         style={{
           bottom: '28%',
-          filter: forceGray
-            ? 'grayscale(100%) contrast(0.85) brightness(1.05)'
-            : 'contrast(0.85) brightness(1.05)',
+          filter: 'contrast(0.85) brightness(1.05)',
           transition: 'transform 0.4s ease',
         }}
       >
@@ -368,21 +343,13 @@ export function HeroContent({
         variants={cueVariants}
         initial="hidden"
         animate="visible"
-        className={clsx(
-          'absolute bottom-[2vh] left-1/2 z-20 -translate-x-1/2 appearance-none border-none bg-transparent p-2 text-blood opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blood',
-          forceGray && 'filter grayscale'
-        )}
+        className="absolute bottom-[2vh] left-1/2 z-20 -translate-x-1/2 appearance-none border-none bg-transparent p-2 text-blood opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blood"
       >
         <ChevronDown className="h-[clamp(1.5rem,2vw,2rem)] w-[clamp(1.5rem,2vw,2rem)] animate-[bounce_2.5s_infinite]" />
       </motion.button>
 
       {isStickyVisible && (
-        <div
-          className={clsx(
-            'fixed bottom-36 left-1/2 z-50 -translate-x-1/2 rounded-full bg-blood px-4 py-2 text-sm font-bold text-charcoal opacity-90 shadow-xl hover:scale-105 hover:bg-blood',
-            forceGray && 'filter grayscale'
-          )}
-        >
+        <div className="fixed bottom-36 left-1/2 z-50 -translate-x-1/2 rounded-full bg-blood px-4 py-2 text-sm font-bold text-charcoal opacity-90 shadow-xl hover:scale-105 hover:bg-blood">
           Still thinking? Start your free trial now →
         </div>
       )}
@@ -400,7 +367,7 @@ export default function HeroSection(props: HeroProps) {
 
   return (
     <div className="relative w-full overflow-hidden">
-      <div className="absolute inset-0 z-10 pointer-events-none">
+      <div className="absolute inset-0 grayscale z-10 pointer-events-none">
         <HeroContent {...props} forceGray enableEffects={false} />
       </div>
       <div
