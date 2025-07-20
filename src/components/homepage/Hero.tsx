@@ -374,14 +374,18 @@ export function HeroContent({
   );
 };
 
-export default function HeroSection(props: HeroProps) {
+export default function HeroSection({ reveal: revealProp, ...props }: HeroProps & { reveal?: boolean }) {
   const [reveal, setReveal] = useState(false);
   const overlaySegments = parseTaggedText(props.headline);
 
   useEffect(() => {
+    if (revealProp !== undefined) {
+      setReveal(revealProp);
+      return;
+    }
     const timeout = setTimeout(() => setReveal(true), 1600);
     return () => clearTimeout(timeout);
-  }, []);
+  }, [revealProp]);
 
   return (
     <div className="relative w-full overflow-hidden">
@@ -389,7 +393,7 @@ export default function HeroSection(props: HeroProps) {
         <HeroContent {...props} forceGray enableEffects={false} />
       </div>
       <motion.div
-        className="absolute inset-0 z-20 pointer-events-none"
+        className="absolute inset-0 z-[70] pointer-events-none"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: reveal ? 0 : 1, y: 0, transition: { duration: 0.6 } }}
       >
@@ -398,12 +402,14 @@ export default function HeroSection(props: HeroProps) {
             <div className="mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal invisible">
               HELLO, WE ARE NPR MEDIA
             </div>
-            <h1 className="mb-6 w-full text-blood text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight">
+            <h1 className="mb-6 w-full text-charcoal/30 text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight">
               {overlaySegments.map((seg, i) => (
                 <span
                   key={i}
                   className={clsx(
-                    seg.text.trim() === 'Trusted by' ? 'text-blood' : 'text-transparent'
+                    seg.text.trim() === 'Trusted by'
+                      ? 'text-blood'
+                      : 'text-charcoal/50'
                   )}
                 >
                   {seg.text}
