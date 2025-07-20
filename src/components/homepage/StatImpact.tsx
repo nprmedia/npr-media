@@ -1,14 +1,14 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import CTAButton from '@/components/CTAButton'
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import CTAButton from '@/components/CTAButton';
 
 interface StatItem {
-  value: string
-  text: string
-  source: string
-  href: string
+  value: string;
+  text: string;
+  source: string;
+  href: string;
 }
 
 const stats: StatItem[] = [
@@ -30,17 +30,17 @@ const stats: StatItem[] = [
     source: 'reddit.com',
     href: 'https://www.reddit.com/r/SaaS/comments/1imj02n/redesigned_my_landing_page_and_got_137_more',
   },
-]
+];
 
 export default function StatImpact() {
   return (
-    <section className="mt-[clamp(4rem,8vw,8rem)] bg-white px-6 md:px-12 font-grotesk">
+    <section className="font-grotesk mt-[clamp(4rem,8vw,8rem)] bg-white px-6 md:px-12">
       <div className="mx-auto grid max-w-screen-xl gap-12 lg:grid-cols-2 lg:items-center">
         <div className="space-y-4 text-center lg:text-left">
-          <h2 className="text-[clamp(1.5rem,4vw,2.5rem)] font-bold tracking-tight text-charcoal">
+          <h2 className="text-charcoal text-[clamp(1.5rem,4vw,2.5rem)] font-bold tracking-tight">
             Why Founders Invest in a Better Website
           </h2>
-          <p className="mx-auto max-w-md text-base text-charcoal lg:mx-0">
+          <p className="text-charcoal font-grotesk mx-auto max-w-md text-base lg:mx-0">
             Real businesses see dramatic growth after modernizing their online presence.
           </p>
           <CTAButton href="/contact" event="cta-stats">
@@ -55,17 +55,17 @@ export default function StatImpact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="mr-4 inline-block w-[5ch] text-right align-top font-bold text-blood text-[clamp(3rem,6vw,5rem)] font-mono"
+                className="text-blood mr-4 inline-block w-[5ch] text-right align-top font-mono text-[clamp(3rem,6vw,5rem)] font-bold"
               >
                 {stat.value}
               </motion.span>
-              <div>
-                <p className="text-base leading-snug text-charcoal">{stat.text}</p>
+              <div className="font-grotesk">
+                <p className="text-charcoal text-base leading-snug">{stat.text}</p>
                 <Link
                   href={stat.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 inline-block text-sm text-silver hover:underline"
+                  className="text-silver font-grotesk mt-2 inline-block text-sm hover:underline"
                 >
                   Source: {stat.source}
                 </Link>
@@ -75,5 +75,5 @@ export default function StatImpact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
