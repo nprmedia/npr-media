@@ -41,7 +41,7 @@ export default function StatImpact() {
         <div className="grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {stats.map((stat, i) => (
             <div key={i} className="text-center">
-              <p className="mx-auto mt-2 max-w-sm text-base leading-snug text-charcoal">
+              <div className="mx-auto mt-2 flex max-w-sm items-start justify-center">
                 <motion.span
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -51,8 +51,8 @@ export default function StatImpact() {
                 >
                   {stat.value}
                 </motion.span>
-                {stat.text}
-              </p>
+                <p className="text-base leading-snug text-charcoal">{stat.text}</p>
+              </div>
               <Link
                 href={stat.href}
                 target="_blank"
