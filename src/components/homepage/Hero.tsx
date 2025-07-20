@@ -139,14 +139,6 @@ export function HeroContent({
       transition: { delay: i * 0.15, duration: 0.6 },
     }),
   };
-  const trustedVariants = {
-    hidden: { opacity: 0, y: 0 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: i * 0.15, duration: 0.6 },
-    }),
-  };
   const subheadlineVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -224,10 +216,9 @@ export function HeroContent({
           >
             {headlineSegments.map((seg, si) => {
               const isTrusted = seg.text.trim() === 'Trusted by';
-              const Span = enableEffects ? motion.span : 'span';
-              const spanProps = enableEffects
-                ? { variants: isTrusted ? trustedVariants : wordVariants, custom: si }
-                : {};
+              const shouldAnimate = enableEffects && !isTrusted;
+              const Span = shouldAnimate ? motion.span : 'span';
+              const spanProps = shouldAnimate ? { variants: wordVariants, custom: si } : {};
               return (
                 <Span
                   key={si}
