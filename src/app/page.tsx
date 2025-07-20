@@ -7,6 +7,7 @@ import StickyHeader from '@/components/global/Header';
 import HeroSection from '@/components/homepage/Hero';
 import { hero } from '@/content/homepage/hero';
 import IndustryTemplatesSection from '@/components/homepage/IndustryTemplates';
+import StatImpact from '@/components/homepage/StatImpact';
 import PricingSection from '@/components/homepage/PricingSection';
 import FooterSection from '@/components/global/Footer';
 import ContactSection from '@/components/homepage/ContactSection';
@@ -34,6 +35,7 @@ export default function Page() {
           <HeroSection {...hero} reveal={reveal} />
         </Suspense>
         <IndustryTemplatesSection />
+        <StatImpact />
         <PricingSection />
         <ContactSection />
       </main>
