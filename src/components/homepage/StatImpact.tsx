@@ -34,7 +34,7 @@ const stats: StatItem[] = [
 
 export default function StatImpact() {
   return (
-    <section className="mt-[clamp(4rem,8vw,8rem)] bg-white px-6 md:px-12">
+    <section className="mt-[clamp(4rem,8vw,8rem)] bg-white px-6 md:px-12 font-grotesk">
       <div className="mx-auto grid max-w-screen-xl gap-12 lg:grid-cols-2 lg:items-center">
         <div className="space-y-4 text-center lg:text-left">
           <h2 className="text-[clamp(1.5rem,4vw,2.5rem)] font-bold tracking-tight text-charcoal">
@@ -55,7 +55,7 @@ export default function StatImpact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="mr-4 inline-block align-top text-[clamp(3rem,6vw,5rem)] font-bold text-blood"
+                className="mr-4 inline-block w-[5ch] text-right align-top font-bold text-blood text-[clamp(3rem,6vw,5rem)] font-mono"
               >
                 {stat.value}
               </motion.span>
