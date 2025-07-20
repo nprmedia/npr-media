@@ -172,7 +172,6 @@ export function HeroContent({
   };
   const rawHeadline = personalizedHeadline || headline;
   const headlineSegments = parseTaggedText(rawHeadline);
-  console.log('Parsed headline segments →', headlineSegments);
 
 
   return (
@@ -199,7 +198,10 @@ export function HeroContent({
         <motion.div
           variants={textVariants}
           custom={0}
-          className="mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal"
+          className={clsx(
+            'mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal',
+            forceGray && 'text-gray-400 filter grayscale'
+          )}
         >
           HELLO, WE ARE NPR MEDIA
         </motion.div>
@@ -236,7 +238,10 @@ export function HeroContent({
               id="hero-subheadline"
               aria-describedby="hero-headline"
               variants={subheadlineVariants}
-              className="font-grotesk font-medium text-charcoal opacity-90 md:opacity-100 mt-6 sm:mt-8 lg:mt-10 mb-7 mx-auto max-w-[60ch] text-center text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]"
+              className={clsx(
+                'font-grotesk font-medium text-charcoal opacity-90 md:opacity-100 mt-6 sm:mt-8 lg:mt-10 mb-7 mx-auto max-w-[60ch] text-center text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]',
+                forceGray && 'text-gray-400 filter grayscale'
+              )}
             >
               {subheadline}
             </motion.p>
@@ -244,7 +249,10 @@ export function HeroContent({
           {ctaText && ctaLink && (
             <motion.div
               variants={ctaVariants}
-              className="group relative inline-block mx-auto md:mx-0"
+              className={clsx(
+                'group relative inline-block mx-auto md:mx-0',
+                forceGray && 'filter grayscale'
+              )}
             >
               <motion.button
                 type="button"
@@ -272,7 +280,10 @@ export function HeroContent({
             role="note"
             aria-label="SOC2 certified and founder-backed"
             variants={badgeVariants}
-            className="mt-6 sm:mt-8 text-center sm:text-left flex items-center justify-center sm:justify-start text-olive text-[clamp(0.75rem,0.9vw,0.875rem)] font-medium uppercase tracking-wider font-smallcaps"
+            className={clsx(
+              'mt-6 sm:mt-8 text-center sm:text-left flex items-center justify-center sm:justify-start text-olive text-[clamp(0.75rem,0.9vw,0.875rem)] font-medium uppercase tracking-wider font-smallcaps',
+              forceGray && 'filter grayscale'
+            )}
           >
             <ShieldCheck className="mr-2 h-4 w-4 flex-shrink-0" />
             <span>SOC2 Certified • GDPR Ready • Trusted by 10,000+ users</span>
@@ -289,7 +300,7 @@ export function HeroContent({
           style={{ y: overlayY, willChange: 'transform' }}
           initial="hidden"
           animate="visible"
-          className="flex h-[200%] flex-col items-center pb-[5vh]"
+          className={clsx('flex h-[200%] flex-col items-center pb-[5vh]', forceGray && 'filter grayscale')}
         >
           {['N', 'P', 'R'].map((letter) => (
             <motion.span
@@ -308,7 +319,10 @@ export function HeroContent({
       <motion.div
         variants={textVariants}
         custom={2.5}
-        className="group absolute left-1/2 z-30 w-full max-w-[clamp(22rem,38vw,38rem)] -translate-x-1/2 transform hover:scale-105 md:left-[74%] md:transform-none"
+        className={clsx(
+          'group absolute left-1/2 z-30 w-full max-w-[clamp(22rem,38vw,38rem)] -translate-x-1/2 transform hover:scale-105 md:left-[74%] md:transform-none',
+          forceGray && 'filter grayscale'
+        )}
         style={{
           bottom: '28%',
           filter: 'contrast(0.85) brightness(1.05)',
@@ -322,7 +336,7 @@ export function HeroContent({
               alt={image.alt || 'Product Screenshot'}
               width={image.width || 480}
               height={image.height || 480}
-              className="h-auto w-full rounded-xl shadow-2xl"
+              className={clsx('h-auto w-full rounded-xl shadow-2xl', forceGray && 'grayscale')}
               priority
             />
           )}
@@ -343,7 +357,10 @@ export function HeroContent({
         variants={cueVariants}
         initial="hidden"
         animate="visible"
-        className="absolute bottom-[2vh] left-1/2 z-20 -translate-x-1/2 appearance-none border-none bg-transparent p-2 text-blood opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blood"
+        className={clsx(
+          'absolute bottom-[2vh] left-1/2 z-20 -translate-x-1/2 appearance-none border-none bg-transparent p-2 text-blood opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blood',
+          forceGray && 'filter grayscale'
+        )}
       >
         <ChevronDown className="h-[clamp(1.5rem,2vw,2rem)] w-[clamp(1.5rem,2vw,2rem)] animate-[bounce_2.5s_infinite]" />
       </motion.button>
@@ -359,9 +376,10 @@ export function HeroContent({
 
 export default function HeroSection(props: HeroProps) {
   const [reveal, setReveal] = useState(false);
+  const overlaySegments = parseTaggedText(props.headline);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setReveal(true), 1800);
+    const timeout = setTimeout(() => setReveal(true), 1600);
     return () => clearTimeout(timeout);
   }, []);
 
@@ -370,6 +388,31 @@ export default function HeroSection(props: HeroProps) {
       <div className="absolute inset-0 grayscale z-10 pointer-events-none">
         <HeroContent {...props} forceGray enableEffects={false} />
       </div>
+      <motion.div
+        className="absolute inset-0 z-20 pointer-events-none"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: reveal ? 0 : 1, y: 0, transition: { duration: 0.6 } }}
+      >
+        <div className="relative mx-auto grid w-full max-w-[88rem] grid-cols-1 items-center gap-[clamp(2rem,6vw,5rem)] px-[clamp(1rem,4vw,2rem)] pt-[clamp(1rem,5vw,3rem)] pb-[clamp(4rem,8vw,6rem)] md:grid-cols-2">
+          <div className="px-0">
+            <div className="mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal invisible">
+              HELLO, WE ARE NPR MEDIA
+            </div>
+            <h1 className="mb-6 w-full text-blood text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight">
+              {overlaySegments.map((seg, i) => (
+                <span
+                  key={i}
+                  className={clsx(
+                    seg.text.trim() === 'Trusted by' ? 'text-blood' : 'text-transparent'
+                  )}
+                >
+                  {seg.text}
+                </span>
+              ))}
+            </h1>
+          </div>
+        </div>
+      </motion.div>
       <div
         className={clsx(
           'relative z-20 transition-[clip-path] duration-[2000ms] ease-in-out',
