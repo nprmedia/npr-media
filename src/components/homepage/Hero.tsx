@@ -205,10 +205,10 @@ export function HeroContent({
         <motion.div
           variants={textVariants}
           custom={0}
-          className={clsx(
-            'mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal',
-            forceGray && 'text-gray-400 filter grayscale'
-          )}
+            className={clsx(
+              'mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal',
+              forceGray && 'text-gray-400 opacity-60 filter grayscale'
+            )}
         >
           HELLO, WE ARE NPR MEDIA
         </motion.div>
@@ -233,7 +233,7 @@ export function HeroContent({
                     forceGray
                       ? isTrusted
                         ? 'text-blood glow-blood filter-none'
-                        : 'text-gray-400 filter grayscale'
+                        : 'text-gray-400 opacity-60 filter grayscale'
                       : seg.highlight
                         ? 'text-blood glow-blood'
                         : 'text-charcoal'
@@ -251,7 +251,7 @@ export function HeroContent({
               variants={subheadlineVariants}
               className={clsx(
                 'font-grotesk font-medium text-charcoal opacity-90 md:opacity-100 mt-6 sm:mt-8 lg:mt-10 mb-7 mx-auto max-w-[60ch] text-center text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]',
-                forceGray && 'text-gray-400 filter grayscale'
+                forceGray && 'text-gray-400 opacity-60 filter grayscale'
               )}
             >
               {subheadline}
@@ -269,7 +269,7 @@ export function HeroContent({
                 onClick={() => router.push(ctaLink)}
                 className={clsx(
                   'cta-glow ripple-hover inline-flex items-center justify-center rounded-full border border-blood bg-blood px-[clamp(1.875rem,3.75vw,2.5rem)] py-[clamp(0.9rem,1.5vw,1.25rem)] text-[clamp(0.875rem,1vw,1rem)] font-bold uppercase tracking-wide text-silver shadow-[0_0_20px_rgba(179,0,0,0.2)] transition-transform duration-300 hover:scale-105 hover:bg-crimson focus-visible:outline focus-visible:outline-crimson',
-                  forceGray && 'filter-none'
+                  forceGray && 'grayscale opacity-60'
                 )}
               >
                 <span>{ctaText}</span>
@@ -293,7 +293,7 @@ export function HeroContent({
             variants={badgeVariants}
             className={clsx(
               'mt-6 sm:mt-8 text-center sm:text-left flex items-center justify-center sm:justify-start text-olive text-[clamp(0.75rem,0.9vw,0.875rem)] font-medium uppercase tracking-wider font-smallcaps',
-              forceGray && 'filter grayscale'
+              forceGray && 'filter grayscale opacity-60'
             )}
           >
             <ShieldCheck className="mr-2 h-4 w-4 flex-shrink-0" />
@@ -311,7 +311,7 @@ export function HeroContent({
           style={{ y: overlayY, willChange: 'transform' }}
           initial="hidden"
           animate="visible"
-          className={clsx('flex h-[200%] flex-col items-center pb-[5vh]', forceGray && 'filter grayscale')}
+          className={clsx('flex h-[200%] flex-col items-center pb-[5vh]', forceGray && 'filter grayscale opacity-60')}
         >
           {['N', 'P', 'R'].map((letter) => (
             <motion.span
@@ -330,9 +330,9 @@ export function HeroContent({
       <motion.div
         variants={textVariants}
         custom={2.5}
-        className={clsx(
+          className={clsx(
           'group absolute left-1/2 z-30 w-full max-w-[clamp(22rem,38vw,38rem)] -translate-x-1/2 transform hover:scale-105 md:left-[74%] md:transform-none',
-          forceGray && 'filter grayscale'
+          forceGray && 'grayscale opacity-60'
         )}
         style={{
           bottom: '28%',
@@ -347,7 +347,7 @@ export function HeroContent({
               alt={image.alt || 'Product Screenshot'}
               width={image.width || 480}
               height={image.height || 480}
-              className={clsx('h-auto w-full rounded-xl shadow-2xl', forceGray && 'grayscale')}
+              className={clsx('h-auto w-full rounded-xl shadow-2xl', forceGray && 'grayscale opacity-60')}
               priority
             />
           )}
