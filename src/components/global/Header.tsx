@@ -13,9 +13,11 @@ interface HeaderProps {
    * Useful on pages with light backgrounds so links remain visible.
    */
   light?: boolean;
+  /** When true, apply a grayscale filter to the entire header */
+  forceGray?: boolean;
 }
 
-export default function StickyHeader({ light = false }: HeaderProps) {
+export default function StickyHeader({ light = false, forceGray = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -76,11 +78,11 @@ export default function StickyHeader({ light = false }: HeaderProps) {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className={`w-full transition-all duration-500 ease-in-out ${
+        className={`w-full transition-all duration-500 ease-in-out transition-[filter] duration-[2000ms] ${
           scrolled
             ? 'bg-sepia/80 shadow-md backdrop-blur-md rounded-b-lg'
             : 'bg-transparent backdrop-blur-0'
-        } ${textColor}`}
+        } ${textColor} ${forceGray ? 'filter grayscale' : ''}`}
       >
         <div
           className={`mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center pt-3 px-[clamp(1rem,4vw,3rem)] ${textColor}`}

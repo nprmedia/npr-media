@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import StickyHeader from '@/components/global/Header';
 import HeroSection from '@/components/homepage/Hero';
@@ -12,13 +12,19 @@ import ContactSection from '@/components/homepage/ContactSection';
 
 export default function Page() {
   const pathname = usePathname();
+  const [reveal, setReveal] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setReveal(true), 1600);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section>
-      <StickyHeader light />
+      <StickyHeader light forceGray={!reveal} />
       <main key={pathname} className="relative w-full overflow-x-hidden bg-antique text-charcoal">
         <Suspense>
-          <HeroSection {...hero} />
+          <HeroSection {...hero} reveal={reveal} />
         </Suspense>
         <IndustryTemplatesSection />
         <PricingSection />
