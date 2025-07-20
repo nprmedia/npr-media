@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import CTAButton from '@/components/CTAButton'
 
 interface StatItem {
   value: string
@@ -35,42 +34,34 @@ const stats: StatItem[] = [
 export default function StatImpact() {
   return (
     <section className="mt-[clamp(4rem,8vw,8rem)] font-grotesk">
-      <div className="max-w-screen-md mx-auto grid gap-10 px-6 md:px-8 lg:grid-cols-2 lg:items-start">
-        <div className="space-y-4 text-center lg:text-left">
-          <h2 className="text-[clamp(2rem,4vw,3rem)] font-black tracking-tight text-charcoal">
-            Why Founders Invest in a Better Website
-          </h2>
-          <p className="text-silver text-lg mt-2">
-            Real businesses see dramatic growth after modernizing their online presence.
-          </p>
-          <CTAButton
-            href="/contact"
-            event="cta-stats"
-            className="bg-blood text-white px-5 py-3 rounded-xl shadow-lg hover:scale-105 transition-transform font-semibold text-sm tracking-wide block w-max"
-          >
-            Get a Site Review
-          </CTAButton>
-        </div>
-        <div className="space-y-0 mt-8 lg:mt-0">
+      <div className="max-w-screen-md mx-auto px-6 md:px-10">
+        <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-center text-charcoal">
+          Why Founders Invest in a Better Website
+        </h2>
+        <p className="text-silver text-lg text-center max-w-prose mx-auto mt-2">
+          Real businesses see dramatic growth after modernizing their online presence.
+        </p>
+
+        <div className="space-y-6 mt-12">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.2 }}
-              className="flex items-start gap-4 py-6 border-t border-silver/30 last:border-b bg-white/60 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
+              transition={{ duration: 0.5, delay: i * 0.15 }}
+              className="bg-white/60 rounded-2xl shadow-md p-6 flex items-baseline gap-5 hover:shadow-lg transition-all duration-300 ease-out"
             >
-              <span className="text-[clamp(3rem,6vw,5rem)] font-extrabold text-blood bg-gradient-to-br from-blood/10 to-transparent px-3 py-1 rounded-xl drop-shadow-md shrink-0 transition-transform hover:scale-105">
+              <span className="text-[clamp(2.5rem,6vw,4rem)] font-black text-blood bg-gradient-to-br from-blood/10 to-transparent px-4 py-2 rounded-xl">
                 {stat.value}
               </span>
-              <div className="flex-1">
-                <p className="text-base text-charcoal leading-snug">{stat.text}</p>
+              <div>
+                <p className="text-base text-charcoal leading-snug max-w-[36ch]">{stat.text}</p>
                 <Link
                   href={stat.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-zinc-500 italic mt-1"
+                  className="text-sm text-zinc-500 italic mt-1 underline-offset-2 hover:underline"
                 >
                   Source: {stat.source}
                 </Link>
