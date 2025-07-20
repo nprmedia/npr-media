@@ -206,12 +206,10 @@ export function HeroContent({
         >
           HELLO, WE ARE NPR MEDIA
         </motion.div>
-        <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }} className="w-full">
-          <motion.h1
+        <div className="w-full">
+          <h1
             id="hero-headline"
             data-scroll
-            variants={textVariants}
-            custom={1}
             className="mb-6 w-full text-charcoal text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
           >
             {headlineSegments.map((seg, si) => {
@@ -238,7 +236,7 @@ export function HeroContent({
                 </Span>
               );
             })}
-          </motion.h1>
+          </h1>
           {subheadline && (
             <motion.p
               id="hero-subheadline"
@@ -294,7 +292,7 @@ export function HeroContent({
             <ShieldCheck className="mr-2 h-4 w-4 flex-shrink-0" />
             <span>SOC2 Certified • GDPR Ready • Trusted by 10,000+ users</span>
           </motion.p>
-        </motion.div>
+        </div>
       </div>
 
       <div
