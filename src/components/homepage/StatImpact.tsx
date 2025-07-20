@@ -35,16 +35,23 @@ const stats: StatItem[] = [
 export default function StatImpact() {
   return (
     <section className="mt-[clamp(4rem,8vw,8rem)] font-grotesk">
-      <div className="max-w-screen-md mx-auto px-6 md:px-8">
-        <div className="text-center">
+      <div className="max-w-screen-md mx-auto grid gap-10 px-6 md:px-8 lg:grid-cols-2 lg:items-start">
+        <div className="space-y-4 text-center lg:text-left">
           <h2 className="text-[clamp(2rem,4vw,3rem)] font-black tracking-tight text-charcoal">
             Why Founders Invest in a Better Website
           </h2>
-          <p className="text-silver text-lg text-center mt-2">
+          <p className="text-silver text-lg mt-2">
             Real businesses see dramatic growth after modernizing their online presence.
           </p>
+          <CTAButton
+            href="/contact"
+            event="cta-stats"
+            className="bg-blood text-white px-5 py-3 rounded-xl shadow-lg hover:scale-105 transition-transform font-semibold text-sm tracking-wide block w-max"
+          >
+            Get a Site Review
+          </CTAButton>
         </div>
-        <div className="mt-8 space-y-0">
+        <div className="space-y-0 mt-8 lg:mt-0">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
@@ -71,13 +78,6 @@ export default function StatImpact() {
             </motion.div>
           ))}
         </div>
-        <CTAButton
-          href="/contact"
-          event="cta-stats"
-          className="bg-blood text-white px-5 py-3 rounded-xl shadow-lg hover:scale-105 transition-transform font-semibold text-sm tracking-wide mt-8 mx-auto block"
-        >
-          Get a Site Review
-        </CTAButton>
       </div>
     </section>
   )
