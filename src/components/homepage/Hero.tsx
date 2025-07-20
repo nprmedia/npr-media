@@ -249,10 +249,7 @@ export function HeroContent({
           {ctaText && ctaLink && (
             <motion.div
               variants={ctaVariants}
-              className={clsx(
-                'group relative inline-block mx-auto md:mx-0',
-                forceGray && 'filter grayscale'
-              )}
+              className="group relative inline-block mx-auto md:mx-0"
             >
               <motion.button
                 type="button"
@@ -357,10 +354,7 @@ export function HeroContent({
         variants={cueVariants}
         initial="hidden"
         animate="visible"
-        className={clsx(
-          'absolute bottom-[2vh] left-1/2 z-20 -translate-x-1/2 appearance-none border-none bg-transparent p-2 text-blood opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blood',
-          forceGray && 'filter grayscale'
-        )}
+        className="absolute bottom-[2vh] left-1/2 z-20 -translate-x-1/2 appearance-none border-none bg-transparent p-2 text-blood opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blood"
       >
         <ChevronDown className="h-[clamp(1.5rem,2vw,2rem)] w-[clamp(1.5rem,2vw,2rem)] animate-[bounce_2.5s_infinite]" />
       </motion.button>
@@ -377,21 +371,27 @@ export function HeroContent({
 export default function HeroSection(props: HeroProps) {
   const [reveal, setReveal] = useState(false);
   const overlaySegments = parseTaggedText(props.headline);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
-    const timeout = setTimeout(() => setReveal(true), 1600);
+    if (prefersReducedMotion) {
+      setReveal(true);
+      return;
+    }
+    const timeout = setTimeout(() => setReveal(true), 1500);
     return () => clearTimeout(timeout);
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <div className="relative w-full overflow-hidden">
       <div className="absolute inset-0 grayscale z-10 pointer-events-none">
+        <div className="absolute inset-0 opacity-40 [background-image:radial-gradient(circle,rgba(0,0,0,0.05)_1px,transparent_1px)] [background-size:3px_3px]" />
         <HeroContent {...props} forceGray enableEffects={false} />
       </div>
       <motion.div
         className="absolute inset-0 z-20 pointer-events-none"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: reveal ? 0 : 1, y: 0, transition: { duration: 0.6 } }}
+        initial={{ opacity: 1 }}
+        animate={{ opacity: reveal ? 0 : 1, transition: { duration: 0.6 } }}
       >
         <div className="relative mx-auto grid w-full max-w-[88rem] grid-cols-1 items-center gap-[clamp(2rem,6vw,5rem)] px-[clamp(1rem,4vw,2rem)] pt-[clamp(1rem,5vw,3rem)] pb-[clamp(4rem,8vw,6rem)] md:grid-cols-2">
           <div className="px-0">
@@ -418,6 +418,7 @@ export default function HeroSection(props: HeroProps) {
           'relative z-20 transition-[clip-path] duration-[2000ms] ease-in-out',
           reveal ? 'clip-reveal-full' : 'clip-reveal-hidden',
         )}
+        style={{ willChange: 'clip-path' }}
       >
         <HeroContent {...props} />
       </div>

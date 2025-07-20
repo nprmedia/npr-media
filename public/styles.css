@@ -716,6 +716,9 @@
   --tw-gradient-position: to top in oklab;
   background-image: linear-gradient(var(--tw-gradient-stops));
 }
+.\[background-image\:radial-gradient\(circle\,rgba\(0\,0\,0\,0\.05\)_1px\,transparent_1px\)\] {
+  background-image: radial-gradient(circle,rgba(0,0,0,0.05) 1px,transparent 1px);
+}
 .bg-\[linear-gradient\(270deg\,var\(--tw-gradient-stops\)\)\] {
   background-image: linear-gradient(270deg,var(--tw-gradient-stops));
 }
@@ -756,6 +759,9 @@
 .to-transparent {
   --tw-gradient-to: transparent;
   --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.\[background-size\:3px_3px\] {
+  background-size: 3px 3px;
 }
 .bg-cover {
   background-size: cover;
@@ -1129,6 +1135,9 @@
 }
 .opacity-30 {
   opacity: 30%;
+}
+.opacity-40 {
+  opacity: 40%;
 }
 .opacity-70 {
   opacity: 70%;
