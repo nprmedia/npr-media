@@ -33,7 +33,13 @@ export function HeroContent({
   forceGray = false,
   enableEffects = true,
   hideCue = false,
-}: HeroProps & { forceGray?: boolean; enableEffects?: boolean; hideCue?: boolean }) {
+  hideTrusted = false,
+}: HeroProps & {
+  forceGray?: boolean;
+  enableEffects?: boolean;
+  hideCue?: boolean;
+  hideTrusted?: boolean;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -223,6 +229,7 @@ export function HeroContent({
                   {...spanProps}
                   className={clsx(
                     'inline-block transition-colors duration-700',
+                    hideTrusted && isTrusted && 'invisible',
                     forceGray
                       ? isTrusted
                         ? 'text-blood glow-blood filter-none'
@@ -429,7 +436,7 @@ export default function HeroSection(props: HeroProps) {
         )}
         style={{ willChange: 'clip-path' }}
       >
-        <HeroContent {...props} hideCue={!reveal} />
+        <HeroContent {...props} hideCue={!reveal} hideTrusted={!reveal} />
       </div>
     </div>
   );
