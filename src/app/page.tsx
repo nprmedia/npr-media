@@ -1,6 +1,7 @@
 'use client';
 
 import React, { Suspense, useEffect, useState } from 'react';
+import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 import StickyHeader from '@/components/global/Header';
 import HeroSection from '@/components/homepage/Hero';
@@ -22,6 +23,12 @@ export default function Page() {
   return (
     <section>
       <StickyHeader light forceGray={!reveal} />
+      <div
+        className={clsx(
+          'pointer-events-none fixed inset-0 z-[60] transition-[clip-path] duration-[2000ms] ease-in-out backdrop-grayscale',
+          reveal ? 'clip-reveal-hidden' : 'clip-reveal-full'
+        )}
+      />
       <main key={pathname} className="relative w-full overflow-x-hidden bg-antique text-charcoal">
         <Suspense>
           <HeroSection {...hero} reveal={reveal} />
