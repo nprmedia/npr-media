@@ -208,7 +208,7 @@ export function HeroContent({
             className={clsx(
               'mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal',
               forceGray && 'text-gray-400 opacity-60 filter grayscale'
-            )}
+            )
         >
           HELLO, WE ARE NPR MEDIA
         </motion.div>
@@ -260,7 +260,10 @@ export function HeroContent({
           {ctaText && ctaLink && (
             <motion.div
               variants={ctaVariants}
-              className="group relative inline-block mx-auto md:mx-0"
+              className={clsx(
+                'group relative inline-block mx-auto md:mx-0',
+                forceGray && 'filter grayscale'
+              )}
             >
               <motion.button
                 type="button"
@@ -369,7 +372,10 @@ export function HeroContent({
         variants={cueVariants}
         initial="hidden"
         animate="visible"
-        className="absolute bottom-[2vh] left-1/2 z-20 -translate-x-1/2 appearance-none border-none bg-transparent p-2 text-blood opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blood"
+        className={clsx(
+          'absolute bottom-[2vh] left-1/2 z-20 -translate-x-1/2 appearance-none border-none bg-transparent p-2 text-blood opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blood',
+          forceGray && 'filter grayscale'
+        )}
       >
         <ChevronDown className="h-[clamp(1.5rem,2vw,2rem)] w-[clamp(1.5rem,2vw,2rem)] animate-[bounce_2.5s_infinite]" />
         </motion.button>
