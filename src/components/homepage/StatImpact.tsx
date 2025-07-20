@@ -41,16 +41,16 @@ export default function StatImpact() {
         <div className="grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {stats.map((stat, i) => (
             <div key={i} className="text-center">
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="text-blood mr-4 inline-block align-top text-[clamp(3rem,6vw,5rem)] font-bold"
-              >
-                {stat.value}
-              </motion.span>
               <p className="mx-auto mt-2 max-w-sm text-base leading-snug text-charcoal">
+                <motion.span
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  className="mr-4 inline-block align-top text-[clamp(3rem,6vw,5rem)] font-bold text-blood"
+                >
+                  {stat.value}
+                </motion.span>
                 {stat.text}
               </p>
               <Link
