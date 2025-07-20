@@ -393,7 +393,7 @@ export default function HeroSection({ reveal: revealProp, ...props }: HeroProps 
         <HeroContent {...props} forceGray enableEffects={false} />
       </div>
       <motion.div
-        className="absolute inset-0 z-20 pointer-events-none"
+        className="absolute inset-0 z-[70] pointer-events-none"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: reveal ? 0 : 1, y: 0, transition: { duration: 0.6 } }}
       >
