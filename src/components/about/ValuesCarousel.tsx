@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
+import clsx from 'clsx';
 
 type Slide = {
   title: string;
@@ -56,7 +57,11 @@ const slides: Slide[] = [
   },
 ];
 
-export default function ValuesCarousel() {
+export interface ValuesCarouselProps {
+  className?: string;
+}
+
+export default function ValuesCarousel({ className }: ValuesCarouselProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
 
@@ -84,7 +89,12 @@ export default function ValuesCarousel() {
   }, []);
 
   return (
-    <div className="relative mx-auto h-screen max-w-md overflow-hidden bg-olive">
+    <div
+      className={clsx(
+        'relative mx-auto h-screen max-w-md overflow-hidden bg-olive',
+        className,
+      )}
+    >
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10" style={{ height: '33%' }}>
         <div className="h-full bg-gradient-to-b from-white via-white/80 to-transparent" />
       </div>

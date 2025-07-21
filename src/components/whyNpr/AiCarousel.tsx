@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
+import clsx from 'clsx'
 import { ChevronDown } from 'lucide-react'
 
 const aiSlides = [
@@ -12,7 +13,11 @@ const aiSlides = [
   'Relationships & Trust Building',
 ]
 
-export default function AiCarousel() {
+export interface AiCarouselProps {
+  className?: string
+}
+
+export default function AiCarousel({ className }: AiCarouselProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [index, setIndex] = useState(0)
   const isMoving = useRef(false)
@@ -48,7 +53,9 @@ export default function AiCarousel() {
   }, [index])
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div
+      className={clsx('relative h-screen overflow-hidden', className)}
+    >
       <div
         ref={containerRef}
         className="h-full snap-y snap-mandatory overflow-y-scroll scroll-smooth no-scrollbar"
