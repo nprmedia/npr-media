@@ -42,7 +42,7 @@ export default function StatImpact() {
           Real businesses see dramatic growth after modernizing their online presence.
         </p>
 
-        <div className="space-y-6 mt-12">
+        <div className="mt-12 space-y-6">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
@@ -50,12 +50,12 @@ export default function StatImpact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="bg-white/60 rounded-2xl shadow-md p-6 flex items-baseline gap-5 hover:shadow-lg transition-all duration-300 ease-out"
+              className="flex items-baseline gap-5 rounded-2xl bg-olive/60 p-6 shadow-xl ring-1 ring-silver/20 backdrop-blur-md transition-shadow duration-300 hover:shadow-2xl"
             >
-              <span className="text-[clamp(2.5rem,6vw,4rem)] font-black text-blood bg-gradient-to-br from-blood/10 to-transparent px-4 py-2 rounded-xl">
+              <span className="text-[clamp(2.5rem,6vw,4rem)] font-black text-blood bg-gradient-to-br from-blood/10 to-transparent px-4 py-2 ring-1 ring-blood/40 rounded-xl">
                 {stat.value}
               </span>
-              <div>
+              <div className="flex-1">
                 <p className="text-base text-charcoal leading-snug max-w-[36ch]">{stat.text}</p>
                 <Link
                   href={stat.href}
