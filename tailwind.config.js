@@ -88,6 +88,11 @@ module.exports = {
     'bg-charcoal', 'text-charcoal',
     'bg-blood', 'text-blood',
     'bg-crimson', 'text-crimson',
+    // Gradient utilities for custom colors
+    'from-blood', 'via-blood', 'to-blood',
+    'from-olive', 'via-olive', 'to-olive',
+    'from-antique', 'via-antique', 'to-antique',
+    'from-silver/20', 'from-blood/10', 'from-blood/25',
     // Opacity variants used in the project
     'bg-blood/20', 'bg-blood/30', 'ring-blood/40', 'ring-blood/50',
     'bg-olive/20', 'bg-olive/60', 'bg-olive/70', 'bg-olive/80',
