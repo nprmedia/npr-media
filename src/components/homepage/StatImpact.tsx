@@ -50,12 +50,12 @@ export default function StatImpact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="flex items-baseline gap-5 rounded-2xl p-5"
+              className="flex items-stretch gap-5 rounded-2xl bg-white/60 p-6 shadow-md hover:shadow-lg transition-all duration-300 ease-out"
             >
-              <span className="text-[clamp(2.5rem,6vw,4rem)] font-black text-blood bg-gradient-to-br from-blood/10 to-transparent px-3 py-1 ring-1 ring-blood/40 rounded-xl">
+              <span className="flex h-full flex-col justify-between text-[clamp(2.5rem,6vw,4rem)] font-black text-blood bg-gradient-to-br from-blood/10 to-transparent px-4 py-2 rounded-xl leading-none">
                 {stat.value}
               </span>
-              <div className="flex-1">
+              <div className="flex flex-col justify-between">
                 <p className="text-base text-charcoal leading-snug max-w-[36ch]">{stat.text}</p>
                 <Link
                   href={stat.href}
