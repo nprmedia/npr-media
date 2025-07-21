@@ -91,7 +91,7 @@ export default function ValuesCarousel({ className }: ValuesCarouselProps) {
   return (
     <div
       className={clsx(
-        'relative mx-auto h-screen max-w-md overflow-hidden bg-olive',
+        'relative mx-auto h-screen max-w-md overflow-hidden bg-offwhite',
         className,
       )}
     >

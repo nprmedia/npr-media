@@ -54,7 +54,7 @@ export default function AiCarousel({ className }: AiCarouselProps) {
 
   return (
     <div
-      className={clsx('relative h-screen overflow-hidden', className)}
+      className={clsx('relative h-screen overflow-hidden bg-offwhite', className)}
     >
       <div
         ref={containerRef}
