@@ -9,17 +9,17 @@ export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="bg-antique text-charcoal w-full border-t scroll-mt-[80px] overflow-x-hidden py-[clamp(5rem,10vw,8rem)]"
+      className="bg-offwhite text-charcoal w-full border-t scroll-mt-[80px] overflow-x-hidden py-[clamp(5rem,10vw,8rem)]"
     >
       <div className="container mx-auto box-border px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl space-y-4 text-center">
-          <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">
+          <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] text-crimson font-bold tracking-tight">
             Our Packages
           </h2>
-          <p className="text-silver text-[clamp(0.9rem,1.6vw,1.125rem)]">{pricing.headline}</p>
+          <p className="text-charcoal text-[clamp(0.9rem,1.6vw,1.125rem)]">{pricing.headline}</p>
         </div>
 
-        <div className="mx-auto mt-12 grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto mt-12 grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4 ">
           {pricing.tiers.map((tier, index) => (
             <motion.div
               key={tier.title}
@@ -27,7 +27,7 @@ export default function PricingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`border-silver bg-olive relative flex flex-col overflow-hidden rounded-2xl border p-6 ${tier.highlight ? 'ring-blood ring-2' : ''}`}
+              className={`border-blood bg-sepia relative flex flex-col overflow-hidden rounded-2xl border p-6 ${tier.highlight ? 'ring-blood ring-2' : ''}`}
             >
               {tier.highlight && (
                 <motion.div
@@ -37,12 +37,12 @@ export default function PricingSection() {
                 />
               )}
               <div className="flex items-baseline justify-between">
-                <h3 className="text-[clamp(1rem,1.8vw,1.25rem)] font-semibold">{tier.title}</h3>
-                <span className="text-charcoal text-[clamp(1rem,1.8vw,1.25rem)] font-bold">
+                <h3 className="text-umber text-[clamp(1rem,1.8vw,1.25rem)] font-semibold">{tier.title}</h3>
+                <span className="text-blood text-[clamp(1rem,1.8vw,1.25rem)] font-bold">
                   {tier.price}
                 </span>
               </div>
-              <p className="text-charcoal mt-1 text-[clamp(0.8rem,1.2vw,0.9rem)] italic">
+              <p className="text-olive mt-1 text-[clamp(0.8rem,1.2vw,0.9rem)] italic">
                 {tier.microcopy}
               </p>
               <p className="text-charcoal mt-2 text-[clamp(0.8rem,1.2vw,0.9rem)]">
@@ -50,8 +50,8 @@ export default function PricingSection() {
               </p>
               <ul className="text-charcoal mt-4 flex-1 space-y-1 text-[clamp(0.8rem,1.2vw,0.9rem)]">
                 {tier.features.map((feature, i) => (
-                  <li key={i} className={i === 0 ? 'text-silver font-semibold' : ''}>
-                    <span className="text-blood mr-1">{i === 0 ? '✅' : '✓'}</span>
+                  <li key={i} className={i === 0 ? 'text-crimson font-bold' : ''}>
+                    <span className="text-blood mr-1">{i === 0 ? '' : '✓'}</span>
                     {feature}
                   </li>
                 ))}

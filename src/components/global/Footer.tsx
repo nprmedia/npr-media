@@ -10,15 +10,6 @@ export default function Footer() {
       className="border-t bg-antique px-[clamp(1rem,4vw,3rem)] py-[clamp(2.5rem,6vw,4rem)] text-center text-[clamp(0.75rem,1vw,0.875rem)] text-charcoal"
     >
       <div className="mx-auto max-w-6xl space-y-8">
-        <div className="space-y-4">
-          <p className="text-lg font-semibold">Ready to discuss your project?</p>
-          <CTAButton
-            href="/webdev-landing"
-            event="cta-footer-get-started"
-          >
-            Get Started
-          </CTAButton>
-        </div>
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <p>&copy; {new Date().getFullYear()} NPR Media. All rights reserved.</p>
           <div className="flex gap-4">

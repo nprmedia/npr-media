@@ -14,7 +14,7 @@ export default function FinalCTA() {
       >
         Book Free Discovery Call
       </a>
-      <p className="mt-4 text-sm text-silver">No pressure. Just clarity and next steps.</p>
+      <p className="mt-4 text-sm text-charcoal">No pressure. Just clarity and next steps.</p>
     </section>
   );
 }

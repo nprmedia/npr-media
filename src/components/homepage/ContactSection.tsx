@@ -17,8 +17,8 @@ export default function ContactSection() {
         <div className="absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-blood opacity-20 blur-3xl" />
       </div>
       <div className="mx-auto max-w-2xl text-center space-y-6">
-        <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold">{title}</h2>
-        <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-silver">{subtitle}</p>
+        <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] text-blood font-bold">{title}</h2>
+        <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-charcoal">{subtitle}</p>
         <div className="pt-4">
           <Link
             href={cta.href}
@@ -29,7 +29,7 @@ export default function ContactSection() {
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <p className="text-sm text-silver">{trust}</p>
+        <p className="text-sm text-charcoal">{trust}</p>
         {urgency && <p className="text-xs font-medium text-blood">{urgency}</p>}
         <div className="pt-2">
           <Link

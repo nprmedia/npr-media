@@ -35,10 +35,10 @@ export default function StatImpact() {
   return (
     <section className="mt-[clamp(2rem,4vw,4rem)] font-grotesk">
       <div className="max-w-screen-md mx-auto px-3 md:px-5">
-        <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-center text-charcoal">
+        <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-center text-blood">
           Why Founders Invest in a Better Website
         </h2>
-        <p className="text-silver text-lg text-center max-w-prose mx-auto mt-2">
+        <p className="text-charcoal text-lg text-center max-w-prose mx-auto mt-2">
           Real businesses see dramatic growth after modernizing their online presence.
         </p>
 
