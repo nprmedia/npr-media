@@ -16,7 +16,7 @@ const points: Point[] = [
 
 export default function PainPoints() {
   return (
-    <section className="mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-24">
+    <section className="mx-auto max-w-7xl px-6 md:px-12 lg:px-20 py-24 bg-offwhite">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -34,7 +34,7 @@ export default function PainPoints() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="rounded-2xl bg-olive/60 p-6 text-center shadow-xl ring-1 ring-silver/20 backdrop-blur-md hover:shadow-2xl"
+            className="rounded-2xl bg-antique p-6 text-center shadow-xl ring-1 ring-antique/20 backdrop-blur-md hover:shadow-2xl"
           >
             <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blood/20 text-blood">
               {p.icon}

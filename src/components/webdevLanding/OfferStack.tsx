@@ -12,7 +12,7 @@ const items = [
 
 export default function OfferStack() {
   return (
-    <section className="bg-olive py-24">
+    <section className="bg-antique py-24">
       <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-20">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

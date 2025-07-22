@@ -37,37 +37,37 @@ export default function WhyNprPage() {
     <section>
       <StickyHeader />
       <main
-        className="relative w-full space-y-24 overflow-x-hidden bg-antique text-charcoal"
+        className="relative w-full overflow-x-hidden bg-offwhite text-charcoal"
         style={{ paddingTop: 'calc(var(--header-height) + 1rem)' }}
       >
         {/* SECTION 1: NPR Media vs AI */}
         <section
           id="vs-ai"
-          className="relative overflow-hidden bg-antique py-20 text-charcoal"
+          className="relative overflow-hidden bg-offwhite pt-20 text-charcoal"
         >
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute -top-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-br from-blood via-blood to-blood opacity-30 blur-3xl" />
           </div>
-          <div className="container mx-auto max-w-6xl space-y-12 px-4">
+          <div className="container mx-auto space-y-12">
             <div className="space-y-2 text-center">
-              <h1 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight">
+              <h1 className="text-[clamp(2rem,4vw,3rem)] text-blood font-bold tracking-tight">
                 Why Human Strategy Beats AI Guesswork
               </h1>
-              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-silver">
+              <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-charcoal">
                 AI can parse data but it can&rsquo;t read minds or context.
               </p>
-              <p className="mx-auto max-w-xl text-sm text-silver">
+              <p className="mx-auto max-w-xl text-sm text-charcoal">
                 Our strategists apply lived experience and own the results from concept to launch.
               </p>
             </div>
-            <div className="space-y-12">
+            <div className="space-y-12 bg">
               <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
                 <div className="space-y-2 pb-8 text-center md:pb-0 md:text-left">
-                  <h2 className="text-3xl font-bold sm:text-4xl">What AI Can’t Do</h2>
-                  <p className="text-sm text-silver">
+                  <h2 className="ml-20 mb-3 text-3xl text-olive underline decoration-2 underline-offset-3 font-extrabold sm:text-4xl">What AI Can’t Do</h2>
+                  <p className="ml-20 text-sm text-charcoal">
                     Where automation simply can&rsquo;t compete
                   </p>
-                  <div className="pt-2">
+                  <div className="ml-20 pt-2">
                     <a
                       href="/webdev-landing"
                       data-event="cta-social-proof"
@@ -86,9 +86,9 @@ export default function WhyNprPage() {
                   <AiCarousel />
                 </motion.div>
               </div>
-              <div className="space-y-1 text-center">
-                <h2 className="text-xl font-bold text-silver">Here&rsquo;s where we step in</h2>
-                <p className="text-sm text-silver">
+              <div className="p-8 bg-sepia space-y-1 text-center">
+                <h2 className="text-xl font-extrabold text-silver">Here&rsquo;s Where We Step In</h2>
+                <p className="text-sm text-charcoal">
                   Real humans refine the data and own the outcome.
                 </p>
                 <ScrollCue
@@ -97,9 +97,9 @@ export default function WhyNprPage() {
                 />
               </div>
               <div id="npr-delivers" className="md:grid md:grid-cols-2 md:items-center md:gap-8">
-                <div className="space-y-2 pb-8 text-center md:pb-0 md:text-left">
-                  <h2 className="text-3xl font-bold sm:text-4xl">How NPR Media Delivers</h2>
-                  <p className="text-sm text-silver">
+                <div className="ml-20 space-y-2 pb-8 text-center md:pb-0 md:text-left">
+                  <h2 className="mb-3 text-3xl text-olive underline decoration-2 underline-offset-3 font-extrabold sm:text-4xl">How NPR Media Delivers</h2>
+                  <p className="text-sm text-charcoal">
                     Hands-on strategy that actually moves the needle
                   </p>
                   <div className="pt-2">
@@ -122,60 +122,34 @@ export default function WhyNprPage() {
                 </motion.div>
               </div>
             </div>
-            <p className="mx-auto mt-6 max-w-xl text-center text-sm text-silver">
-              Leaving growth to algorithms only repeats old mistakes. We build every campaign
-              hands-on and measure success by your metrics.
-            </p>
-            <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-silver to-transparent" />
-            <div className="grid gap-6 md:grid-cols-2">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="rounded-xl bg-silver/10 p-6 text-silver shadow-lg"
-              >
-                <p className="font-semibold">“Client X wouldn’t exist if we used AI.”</p>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="rounded-xl bg-silver/10 p-6 text-silver shadow-lg"
-              >
-                <p className="font-semibold">
-                  “Our last launch doubled signups after a human-led overhaul.”
-                </p>
-              </motion.div>
+            <div className="p-10 bg-antique">        
+            <div className="text-center">
+            <h1 className="text-blood text-3xl font-extrabold">Founders Don’t Scale With Templates</h1>
+            <p className="text-charcoal">You need strategy, not scripts—and that’s what we deliver.</p>
             </div>
-            <p className="mt-6 text-center text-sm text-charcoal">
-              Skip the bloat and keep momentum with a senior crew measured on outcomes.
-            </p>
-            <hr className="my-16 h-px border-0 bg-gradient-to-r from-transparent via-silver to-transparent" />
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="relative mt-12 flex items-start justify-center rounded-xl bg-silver/5 p-6 text-silver shadow-lg md:p-8"
+              className="relative mt-12 flex items-start justify-center rounded-xl bg-offwhite p-6 text-charcoal shadow-lg md:p-8"
             >
               <div className="w-1/2 pr-4 text-sm">
                 <p className="mb-2 font-semibold">AI output</p>
-                <div className="rounded bg-olive p-3 text-silver">
-                  <TypingText text="10 tips for SEO…" />
+                <div className="rounded border-silver/30 bg-silver/10 p-3 text-charcoal shadow-inner">
+                  <TypingText text="Predictable, generic, context-blind, lacks emotional depth." />  
                 </div>
               </div>
-              <div className="absolute top-1/2 left-1/2 h-10 w-px -translate-y-1/2 transform  bg-silver/30" />
+              <div className="absolute top-1/2 left-1/2 h-10 w-px -translate-y-1/2 transform  bg-antique/30" />
               <div className="w-1/2 pl-4 text-sm">
-                <p className="mb-2 font-semibold">NPR Media approach</p>
+                <p className="mb-2 font-bold text-blood">NPR Media approach</p>
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className="rounded border border-silver/30 bg-silver/10 p-3 text-silver shadow-inner"
+                  className="rounded border border-antique/30 bg-antique/10 p-3 text-crimson shadow-inner"
                 >
-                  Bold hook → stat → CTA
+                  Strategic, emotional, brand-aligned, optimized to convert.
                 </motion.div>
               </div>
             </motion.div>
@@ -188,24 +162,20 @@ export default function WhyNprPage() {
                 Don’t get AI’d. Get outcomes.
               </a>
             </div>
-            <p className="mt-10 text-center text-sm font-semibold text-charcoal">
-              AI isn&rsquo;t your only risk. Bloated agencies drain budgets and momentum. Keep
-              scrolling to see how our lean team drives faster wins.
-            </p>
             <ScrollCue href="#vs-firms" className="mx-auto mt-4 text-blood" />
           </div>
+          </div>  
         </section>
-        <WaveDivider className="text-silver" />
 
         {/* SECTION 2: NPR Media vs Other Firms */}
-        <section id="vs-firms" className="relative overflow-hidden bg-olive py-20 text-charcoal">
+        <section id="vs-firms" className="relative overflow-hidden bg-offwhite py-20 text-charcoal">
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute right-1/2 bottom-0 h-96 w-96 translate-x-1/2 rounded-full bg-gradient-to-br from-blood via-blood to-blood opacity-30 blur-3xl" />
           </div>
           <div className="container mx-auto max-w-6xl space-y-12 px-4">
             <div className="md:grid md:grid-cols-2 md:items-center md:gap-8">
               <div className="space-y-4 text-center md:text-left">
-                <h1 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight">
+                <h1 className="text-[clamp(2rem,4vw,3rem)] text-blood font-bold tracking-tight">
                   Agency Bloat vs NPR Media
                 </h1>
                 <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] text-charcoal">
@@ -213,7 +183,7 @@ export default function WhyNprPage() {
                   While others bill hours, we deliver outcomes.
                 </p>
                 <p className="mx-auto max-w-xl text-sm text-charcoal md:mx-0">
-                  Large firms pad projects with juniors and endless steps. Our senior strike team
+                  Large firms pad projects with juniors and endless steps. Our team
                   ships fast and stands behind every metric.
                 </p>
               </div>
@@ -235,7 +205,7 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="space-y-2 rounded-xl bg-olive p-6 text-charcoal shadow-md"
+                className="space-y-2 rounded-xl bg-antique p-6 text-charcoal shadow-md"
               >
                 <p className="text-lg font-semibold">What other firms drag you through</p>
                 <p className="text-sm text-charcoal">Extras you don&rsquo;t actually need</p>
@@ -272,9 +242,9 @@ export default function WhyNprPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="space-y-2 rounded-xl bg-olive p-6 text-charcoal shadow-md"
+                className="space-y-2 rounded-xl bg-antique border p-6 text-charcoal shadow-md"
               >
-                <p className="text-lg font-semibold">How we keep projects moving</p>
+                <p className="text-lg text-blood font-bold underline decoration-1 underline-offset-5">How we keep projects moving</p>
                 <p className="text-sm text-charcoal">The NPR no-bloat process</p>
                 <div className="pt-2">
                   <a
@@ -304,14 +274,11 @@ export default function WhyNprPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-blood" />
-                    <span>Vercel-level hosting</span>
+                    <span>Weekly Condition   Audits</span>
                   </li>
                 </ul>
               </motion.div>
             </div>
-            <p className="mt-8 text-center text-sm font-semibold italic">
-              “94% of our clients switch from other firms—and never go back.”
-            </p>
             <div className="pt-8 text-center">
               <a
                 href="/webdev-landing"
@@ -324,7 +291,6 @@ export default function WhyNprPage() {
             <ScrollCue href="#footer" className="mx-auto mt-4 text-blood" />
           </div>
         </section>
-        <WaveDivider flip className="text-silver" />
       </main>
       <FinalCTA />
       <FooterSection />

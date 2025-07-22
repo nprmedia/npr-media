@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 export default function PricingPreview() {
   return (
-    <section className="py-24">
+    <section className="py-24 bg-offwhite">
       <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-20 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

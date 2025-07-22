@@ -43,7 +43,6 @@ export default function WebdevLandingPage() {
       <Hero {...content.hero} />
       <PainPoints />
       <OfferStack />
-      <Proof />
       <PricingPreview />
       <CTASection />
     </main>

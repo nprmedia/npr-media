@@ -94,7 +94,7 @@ export default function FirmCarousel() {
                     </div>
                     <ArrowRight className="mx-auto text-silver" />
                     <div>
-                      <p className="text-xs font-semibold text-charcoal">NPR Media</p>
+                      <p className="text-xs font-semibold text-crimson">NPR Media</p>
                       <p className="text-sm">{row.npr}</p>
                     </div>
                     <ArrowRight className="mx-auto text-silver" />

@@ -21,7 +21,7 @@ export default function MiniForm() {
     setTimeout(() => setSuccess(false), 2500)
   }
 
-  const baseInput = 'peer w-full rounded-md bg-olive/80 px-10 py-3 text-sm text-charcoal shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blood/40 placeholder-transparent'
+  const baseInput = 'peer w-full rounded-md bg-offwhite px-10 py-3 text-sm text-charcoal shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blood/40 placeholder-transparent'
   const iconBase = 'absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-silver pointer-events-none'
   const labelBase = 'pointer-events-none absolute left-10 top-1/2 -translate-y-1/2 text-sm text-silver transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-2 peer-focus:-translate-y-0 peer-focus:text-xs'
 
@@ -32,7 +32,7 @@ export default function MiniForm() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="space-y-4 rounded-2xl bg-olive/20 p-6 shadow-xl ring-1 ring-silver/20 backdrop-blur"
+      className="space-y-4 rounded-2xl bg-antique/20 p-6 shadow-xl ring-1 ring-silver/20 backdrop-blur"
     >
       <div className="relative">
         <User className={iconBase} />

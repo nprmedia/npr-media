@@ -24,7 +24,7 @@ export default function Hero({ headline, subheadline, cta }: HeroProps) {
       >
         <motion.h1
           variants={textVariants}
-          className="text-[clamp(2.5rem,6vw,4rem)] font-bold"
+          className="text-[clamp(2.5rem,6vw,4rem)] text-blood font-extrabold"
         >
           {headline}
         </motion.h1>
@@ -38,7 +38,7 @@ export default function Hero({ headline, subheadline, cta }: HeroProps) {
           variants={textVariants}
           href="#cta"
           data-event="webdev-scroll-trigger"
-          className="mt-8 inline-block rounded-full bg-olive px-6 py-3 font-semibold text-charcoal shadow-lg ring-1 ring-silver/20 transition hover:scale-105 hover:bg-olive"
+          className="mt-8 inline-block rounded-full bg-blood px-6 py-3 font-semibold text-charcoal shadow-lg ring-1 ring-silver/20 transition hover:scale-105 hover:bg-crimson"
         >
           {cta}
         </motion.a>
