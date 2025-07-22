@@ -32,19 +32,19 @@ export default function MiniForm() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="space-y-4 rounded-2xl bg-antique/20 p-6 shadow-xl ring-1 ring-silver/20 backdrop-blur"
+      className="mx-auto w-full max-w-md space-y-4 rounded-2xl bg-antique/20 p-6 shadow-xl ring-1 ring-silver/20 backdrop-blur"
     >
-      <div className="relative">
+      <div className="relative overflow-hidden">
         <User className={iconBase} />
         <input id="name" type="text" value={form.name} onChange={handleChange('name')} placeholder=" " required className={baseInput} />
         <label htmlFor="name" className={labelBase}>Full Name</label>
       </div>
-      <div className="relative">
+      <div className="relative overflow-hidden">
         <Mail className={iconBase} />
         <input id="email" type="email" value={form.email} onChange={handleChange('email')} placeholder=" " required className={baseInput} />
         <label htmlFor="email" className={labelBase}>Work Email</label>
       </div>
-      <div className="relative">
+      <div className="relative overflow-hidden">
         <DollarSign className={iconBase} />
         <select id="budget" value={form.budget} onChange={handleChange('budget')} required className={`${baseInput} appearance-none pr-8`}> 
           <option value="" disabled hidden />
@@ -55,7 +55,7 @@ export default function MiniForm() {
         </select>
         <label htmlFor="budget" className={labelBase}>Budget</label>
       </div>
-      <div className="relative">
+      <div className="relative overflow-hidden">
         <MessageSquareText className={iconBase} />
         <textarea id="summary" rows={3} value={form.summary} onChange={handleChange('summary')} placeholder=" " required className={`${baseInput} resize-none`} />
         <label htmlFor="summary" className={labelBase}>Project Summary</label>
