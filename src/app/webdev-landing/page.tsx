@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import Hero from '@/components/webdevLanding/Hero'
 import PainPoints from '@/components/webdevLanding/PainPoints'
 import OfferStack from '@/components/webdevLanding/OfferStack'
-import Proof from '@/components/webdevLanding/Proof'
 import PricingPreview from '@/components/webdevLanding/PricingPreview'
 import CTASection from '@/components/webdevLanding/CTASection'
 

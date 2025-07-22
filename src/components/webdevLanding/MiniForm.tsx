@@ -21,7 +21,7 @@ export default function MiniForm() {
     setTimeout(() => setSuccess(false), 2500)
   }
 
-  const baseInput = 'peer w-full rounded-md bg-offwhite px-10 py-3 text-sm text-charcoal shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blood/40 placeholder-transparent'
+  const baseInput = 'peer w-full rounded-md bg-offwhite px-10 py-3 text-sm text-charcoal shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blood/40 focus-visible:ring-inset placeholder-transparent'
   const iconBase = 'absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-silver pointer-events-none'
   const labelBase = 'pointer-events-none absolute left-10 top-1/2 -translate-y-1/2 text-sm text-silver transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-2 peer-focus:-translate-y-0 peer-focus:text-xs'
 
@@ -34,17 +34,17 @@ export default function MiniForm() {
       transition={{ duration: 0.6, delay: 0.2 }}
       className="mx-auto w-full max-w-md space-y-4 rounded-2xl bg-antique/20 p-6 shadow-xl ring-1 ring-silver/20 backdrop-blur"
     >
-      <div className="relative overflow-hidden">
+      <div className="relative">
         <User className={iconBase} />
         <input id="name" type="text" value={form.name} onChange={handleChange('name')} placeholder=" " required className={baseInput} />
         <label htmlFor="name" className={labelBase}>Full Name</label>
       </div>
-      <div className="relative overflow-hidden">
+      <div className="relative">
         <Mail className={iconBase} />
         <input id="email" type="email" value={form.email} onChange={handleChange('email')} placeholder=" " required className={baseInput} />
         <label htmlFor="email" className={labelBase}>Work Email</label>
       </div>
-      <div className="relative overflow-hidden">
+      <div className="relative">
         <DollarSign className={iconBase} />
         <select id="budget" value={form.budget} onChange={handleChange('budget')} required className={`${baseInput} appearance-none pr-8`}> 
           <option value="" disabled hidden />
@@ -55,7 +55,7 @@ export default function MiniForm() {
         </select>
         <label htmlFor="budget" className={labelBase}>Budget</label>
       </div>
-      <div className="relative overflow-hidden">
+      <div className="relative">
         <MessageSquareText className={iconBase} />
         <textarea id="summary" rows={3} value={form.summary} onChange={handleChange('summary')} placeholder=" " required className={`${baseInput} resize-none`} />
         <label htmlFor="summary" className={labelBase}>Project Summary</label>
