@@ -47,15 +47,15 @@ export default function NprCarousel() {
   }, [index])
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative h-screen w-full overflow-hidden">
       <div
         ref={containerRef}
-        className="flex h-full snap-x snap-mandatory overflow-x-scroll scroll-smooth no-scrollbar"
+        className="flex h-full w-full snap-x snap-mandatory overflow-x-scroll scroll-smooth no-scrollbar"
       >
         {slides.map((title) => (
           <section
             key={title}
-            className="flex min-h-screen min-w-full items-center justify-center snap-center"
+            className="flex h-full w-full flex-shrink-0 items-center justify-center snap-center"
           >
             <AnimatePresence mode="wait" initial={false}>
               {index === slides.indexOf(title) && (
@@ -80,7 +80,7 @@ export default function NprCarousel() {
         ))}
       </div>
       <ChevronRight
-        className="pointer-events-none absolute right-2 top-1/2 h-8 w-8 -translate-y-1/2 animate-bounce text-blood"
+        className="pointer-events-none absolute right-4 lg:right-6 top-1/2 h-8 w-8 -translate-y-1/2 animate-bounce text-blood"
       />
     </div>
   )

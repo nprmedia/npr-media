@@ -95,7 +95,7 @@ export default function WhyNprPage() {
                   className="mx-auto mt-2 text-blood"
                 />
               </div>
-              <div id="npr-delivers" className="md:grid md:grid-cols-2 md:items-center md:gap-8">
+              <div id="npr-delivers" className="md:grid md:grid-cols-2 md:items-center md:gap-8 overflow-hidden">
                 <div className="ml-20 space-y-2 pb-8 text-center md:pb-0 md:text-left">
                   <h2 className="mb-3 text-3xl text-olive underline decoration-2 underline-offset-3 font-extrabold sm:text-4xl">How NPR Media Delivers</h2>
                   <p className="text-sm text-charcoal">
