@@ -3,7 +3,6 @@
 import StickyHeader from '@/components/global/Header';
 import FooterSection from '@/components/global/Footer';
 import ScrollCue from '@/components/global/ScrollCue';
-import WaveDivider from '@/components/whyNpr/WaveDivider';
 import AiCarousel from '@/components/whyNpr/AiCarousel';
 import NprCarousel from '@/components/whyNpr/NprCarousel';
 import FirmCarousel from '@/components/whyNpr/FirmCarousel';

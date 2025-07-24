@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import MiniForm from './MiniForm'
+import Script from 'next/script'
 
 export default function CTASection() {
   return (
@@ -15,15 +15,18 @@ export default function CTASection() {
         >
           <h2 className="text-[clamp(2rem,5vw,3rem)] font-bold">Get Your Free Strategy Mockup</h2>
           <p className="text-[clamp(1rem,2vw,1.25rem)]">Share your goals and we’ll map a high-converting website approach—free.</p>
-          <ul className="list-disc pl-5 text-sm marker:text-charcoal">
+          <ul className="list-disc space-y-1 break-words pl-5 text-sm marker:text-charcoal">
             <li>Actionable page-level insights</li>
             <li>Senior dev & design expertise</li>
             <li>100% obligation-free</li>
           </ul>
           <p className="text-sm text-silver">Prefer to schedule a call? <a href="https://calendly.com" target="_blank" className="underline">Book via Calendly</a></p>
         </motion.div>
-        <MiniForm />
+        <div className="flex justify-center">
+          <div data-tf-live="01JDBMAWY182BBSEK9R58DW9HV" className="w-full max-w-md" />
+        </div>
       </div>
+      <Script src="//embed.typeform.com/next/embed.js" />
     </section>
   )
 }
