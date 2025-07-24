@@ -18,6 +18,16 @@ export default function NprCarousel() {
   const isMoving = useRef(false)
   const deltaRef = useRef(0)
 
+  const scrollToIndex = (i: number) => {
+    const container = containerRef.current
+    if (!container) return
+    const target = container.children[i] as HTMLElement
+    container.scrollTo({
+      left: target.offsetLeft,
+      behavior: 'smooth',
+    })
+  }
+
   useEffect(() => {
     const container = containerRef.current
     if (!container) return
@@ -34,8 +44,7 @@ export default function NprCarousel() {
       if (next === index) return
       isMoving.current = true
       setIndex(next)
-      const child = container.children[next] as HTMLElement
-      child.scrollIntoView({ behavior: 'smooth', inline: 'start' })
+      scrollToIndex(next)
       setTimeout(() => {
         isMoving.current = false
       }, 750)
@@ -54,7 +63,7 @@ export default function NprCarousel() {
           {slides.map((title, i) => (
             <section
               key={title}
-              className="flex w-full min-h-screen items-center justify-start snap-start px-4 lg:px-0"
+              className="flex min-h-screen w-[100vw] max-w-screen-xl items-center justify-start snap-start px-4 lg:px-0"
             >
               <AnimatePresence mode="wait" initial={false}>
                 {index === i && (
@@ -64,7 +73,7 @@ export default function NprCarousel() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -30 }}
                     transition={{ duration: 0.5 }}
-                    className="w-full max-w-md space-y-4 rounded-xl border border-silver/20 bg-gradient-to-br from-blood via-blood to-blood p-6 text-center text-charcoal shadow-2xl"
+                    className="w-[90%] max-w-md space-y-4 rounded-xl border border-silver/20 bg-gradient-to-br from-blood via-blood to-blood p-6 text-center text-charcoal shadow-2xl"
                   >
                     <h2 className="text-2xl font-bold">{title}</h2>
                     <ul className="list-disc space-y-1 pl-5 text-left text-sm">
