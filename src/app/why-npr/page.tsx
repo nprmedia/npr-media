@@ -95,8 +95,8 @@ export default function WhyNprPage() {
                   className="mx-auto mt-2 text-blood"
                 />
               </div>
-              <div id="npr-delivers" className="md:grid md:grid-cols-2 md:items-center md:gap-8">
-                <div className="ml-20 space-y-2 pb-8 text-center md:pb-0 md:text-left">
+              <div id="npr-delivers" className="grid grid-cols-12 items-center gap-x-6">
+                <div className="col-span-12 lg:col-span-6 space-y-2 pb-8 text-center lg:pb-0 lg:text-right lg:pr-8">
                   <h2 className="mb-3 text-3xl text-olive underline decoration-2 underline-offset-3 font-extrabold sm:text-4xl">How NPR Media Delivers</h2>
                   <p className="text-sm text-charcoal">
                     Hands-on strategy that actually moves the needle
@@ -112,6 +112,7 @@ export default function WhyNprPage() {
                   </div>
                 </div>
                 <motion.div
+                  className="col-span-12 lg:col-span-6 lg:pl-8"
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

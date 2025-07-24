@@ -80,7 +80,7 @@ export default function NprCarousel() {
         ))}
       </div>
       <ChevronRight
-        className="pointer-events-none absolute right-2 top-1/2 h-8 w-8 -translate-y-1/2 animate-bounce text-blood"
+        className="pointer-events-none absolute right-4 lg:right-6 top-1/2 h-8 w-8 -translate-y-1/2 animate-bounce text-blood"
       />
     </div>
   )
