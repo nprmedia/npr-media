@@ -9,7 +9,7 @@ const slides = [
   'Behavioral conversion engineering',
   'Custom UX psychology per vertical',
   'Thought partner on growth',
-  'Senior-level oversight\u2014not prompts',
+  'Senior-level oversight—not prompts',
 ]
 
 export default function NprCarousel() {
@@ -23,9 +23,7 @@ export default function NprCarousel() {
     if (!container) return
     const threshold = 120
     const onWheel = (e: WheelEvent) => {
-      if (index === slides.length - 1 && e.deltaY > 0) {
-        return
-      }
+      if (index === slides.length - 1 && e.deltaY > 0) return
       e.preventDefault()
       if (isMoving.current) return
       deltaRef.current += e.deltaY + e.deltaX
@@ -48,40 +46,42 @@ export default function NprCarousel() {
 
   return (
     <div className="relative h-screen overflow-hidden">
-      <div
-        ref={containerRef}
-        className="flex h-full snap-x snap-mandatory overflow-x-scroll scroll-smooth no-scrollbar"
-      >
-        {slides.map((title) => (
-          <section
-            key={title}
-            className="flex min-h-screen min-w-full items-center justify-center snap-center"
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              {index === slides.indexOf(title) && (
-                <motion.div
-                  key={title}
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -30 }}
-                  transition={{ duration: 0.5 }}
-                  className="mx-auto w-[clamp(16rem,40vw,22rem)] space-y-4 rounded-xl border border-silver/20 bg-gradient-to-br from-blood via-blood to-blood p-6 text-center text-charcoal shadow-2xl"
-                >
-                  <h2 className="text-2xl font-bold">{title}</h2>
-                  <ul className="list-disc space-y-1 pl-5 text-left text-sm">
-                    <li>Subpoint 1</li>
-                    <li>Subpoint 2</li>
-                    <li>Subpoint 3</li>
-                  </ul>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </section>
-        ))}
+      <div className="max-w-screen-xl mx-auto h-full">
+        <div
+          ref={containerRef}
+          className="flex h-full snap-x snap-mandatory overflow-x-scroll scroll-smooth no-scrollbar"
+        >
+          {slides.map((title, i) => (
+            <section
+              key={title}
+              className="flex w-full min-h-screen items-center justify-center snap-center px-4 lg:px-0"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {index === i && (
+                  <motion.div
+                    key={title}
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -30 }}
+                    transition={{ duration: 0.5 }}
+                    className="w-full max-w-md space-y-4 rounded-xl border border-silver/20 bg-gradient-to-br from-blood via-blood to-blood p-6 text-center text-charcoal shadow-2xl"
+                  >
+                    <h2 className="text-2xl font-bold">{title}</h2>
+                    <ul className="list-disc space-y-1 pl-5 text-left text-sm">
+                      <li>Subpoint 1</li>
+                      <li>Subpoint 2</li>
+                      <li>Subpoint 3</li>
+                    </ul>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </section>
+          ))}
+        </div>
+        <ChevronRight
+          className="pointer-events-none absolute right-6 top-1/2 h-8 w-8 -translate-y-1/2 animate-bounce text-blood"
+        />
       </div>
-      <ChevronRight
-        className="pointer-events-none absolute right-2 top-1/2 h-8 w-8 -translate-y-1/2 animate-bounce text-blood"
-      />
     </div>
   )
 }
