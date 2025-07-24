@@ -11,11 +11,7 @@ export default function MiniForm() {
       transition={{ duration: 0.6, delay: 0.2 }}
       className="mx-auto box-border w-full max-w-md"
     >
-      <div
-        data-tf-live="01JDBMAWY182BBSEK9R58DW9HV"
-        data-tf-width="40%"
-        data-tf-transparency="100"
-      />
+      <div data-tf-live="01JDBMAWY182BBSEK9R58DW9HV" />
       <Script src="//embed.typeform.com/next/embed.js" />
     </motion.div>
   )
