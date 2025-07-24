@@ -32,7 +32,7 @@ export default function NprCarousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((i) => (i + 1) % slides.length)
-    }, 7000) // slightly longer if user may click
+    }, 7000)
     return () => clearInterval(interval)
   }, [])
 
@@ -42,18 +42,7 @@ export default function NprCarousel() {
 
   return (
     <section className="relative py-24">
-      <div className="mx-auto grid max-w-screen-xl grid-cols-1 gap-12 px-4 md:grid-cols-2 md:items-center lg:gap-24">
-        {/* Left Heading Block */}
-        <div>
-          <h2 className="text-4xl font-bold tracking-tight text-charcoal">
-            How NPR Media Delivers
-          </h2>
-          <p className="mt-4 text-lg text-muted">
-            Psychology-driven, senior-built, and engineered for traction. No shortcuts. No fluff.
-          </p>
-        </div>
-
-        {/* Right Animated Card — Clickable */}
+      <div className="mx-auto max-w-screen-xl px-4">
         <div className="relative h-[280px] cursor-pointer" onClick={handleManualAdvance}>
           <AnimatePresence mode="wait">
             <motion.div
@@ -62,7 +51,7 @@ export default function NprCarousel() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.5 }}
-              className="absolute inset-0 w-full max-w-md rounded-xl border border-silver/20 bg-gradient-to-br from-blood via-blood to-blood p-6 text-charcoal shadow-2xl"
+              className="absolute inset-0 w-full max-w-md mx-auto rounded-xl border border-silver/20 bg-gradient-to-br from-blood via-blood to-blood p-6 text-charcoal shadow-2xl"
             >
               <h3 className="text-2xl font-bold text-white">{slides[index].title}</h3>
               <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-white/90">
