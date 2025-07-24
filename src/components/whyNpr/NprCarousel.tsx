@@ -54,7 +54,7 @@ export default function NprCarousel() {
           {slides.map((title, i) => (
             <section
               key={title}
-              className="flex w-full min-h-screen items-center justify-center snap-center px-4 lg:px-0"
+              className="flex w-full min-h-screen items-center justify-start snap-start px-4 lg:px-0"
             >
               <AnimatePresence mode="wait" initial={false}>
                 {index === i && (
