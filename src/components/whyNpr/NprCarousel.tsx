@@ -47,7 +47,7 @@ export default function NprCarousel() {
   }, [index])
 
   return (
-    <div className="relative h-screen w-full overflow-hidden">
+    <div className="relative h-screen w-full overflow-hidden ml-20">
       <div
         ref={containerRef}
         className="flex h-full w-full snap-x snap-mandatory overflow-x-scroll scroll-smooth no-scrollbar"
@@ -55,7 +55,7 @@ export default function NprCarousel() {
         {slides.map((title) => (
           <section
             key={title}
-            className="flex h-full w-full flex-shrink-0 items-center justify-center snap-center"
+            className="flex h-full w-full flex-shrink-0 items-center justify-start snap-center"
           >
             <AnimatePresence mode="wait" initial={false}>
               {index === slides.indexOf(title) && (
