@@ -47,7 +47,7 @@ export default function NprCarousel() {
   }, [index])
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative mx-auto h-screen w-[clamp(16rem,40vw,22rem)] overflow-hidden">
       <div
         ref={containerRef}
         className="flex h-full snap-x snap-mandatory overflow-x-scroll scroll-smooth no-scrollbar"
