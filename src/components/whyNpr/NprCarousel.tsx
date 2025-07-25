@@ -30,6 +30,8 @@ export default function NprCarousel() {
   const [index, setIndex] = useState(0)
   const isScrolling = useRef(false)
   const touchStartY = useRef<number | null>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const hovering = useRef(false)
 
   const nextSlide = () => {
     setIndex((i) => (i + 1) % slides.length)
@@ -37,6 +39,8 @@ export default function NprCarousel() {
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
+      if (!hovering.current) return
+      e.preventDefault()
       if (isScrolling.current) return
       if (e.deltaY > 30) {
         isScrolling.current = true
@@ -48,11 +52,12 @@ export default function NprCarousel() {
     }
 
     const handleTouchStart = (e: TouchEvent) => {
+      if (!hovering.current) return
       touchStartY.current = e.touches[0].clientY
     }
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (touchStartY.current === null || isScrolling.current) return
+      if (!hovering.current || touchStartY.current === null || isScrolling.current) return
       const deltaY = touchStartY.current - e.touches[0].clientY
       if (deltaY > 40) {
         isScrolling.current = true
@@ -64,19 +69,34 @@ export default function NprCarousel() {
       }
     }
 
-    const el = document.getElementById('npr-scroll-card')
-    if (el) {
-      el.addEventListener('wheel', handleWheel, { passive: false })
-      el.addEventListener('touchstart', handleTouchStart, { passive: true })
-      el.addEventListener('touchmove', handleTouchMove, { passive: true })
+    const handleMouseEnter = () => {
+      hovering.current = true
+      document.body.style.overflow = 'hidden'
+    }
+
+    const handleMouseLeave = () => {
+      hovering.current = false
+      document.body.style.overflow = ''
+    }
+
+    const container = containerRef.current
+    if (container) {
+      container.addEventListener('mouseenter', handleMouseEnter)
+      container.addEventListener('mouseleave', handleMouseLeave)
+      container.addEventListener('wheel', handleWheel, { passive: false })
+      container.addEventListener('touchstart', handleTouchStart, { passive: true })
+      container.addEventListener('touchmove', handleTouchMove, { passive: true })
     }
 
     return () => {
-      if (el) {
-        el.removeEventListener('wheel', handleWheel)
-        el.removeEventListener('touchstart', handleTouchStart)
-        el.removeEventListener('touchmove', handleTouchMove)
+      if (container) {
+        container.removeEventListener('mouseenter', handleMouseEnter)
+        container.removeEventListener('mouseleave', handleMouseLeave)
+        container.removeEventListener('wheel', handleWheel)
+        container.removeEventListener('touchstart', handleTouchStart)
+        container.removeEventListener('touchmove', handleTouchMove)
       }
+      document.body.style.overflow = ''
     }
   }, [])
 
@@ -84,7 +104,7 @@ export default function NprCarousel() {
     <section className="relative py-24">
       <div className="mx-auto max-w-screen-xl px-4">
         <div
-          id="npr-scroll-card"
+          ref={containerRef}
           className="relative h-[300px] overflow-hidden"
         >
           <AnimatePresence mode="wait">
