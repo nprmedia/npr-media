@@ -1,7 +1,7 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const slides = [
   {
@@ -28,24 +28,64 @@ const slides = [
 
 export default function NprCarousel() {
   const [index, setIndex] = useState(0)
+  const isScrolling = useRef(false)
+  const touchStartY = useRef<number | null>(null)
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((i) => (i + 1) % slides.length)
-    }, 7000)
-    return () => clearInterval(interval)
-  }, [])
-
-  const handleManualAdvance = () => {
+  const nextSlide = () => {
     setIndex((i) => (i + 1) % slides.length)
   }
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (isScrolling.current) return
+      if (e.deltaY > 30) {
+        isScrolling.current = true
+        nextSlide()
+        setTimeout(() => {
+          isScrolling.current = false
+        }, 800)
+      }
+    }
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY.current = e.touches[0].clientY
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (touchStartY.current === null || isScrolling.current) return
+      const deltaY = touchStartY.current - e.touches[0].clientY
+      if (deltaY > 40) {
+        isScrolling.current = true
+        nextSlide()
+        touchStartY.current = null
+        setTimeout(() => {
+          isScrolling.current = false
+        }, 800)
+      }
+    }
+
+    const el = document.getElementById('npr-scroll-card')
+    if (el) {
+      el.addEventListener('wheel', handleWheel, { passive: false })
+      el.addEventListener('touchstart', handleTouchStart, { passive: true })
+      el.addEventListener('touchmove', handleTouchMove, { passive: true })
+    }
+
+    return () => {
+      if (el) {
+        el.removeEventListener('wheel', handleWheel)
+        el.removeEventListener('touchstart', handleTouchStart)
+        el.removeEventListener('touchmove', handleTouchMove)
+      }
+    }
+  }, [])
 
   return (
     <section className="relative py-24">
       <div className="mx-auto max-w-screen-xl px-4">
         <div
-          className="relative h-[300px] cursor-pointer group"
-          onClick={handleManualAdvance}
+          id="npr-scroll-card"
+          className="relative h-[300px] overflow-hidden"
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -57,7 +97,7 @@ export default function NprCarousel() {
                 duration: 0.5,
                 ease: [0.25, 0.8, 0.25, 1],
               }}
-              className="absolute inset-0 w-full max-w-md mx-auto rounded-xl border border-silver/20 bg-gradient-to-br from-blood via-blood to-blood p-6 text-charcoal shadow-2xl"
+              className="absolute inset-0 w-full max-w-md mx-auto rounded-xl border border-silver/20 bg-gradient-to-br from-blood via-blood to-blood p-6 text-charcoal shadow-2xl select-none"
             >
               <h3 className="text-2xl font-bold text-white">{slides[index].title}</h3>
               <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-white/90">
@@ -65,43 +105,10 @@ export default function NprCarousel() {
                   <li key={i}>{b}</li>
                 ))}
               </ul>
-
-              {/* Motion cue (right arrow animation) */}
-              <div className="absolute bottom-4 right-4 flex items-center gap-1 opacity-50 transition-opacity group-hover:opacity-100">
-                <div className="h-1 w-5 bg-white rounded-full animate-slide-right" />
-                <div className="h-1 w-2 bg-white rounded-full animate-slide-right-delay" />
-              </div>
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
-
-      {/* Custom animation keyframes (in globals.css or injected via Tailwind plugin if supported) */}
-      <style jsx>{`
-        @keyframes slideRight {
-          0% {
-            transform: translateX(0);
-            opacity: 0.3;
-          }
-          50% {
-            transform: translateX(6px);
-            opacity: 1;
-          }
-          100% {
-            transform: translateX(0);
-            opacity: 0.3;
-          }
-        }
-
-        .animate-slide-right {
-          animation: slideRight 1.4s infinite ease-in-out;
-        }
-
-        .animate-slide-right-delay {
-          animation: slideRight 1.4s infinite ease-in-out;
-          animation-delay: 0.2s;
-        }
-      `}</style>
     </section>
   )
 }
