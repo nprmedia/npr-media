@@ -30,8 +30,8 @@ export default function NprCarousel() {
   const [index, setIndex] = useState(0)
   const isScrolling = useRef(false)
   const touchStartY = useRef<number | null>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
   const hovering = useRef(false)
+  const scrollZoneRef = useRef<HTMLDivElement>(null)
 
   const nextSlide = () => {
     setIndex((i) => (i + 1) % slides.length)
@@ -79,22 +79,22 @@ export default function NprCarousel() {
       document.body.style.overflow = ''
     }
 
-    const container = containerRef.current
-    if (container) {
-      container.addEventListener('mouseenter', handleMouseEnter)
-      container.addEventListener('mouseleave', handleMouseLeave)
-      container.addEventListener('wheel', handleWheel, { passive: false })
-      container.addEventListener('touchstart', handleTouchStart, { passive: true })
-      container.addEventListener('touchmove', handleTouchMove, { passive: true })
+    const zone = scrollZoneRef.current
+    if (zone) {
+      zone.addEventListener('mouseenter', handleMouseEnter)
+      zone.addEventListener('mouseleave', handleMouseLeave)
+      zone.addEventListener('wheel', handleWheel, { passive: false })
+      zone.addEventListener('touchstart', handleTouchStart, { passive: true })
+      zone.addEventListener('touchmove', handleTouchMove, { passive: true })
     }
 
     return () => {
-      if (container) {
-        container.removeEventListener('mouseenter', handleMouseEnter)
-        container.removeEventListener('mouseleave', handleMouseLeave)
-        container.removeEventListener('wheel', handleWheel)
-        container.removeEventListener('touchstart', handleTouchStart)
-        container.removeEventListener('touchmove', handleTouchMove)
+      if (zone) {
+        zone.removeEventListener('mouseenter', handleMouseEnter)
+        zone.removeEventListener('mouseleave', handleMouseLeave)
+        zone.removeEventListener('wheel', handleWheel)
+        zone.removeEventListener('touchstart', handleTouchStart)
+        zone.removeEventListener('touchmove', handleTouchMove)
       }
       document.body.style.overflow = ''
     }
@@ -103,9 +103,10 @@ export default function NprCarousel() {
   return (
     <section className="relative py-24">
       <div className="mx-auto max-w-screen-xl px-4">
+        {/* Scroll zone is wider and taller than card */}
         <div
-          ref={containerRef}
-          className="relative h-[300px] overflow-hidden"
+          ref={scrollZoneRef}
+          className="relative mx-auto flex h-[360px] max-w-3xl items-center justify-center rounded-2xl px-6 transition-shadow hover:shadow-xl"
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -117,7 +118,7 @@ export default function NprCarousel() {
                 duration: 0.5,
                 ease: [0.25, 0.8, 0.25, 1],
               }}
-              className="absolute inset-0 w-full max-w-md mx-auto rounded-xl border border-silver/20 bg-gradient-to-br from-blood via-blood to-blood p-6 text-charcoal shadow-2xl select-none"
+              className="w-full max-w-md rounded-xl border border-silver/20 bg-gradient-to-br from-blood via-blood to-blood p-6 text-charcoal shadow-2xl select-none"
             >
               <h3 className="text-2xl font-bold text-white">{slides[index].title}</h3>
               <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-white/90">
