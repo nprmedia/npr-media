@@ -105,7 +105,7 @@ export default function NprCarousel() {
       <div className="mx-auto max-w-screen-xl px-4">
         <div
           ref={scrollZoneRef}
-          className="relative mx-auto h-[360px] max-w-3xl"
+          className="relative mx-auto max-w-3xl py-6"
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -117,7 +117,7 @@ export default function NprCarousel() {
                 duration: 0.5,
                 ease: [0.25, 0.8, 0.25, 1],
               }}
-              className="absolute inset-0 w-full max-w-md mx-auto rounded-xl border border-silver/20 bg-gradient-to-br from-blood via-blood to-blood p-6 text-charcoal shadow-2xl select-none"
+              className="relative w-full max-w-md mx-auto rounded-xl border border-silver/20 bg-gradient-to-br from-blood via-blood to-blood p-6 text-charcoal shadow-2xl select-none"
             >
               <h3 className="text-2xl font-bold text-white">{slides[index].title}</h3>
               <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-white/90">
