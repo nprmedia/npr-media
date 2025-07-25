@@ -50,7 +50,7 @@ export default function StatImpact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="flex items-baseline gap-2 rounded-xl bg-white/60 p-3 shadow-md hover:shadow-lg transition-all duration-300 ease-out"
+              className="flex items-start gap-2 rounded-xl bg-white/60 p-3 shadow-md hover:shadow-lg transition-all duration-300 ease-out"
             >
               <span className="text-[clamp(2.5rem,6vw,4rem)] font-black text-blood bg-gradient-to-br from-blood/10 to-transparent px-2 py-0.5 rounded-xl">
                 {stat.value}
