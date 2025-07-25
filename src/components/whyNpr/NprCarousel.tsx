@@ -103,10 +103,9 @@ export default function NprCarousel() {
   return (
     <section className="relative py-24">
       <div className="mx-auto max-w-screen-xl px-4">
-        {/* Scroll zone is wider and taller than card */}
         <div
           ref={scrollZoneRef}
-          className="relative mx-auto flex h-[360px] max-w-3xl items-center justify-center rounded-2xl px-6 transition-shadow hover:shadow-xl"
+          className="relative mx-auto h-[360px] max-w-3xl"
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -118,7 +117,7 @@ export default function NprCarousel() {
                 duration: 0.5,
                 ease: [0.25, 0.8, 0.25, 1],
               }}
-              className="w-full max-w-md rounded-xl border border-silver/20 bg-gradient-to-br from-blood via-blood to-blood p-6 text-charcoal shadow-2xl select-none"
+              className="absolute inset-0 w-full max-w-md mx-auto rounded-xl border border-silver/20 bg-gradient-to-br from-blood via-blood to-blood p-6 text-charcoal shadow-2xl select-none"
             >
               <h3 className="text-2xl font-bold text-white">{slides[index].title}</h3>
               <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-white/90">
