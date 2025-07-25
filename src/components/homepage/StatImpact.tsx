@@ -33,7 +33,7 @@ const stats: StatItem[] = [
 
 export default function StatImpact() {
   return (
-    <section className="mt-[clamp(2rem,4vw,4rem)] font-grotesk">
+    <section className="mt-[clamp(2rem,4vw,4rem)] pb-[clamp(2rem,4vw,4rem)] font-grotesk">
       <div className="max-w-screen-md mx-auto px-3 md:px-5">
         <h2 className="text-[clamp(2rem,4vw,3rem)] font-black text-center text-blood">
           Why Founders Invest in a Better Website
