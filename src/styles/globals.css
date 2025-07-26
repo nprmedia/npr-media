@@ -42,6 +42,10 @@
   --color-blood-rgb: 161 2 4;
   --color-crimson: #7a0000;
   --color-crimson-rgb: 122 0 0;
+  --color-muted-text: #4C4C4C;
+  --color-muted-text-rgb: 76 76 76;
+  --color-border-gray: #E4E0D9;
+  --color-border-gray-rgb: 228 224 217;
 
   /* Semantic Mappings */
   --color-bg-primary: var(--color-antique);
@@ -67,6 +71,18 @@ body {
   padding: 0;
   overflow-x: hidden;
   padding-bottom: env(safe-area-inset-bottom);
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(rgba(28, 28, 28, 0.05) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.06;
 }
 
 
@@ -149,9 +165,25 @@ img {
   .bg-charcoal { background-color: rgb(var(--color-charcoal-rgb)); }
   .text-charcoal { color: rgb(var(--color-charcoal-rgb)); }
   .bg-blood { background-color: rgb(var(--color-blood-rgb)); }
-  .text-blood { color: rgb(var(--color-blood-rgb)); }
+  .text-blood {
+    background-image: linear-gradient(to bottom, #A10204, #870003);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-blood-glow {
+    background-image: linear-gradient(to bottom, #A10204, #870003);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 1px 4px rgba(161, 2, 4, 0.45);
+  }
   .bg-crimson { background-color: rgb(var(--color-crimson-rgb)); }
   .text-crimson { color: rgb(var(--color-crimson-rgb)); }
+  .text-muted-text { color: rgb(var(--color-muted-text-rgb)); }
+  .bg-border-gray { background-color: rgb(var(--color-border-gray-rgb)); }
+  .text-border-gray { color: rgb(var(--color-border-gray-rgb)); }
+  .border-border-gray { border-color: rgb(var(--color-border-gray-rgb)); }
   /* Opacity variants */
   .bg-blood\/20 { background-color: rgb(var(--color-blood-rgb) / 0.2); }
   .bg-blood\/30 { background-color: rgb(var(--color-blood-rgb) / 0.3); }
@@ -290,13 +322,11 @@ img {
 
 /* Utilities for the hero reveal effect */
 .clip-reveal-hidden {
-  /* Start collapsed on the left side */
-  clip-path: inset(0 100% 0 0);
+  clip-path: polygon(0 100%, 100% 0, 100% 0, 0 100%);
 }
 
 .clip-reveal-full {
-  /* Expand horizontally to reveal the full section */
-  clip-path: inset(0 0 0 0);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
 @keyframes glow-pulse {
