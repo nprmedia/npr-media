@@ -291,12 +291,12 @@ img {
 /* Utilities for the hero reveal effect */
 .clip-reveal-hidden {
   /* Start collapsed on the left side */
-  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  clip-path: inset(0 100% 0 0);
 }
 
 .clip-reveal-full {
   /* Expand horizontally to reveal the full section */
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  clip-path: inset(0 0 0 0);
 }
 
 @keyframes glow-pulse {
