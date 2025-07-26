@@ -290,11 +290,13 @@ img {
 
 /* Utilities for the hero reveal effect */
 .clip-reveal-hidden {
-  clip-path: polygon(0 100%, 0 100%, 0 100%, 0 100%);
+  /* Start collapsed on the left side */
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
 }
 
 .clip-reveal-full {
-  clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+  /* Expand horizontally to reveal the full section */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
 @keyframes glow-pulse {
