@@ -399,10 +399,10 @@ export default function HeroSection({ reveal: revealProp, ...props }: HeroProps 
       >
         <div className="relative mx-auto grid w-full max-w-[88rem] grid-cols-1 items-center gap-[clamp(2rem,6vw,5rem)] px-[clamp(1rem,4vw,2rem)] pt-[clamp(1rem,5vw,3rem)] pb-[clamp(4rem,8vw,6rem)] md:grid-cols-2">
           <div className="px-0">
-            <div className="mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal invisible">
+            <div className="mb-6 ml-20 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal invisible">
               HELLO, WE ARE NPR MEDIA
             </div>
-            <h1 className="mb-6 w-full text-charcoal/30 text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight">
+            <h1 className="mb-6 ml-20 w-full text-charcoal/30 text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight">
               {overlaySegments.map((seg, i) => (
                 <span
                   key={i}
