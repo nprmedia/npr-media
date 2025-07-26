@@ -211,7 +211,7 @@ export function HeroContent({
             data-scroll
             variants={textVariants}
             custom={1}
-            className="mb-6 ml-20 w-full text-charcoal text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
+            className="mb-6 w-full text-charcoal text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
           >
             {headlineSegments.map((seg, si) => (
               <motion.span
@@ -239,7 +239,7 @@ export function HeroContent({
               aria-describedby="hero-headline"
               variants={subheadlineVariants}
               className={clsx(
-                'font-grotesk font-medium text-charcoal opacity-90 md:opacity-100 mt-6 sm:mt-8 lg:mt-10 mb-7 ml-20 mx-auto max-w-[60ch] text-left text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]',
+                'font-grotesk font-medium text-charcoal opacity-90 md:opacity-100 mt-6 sm:mt-8 lg:mt-10 mb-7 mx-auto max-w-[60ch] text-left text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]',
                 forceGray && 'text-gray-400 filter grayscale'
               )}
             >
@@ -259,7 +259,7 @@ export function HeroContent({
                 ref={ctaRef}
                 aria-label="Start your project with NPR Media"
                 onClick={() => router.push(ctaLink)}
-                className="ml-20 cta-glow ripple-hover inline-flex items-center justify-center rounded-full border border-blood bg-blood px-[clamp(0.875rem,2.75vw,1.5rem)] py-[clamp(0.4rem,1vw,.75rem)] text-[clamp(0.875rem,1vw,1rem)] font-bold uppercase tracking-wide text-silver shadow-[0_0_20px_rgba(179,0,0,0.2)] transition-transform duration-300 hover:scale-105 hover:bg-crimson focus-visible:outline focus-visible:outline-crimson"
+                className="cta-glow ripple-hover inline-flex items-center justify-center rounded-full border border-blood bg-blood px-[clamp(0.875rem,2.75vw,1.5rem)] py-[clamp(0.4rem,1vw,.75rem)] text-[clamp(0.875rem,1vw,1rem)] font-bold uppercase tracking-wide text-silver shadow-[0_0_20px_rgba(179,0,0,0.2)] transition-transform duration-300 hover:scale-105 hover:bg-crimson focus-visible:outline focus-visible:outline-crimson"
               >
                 <span>{ctaText}</span>
                 <motion.span
