@@ -1,7 +1,6 @@
 'use client';
 
 import { pricing } from '@/content/homepage/pricing';
-import QuoteModal from './QuoteModal';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -73,7 +72,12 @@ export default function PricingSection() {
           <p className="text-[clamp(0.9rem,1.6vw,1.125rem)] font-semibold">
             Need a scalable, enterprise-grade solution?
           </p>
-          <QuoteModal triggerLabel="Start Scoping" />
+          <Link
+            href="/webdev-landing"
+            className="inline-flex items-center justify-center rounded-full bg-olive px-6 py-2 text-sm font-semibold text-charcoal shadow hover:bg-olive"
+          >
+            Start Scoping
+          </Link>
         </div>
       </div>
     </section>
