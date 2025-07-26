@@ -199,7 +199,7 @@ export function HeroContent({
           variants={textVariants}
           custom={0}
           className={clsx(
-            'mb-6 ml-10 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal',
+            'mb-6 ml-20 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal',
             forceGray && 'text-gray-400 filter grayscale'
           )}
         >
@@ -211,7 +211,7 @@ export function HeroContent({
             data-scroll
             variants={textVariants}
             custom={1}
-            className="mb-6 w-full text-charcoal text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
+            className="mb-6 ml-20 w-full text-charcoal text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
           >
             {headlineSegments.map((seg, si) => (
               <motion.span
@@ -239,7 +239,7 @@ export function HeroContent({
               aria-describedby="hero-headline"
               variants={subheadlineVariants}
               className={clsx(
-                'font-grotesk font-medium text-charcoal opacity-90 md:opacity-100 mt-6 sm:mt-8 lg:mt-10 mb-7 mx-auto max-w-[60ch] text-left text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]',
+                'font-grotesk font-medium text-charcoal opacity-90 md:opacity-100 mt-6 sm:mt-8 lg:mt-10 mb-7 ml-20 max-w-[60ch] text-left text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]',
                 forceGray && 'text-gray-400 filter grayscale'
               )}
             >
@@ -249,10 +249,10 @@ export function HeroContent({
           {ctaText && ctaLink && (
             <motion.div
               variants={ctaVariants}
-              className={clsx(
-                'group relative inline-block mx-auto md:mx-0',
-                forceGray && 'filter grayscale'
-              )}
+                className={clsx(
+                  'group relative inline-block ml-20',
+                  forceGray && 'filter grayscale'
+                )}
             >
               <motion.button
                 type="button"
@@ -271,7 +271,7 @@ export function HeroContent({
                   →
                 </motion.span>
               </motion.button>
-              <div className="ml-50 text-olive relative top-full left-0 mt-1 text-[0.65rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                <div className="ml-20 text-olive relative top-full left-0 mt-1 text-[0.65rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                 No card required. Cancel anytime.
               </div>
             </motion.div>
@@ -399,10 +399,10 @@ export default function HeroSection({ reveal: revealProp, ...props }: HeroProps 
       >
         <div className="relative mx-auto grid w-full max-w-[88rem] grid-cols-1 items-center gap-[clamp(2rem,6vw,5rem)] px-[clamp(1rem,4vw,2rem)] pt-[clamp(1rem,5vw,3rem)] pb-[clamp(4rem,8vw,6rem)] md:grid-cols-2">
           <div className="px-0">
-            <div className="mb-6 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal invisible">
+            <div className="mb-6 ml-20 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal invisible">
               HELLO, WE ARE NPR MEDIA
             </div>
-            <h1 className="mb-6 w-full text-charcoal/30 text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight">
+            <h1 className="mb-6 ml-20 w-full text-charcoal/30 text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight">
               {overlaySegments.map((seg, i) => (
                 <span
                   key={i}
