@@ -22,12 +22,13 @@
   --font-body: 'Inter', sans-serif;
   --font-didot: 'GFS Didot', serif;
   --font-grotesk: 'Space Grotesk', sans-serif;
+  --font-fraunces: 'Fraunces', serif;
 
   /* Brand Colors */
   --color-offwhite: #FDF9F2;
   --color-offwhite-rgb: 253 249 242;
-  --color-antique: #F8F1E4;
-  --color-antique-rgb: 248 241 228;
+  --color-antique: #F9F6F1;
+  --color-antique-rgb: 249 246 241;
   --color-sepia: #b7a077;
   --color-sepia-rgb: 183 160 119;
   --color-olive: #786c4f;
@@ -42,6 +43,8 @@
   --color-blood-rgb: 154 0 3;
   --color-crimson: #7a0000;
   --color-crimson-rgb: 122 0 0;
+  --color-gold-muted: #D1C4A8;
+  --color-gold-muted-rgb: 209 196 168;
   --color-muted-text: #464442;
   --color-muted-text-rgb: 70 68 66;
   --color-border-gray: #DBD6CE;
@@ -180,6 +183,8 @@ img {
   }
   .bg-crimson { background-color: rgb(var(--color-crimson-rgb)); }
   .text-crimson { color: rgb(var(--color-crimson-rgb)); }
+  .bg-gold-muted { background-color: rgb(var(--color-gold-muted-rgb)); }
+  .text-gold-muted { color: rgb(var(--color-gold-muted-rgb)); }
   .text-muted-text { color: rgb(var(--color-muted-text-rgb)); }
   .bg-border-gray { background-color: rgb(var(--color-border-gray-rgb)); }
   .text-border-gray { color: rgb(var(--color-border-gray-rgb)); }
@@ -318,6 +323,31 @@ img {
   .logo-hover:hover::after {
     width: 50%;
   }
+
+  /* Ritual hero utilities */
+  .grayscale-phase {
+    filter: grayscale(1);
+  }
+  .grayscale-phase .text-blood-glow {
+    filter: none;
+  }
+  .grayscale-sweep {
+    animation: grayscaleSweep315 1.6s ease-out forwards;
+  }
+  .letter-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/textures/noise.svg');
+    opacity: 0.08;
+    mix-blend-mode: overlay;
+  }
+  .letter-etching {
+    -webkit-mask-image: url('/textures/engrave.svg');
+    mask-image: url('/textures/engrave.svg');
+    -webkit-mask-size: cover;
+    mask-size: cover;
+  }
 }
 
 /* Utilities for the hero reveal effect */
@@ -359,5 +389,18 @@ img {
   100% {
     box-shadow: 0 0 0 12px rgb(var(--color-blood-rgb) / 0);
     opacity: 0;
+  }
+}
+
+@keyframes grayscaleSweep315 {
+  from {
+    filter: grayscale(1);
+    -webkit-mask-image: linear-gradient(315deg, black 0%, black 0%);
+            mask-image: linear-gradient(315deg, black 0%, black 0%);
+  }
+  to {
+    filter: grayscale(0);
+    -webkit-mask-image: linear-gradient(315deg, black 0%, transparent 100%);
+            mask-image: linear-gradient(315deg, black 0%, transparent 100%);
   }
 }

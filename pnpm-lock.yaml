@@ -11,6 +11,9 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/fraunces':
+        specifier: ^5.2.6
+        version: 5.2.7
       '@fontsource/gfs-didot':
         specifier: ^5.2.6
         version: 5.2.6
@@ -1034,6 +1037,9 @@ packages:
 
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
+
+  '@fontsource/fraunces@5.2.7':
+    resolution: {integrity: sha512-/Dayni4YeluyJ0VArMKJ3KXAe4GePW9SJ5DWorZJUOB0ESHrR4g9J3s0+gklVNDlIaqpc7krFvBwC7SOBeUFog==}
 
   '@fontsource/gfs-didot@5.2.6':
     resolution: {integrity: sha512-peUsK6Pzy+saQYXNLlyQSlYQE7lyLkRzc/YkqxAIuutGjlAHVqB4FYL9yAss5Cn6oVdZB8iiB7iSdP2rzWqChA==}
@@ -8087,6 +8093,8 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
 
   '@floating-ui/utils@0.2.9': {}
+
+  '@fontsource/fraunces@5.2.7': {}
 
   '@fontsource/gfs-didot@5.2.6': {}
 

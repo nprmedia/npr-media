@@ -6,6 +6,7 @@ import '@styles/globals.css';
 import { useEffect } from 'react';
 import type { ReactNode } from 'react';
 import '@fontsource/gfs-didot/400.css';
+import '@fontsource/fraunces/600.css';
 import '@fontsource/space-grotesk/400.css';
 import '@fontsource/space-grotesk/500.css';
 import '@fontsource/space-grotesk/700.css';
@@ -14,6 +15,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   useEffect(() => {
     document.documentElement.style.overflowY = 'auto';
     document.body.style.overflowY = 'auto';
+    const html = document.documentElement;
+    html.classList.add('grayscale-phase');
+    const timer = setTimeout(() => {
+      html.classList.add('grayscale-sweep');
+      html.classList.remove('grayscale-phase');
+    }, 2600);
+    return () => {
+      clearTimeout(timer);
+      html.classList.remove('grayscale-phase', 'grayscale-sweep');
+    };
   }, []);
 
   return (
@@ -22,7 +33,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body
-        className="font-sans bg-antique text-charcoal antialiased overflow-x-hidden"
+        className="font-sans bg-antique bg-gradient-to-tr from-gold-muted to-antique text-charcoal antialiased overflow-x-hidden"
       >
         <a href="#main" className="skip-link">Skip to Content</a>
         <main id="main" className="w-full overflow-x-hidden">
