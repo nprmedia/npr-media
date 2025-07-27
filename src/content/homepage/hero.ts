@@ -14,7 +14,7 @@ export interface HeroProps {
 }
 
 export const hero: HeroProps = {
-  headline: 'Trusted by [blood]Founders Who Don’t Get a[/blood] [blood]Second Shot.[/blood]',
+  headline: 'Trusted by Founders Who Don’t Get a [blood]Second Shot[/blood][blood].[/blood]',
   subheadline: '70% of startups fail between years 2–5 — a weak website is one of the fastest ways to join them.',
   ctaText: 'Make Sure Your Website Isn’t the Reason',
   ctaLink: '/webdev-landing',

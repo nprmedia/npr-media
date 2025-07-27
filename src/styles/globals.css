@@ -18,7 +18,7 @@
   --section-padding: 6rem;
   --max-content-width: 1280px;
 
-  --font-heading: 'Inter', sans-serif;
+  --font-heading: 'Fraunces', serif;
   --font-body: 'Inter', sans-serif;
   --font-didot: 'GFS Didot', serif;
   --font-grotesk: 'Space Grotesk', sans-serif;
@@ -360,4 +360,37 @@ img {
     box-shadow: 0 0 0 12px rgb(var(--color-blood-rgb) / 0);
     opacity: 0;
   }
+}
+
+@keyframes grayscaleSweep315 {
+  from {
+    -webkit-mask-image: linear-gradient(315deg, black 0%, transparent 100%);
+    mask-image: linear-gradient(315deg, black 0%, transparent 100%);
+  }
+  to {
+    -webkit-mask-image: linear-gradient(315deg, transparent 0%, transparent 100%);
+    mask-image: linear-gradient(315deg, transparent 0%, transparent 100%);
+  }
+}
+
+html.grayscale {
+  filter: grayscale(1);
+}
+
+html.grayscale.grayscale-reveal {
+  animation: grayscaleSweep315 1.6s ease-out forwards;
+}
+
+.text-blood-glow {
+  filter: none;
+}
+
+.npr-monogram {
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  -webkit-mask-image: url('/textures/engrave.svg');
+  mask-image: url('/textures/engrave.svg');
+  mask-size: 200%;
+  mask-repeat: repeat;
+  text-shadow: 0 0 8px rgba(183, 160, 119, 0.6);
 }

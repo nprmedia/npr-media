@@ -211,7 +211,7 @@ export function HeroContent({
             data-scroll
             variants={textVariants}
             custom={1}
-            className="mb-6 ml-20 w-full text-charcoal text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
+            className="mb-6 ml-20 w-full text-charcoal text-[clamp(3rem,8vw,6rem)] leading-[1.05] font-fraunces font-semibold tracking-tight drop-shadow-[0_1.5px_3px_#3d0002]"
           >
             {headlineSegments.map((seg, si) => (
               <motion.span
@@ -308,7 +308,7 @@ export function HeroContent({
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 1, duration: 1, ease: 'easeIn' } }}
               style={{ opacity: letter === 'R' ? rOpacity : 1 }}
-              className="block font-grotesk font-extrabold uppercase leading-none text-sepia text-[45vh]"
+              className="npr-monogram block font-fraunces font-extrabold uppercase leading-none text-sepia text-[45vh]"
             >
               {letter}
             </motion.span>
@@ -402,7 +402,7 @@ export default function HeroSection({ reveal: revealProp, ...props }: HeroProps 
             <div className="mb-6 ml-20 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal invisible">
               HELLO, WE ARE NPR MEDIA
             </div>
-            <h1 className="mb-6 ml-20 w-full text-charcoal/30 text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight">
+            <h1 className="mb-6 ml-20 w-full text-charcoal/30 text-[clamp(3rem,8vw,6rem)] leading-[1.05] font-fraunces font-semibold tracking-tight drop-shadow-[0_1.5px_3px_#3d0002]">
               {overlaySegments.map((seg, i) => (
                 <span
                   key={i}
