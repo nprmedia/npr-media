@@ -180,7 +180,7 @@ export function HeroContent({
       ref={heroRef}
       aria-label="Hero Section"
       style={{ scale: heroScale, opacity: heroOpacity, willChange: 'transform, opacity' }}
-      className="relative min-h-[100svh] pb-[5vh] flex items-center justify-center bg-antique font-sans overflow-hidden"
+      className="relative min-h-[100svh] pb-[5vh] flex items-center justify-center bg-gradient-to-tr from-[#D1C4A8] to-[#F9F6F1] font-sans overflow-hidden"
     >
       <div
         ref={containerRef}
@@ -211,7 +211,7 @@ export function HeroContent({
             data-scroll
             variants={textVariants}
             custom={1}
-            className="mb-6 ml-20 w-full text-charcoal text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
+            className="mb-6 ml-20 w-full text-charcoal text-[clamp(3rem,6vw,6rem)] leading-[1.1] font-fraunces font-semibold tracking-tight drop-shadow-[0_1.5px_3px_#3d0002]"
           >
             {headlineSegments.map((seg, si) => (
               <motion.span
@@ -232,6 +232,7 @@ export function HeroContent({
                 {seg.text}
               </motion.span>
             ))}
+            <span className="text-blood-glow">.</span>
           </motion.h1>
           {subheadline && (
             <motion.p
@@ -292,15 +293,21 @@ export function HeroContent({
       </div>
 
       <div
-        className="pointer-events-none absolute bottom-0 z-0 hidden -translate-x-1/2 md:flex justify-center mix-blend-overlay"
-        style={{ left: '80%', width: '25%' }}
+        className="pointer-events-none absolute inset-0 z-0 hidden md:flex justify-center"
+        style={{ left: '55%', width: '40%' }}
       >
         <motion.div
           ref={overlayRef}
-          style={{ y: overlayY, willChange: 'transform' }}
+          style={{
+            y: overlayY,
+            willChange: 'transform',
+            maskImage: "url('/textures/engrave.svg')",
+            WebkitMaskImage: "url('/textures/engrave.svg')",
+            maskSize: 'cover',
+          }}
           initial="hidden"
           animate="visible"
-          className={clsx('flex h-[200%] flex-col items-center pb-[5vh]', forceGray && 'filter grayscale')}
+          className={clsx('flex h-[200%] flex-col items-center pb-[5vh] mix-blend-overlay opacity-90', forceGray && 'filter grayscale')}
         >
           {['N', 'P', 'R'].map((letter) => (
             <motion.span
@@ -308,7 +315,7 @@ export function HeroContent({
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 1, duration: 1, ease: 'easeIn' } }}
               style={{ opacity: letter === 'R' ? rOpacity : 1 }}
-              className="block font-grotesk font-extrabold uppercase leading-none text-sepia text-[45vh]"
+              className="block font-fraunces font-bold uppercase leading-none text-gold-muted text-[25vw] drop-shadow-[0_1px_2px_rgba(0,0,0,0.2)]"
             >
               {letter}
             </motion.span>

@@ -22,7 +22,7 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
-    const delay = prefersReduced ? 0 : 1400;
+    const delay = prefersReduced ? 0 : 2600;
     const timer = setTimeout(() => setReveal(true), delay);
     return () => clearTimeout(timer);
   }, [prefersReduced]);
@@ -33,7 +33,9 @@ export default function Page() {
       <div
         className={clsx(
           'pointer-events-none fixed inset-0 z-[60] backdrop-grayscale',
-          prefersReduced ? 'transition-none' : 'transition-[clip-path] duration-[1000ms] ease-in-out',
+          prefersReduced
+            ? 'transition-none'
+            : 'transition-[clip-path] duration-[1600ms] ease-out animate-[grayscaleSweep315_1.6s_ease-out_forwards]',
           reveal ? 'clip-reveal-hidden' : 'clip-reveal-full'
         )}
       />

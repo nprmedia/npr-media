@@ -16,6 +16,8 @@ module.exports = {
         charcoal: 'rgb(var(--color-charcoal-rgb) / <alpha-value>)',
         blood: 'rgb(var(--color-blood-rgb) / <alpha-value>)',
         crimson: 'rgb(var(--color-crimson-rgb) / <alpha-value>)',
+        ivory: 'rgb(var(--color-ivory-rgb) / <alpha-value>)',
+        'gold-muted': 'rgb(var(--color-gold-muted-rgb) / <alpha-value>)',
         'muted-text': 'rgb(var(--color-muted-text-rgb) / <alpha-value>)',
         'border-gray': 'rgb(var(--color-border-gray-rgb) / <alpha-value>)',
         transparent: 'transparent',
@@ -27,6 +29,7 @@ module.exports = {
         grotesk: ['"Space Grotesk"', 'sans-serif'],
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
         code: ['JetBrains Mono', 'monospace'],
+        fraunces: ['"Fraunces"', 'serif'],
       },
 
       fontSize: {
@@ -90,6 +93,8 @@ module.exports = {
     'bg-charcoal', 'text-charcoal',
     'bg-blood', 'text-blood',
     'bg-crimson', 'text-crimson',
+    'bg-ivory', 'text-ivory',
+    'text-gold-muted',
     'bg-border-gray', 'text-border-gray', 'border-border-gray',
     'text-muted-text',
     // Gradient utilities for custom colors

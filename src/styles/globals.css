@@ -42,6 +42,10 @@
   --color-blood-rgb: 154 0 3;
   --color-crimson: #7a0000;
   --color-crimson-rgb: 122 0 0;
+  --color-ivory: #F9F6F1;
+  --color-ivory-rgb: 249 246 241;
+  --color-gold-muted: #D1C4A8;
+  --color-gold-muted-rgb: 209 196 168;
   --color-muted-text: #464442;
   --color-muted-text-rgb: 70 68 66;
   --color-border-gray: #DBD6CE;
@@ -180,6 +184,9 @@ img {
   }
   .bg-crimson { background-color: rgb(var(--color-crimson-rgb)); }
   .text-crimson { color: rgb(var(--color-crimson-rgb)); }
+  .bg-ivory { background-color: rgb(var(--color-ivory-rgb)); }
+  .text-ivory { color: rgb(var(--color-ivory-rgb)); }
+  .text-gold-muted { color: rgb(var(--color-gold-muted-rgb)); }
   .text-muted-text { color: rgb(var(--color-muted-text-rgb)); }
   .bg-border-gray { background-color: rgb(var(--color-border-gray-rgb)); }
   .text-border-gray { color: rgb(var(--color-border-gray-rgb)); }
@@ -359,5 +366,14 @@ img {
   100% {
     box-shadow: 0 0 0 12px rgb(var(--color-blood-rgb) / 0);
     opacity: 0;
+  }
+}
+
+@keyframes grayscaleSweep315 {
+  from {
+    clip-path: polygon(0 100%, 100% 0, 100% 0, 0 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 }
