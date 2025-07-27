@@ -43,8 +43,16 @@ export default function Hero({ headline, subheadline, cta }: HeroProps) {
           {cta}
         </motion.a>
       </motion.div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center mix-blend-overlay"
+      >
+        <span className="font-didot font-bold leading-none text-sepia opacity-10 text-[30vw] whitespace-nowrap">
+          NPR
+        </span>
+      </div>
       <motion.div
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-silver/20 to-transparent"
+        className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-silver/20 to-transparent"
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ duration: 10, repeat: Infinity }}
       />
