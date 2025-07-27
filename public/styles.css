@@ -1769,10 +1769,10 @@
   --font-body: 'Inter', sans-serif;
   --font-didot: 'GFS Didot', serif;
   --font-grotesk: 'Space Grotesk', sans-serif;
-  --color-offwhite: #FDFCF8;
-  --color-offwhite-rgb: 253 252 248;
-  --color-antique: #FAF4E9;
-  --color-antique-rgb: 250 244 233;
+  --color-offwhite: #FDF9F2;
+  --color-offwhite-rgb: 253 249 242;
+  --color-antique: #F8F1E4;
+  --color-antique-rgb: 248 241 228;
   --color-sepia: #b7a077;
   --color-sepia-rgb: 183 160 119;
   --color-olive: #786c4f;
@@ -1781,16 +1781,16 @@
   --color-umber-rgb: 59 50 36;
   --color-silver: #d2d2d2;
   --color-silver-rgb: 210 210 210;
-  --color-charcoal: #1C1C1C;
-  --color-charcoal-rgb: 28 28 28;
-  --color-blood: #A10204;
-  --color-blood-rgb: 161 2 4;
+  --color-charcoal: #1A1A19;
+  --color-charcoal-rgb: 26 26 25;
+  --color-blood: #9A0003;
+  --color-blood-rgb: 154 0 3;
   --color-crimson: #7a0000;
   --color-crimson-rgb: 122 0 0;
-  --color-muted-text: #4C4C4C;
-  --color-muted-text-rgb: 76 76 76;
-  --color-border-gray: #E4E0D9;
-  --color-border-gray-rgb: 228 224 217;
+  --color-muted-text: #464442;
+  --color-muted-text-rgb: 70 68 66;
+  --color-border-gray: #DBD6CE;
+  --color-border-gray-rgb: 219 214 206;
   --color-bg-primary: var(--color-antique);
   --color-bg-secondary: var(--color-sepia);
   --color-text-dark: var(--color-charcoal);
@@ -1924,17 +1924,17 @@ img {
     background-color: rgb(var(--color-blood-rgb));
   }
   .text-blood {
-    background-image: linear-gradient(to bottom, #A10204, #870003);
+    background-image: linear-gradient(to bottom, #9A0003, #760002);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
   .text-blood-glow {
-    background-image: linear-gradient(to bottom, #A10204, #870003);
+    background-image: linear-gradient(to bottom, #9A0003, #760002);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 1px 4px rgba(161, 2, 4, 0.45);
+    text-shadow: 0 1px 4px rgba(154, 0, 3, 0.45);
   }
   .bg-crimson {
     background-color: rgb(var(--color-crimson-rgb));
