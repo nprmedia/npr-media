@@ -389,7 +389,7 @@ export default function HeroSection({ reveal: revealProp, ...props }: HeroProps 
 
   return (
     <div className="relative w-full overflow-hidden">
-      <div className="absolute inset-0 grayscale z-10 pointer-events-none">
+      <div className="absolute inset-0 z-10 pointer-events-none">
         <HeroContent {...props} forceGray enableEffects={false} />
       </div>
       <motion.div
