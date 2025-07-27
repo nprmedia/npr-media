@@ -24,6 +24,7 @@ module.exports = {
 
       fontFamily: {
         didot: ['"GFS Didot"', 'serif'],
+        fraunces: ['"Fraunces"', 'serif'],
         grotesk: ['"Space Grotesk"', 'sans-serif'],
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
         code: ['JetBrains Mono', 'monospace'],

@@ -211,7 +211,7 @@ export function HeroContent({
             data-scroll
             variants={textVariants}
             custom={1}
-            className="mb-6 ml-20 w-full text-charcoal text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
+            className="mb-6 ml-20 w-full text-charcoal drop-shadow-[0_1.5px_3px_#3d0002] text-[clamp(3rem,6vw,6rem)] leading-[1.1] font-fraunces font-semibold tracking-tight"
           >
             {headlineSegments.map((seg, si) => (
               <motion.span
@@ -291,24 +291,22 @@ export function HeroContent({
         </motion.div>
       </div>
 
-      <div
-        className="pointer-events-none absolute bottom-0 z-0 hidden -translate-x-1/2 md:flex justify-center mix-blend-overlay"
-        style={{ left: '80%', width: '25%' }}
-      >
+      <div className="pointer-events-none absolute inset-0 z-0 hidden md:flex items-center justify-center">
         <motion.div
           ref={overlayRef}
           style={{ y: overlayY, willChange: 'transform' }}
           initial="hidden"
           animate="visible"
-          className={clsx('flex h-[200%] flex-col items-center pb-[5vh]', forceGray && 'filter grayscale')}
+          className={clsx('relative flex gap-4', forceGray && 'filter grayscale')}
         >
+          <span className="absolute inset-0 -z-10 opacity-10 mix-blend-overlay" style={{backgroundImage:"url('/textures/engrave.svg')"}} />
           {['N', 'P', 'R'].map((letter) => (
             <motion.span
               key={letter}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 1, duration: 1, ease: 'easeIn' } }}
               style={{ opacity: letter === 'R' ? rOpacity : 1 }}
-              className="block font-grotesk font-extrabold uppercase leading-none text-sepia text-[45vh]"
+              className="select-none font-fraunces font-bold uppercase leading-none text-sepia/60 text-[25vw] [mask-image:url('/textures/engrave.svg')] [mask-size:180%] [mask-repeat:repeat]"
             >
               {letter}
             </motion.span>

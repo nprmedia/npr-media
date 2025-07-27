@@ -361,3 +361,27 @@ img {
     opacity: 0;
   }
 }
+
+@keyframes grayscaleSweep315 {
+  from {
+    filter: grayscale(1);
+  }
+  to {
+    filter: grayscale(0);
+  }
+}
+
+html.grayscale {
+  filter: grayscale(1);
+}
+
+html.color-sweep {
+  animation: grayscaleSweep315 1.6s ease-out forwards;
+  animation-delay: 0s;
+  mask-image: linear-gradient(315deg, black 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(315deg, black 0%, transparent 100%);
+}
+
+html.grayscale .text-blood-glow {
+  filter: none;
+}
