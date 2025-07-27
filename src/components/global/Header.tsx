@@ -160,7 +160,7 @@ export default function StickyHeader({ light = false, forceGray = false }: Heade
               href="/webdev-landing"
               event="cta-navbar"
               aria-label="Start your project"
-              className="group relative ml-4 inline-flex items-center gap-2 rounded-full border border-blood bg-blood px-[clamp(1rem,2.5vw,1.5rem)] py-[clamp(0.5rem,1.2vh,0.75rem)] text-[clamp(0.875rem,1.2vw,1rem)] font-bold text-silver shadow-none transition-all duration-300 hover:scale-105 hover:bg-crimson focus-visible:outline focus-visible:outline-crimson cta-glow ripple-hover"
+              className="group relative ml-4 inline-flex items-center gap-2 rounded-full px-[clamp(1rem,2.5vw,1.5rem)] py-[clamp(0.5rem,1.2vh,0.75rem)] text-[clamp(0.875rem,1.2vw,1rem)]"
             >
             <span>Get Started</span>
             <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -182,7 +182,7 @@ export default function StickyHeader({ light = false, forceGray = false }: Heade
                 href="/webdev-landing"
                 event="cta-navbar"
                 aria-label="Start your project"
-                className="mt-4 inline-flex items-center gap-2 rounded-full border border-blood bg-blood px-6 py-3 text-sm font-bold text-silver shadow-none hover:bg-crimson"
+                className="mt-4 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm"
               >
               <span>Get Started</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>

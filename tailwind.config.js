@@ -16,6 +16,8 @@ module.exports = {
         charcoal: 'rgb(var(--color-charcoal-rgb) / <alpha-value>)',
         blood: 'rgb(var(--color-blood-rgb) / <alpha-value>)',
         crimson: 'rgb(var(--color-crimson-rgb) / <alpha-value>)',
+        'muted-text': 'rgb(var(--color-muted-text-rgb) / <alpha-value>)',
+        'border-gray': 'rgb(var(--color-border-gray-rgb) / <alpha-value>)',
         transparent: 'transparent',
         current: 'currentColor',
       },
@@ -47,8 +49,8 @@ module.exports = {
       },
 
       clipPath: {
-        'reveal-hidden': 'polygon(0 100%, 0 100%, 0 100%, 0 100%)',
-        'reveal-full': 'polygon(0 100%, 100% 100%, 100% 0, 0 0)',
+        'reveal-hidden': 'polygon(0 100%, 100% 0, 100% 0, 0 100%)',
+        'reveal-full': 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
       },
 
       container: {
@@ -88,6 +90,8 @@ module.exports = {
     'bg-charcoal', 'text-charcoal',
     'bg-blood', 'text-blood',
     'bg-crimson', 'text-crimson',
+    'bg-border-gray', 'text-border-gray', 'border-border-gray',
+    'text-muted-text',
     // Gradient utilities for custom colors
     'from-blood', 'via-blood', 'to-blood',
     'from-olive', 'via-olive', 'to-olive',

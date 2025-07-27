@@ -143,7 +143,7 @@ export function HeroContent({
     visible: {
       opacity: 0.9,
       y: 0,
-      transition: { delay: 1, duration: 0.6 },
+      transition: { delay: 2.4, duration: 0.6 },
     },
   };
   const ctaVariants = {
@@ -151,7 +151,7 @@ export function HeroContent({
     visible: {
       opacity: 1,
       y: 0,
-      transition: { delay: 1.5, duration: 0.6 },
+      transition: { delay: 3, duration: 0.6 },
     },
   };
   const badgeVariants = {
@@ -220,10 +220,10 @@ export function HeroContent({
                   'inline-block transition-colors duration-700',
                   forceGray
                     ? seg.text.trim() === 'Trusted by'
-                      ? 'text-blood glow-blood filter-none'
+                      ? 'text-blood-glow filter-none'
                       : 'text-gray-400 filter grayscale'
                     : seg.highlight
-                      ? 'text-blood glow-blood'
+                      ? 'text-blood-glow'
                       : 'text-charcoal'
                 )}
                 variants={wordVariants}
@@ -389,7 +389,7 @@ export default function HeroSection({ reveal: revealProp, ...props }: HeroProps 
 
   return (
     <div className="relative w-full overflow-hidden">
-      <div className="absolute inset-0 grayscale z-10 pointer-events-none">
+      <div className="absolute inset-0 z-10 pointer-events-none">
         <HeroContent {...props} forceGray enableEffects={false} />
       </div>
       <motion.div
@@ -408,7 +408,7 @@ export default function HeroSection({ reveal: revealProp, ...props }: HeroProps 
                   key={i}
                   className={clsx(
                     seg.text.trim() === 'Trusted by'
-                      ? 'text-blood'
+                      ? 'text-blood-glow'
                       : 'text-charcoal/50'
                   )}
                 >
@@ -421,7 +421,7 @@ export default function HeroSection({ reveal: revealProp, ...props }: HeroProps 
       </motion.div>
       <div
         className={clsx(
-          'relative z-20 transition-[clip-path] duration-[2000ms] ease-in-out',
+          'relative z-20 transition-[clip-path] duration-[1000ms] ease-in-out',
           reveal ? 'clip-reveal-full' : 'clip-reveal-hidden',
         )}
       >

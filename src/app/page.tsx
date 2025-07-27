@@ -15,22 +15,32 @@ import ContactSection from '@/components/homepage/ContactSection';
 export default function Page() {
   const pathname = usePathname();
   const [reveal, setReveal] = useState(false);
+  const [prefersReduced, setPrefersReduced] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setReveal(true), 1600);
-    return () => clearTimeout(timer);
+    setPrefersReduced(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   }, []);
+
+  useEffect(() => {
+    const delay = prefersReduced ? 0 : 1400;
+    const timer = setTimeout(() => setReveal(true), delay);
+    return () => clearTimeout(timer);
+  }, [prefersReduced]);
 
   return (
     <section>
-      <StickyHeader light forceGray={!reveal} />
+      <StickyHeader light />
       <div
         className={clsx(
-          'pointer-events-none fixed inset-0 z-[60] transition-[clip-path] duration-[2000ms] ease-in-out backdrop-grayscale',
+          'pointer-events-none fixed inset-0 z-[60] backdrop-grayscale',
+          prefersReduced ? 'transition-none' : 'transition-[clip-path] duration-[1000ms] ease-in-out',
           reveal ? 'clip-reveal-hidden' : 'clip-reveal-full'
         )}
       />
-      <main key={pathname} className="relative w-full overflow-x-hidden bg-antique text-charcoal">
+      <main
+        key={pathname}
+        className="relative w-full overflow-x-hidden bg-antique text-charcoal"
+      >
         <Suspense>
           <HeroSection {...hero} reveal={reveal} />
         </Suspense>

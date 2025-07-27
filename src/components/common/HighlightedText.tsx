@@ -40,7 +40,7 @@ interface HighlightedTextProps {
 const HighlightedText: React.FC<HighlightedTextProps> = ({
   text,
   tag = 'blood',
-  highlightClassName = 'text-blood glow-blood',
+  highlightClassName = 'text-blood-glow',
   defaultClassName = 'text-charcoal',
   className,
 }) => {
