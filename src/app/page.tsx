@@ -29,7 +29,7 @@ export default function Page() {
 
   return (
     <section>
-      <StickyHeader light forceGray={!reveal} />
+      <StickyHeader light />
       <div
         className={clsx(
           'pointer-events-none fixed inset-0 z-[60] backdrop-grayscale',
@@ -39,10 +39,7 @@ export default function Page() {
       />
       <main
         key={pathname}
-        className={clsx(
-          'relative w-full overflow-x-hidden bg-antique text-charcoal transition-[filter] duration-500',
-          reveal ? 'filter-none' : 'filter grayscale'
-        )}
+        className="relative w-full overflow-x-hidden bg-antique text-charcoal"
       >
         <Suspense>
           <HeroSection {...hero} reveal={reveal} />
