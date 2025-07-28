@@ -439,7 +439,7 @@ img {
     background: radial-gradient(circle, rgba(255, 255, 255, 0.45), rgba(229, 0, 0, 0.03));
     filter: blur(60px);
     animation: glow-pulse 8s ease-in-out infinite;
-  }}
+  }
 
 /* Utilities for the hero reveal effect */
 .clip-reveal-hidden {
@@ -484,14 +484,4 @@ img {
   }
 }
 
-@keyframes  10% {
-    opacity: 0.6;
-  }
-  50% {
-    transform: translate(-10vw, 50vh) rotate(15deg);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-60vw, 110vh) rotate(30deg);
-  }
 }
