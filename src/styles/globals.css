@@ -401,7 +401,7 @@ img {
     font-size: clamp(10rem, 75vmin, 35rem);
     line-height: 1;
     color: #dcc9a2;
-    opacity: 0.08;
+    opacity: 0.09;
     will-change: opacity, transform;
   }
   .ghosted-monogram::before {
@@ -417,7 +417,7 @@ img {
   @media (max-width: 640px) {
     .ghosted-monogram {
       font-size: clamp(8rem, 60vw, 14rem);
-      opacity: 0.05;
+      opacity: 0.09;
     }
   }
 
@@ -439,20 +439,7 @@ img {
     background: radial-gradient(circle, rgba(255, 255, 255, 0.45), rgba(229, 0, 0, 0.03));
     filter: blur(60px);
     animation: glow-pulse 8s ease-in-out infinite;
-  }
-
-  .feather-fall {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 4rem;
-    height: 4rem;
-    color: white;
-    pointer-events: none;
-    z-index: 10;
-    animation: feather-fall 18s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-  }
-}
+  }}
 
 /* Utilities for the hero reveal effect */
 .clip-reveal-hidden {
@@ -497,12 +484,7 @@ img {
   }
 }
 
-@keyframes feather-fall {
-  0% {
-    opacity: 0;
-    transform: translate(40vw, -20vh) rotate(0deg);
-  }
-  10% {
+@keyframes  10% {
     opacity: 0.6;
   }
   50% {

@@ -1,11 +1,11 @@
 'use client';
 
 
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { ShieldCheck, ChevronDown, Feather } from 'lucide-react';
+import { ShieldCheck, ChevronDown } from 'lucide-react';
 import { motion, useAnimation, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useParticleBackground } from '@/lib/hooks/useParticleBackground';
 import { useHeroAnalytics } from '@/lib/hooks/useHeroAnalytics';
@@ -47,7 +47,6 @@ export function HeroContent({
   });
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.98]);
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
-  const featherDelay = useMemo(() => Math.random() * 4, []);
 
   const searchParams = useSearchParams();
   const controls = useAnimation();
@@ -287,30 +286,11 @@ export function HeroContent({
 
       <div className="pointer-events-none absolute inset-0 z-[3] flex items-center justify-center overflow-hidden mix-blend-overlay">
         <div className="monogram-aura" aria-hidden="true" />
-        <motion.div
-          aria-hidden="true"
-          className="feather-fall"
-          initial={{ opacity: 0, x: '40vw', y: '-20vh', rotate: 0 }}
-          animate={{
-            opacity: [0, 0.6, 0],
-            x: ['40vw', '-60vw'],
-            y: ['-20vh', '110vh'],
-            rotate: [0, 30],
-            transition: {
-              delay: featherDelay,
-              duration: 18,
-              ease: [0.45, 0, 0.55, 1],
-              repeat: Infinity,
-            },
-          }}
-        >
-          <Feather className="h-full w-full" />
-        </motion.div>
         <motion.span
           aria-hidden="true"
           className="ghosted-monogram hidden sm:block translate-y-[4%]"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.08 }}
+          animate={{ opacity: 0.09 }}
           transition={{ delay: 0.4, duration: 1.4, ease: 'easeInOut' }}
         >
           NPR
@@ -319,7 +299,7 @@ export function HeroContent({
           aria-hidden="true"
           className="ghosted-monogram sm:hidden"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.05 }}
+          animate={{ opacity: 0.09 }}
           transition={{ delay: 0.4, duration: 1.4, ease: 'easeInOut' }}
         >
           N
