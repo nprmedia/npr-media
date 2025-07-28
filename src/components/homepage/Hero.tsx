@@ -287,10 +287,10 @@ export function HeroContent({
       <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden mix-blend-overlay">
         <motion.span
           aria-hidden="true"
-          className="ghosted-monogram hidden sm:block translate-y-[5%]"
+          className="ghosted-monogram hidden sm:block translate-y-[4%]"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.07 }}
-          transition={{ delay: 0.4, duration: 1.2, ease: 'easeOut' }}
+          animate={{ opacity: 0.08 }}
+          transition={{ delay: 0.4, duration: 1.4, ease: 'easeInOut' }}
         >
           NPR
         </motion.span>
@@ -299,7 +299,7 @@ export function HeroContent({
           className="ghosted-monogram sm:hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.05 }}
-          transition={{ delay: 0.4, duration: 1.2, ease: 'easeOut' }}
+          transition={{ delay: 0.4, duration: 1.4, ease: 'easeInOut' }}
         >
           N
         </motion.span>

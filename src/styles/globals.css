@@ -398,26 +398,26 @@ img {
     font-weight: 900;
     /* No kerning compression */
     letter-spacing: 0;
-    font-size: clamp(12rem, 80vmin, 40rem);
+    font-size: clamp(10rem, 75vmin, 35rem);
     line-height: 1;
-    color: #bfae95;
-    opacity: 0.06;
+    color: #dfd4c3;
+    opacity: 0.08;
     will-change: opacity, transform;
   }
   .ghosted-monogram::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
-    background-size: 4px 4px;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 3px 3px;
     mix-blend-mode: multiply;
-    opacity: 0.25;
+    opacity: 0.3;
   }
 
   @media (max-width: 640px) {
     .ghosted-monogram {
       font-size: clamp(8rem, 60vw, 14rem);
-      opacity: 0.04;
+      opacity: 0.05;
     }
   }
 }
