@@ -318,6 +318,44 @@ img {
   .logo-hover:hover::after {
     width: 50%;
   }
+
+  .ghosted-monogram {
+    position: relative;
+    display: block;
+    font-family: var(--font-grotesk);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    font-size: clamp(14rem, 45vw, 32rem);
+    line-height: 1;
+    color: #BFAE95;
+    opacity: 0.06;
+    will-change: opacity, transform;
+  }
+  .ghosted-monogram::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 4px 4px;
+    mix-blend-mode: multiply;
+    opacity: 0.25;
+  }
+
+  @media (max-width: 640px) {
+    .ghosted-monogram {
+      font-size: clamp(8rem, 60vw, 14rem);
+      opacity: 0.04;
+    }
+  }
+
+  @keyframes ghosted-pulse {
+    0%, 100% {
+      opacity: 0.06;
+    }
+    50% {
+      opacity: 0.08;
+    }
+  }
 }
 
 /* Utilities for the hero reveal effect */
