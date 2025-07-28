@@ -24,9 +24,9 @@
   --font-grotesk: 'Space Grotesk', sans-serif;
 
   /* Brand Colors */
-  --color-offwhite: #FDF9F2;
+  --color-offwhite: #fdf9f2;
   --color-offwhite-rgb: 253 249 242;
-  --color-antique: #F8F1E4;
+  --color-antique: #f8f1e4;
   --color-antique-rgb: 248 241 228;
   --color-sepia: #b7a077;
   --color-sepia-rgb: 183 160 119;
@@ -36,15 +36,15 @@
   --color-umber-rgb: 59 50 36;
   --color-silver: #d2d2d2;
   --color-silver-rgb: 210 210 210;
-  --color-charcoal: #1A1A19;
+  --color-charcoal: #1a1a19;
   --color-charcoal-rgb: 26 26 25;
-  --color-blood: #9A0003;
+  --color-blood: #9a0003;
   --color-blood-rgb: 154 0 3;
   --color-crimson: #7a0000;
   --color-crimson-rgb: 122 0 0;
   --color-muted-text: #464442;
   --color-muted-text-rgb: 70 68 66;
-  --color-border-gray: #DBD6CE;
+  --color-border-gray: #dbd6ce;
   --color-border-gray-rgb: 219 214 206;
 
   /* Semantic Mappings */
@@ -84,7 +84,6 @@ body::before {
   background-size: 3px 3px;
   opacity: 0.06;
 }
-
 
 p {
   overflow-wrap: break-word;
@@ -148,58 +147,129 @@ img {
   display: none;
 }
 
-
 @layer utilities {
-  .bg-offwhite { background-color: rgb(var(--color-offwhite-rgb)); }
-  .text-offwhite { color: rgb(var(--color-offwhite-rgb)); }
-  .bg-antique { background-color: rgb(var(--color-antique-rgb)); }
-  .text-antique { color: rgb(var(--color-antique-rgb)); }
-  .bg-sepia { background-color: rgb(var(--color-sepia-rgb)); }
-  .text-sepia { color: rgb(var(--color-sepia-rgb)); }
-  .bg-olive { background-color: rgb(var(--color-olive-rgb)); }
-  .text-olive { color: rgb(var(--color-olive-rgb)); }
-  .bg-umber { background-color: rgb(var(--color-umber-rgb)); }
-  .text-umber { color: rgb(var(--color-umber-rgb)); }
-  .bg-silver { background-color: rgb(var(--color-silver-rgb)); }
-  .text-silver { color: rgb(var(--color-silver-rgb)); }
-  .bg-charcoal { background-color: rgb(var(--color-charcoal-rgb)); }
-  .text-charcoal { color: rgb(var(--color-charcoal-rgb)); }
-  .bg-blood { background-color: rgb(var(--color-blood-rgb)); }
+  .bg-offwhite {
+    background-color: rgb(var(--color-offwhite-rgb));
+  }
+  .text-offwhite {
+    color: rgb(var(--color-offwhite-rgb));
+  }
+  .bg-antique {
+    background-color: rgb(var(--color-antique-rgb));
+  }
+  .text-antique {
+    color: rgb(var(--color-antique-rgb));
+  }
+  .bg-sepia {
+    background-color: rgb(var(--color-sepia-rgb));
+  }
+  .text-sepia {
+    color: rgb(var(--color-sepia-rgb));
+  }
+  .bg-olive {
+    background-color: rgb(var(--color-olive-rgb));
+  }
+  .text-olive {
+    color: rgb(var(--color-olive-rgb));
+  }
+  .bg-umber {
+    background-color: rgb(var(--color-umber-rgb));
+  }
+  .text-umber {
+    color: rgb(var(--color-umber-rgb));
+  }
+  .bg-silver {
+    background-color: rgb(var(--color-silver-rgb));
+  }
+  .text-silver {
+    color: rgb(var(--color-silver-rgb));
+  }
+  .bg-charcoal {
+    background-color: rgb(var(--color-charcoal-rgb));
+  }
+  .text-charcoal {
+    color: rgb(var(--color-charcoal-rgb));
+  }
+  .bg-blood {
+    background-color: rgb(var(--color-blood-rgb));
+  }
   .text-blood {
-    background-image: linear-gradient(to bottom, #9A0003, #760002);
+    background-image: linear-gradient(to bottom, #9a0003, #760002);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
   .text-blood-glow {
-    background-image: linear-gradient(to bottom, #9A0003, #760002);
+    background-image: linear-gradient(to bottom, #9a0003, #760002);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     text-shadow: 0 1px 4px rgba(154, 0, 3, 0.45);
   }
-  .bg-crimson { background-color: rgb(var(--color-crimson-rgb)); }
-  .text-crimson { color: rgb(var(--color-crimson-rgb)); }
-  .text-muted-text { color: rgb(var(--color-muted-text-rgb)); }
-  .bg-border-gray { background-color: rgb(var(--color-border-gray-rgb)); }
-  .text-border-gray { color: rgb(var(--color-border-gray-rgb)); }
-  .border-border-gray { border-color: rgb(var(--color-border-gray-rgb)); }
+  .bg-crimson {
+    background-color: rgb(var(--color-crimson-rgb));
+  }
+  .text-crimson {
+    color: rgb(var(--color-crimson-rgb));
+  }
+  .text-muted-text {
+    color: rgb(var(--color-muted-text-rgb));
+  }
+  .bg-border-gray {
+    background-color: rgb(var(--color-border-gray-rgb));
+  }
+  .text-border-gray {
+    color: rgb(var(--color-border-gray-rgb));
+  }
+  .border-border-gray {
+    border-color: rgb(var(--color-border-gray-rgb));
+  }
   /* Opacity variants */
-  .bg-blood\/20 { background-color: rgb(var(--color-blood-rgb) / 0.2); }
-  .bg-blood\/30 { background-color: rgb(var(--color-blood-rgb) / 0.3); }
-  .bg-olive\/20 { background-color: rgb(var(--color-olive-rgb) / 0.2); }
-  .bg-olive\/60 { background-color: rgb(var(--color-olive-rgb) / 0.6); }
-  .bg-olive\/70 { background-color: rgb(var(--color-olive-rgb) / 0.7); }
-  .bg-olive\/80 { background-color: rgb(var(--color-olive-rgb) / 0.8); }
-  .bg-silver\/5 { background-color: rgb(var(--color-silver-rgb) / 0.05); }
-  .bg-silver\/10 { background-color: rgb(var(--color-silver-rgb) / 0.1); }
-  .bg-silver\/30 { background-color: rgb(var(--color-silver-rgb) / 0.3); }
-  .ring-blood\/40 { box-shadow: 0 0 0 2px rgb(var(--color-blood-rgb) / 0.4); }
-  .ring-blood\/50 { box-shadow: 0 0 0 2px rgb(var(--color-blood-rgb) / 0.5); }
-  .ring-silver\/10 { box-shadow: 0 0 0 1px rgb(var(--color-silver-rgb) / 0.1); }
-  .ring-silver\/20 { box-shadow: 0 0 0 1px rgb(var(--color-silver-rgb) / 0.2); }
-  .shadow-silver\/20 { box-shadow: 0 1px 3px 0 rgb(var(--color-silver-rgb) / 0.2); }
-  .shadow-silver\/40 { box-shadow: 0 2px 6px 0 rgb(var(--color-silver-rgb) / 0.4); }
+  .bg-blood\/20 {
+    background-color: rgb(var(--color-blood-rgb) / 0.2);
+  }
+  .bg-blood\/30 {
+    background-color: rgb(var(--color-blood-rgb) / 0.3);
+  }
+  .bg-olive\/20 {
+    background-color: rgb(var(--color-olive-rgb) / 0.2);
+  }
+  .bg-olive\/60 {
+    background-color: rgb(var(--color-olive-rgb) / 0.6);
+  }
+  .bg-olive\/70 {
+    background-color: rgb(var(--color-olive-rgb) / 0.7);
+  }
+  .bg-olive\/80 {
+    background-color: rgb(var(--color-olive-rgb) / 0.8);
+  }
+  .bg-silver\/5 {
+    background-color: rgb(var(--color-silver-rgb) / 0.05);
+  }
+  .bg-silver\/10 {
+    background-color: rgb(var(--color-silver-rgb) / 0.1);
+  }
+  .bg-silver\/30 {
+    background-color: rgb(var(--color-silver-rgb) / 0.3);
+  }
+  .ring-blood\/40 {
+    box-shadow: 0 0 0 2px rgb(var(--color-blood-rgb) / 0.4);
+  }
+  .ring-blood\/50 {
+    box-shadow: 0 0 0 2px rgb(var(--color-blood-rgb) / 0.5);
+  }
+  .ring-silver\/10 {
+    box-shadow: 0 0 0 1px rgb(var(--color-silver-rgb) / 0.1);
+  }
+  .ring-silver\/20 {
+    box-shadow: 0 0 0 1px rgb(var(--color-silver-rgb) / 0.2);
+  }
+  .shadow-silver\/20 {
+    box-shadow: 0 1px 3px 0 rgb(var(--color-silver-rgb) / 0.2);
+  }
+  .shadow-silver\/40 {
+    box-shadow: 0 2px 6px 0 rgb(var(--color-silver-rgb) / 0.4);
+  }
   .glow-blood {
     position: relative;
   }
@@ -258,7 +328,9 @@ img {
     box-shadow: 0 0 0 2px rgb(var(--color-blood-rgb) / 0.4);
     opacity: 0;
     transform: scale(0.8);
-    transition: transform 0.6s ease, opacity 0.6s ease;
+    transition:
+      transform 0.6s ease,
+      opacity 0.6s ease;
   }
   .ripple-hover:hover::after {
     opacity: 1;
@@ -324,10 +396,11 @@ img {
     display: block;
     font-family: var(--font-grotesk);
     font-weight: 900;
-    letter-spacing: -0.05em;
-    font-size: clamp(14rem, 45vw, 32rem);
+    /* No kerning compression */
+    letter-spacing: 0;
+    font-size: clamp(12rem, 80vmin, 40rem);
     line-height: 1;
-    color: #BFAE95;
+    color: #bfae95;
     opacity: 0.06;
     will-change: opacity, transform;
   }
@@ -347,15 +420,6 @@ img {
       opacity: 0.04;
     }
   }
-
-  @keyframes ghosted-pulse {
-    0%, 100% {
-      opacity: 0.06;
-    }
-    50% {
-      opacity: 0.08;
-    }
-  }
 }
 
 /* Utilities for the hero reveal effect */
@@ -368,7 +432,8 @@ img {
 }
 
 @keyframes glow-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.15;
   }
   50% {
