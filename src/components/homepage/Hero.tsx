@@ -35,7 +35,6 @@ export function HeroContent({
 }: HeroProps & { forceGray?: boolean; enableEffects?: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLButtonElement>(null);
   const router = useRouter();
   const disabledContainerRef = useRef<HTMLDivElement>(null);
@@ -46,12 +45,6 @@ export function HeroContent({
     target: heroRef,
     offset: ['start start', 'end start'],
   });
-  // Offset the overlay downward so the "N" sits fully below the sticky header
-  // when the page loads. The letters then travel roughly 53% of their wrapper
-  // height so the "R" finishes just above the hero's bottom padding as the
-  // section scrolls away.
-  const overlayY = useTransform(scrollYProgress, [0, 1], ['15%', '-43%']);
-  const rOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.98]);
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
 
@@ -291,29 +284,8 @@ export function HeroContent({
         </motion.div>
       </div>
 
-      <div
-        className="pointer-events-none absolute bottom-0 z-0 hidden -translate-x-1/2 md:flex justify-center mix-blend-overlay"
-        style={{ left: '80%', width: '25%' }}
-      >
-        <motion.div
-          ref={overlayRef}
-          style={{ y: overlayY, willChange: 'transform' }}
-          initial="hidden"
-          animate="visible"
-          className={clsx('flex h-[200%] flex-col items-center pb-[5vh]', forceGray && 'filter grayscale')}
-        >
-          {['N', 'P', 'R'].map((letter) => (
-            <motion.span
-              key={letter}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0, transition: { delay: 1, duration: 1, ease: 'easeIn' } }}
-              style={{ opacity: letter === 'R' ? rOpacity : 1 }}
-              className="block font-grotesk font-extrabold uppercase leading-none text-sepia text-[45vh]"
-            >
-              {letter}
-            </motion.span>
-          ))}
-        </motion.div>
+      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden mix-blend-overlay">
+        <span className="hero-monogram">NPR</span>
       </div>
 
       <motion.div
