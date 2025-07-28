@@ -400,7 +400,7 @@ img {
     letter-spacing: 0;
     font-size: clamp(10rem, 75vmin, 35rem);
     line-height: 1;
-    color: #dfd4c3;
+    color: #dcc9a2;
     opacity: 0.08;
     will-change: opacity, transform;
   }
@@ -419,6 +419,38 @@ img {
       font-size: clamp(8rem, 60vw, 14rem);
       opacity: 0.05;
     }
+  }
+
+  .monogram-aura {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .monogram-aura::before {
+    content: '';
+    position: absolute;
+    width: 60vmin;
+    height: 60vmin;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.45), rgba(229, 0, 0, 0.03));
+    filter: blur(60px);
+    animation: glow-pulse 8s ease-in-out infinite;
+  }
+
+  .feather-fall {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4rem;
+    height: 4rem;
+    color: white;
+    pointer-events: none;
+    z-index: 10;
+    animation: feather-fall 18s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   }
 }
 
@@ -462,5 +494,22 @@ img {
   100% {
     box-shadow: 0 0 0 12px rgb(var(--color-blood-rgb) / 0);
     opacity: 0;
+  }
+}
+
+@keyframes feather-fall {
+  0% {
+    opacity: 0;
+    transform: translate(40vw, -20vh) rotate(0deg);
+  }
+  10% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-10vw, 50vh) rotate(15deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-60vw, 110vh) rotate(30deg);
   }
 }
