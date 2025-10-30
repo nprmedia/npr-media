@@ -22,6 +22,10 @@ export interface HeroProps {
     width?: number;
     height?: number;
   };
+  backgroundVideo?: {
+    src: string;
+    poster?: string;
+  };
 }
 
 export function HeroContent({
@@ -173,7 +177,7 @@ export function HeroContent({
       ref={heroRef}
       aria-label="Hero Section"
       style={{ scale: heroScale, opacity: heroOpacity, willChange: 'transform, opacity' }}
-      className="relative min-h-[100svh] pb-[5vh] flex items-center justify-center bg-antique font-sans overflow-hidden"
+      className="relative min-h-[100svh] pb-[5vh] flex items-center justify-center font-sans overflow-hidden"
     >
       <div
         ref={containerRef}
@@ -346,9 +350,12 @@ export function HeroContent({
   );
 };
 
-export default function HeroSection({ reveal: revealProp, ...props }: HeroProps & { reveal?: boolean }) {
+export default function HeroSection({ reveal: revealProp, backgroundVideo, ...props }: HeroProps & { reveal?: boolean }) {
   const [reveal, setReveal] = useState(false);
   const overlaySegments = parseTaggedText(props.headline);
+  const prefersReducedMotion = useReducedMotion();
+
+  const shouldRenderVideo = Boolean(backgroundVideo?.src) && !prefersReducedMotion;
 
   useEffect(() => {
     if (revealProp !== undefined) {
@@ -361,6 +368,30 @@ export default function HeroSection({ reveal: revealProp, ...props }: HeroProps 
 
   return (
     <div className="relative w-full overflow-hidden">
+      <div className="absolute inset-0 z-0 h-full w-full bg-charcoal" aria-hidden="true">
+        {shouldRenderVideo ? (
+          <video
+            className="pointer-events-none h-full w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={backgroundVideo?.poster}
+            preload="metadata"
+          >
+            <source src={backgroundVideo?.src} type="video/mp4" />
+          </video>
+        ) : backgroundVideo?.poster ? (
+          <Image
+            src={backgroundVideo.poster}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="pointer-events-none object-cover"
+          />
+        ) : null}
+      </div>
       <div className="absolute inset-0 z-10 pointer-events-none">
         <HeroContent {...props} forceGray enableEffects={false} />
       </div>

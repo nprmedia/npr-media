@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import clsx from 'clsx';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -15,9 +16,11 @@ interface HeaderProps {
   light?: boolean;
   /** When true, apply a grayscale filter to the entire header */
   forceGray?: boolean;
+  /** When true, render the header transparent on load and transition after scrolling */
+  transparentOnLoad?: boolean;
 }
 
-export default function StickyHeader({ light = false, forceGray = false }: HeaderProps) {
+export default function StickyHeader({ light = false, forceGray = false, transparentOnLoad = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -70,7 +73,8 @@ export default function StickyHeader({ light = false, forceGray = false }: Heade
     }
   };
 
-  const textColor = scrolled || light ? 'text-charcoal' : 'text-offwhite';
+  const initialTextColor = transparentOnLoad ? 'text-offwhite' : light ? 'text-charcoal' : 'text-offwhite';
+  const textColor = scrolled ? 'text-charcoal' : initialTextColor;
 
   return (
     <header role="banner" className="sticky top-0 z-50 w-full">
@@ -78,11 +82,12 @@ export default function StickyHeader({ light = false, forceGray = false }: Heade
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className={`w-full transition-all duration-500 ease-in-out transition-[filter] duration-[2000ms] ${
-          scrolled
-            ? 'bg-sepia/80 shadow-md backdrop-blur-md rounded-b-lg'
-            : 'bg-transparent backdrop-blur-0'
-        } ${textColor} ${forceGray ? 'filter grayscale' : ''}`}
+        className={clsx(
+          'w-full transition-all duration-500 ease-in-out transition-[filter] duration-[2000ms]',
+          scrolled ? 'bg-sepia/80 shadow-md backdrop-blur-md rounded-b-lg' : 'bg-transparent backdrop-blur-0',
+          textColor,
+          forceGray && 'filter grayscale'
+        )}
       >
         <div
           className={`mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center pt-3 px-[clamp(1rem,4vw,3rem)] ${textColor}`}
@@ -98,7 +103,10 @@ export default function StickyHeader({ light = false, forceGray = false }: Heade
               tabIndex={0}
               onClick={scrollToTop}
               onKeyDown={handleKey}
-              className="logo-glow logo-hover flex text-[clamp(0.9rem,1.4vw,1.25rem)] font-bold tracking-[0.5px] transition-transform transition-colors text-charcoal hover:text-olive hover:scale-105"
+              className={clsx(
+                'logo-glow logo-hover flex text-[clamp(0.9rem,1.4vw,1.25rem)] font-bold tracking-[0.5px] transition-transform transition-colors hover:text-olive hover:scale-105',
+                textColor
+              )}
             >
               {"NPR MEDIA".split("").map((ch, i) =>
                 ch === " " ? (

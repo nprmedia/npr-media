@@ -11,6 +11,10 @@ export interface HeroProps {
     width?: number;
     height?: number;
   };
+  backgroundVideo?: {
+    src: string;
+    poster?: string;
+  };
 }
 
 export const hero: HeroProps = {
@@ -18,5 +22,8 @@ export const hero: HeroProps = {
   subheadline: '70% of startups fail between years 2–5 — a weak website is one of the fastest ways to join them.',
   ctaText: 'Make Sure Your Website Isn’t the Reason',
   ctaLink: '/webdev-landing',
+  backgroundVideo: {
+    src: '/npr-hero.mp4',
+  },
   // Preview image removed to avoid bundling binary assets
 };
