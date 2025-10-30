@@ -29,7 +29,7 @@ export default function Page() {
 
   return (
     <section>
-      <StickyHeader light />
+      <StickyHeader light transparentOnLoad />
       <div
         className={clsx(
           'pointer-events-none fixed inset-0 z-[60] backdrop-grayscale',

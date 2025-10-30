@@ -22,6 +22,8 @@ export interface HeroProps {
     width?: number;
     height?: number;
   };
+  backgroundVideoSrc?: string;
+  backgroundVideoPoster?: string;
 }
 
 export function HeroContent({
@@ -30,9 +32,12 @@ export function HeroContent({
   ctaText,
   ctaLink,
   image,
+  backgroundVideoSrc,
+  backgroundVideoPoster,
   forceGray = false,
   enableEffects = true,
-}: HeroProps & { forceGray?: boolean; enableEffects?: boolean }) {
+  showBackgroundMedia = true,
+}: HeroProps & { forceGray?: boolean; enableEffects?: boolean; showBackgroundMedia?: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const ctaRef = useRef<HTMLButtonElement>(null);
@@ -54,6 +59,7 @@ export function HeroContent({
 
   const [isStickyVisible, setIsStickyVisible] = useState(false);
   const [personalizedHeadline, setPersonalizedHeadline] = useState('');
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useParticleBackground(enableEffects ? containerRef : disabledContainerRef);
   useHeroAnalytics({
@@ -165,6 +171,9 @@ export function HeroContent({
   };
   const rawHeadline = personalizedHeadline || headline;
   const headlineSegments = parseTaggedText(rawHeadline);
+  const videoSource =
+    showBackgroundMedia && !prefersReducedMotion ? backgroundVideoSrc ?? null : null;
+  const shouldRenderVideo = Boolean(videoSource);
 
 
   return (
@@ -173,13 +182,43 @@ export function HeroContent({
       ref={heroRef}
       aria-label="Hero Section"
       style={{ scale: heroScale, opacity: heroOpacity, willChange: 'transform, opacity' }}
-      className="relative min-h-[100svh] pb-[5vh] flex items-center justify-center bg-antique font-sans overflow-hidden"
+      className="relative min-h-[100svh] pb-[5vh] flex items-center justify-center bg-charcoal font-sans overflow-hidden"
     >
+      {shouldRenderVideo && (
+        <div className="absolute inset-0 z-0">
+          <video
+            aria-hidden="true"
+            className={clsx(
+              'h-full w-full object-cover',
+              'absolute inset-0 transition-opacity duration-700',
+              videoLoaded ? 'opacity-100' : 'opacity-0'
+            )}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            onLoadedData={() => setVideoLoaded(true)}
+            poster={backgroundVideoPoster}
+          >
+            <source src={videoSource} type="video/mp4" />
+          </video>
+          <div
+            aria-hidden="true"
+            className={clsx(
+              'absolute inset-0 bg-charcoal/70 transition-opacity duration-700',
+              videoLoaded ? 'opacity-80' : 'opacity-100'
+            )}
+          />
+        </div>
+      )}
       <div
         ref={containerRef}
         className="pointer-events-none absolute inset-0 z-[3] h-full w-full"
       />
-      <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-black/20 via-transparent to-transparent" />
+      {showBackgroundMedia && (
+        <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-black/60 via-transparent to-black/50" />
+      )}
 
 
       <motion.div
@@ -284,7 +323,7 @@ export function HeroContent({
         </motion.div>
       </div>
 
-      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden mix-blend-overlay">
+      <div className="pointer-events-none absolute inset-0 z-[1] flex items-center justify-center overflow-hidden mix-blend-overlay">
         <span className="hero-monogram">NPR</span>
       </div>
 
@@ -362,7 +401,7 @@ export default function HeroSection({ reveal: revealProp, ...props }: HeroProps 
   return (
     <div className="relative w-full overflow-hidden">
       <div className="absolute inset-0 z-10 pointer-events-none">
-        <HeroContent {...props} forceGray enableEffects={false} />
+        <HeroContent {...props} forceGray enableEffects={false} showBackgroundMedia={false} />
       </div>
       <motion.div
         className="absolute inset-0 z-[70] pointer-events-none"

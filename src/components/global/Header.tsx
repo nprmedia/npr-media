@@ -15,25 +15,40 @@ interface HeaderProps {
   light?: boolean;
   /** When true, apply a grayscale filter to the entire header */
   forceGray?: boolean;
+  /**
+   * When true, keep the header transparent until the user scrolls.
+   * This is helpful for hero sections with immersive media backgrounds.
+   */
+  transparentOnLoad?: boolean;
 }
 
-export default function StickyHeader({ light = false, forceGray = false }: HeaderProps) {
+export default function StickyHeader({
+  light = false,
+  forceGray = false,
+  transparentOnLoad = false,
+}: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
+  const [hasUserScrolled, setHasUserScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('');
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const currentScroll = window.scrollY;
+      setScrolled(currentScroll > 50);
+      if (transparentOnLoad) {
+        setHasUserScrolled(currentScroll > 4);
+      }
       const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       if (docHeight > 0) {
-        setProgress((window.scrollY / docHeight) * 100);
+        setProgress((currentScroll / docHeight) * 100);
       }
     };
+    onScroll();
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [transparentOnLoad]);
 
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]');
@@ -70,6 +85,7 @@ export default function StickyHeader({ light = false, forceGray = false }: Heade
     }
   };
 
+  const isTransparent = transparentOnLoad ? !hasUserScrolled : !scrolled;
   const textColor = scrolled || light ? 'text-charcoal' : 'text-offwhite';
 
   return (
@@ -79,9 +95,9 @@ export default function StickyHeader({ light = false, forceGray = false }: Heade
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
         className={`w-full transition-all duration-500 ease-in-out transition-[filter] duration-[2000ms] ${
-          scrolled
-            ? 'bg-sepia/80 shadow-md backdrop-blur-md rounded-b-lg'
-            : 'bg-transparent backdrop-blur-0'
+          isTransparent
+            ? 'bg-transparent backdrop-blur-0'
+            : 'bg-sepia/80 shadow-md backdrop-blur-md rounded-b-lg'
         } ${textColor} ${forceGray ? 'filter grayscale' : ''}`}
       >
         <div
