@@ -62,6 +62,7 @@ export function HeroContent({
     ctaRef: enableEffects ? ctaRef : disabledCtaRef,
   });
 
+  // Personalized headline logic
   useEffect(() => {
     const storedHeadline = localStorage.getItem('hero_headline_variant');
     if (storedHeadline) {
@@ -84,21 +85,20 @@ export function HeroContent({
     }
   }, [searchParams]);
 
+  // Page reveal control
   useEffect(() => {
     if (prefersReducedMotion || !enableEffects) return;
-
     const original = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-
     controls.start('visible').then(() => {
       document.body.style.overflow = original;
     });
-
     return () => {
       document.body.style.overflow = original;
     };
   }, [controls, prefersReducedMotion, enableEffects]);
 
+  // Sticky prompt delay logic
   useEffect(() => {
     if (!enableEffects) return;
     let timer: NodeJS.Timeout;
@@ -114,32 +114,30 @@ export function HeroContent({
     };
   }, [enableEffects]);
 
-  // Fade in the video as it starts playing
+  // Video fade and hold logic
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     const handlePlay = () => {
       setVideoOpacity(0);
-      requestAnimationFrame(() => {
-        setTimeout(() => setVideoOpacity(0.45), 1000); // moderate opacity for cinematic effect
-      });
+      setTimeout(() => setVideoOpacity(0.45), 1000);
     };
 
     const handleEnded = () => {
       video.pause();
-      video.currentTime = video.duration - 0.1; // hold last frame
+      video.currentTime = video.duration - 0.1;
     };
 
     video.addEventListener('play', handlePlay);
     video.addEventListener('ended', handleEnded);
-
     return () => {
       video.removeEventListener('play', handlePlay);
       video.removeEventListener('ended', handleEnded);
     };
   }, []);
 
+  // Motion Variants
   const textVariants = {
     hidden: { opacity: 0, y: 15 },
     visible: (i: number) => ({
@@ -188,6 +186,7 @@ export function HeroContent({
       transition: { delay: 2.2, duration: 0.6, ease: 'easeOut' },
     },
   };
+
   const rawHeadline = personalizedHeadline || headline;
   const headlineSegments = parseTaggedText(rawHeadline);
 
@@ -203,7 +202,10 @@ export function HeroContent({
       <video
         ref={videoRef}
         className="absolute inset-0 z-[1] h-full w-full object-cover transition-opacity duration-1000"
-        style={{ opacity: videoOpacity }}
+        style={{
+          opacity: videoOpacity,
+          filter: 'grayscale(1) contrast(1.9) brightness(0.35)',
+        }}
         autoPlay
         muted
         playsInline
@@ -214,11 +216,12 @@ export function HeroContent({
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlay gradient for readability */}
-      <div className="absolute inset-0 z-[2] pointer-events-none bg-gradient-to-b from-black/40 via-black/15 to-black/60" />
-
+      {/* === Overlays === */}
+      <div className="absolute inset-0 z-[2] pointer-events-none bg-gradient-to-b from-black/40 via-black/15 to-black/70" />
+      <div className="absolute inset-0 z-[2] pointer-events-none bg-[radial-gradient(circle_at_center,transparent_60%,rgba(0,0,0,0.7)_100%)]" /> {/* vignette */}
       <div ref={containerRef} className="pointer-events-none absolute inset-0 z-[3] h-full w-full" />
 
+      {/* === Text + Content === */}
       <motion.div
         className="relative z-10 mx-auto grid w-full max-w-[88rem] grid-cols-1 items-center gap-[clamp(2rem,6vw,5rem)] px-[clamp(1rem,4vw,2rem)] pt-[clamp(1rem,5vw,3rem)] pb-[clamp(4rem,8vw,6rem)] md:grid-cols-2"
         initial="hidden"
@@ -228,10 +231,7 @@ export function HeroContent({
           <motion.div
             variants={textVariants}
             custom={0}
-            className={clsx(
-              'mb-6 ml-20 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-charcoal',
-              forceGray && 'text-gray-400 filter grayscale'
-            )}
+            className="mb-6 ml-20 text-[clamp(0.85rem,1.2vw,0.9rem)] font-thin tracking-widest text-silver"
           >
             HELLO, WE ARE NPR MEDIA
           </motion.div>
@@ -241,20 +241,14 @@ export function HeroContent({
             data-scroll
             variants={textVariants}
             custom={1}
-            className="mb-6 ml-20 w-full text-charcoal text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
+            className="mb-6 ml-20 w-full text-silver drop-shadow-[0_0_12px_rgba(0,0,0,0.6)] text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
           >
             {headlineSegments.map((seg, si) => (
               <motion.span
                 key={si}
                 className={clsx(
                   'inline-block transition-colors duration-700',
-                  forceGray
-                    ? seg.text.trim() === 'Trusted by'
-                      ? 'text-blood-glow filter-none'
-                      : 'text-gray-400 filter grayscale'
-                    : seg.highlight
-                      ? 'text-blood-glow'
-                      : 'text-charcoal'
+                  seg.highlight ? 'text-blood-glow' : 'text-silver'
                 )}
                 variants={wordVariants}
                 custom={si}
@@ -269,26 +263,19 @@ export function HeroContent({
               id="hero-subheadline"
               aria-describedby="hero-headline"
               variants={subheadlineVariants}
-              className={clsx(
-                'font-grotesk font-medium text-charcoal opacity-90 md:opacity-100 mt-6 sm:mt-8 lg:mt-10 mb-7 ml-20 max-w-[60ch] text-left text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]',
-                forceGray && 'text-gray-400 filter grayscale'
-              )}
+              className="font-grotesk font-medium text-silver/90 mt-6 sm:mt-8 lg:mt-10 mb-7 ml-20 max-w-[60ch] text-left text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6] drop-shadow-[0_0_8px_rgba(0,0,0,0.6)]"
             >
               {subheadline}
             </motion.p>
           )}
 
           {ctaText && ctaLink && (
-            <motion.div
-              variants={ctaVariants}
-              className={clsx('group relative inline-block ml-20', forceGray && 'filter grayscale')}
-            >
+            <motion.div variants={ctaVariants} className="group relative inline-block ml-20">
               <motion.button
                 type="button"
                 ref={ctaRef}
-                aria-label="Start your project with NPR Media"
                 onClick={() => router.push(ctaLink)}
-                className="cta-glow ripple-hover inline-flex items-center justify-center rounded-full border border-blood bg-blood px-[clamp(0.875rem,2.75vw,1.5rem)] py-[clamp(0.4rem,1vw,.75rem)] text-[clamp(0.875rem,1vw,1rem)] font-bold uppercase tracking-wide text-silver shadow-[0_0_20px_rgba(179,0,0,0.2)] transition-transform duration-300 hover:scale-105 hover:bg-crimson focus-visible:outline focus-visible:outline-crimson"
+                className="cta-glow ripple-hover inline-flex items-center justify-center rounded-full border border-blood bg-blood px-[clamp(0.875rem,2.75vw,1.5rem)] py-[clamp(0.4rem,1vw,.75rem)] text-[clamp(0.875rem,1vw,1rem)] font-bold uppercase tracking-wide text-silver shadow-[0_0_20px_rgba(179,0,0,0.3)] transition-transform duration-300 hover:scale-105 hover:bg-crimson focus-visible:outline focus-visible:outline-crimson"
               >
                 <span>{ctaText}</span>
                 <motion.span
@@ -308,12 +295,8 @@ export function HeroContent({
 
           <motion.p
             role="note"
-            aria-label="SOC2 certified and founder-backed"
             variants={badgeVariants}
-            className={clsx(
-              'mt-6 sm:mt-8 text-center sm:text-left flex items-center justify-center sm:justify-start text-olive text-[clamp(0.75rem,0.9vw,0.875rem)] font-medium uppercase tracking-wider font-smallcaps',
-              forceGray && 'filter grayscale'
-            )}
+            className="mt-6 sm:mt-8 text-center sm:text-left flex items-center justify-center sm:justify-start text-olive text-[clamp(0.75rem,0.9vw,0.875rem)] font-medium uppercase tracking-wider font-smallcaps drop-shadow-[0_0_4px_rgba(0,0,0,0.6)]"
           >
             <ShieldCheck className="ml-20 mr-2 h-4 w-4 flex-shrink-0" />
             <span>SOC2 Certified • GDPR Ready • Trusted by 10,000+ users</span>
@@ -321,20 +304,19 @@ export function HeroContent({
         </div>
       </motion.div>
 
+      {/* Scroll cue */}
       <motion.button
         aria-label="Scroll to next section"
         onClick={() => document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' })}
         variants={cueVariants}
         initial="hidden"
         animate="visible"
-        className={clsx(
-          'absolute bottom-[2vh] left-1/2 z-20 -translate-x-1/2 appearance-none border-none bg-transparent p-2 text-blood opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blood',
-          forceGray && 'filter grayscale'
-        )}
+        className="absolute bottom-[2vh] left-1/2 z-20 -translate-x-1/2 appearance-none border-none bg-transparent p-2 text-blood opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blood"
       >
         <ChevronDown className="h-[clamp(1.5rem,2vw,2rem)] w-[clamp(1.5rem,2vw,2rem)] animate-[bounce_2.5s_infinite]" />
       </motion.button>
 
+      {/* Sticky CTA */}
       {isStickyVisible && (
         <div className="fixed bottom-36 left-1/2 z-50 -translate-x-1/2 rounded-full bg-blood px-4 py-2 text-sm font-bold text-charcoal opacity-90 shadow-xl hover:scale-105 hover:bg-blood">
           Still thinking? Start your free trial now →
@@ -374,12 +356,7 @@ export default function HeroSection({ reveal: revealProp, ...props }: HeroProps 
             </div>
             <h1 className="mb-6 ml-20 w-full text-charcoal/30 text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight">
               {overlaySegments.map((seg, i) => (
-                <span
-                  key={i}
-                  className={clsx(
-                    seg.text.trim() === 'Trusted by' ? 'text-blood-glow' : 'text-charcoal/50'
-                  )}
-                >
+                <span key={i} className={clsx(seg.text.trim() === 'Trusted by' ? 'text-blood-glow' : 'text-charcoal/50')}>
                   {seg.text}
                 </span>
               ))}
