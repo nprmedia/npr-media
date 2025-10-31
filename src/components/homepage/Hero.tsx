@@ -126,14 +126,28 @@ function HeroInner({
     v.muted = true;
     v.playsInline = true;
 
-    const startTransitions = () => {
-      setVideoOpacity(1);
-      const t = setTimeout(
-        () => setFilterState('brightness(1) contrast(1) saturate(1)'),
-        5000 // ← fade to normal over 5 s
-      );
-      return t;
-    };
+   const startTransitions = () => {
+  // Start invisible → soft visible
+  setVideoOpacity(0.3);
+  setFilterState('grayscale(1) brightness(0.1) contrast(3) saturate(0)');
+
+  // Step 1: gently fade opacity to 0.6 over 1s
+  setTimeout(() => setVideoOpacity(0.6), 1000);
+
+  // Step 2: begin brightening while continuing opacity fade to full
+  setTimeout(() => {
+    setFilterState('brightness(0.6) contrast(1.6) saturate(0.3)');
+    setVideoOpacity(0.8);
+  }, 2500);
+
+  // Step 3: reach full clarity and natural color
+  const t = setTimeout(() => {
+    setFilterState('brightness(1) contrast(1) saturate(1)');
+    setVideoOpacity(1);
+  }, 5000);
+
+  return t;
+};
 
     let timer: ReturnType<typeof setTimeout> | undefined;
 
@@ -226,7 +240,7 @@ function HeroInner({
       {/* Video background */}
       <video
         ref={videoRef}
-        className="absolute inset-0 z-[1] h-full w-full object-cover transition-[opacity,filter] duration-[1500ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
+        className="absolute inset-0 z-[1] h-full w-full object-cover transition-[opacity,filter] duration-[2500ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
         style={{ opacity: videoOpacity, filter: filterState }}
         autoPlay
         muted
