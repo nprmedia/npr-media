@@ -69,6 +69,13 @@
   "pnpm": {
     "overrides": {
       "prismjs": "^1.30.0"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@tailwindcss/oxide",
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }
