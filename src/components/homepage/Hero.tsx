@@ -39,6 +39,7 @@ export function HeroContent({
   const disabledContainerRef = useRef<HTMLDivElement>(null);
   const disabledHeroRef = useRef<HTMLElement>(null);
   const disabledCtaRef = useRef<HTMLButtonElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -53,6 +54,7 @@ export function HeroContent({
 
   const [isStickyVisible, setIsStickyVisible] = useState(false);
   const [personalizedHeadline, setPersonalizedHeadline] = useState('');
+  const [videoOpacity, setVideoOpacity] = useState(0);
 
   useParticleBackground(enableEffects ? containerRef : disabledContainerRef);
   useHeroAnalytics({
@@ -111,6 +113,32 @@ export function HeroContent({
       window.removeEventListener('scroll', onScroll);
     };
   }, [enableEffects]);
+
+  // Fade in the video as it starts playing
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handlePlay = () => {
+      setVideoOpacity(0);
+      requestAnimationFrame(() => {
+        setTimeout(() => setVideoOpacity(0.45), 1000); // moderate opacity for cinematic effect
+      });
+    };
+
+    const handleEnded = () => {
+      video.pause();
+      video.currentTime = video.duration - 0.1; // hold last frame
+    };
+
+    video.addEventListener('play', handlePlay);
+    video.addEventListener('ended', handleEnded);
+
+    return () => {
+      video.removeEventListener('play', handlePlay);
+      video.removeEventListener('ended', handleEnded);
+    };
+  }, []);
 
   const textVariants = {
     hidden: { opacity: 0, y: 15 },
@@ -173,10 +201,11 @@ export function HeroContent({
     >
       {/* === NPR VIDEO BACKGROUND === */}
       <video
-        className="absolute inset-0 z-[1] h-full w-full object-cover"
+        ref={videoRef}
+        className="absolute inset-0 z-[1] h-full w-full object-cover transition-opacity duration-1000"
+        style={{ opacity: videoOpacity }}
         autoPlay
         muted
-        loop
         playsInline
         preload="auto"
         poster={image?.url || '/fallback.jpg'}
@@ -185,10 +214,9 @@ export function HeroContent({
         Your browser does not support the video tag.
       </video>
 
-      {/* optional overlay gradient */}
-      <div className="absolute inset-0 z-[2] bg-gradient-to-b from-black/40 via-transparent to-transparent pointer-events-none" />
+      {/* Overlay gradient for readability */}
+      <div className="absolute inset-0 z-[2] pointer-events-none bg-gradient-to-b from-black/40 via-black/15 to-black/60" />
 
-      {/* particle background and gradient overlays */}
       <div ref={containerRef} className="pointer-events-none absolute inset-0 z-[3] h-full w-full" />
 
       <motion.div
@@ -208,98 +236,88 @@ export function HeroContent({
             HELLO, WE ARE NPR MEDIA
           </motion.div>
 
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-            }}
-            className="w-full"
+          <motion.h1
+            id="hero-headline"
+            data-scroll
+            variants={textVariants}
+            custom={1}
+            className="mb-6 ml-20 w-full text-charcoal text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
           >
-            <motion.h1
-              id="hero-headline"
-              data-scroll
-              variants={textVariants}
-              custom={1}
-              className="mb-6 ml-20 w-full text-charcoal text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] font-grotesk font-bold tracking-tight"
-            >
-              {headlineSegments.map((seg, si) => (
-                <motion.span
-                  key={si}
-                  className={clsx(
-                    'inline-block transition-colors duration-700',
-                    forceGray
-                      ? seg.text.trim() === 'Trusted by'
-                        ? 'text-blood-glow filter-none'
-                        : 'text-gray-400 filter grayscale'
-                      : seg.highlight
-                        ? 'text-blood-glow'
-                        : 'text-charcoal'
-                  )}
-                  variants={wordVariants}
-                  custom={si}
-                >
-                  {seg.text}
-                </motion.span>
-              ))}
-            </motion.h1>
-
-            {subheadline && (
-              <motion.p
-                id="hero-subheadline"
-                aria-describedby="hero-headline"
-                variants={subheadlineVariants}
+            {headlineSegments.map((seg, si) => (
+              <motion.span
+                key={si}
                 className={clsx(
-                  'font-grotesk font-medium text-charcoal opacity-90 md:opacity-100 mt-6 sm:mt-8 lg:mt-10 mb-7 ml-20 max-w-[60ch] text-left text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]',
-                  forceGray && 'text-gray-400 filter grayscale'
+                  'inline-block transition-colors duration-700',
+                  forceGray
+                    ? seg.text.trim() === 'Trusted by'
+                      ? 'text-blood-glow filter-none'
+                      : 'text-gray-400 filter grayscale'
+                    : seg.highlight
+                      ? 'text-blood-glow'
+                      : 'text-charcoal'
                 )}
+                variants={wordVariants}
+                custom={si}
               >
-                {subheadline}
-              </motion.p>
-            )}
+                {seg.text}
+              </motion.span>
+            ))}
+          </motion.h1>
 
-            {ctaText && ctaLink && (
-              <motion.div
-                variants={ctaVariants}
-                className={clsx('group relative inline-block ml-20', forceGray && 'filter grayscale')}
-              >
-                <motion.button
-                  type="button"
-                  ref={ctaRef}
-                  aria-label="Start your project with NPR Media"
-                  onClick={() => router.push(ctaLink)}
-                  className="cta-glow ripple-hover inline-flex items-center justify-center rounded-full border border-blood bg-blood px-[clamp(0.875rem,2.75vw,1.5rem)] py-[clamp(0.4rem,1vw,.75rem)] text-[clamp(0.875rem,1vw,1rem)] font-bold uppercase tracking-wide text-silver shadow-[0_0_20px_rgba(179,0,0,0.2)] transition-transform duration-300 hover:scale-105 hover:bg-crimson focus-visible:outline focus-visible:outline-crimson"
-                >
-                  <span>{ctaText}</span>
-                  <motion.span
-                    initial={{ opacity: 0, x: -8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 1.6, duration: 0.5 }}
-                    className="ml-1 transition-transform group-hover:translate-x-1"
-                  >
-                    →
-                  </motion.span>
-                </motion.button>
-                <div className="ml-20 text-olive relative top-full left-0 mt-1 text-[0.65rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                  No card required. Cancel anytime.
-                </div>
-              </motion.div>
-            )}
-
+          {subheadline && (
             <motion.p
-              role="note"
-              aria-label="SOC2 certified and founder-backed"
-              variants={badgeVariants}
+              id="hero-subheadline"
+              aria-describedby="hero-headline"
+              variants={subheadlineVariants}
               className={clsx(
-                'mt-6 sm:mt-8 text-center sm:text-left flex items-center justify-center sm:justify-start text-olive text-[clamp(0.75rem,0.9vw,0.875rem)] font-medium uppercase tracking-wider font-smallcaps',
-                forceGray && 'filter grayscale'
+                'font-grotesk font-medium text-charcoal opacity-90 md:opacity-100 mt-6 sm:mt-8 lg:mt-10 mb-7 ml-20 max-w-[60ch] text-left text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.6]',
+                forceGray && 'text-gray-400 filter grayscale'
               )}
             >
-              <ShieldCheck className="ml-20 mr-2 h-4 w-4 flex-shrink-0" />
-              <span>SOC2 Certified • GDPR Ready • Trusted by 10,000+ users</span>
+              {subheadline}
             </motion.p>
-          </motion.div>
+          )}
+
+          {ctaText && ctaLink && (
+            <motion.div
+              variants={ctaVariants}
+              className={clsx('group relative inline-block ml-20', forceGray && 'filter grayscale')}
+            >
+              <motion.button
+                type="button"
+                ref={ctaRef}
+                aria-label="Start your project with NPR Media"
+                onClick={() => router.push(ctaLink)}
+                className="cta-glow ripple-hover inline-flex items-center justify-center rounded-full border border-blood bg-blood px-[clamp(0.875rem,2.75vw,1.5rem)] py-[clamp(0.4rem,1vw,.75rem)] text-[clamp(0.875rem,1vw,1rem)] font-bold uppercase tracking-wide text-silver shadow-[0_0_20px_rgba(179,0,0,0.2)] transition-transform duration-300 hover:scale-105 hover:bg-crimson focus-visible:outline focus-visible:outline-crimson"
+              >
+                <span>{ctaText}</span>
+                <motion.span
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.6, duration: 0.5 }}
+                  className="ml-1 transition-transform group-hover:translate-x-1"
+                >
+                  →
+                </motion.span>
+              </motion.button>
+              <div className="ml-20 text-olive relative top-full left-0 mt-1 text-[0.65rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                No card required. Cancel anytime.
+              </div>
+            </motion.div>
+          )}
+
+          <motion.p
+            role="note"
+            aria-label="SOC2 certified and founder-backed"
+            variants={badgeVariants}
+            className={clsx(
+              'mt-6 sm:mt-8 text-center sm:text-left flex items-center justify-center sm:justify-start text-olive text-[clamp(0.75rem,0.9vw,0.875rem)] font-medium uppercase tracking-wider font-smallcaps',
+              forceGray && 'filter grayscale'
+            )}
+          >
+            <ShieldCheck className="ml-20 mr-2 h-4 w-4 flex-shrink-0" />
+            <span>SOC2 Certified • GDPR Ready • Trusted by 10,000+ users</span>
+          </motion.p>
         </div>
       </motion.div>
 
