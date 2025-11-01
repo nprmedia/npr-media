@@ -265,11 +265,11 @@ function HeroInner(props: HeroProps & { enableEffects?: boolean }) {
       {/* Video background */}
       <video
         ref={videoRef}
-        className="absolute inset-0 z-[1] h-full w-full object-cover transition-[opacity,filter] duration-[1400ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
+        className="absolute left-0 right-0 bottom-0 top-[-10%] z-[1] w-full object-cover transition-[opacity,filter] duration-[1400ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
         style={{
           opacity: videoOpacity,
           filter: filterState,
-          objectPosition: '68% 41%',
+          objectPosition: '78% 36%',
         }}
         autoPlay
         muted
