@@ -188,14 +188,8 @@ function HeroInner(props: HeroProps & { enableEffects?: boolean }) {
       }
     };
 
-    const onEnded = () => {
-      v.pause();
-      v.currentTime = Math.max(0, v.duration - 0.6);
-    };
-
     v.addEventListener('loadeddata', onLoadedData, { once: true });
     v.addEventListener('play', onPlay);
-    v.addEventListener('ended', onEnded);
 
     const fallback = setTimeout(() => {
       v.play().catch(() => {});
@@ -211,7 +205,6 @@ function HeroInner(props: HeroProps & { enableEffects?: boolean }) {
       }
       clearTimeout(fallback);
       v.removeEventListener('play', onPlay);
-      v.removeEventListener('ended', onEnded);
     };
   }, []);
 
@@ -276,7 +269,7 @@ function HeroInner(props: HeroProps & { enableEffects?: boolean }) {
         style={{
           opacity: videoOpacity,
           filter: filterState,
-          objectPosition: '58% 41%',
+          objectPosition: '68% 41%',
         }}
         autoPlay
         muted
