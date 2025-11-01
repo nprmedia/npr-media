@@ -42,7 +42,7 @@ export default function Page() {
         className="relative w-full overflow-x-hidden bg-antique text-charcoal"
       >
         <Suspense>
-          <HeroSection {...hero} reveal={reveal} />
+        <HeroSection {...hero} />
         </Suspense>
         <IndustryTemplatesSection />
         <StatImpact />
