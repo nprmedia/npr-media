@@ -190,7 +190,7 @@ function HeroInner(props: HeroProps & { enableEffects?: boolean }) {
 
     const onEnded = () => {
       v.pause();
-      v.currentTime = Math.max(0, v.duration - 0.1);
+      v.currentTime = Math.max(0, v.duration - 0.6);
     };
 
     v.addEventListener('loadeddata', onLoadedData, { once: true });
@@ -276,7 +276,7 @@ function HeroInner(props: HeroProps & { enableEffects?: boolean }) {
         style={{
           opacity: videoOpacity,
           filter: filterState,
-          objectPosition: '42% 48%',
+          objectPosition: '58% 41%',
         }}
         autoPlay
         muted
