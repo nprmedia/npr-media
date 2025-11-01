@@ -55,8 +55,8 @@ function HeroInner(props: HeroProps & { enableEffects?: boolean }) {
   // Video state
   const [videoOpacity, setVideoOpacity] = useState(0);
   const [filterState, setFilterState] = useState(
-    'grayscale(1) brightness(0.1) contrast(3) saturate(0)'
-  ); // start pure black
+    'grayscale(0.95) brightness(0.2) contrast(2.8) saturate(0.05)'
+  ); // keep detail visible even at the darkest point
 
   /* ─── Background logic ───────────────────────────── */
   useParticleBackground(particlesRef);
@@ -129,42 +129,42 @@ function HeroInner(props: HeroProps & { enableEffects?: boolean }) {
     };
 
     // Start invisible → soft visible
-    setVideoOpacity(0.25);
+    setVideoOpacity(0.35);
     setFilterState(
-      'grayscale(1) brightness(0.12) contrast(3) saturate(0)'
+      'grayscale(0.9) brightness(0.25) contrast(2.6) saturate(0.08)'
     );
 
     // Step 1: ease in some detail
     schedule(() => {
-      setVideoOpacity(0.5);
+      setVideoOpacity(0.55);
       setFilterState(
-        'grayscale(0.8) brightness(0.25) contrast(2.5) saturate(0.05)'
+        'grayscale(0.7) brightness(0.4) contrast(2.2) saturate(0.2)'
       );
-    }, 700);
+    }, 350);
 
     // Step 2: continue revealing colour information
     schedule(() => {
-      setVideoOpacity(0.72);
+      setVideoOpacity(0.75);
       setFilterState(
-        'grayscale(0.45) brightness(0.45) contrast(1.8) saturate(0.25)'
+        'grayscale(0.35) brightness(0.6) contrast(1.7) saturate(0.45)'
       );
-    }, 2200);
+    }, 1100);
 
     // Step 3: approach the final natural look
     schedule(() => {
-      setVideoOpacity(0.9);
+      setVideoOpacity(0.92);
       setFilterState(
-        'grayscale(0.18) brightness(0.75) contrast(1.35) saturate(0.6)'
+        'grayscale(0.15) brightness(0.85) contrast(1.4) saturate(0.75)'
       );
-    }, 3800);
+    }, 1900);
 
     // Final step: settle into full clarity
     schedule(() => {
       setVideoOpacity(1);
       setFilterState(
-        'grayscale(0) brightness(1) contrast(1.1) saturate(1)'
+        'grayscale(0.05) brightness(0.95) contrast(1.15) saturate(0.95)'
       );
-    }, 5600);
+    }, 2800);
 
     return () => {
       timeouts.forEach(clearTimeout);
@@ -272,11 +272,11 @@ function HeroInner(props: HeroProps & { enableEffects?: boolean }) {
       {/* Video background */}
       <video
         ref={videoRef}
-        className="absolute inset-0 z-[1] h-full w-full object-cover transition-[opacity,filter] duration-[2800ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
+        className="absolute inset-0 z-[1] h-full w-full object-cover transition-[opacity,filter] duration-[1400ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
         style={{
           opacity: videoOpacity,
           filter: filterState,
-          objectPosition: 'center 60%',
+          objectPosition: '42% 48%',
         }}
         autoPlay
         muted
