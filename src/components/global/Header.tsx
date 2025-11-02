@@ -18,20 +18,25 @@ interface HeaderProps {
 }
 
 export default function StickyHeader({ light = false, forceGray = false }: HeaderProps) {
-  const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [scrollIntensity, setScrollIntensity] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('');
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const currentY = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
       if (docHeight > 0) {
-        setProgress((window.scrollY / docHeight) * 100);
+        setProgress((currentY / docHeight) * 100);
       }
+
+      setScrollIntensity(Math.min(currentY / 80, 1));
     };
-    window.addEventListener('scroll', onScroll);
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -70,7 +75,14 @@ export default function StickyHeader({ light = false, forceGray = false }: Heade
     }
   };
 
-  const textColor = scrolled || light ? 'text-charcoal' : 'text-offwhite';
+  const hasScrolled = scrollIntensity > 0.02;
+  const textColor = hasScrolled || light ? 'text-charcoal' : 'text-offwhite';
+  const headerBackgroundOpacity = Math.min(scrollIntensity * 0.8, 0.8);
+  const headerBlur = Math.min(scrollIntensity * 8, 8);
+  const headerShadowOpacity = Math.min(scrollIntensity * 0.35, 0.25);
+  const headerShadow = headerShadowOpacity
+    ? `0 18px 32px -24px rgba(24, 20, 17, ${headerShadowOpacity.toFixed(3)})`
+    : 'none';
 
   return (
     <header role="banner" className="sticky top-0 z-50 w-full">
@@ -78,11 +90,15 @@ export default function StickyHeader({ light = false, forceGray = false }: Heade
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className={`w-full transition-all duration-500 ease-in-out transition-[filter] duration-[2000ms] ${
-          scrolled
-            ? 'bg-sepia/80 shadow-md backdrop-blur-md rounded-b-lg'
-            : 'bg-transparent backdrop-blur-0'
+        className={`w-full bg-transparent transition-[background-color,backdrop-filter,box-shadow,border-radius] duration-500 ease-in-out ${
+          hasScrolled ? 'rounded-b-lg' : ''
         } ${textColor} ${forceGray ? 'filter grayscale' : ''}`}
+        style={{
+          backgroundColor: `rgb(var(--color-sepia-rgb) / ${headerBackgroundOpacity.toFixed(3)})`,
+          backdropFilter: `blur(${headerBlur.toFixed(2)}px)`,
+          WebkitBackdropFilter: `blur(${headerBlur.toFixed(2)}px)`,
+          boxShadow: headerShadow,
+        }}
       >
         <div
           className={`mx-auto flex h-[clamp(3rem,6vw,3.75rem)] w-full items-center pt-3 px-[clamp(1rem,4vw,3rem)] ${textColor}`}
