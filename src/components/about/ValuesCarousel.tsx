@@ -4,56 +4,76 @@ import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 
-type Slide = {
+type ValueCard = {
   title: string;
   description: string;
 };
 
-const slides: Slide[] = [
+type ValueGroup = {
+  heading: string;
+  cards: ValueCard[];
+};
+
+const groups: ValueGroup[] = [
   {
-    title: 'Value: Results Over Vanity',
-    description:
-      'Real growth matters most. Vanity metrics may look nice but rarely move the needle. Every feature ties back to concrete business results.',
+    heading: 'Values',
+    cards: [
+      {
+        title: 'Results Over Vanity',
+        description:
+          'Real growth matters most. Vanity metrics may look nice but rarely move the needle. Every feature ties back to concrete business results.',
+      },
+      {
+        title: 'Transparency Always',
+        description:
+          'Open communication builds trust. We share progress often so there are no surprises. Clear expectations set the stage for great partnerships.',
+      },
+      {
+        title: 'Simplicity Wins',
+        description:
+          'Complex sites slow teams down. We keep code lean so your product stays fast. Simple solutions are easier to maintain and extend.',
+      },
+    ],
   },
   {
-    title: 'Value: Transparency Always',
-    description:
-      'Open communication builds trust. We share progress often so there are no surprises. Clear expectations set the stage for great partnerships.',
+    heading: 'Culture',
+    cards: [
+      {
+        title: 'Learn and Iterate',
+        description:
+          'We experiment constantly to improve. Each project teaches us something new. Continuous learning keeps our work fresh and effective.',
+      },
+      {
+        title: 'Ownership Mentality',
+        description:
+          'We step up like it is our own product. Taking responsibility yields better outcomes. Everyone on the team is accountable for quality.',
+      },
+      {
+        title: 'Remote Friendly',
+        description:
+          'Great talent lives everywhere. Our flexible approach lets us collaborate with the best people anywhere. Being remote keeps us nimble.',
+      },
+    ],
   },
   {
-    title: 'Value: Simplicity Wins',
-    description:
-      'Complex sites slow teams down. We keep code lean so your product stays fast. Simple solutions are easier to maintain and extend.',
-  },
-  {
-    title: 'Culture: Learn and Iterate',
-    description:
-      'We experiment constantly to improve. Each project teaches us something new. Continuous learning keeps our work fresh and effective.',
-  },
-  {
-    title: 'Culture: Ownership Mentality',
-    description:
-      'We step up like it is our own product. Taking responsibility yields better outcomes. Everyone on the team is accountable for quality.',
-  },
-  {
-    title: 'Culture: Remote Friendly',
-    description:
-      'Great talent lives everywhere. Our flexible approach lets us collaborate with the best people anywhere. Being remote keeps us nimble.',
-  },
-  {
-    title: 'Belief: Partners Not Vendors',
-    description:
-      'True success comes from collaboration. We embed with your team to understand every goal. You get a dedicated partner, not just another vendor.',
-  },
-  {
-    title: 'Belief: People Over Process',
-    description:
-      'Rigid frameworks slow innovation. We adapt methods to fit your business. Strong relationships drive outcomes more than strict processes.',
-  },
-  {
-    title: 'Belief: Long-Term Success',
-    description:
-      'We build to last and grow. Scalable systems ensure your investment keeps delivering. Solutions should stand the test of time.',
+    heading: 'Beliefs',
+    cards: [
+      {
+        title: 'Partners Not Vendors',
+        description:
+          'True success comes from collaboration. We embed with your team to understand every goal. You get a dedicated partner, not just another vendor.',
+      },
+      {
+        title: 'People Over Process',
+        description:
+          'Rigid frameworks slow innovation. We adapt methods to fit your business. Strong relationships drive outcomes more than strict processes.',
+      },
+      {
+        title: 'Long-Term Success',
+        description:
+          'We build to last and grow. Scalable systems ensure your investment keeps delivering. Solutions should stand the test of time.',
+      },
+    ],
   },
 ];
 
@@ -88,6 +108,11 @@ export default function ValuesCarousel({ className }: ValuesCarouselProps) {
     return () => container.removeEventListener('scroll', onScroll);
   }, []);
 
+  const getOpacity = (sectionIndex: number) => {
+    const distance = Math.abs(index - sectionIndex);
+    return 1 - Math.min(distance * 0.4, 0.8);
+  };
+
   return (
     <div
       className={clsx(
@@ -108,20 +133,40 @@ export default function ValuesCarousel({ className }: ValuesCarouselProps) {
         ref={containerRef}
         className="no-scrollbar h-full snap-y snap-mandatory overflow-y-scroll scroll-smooth py-12"
       >
-        {slides.map((slide, i) => {
-          const distance = Math.abs(index - i);
-          const opacity = 1 - Math.min(distance * 0.4, 0.8);
+        <section className="snap-center py-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            style={{ opacity: getOpacity(0) }}
+            className="rounded-xl bg-olive p-6 text-charcoal shadow"
+          >
+            <h2 className="text-2xl font-bold leading-snug">Values, Culture &amp; Beliefs</h2>
+            <p className="mt-2 text-lg leading-relaxed text-charcoal">
+              The principles and mindsets that guide how we collaborate, ship, and support long-term success.
+            </p>
+          </motion.div>
+        </section>
+        {groups.map((group, groupIndex) => {
+          const sectionIndex = groupIndex + 1;
           return (
-            <section key={slide.title} className="snap-center py-4">
+            <section key={group.heading} className="snap-center py-4">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
-                style={{ opacity }}
+                style={{ opacity: getOpacity(sectionIndex) }}
                 className="rounded-xl bg-olive p-6 text-charcoal shadow"
               >
-                <p className="text-xl leading-snug font-bold">{slide.title}</p>
-                <p className="mt-2 text-lg leading-relaxed text-charcoal">{slide.description}</p>
+                <h3 className="text-xl font-semibold leading-snug">{group.heading}</h3>
+                <div className="mt-4 space-y-4">
+                  {group.cards.map((card) => (
+                    <article key={card.title}>
+                      <h4 className="text-lg font-semibold leading-snug">{card.title}</h4>
+                      <p className="mt-1 text-base leading-relaxed text-charcoal">{card.description}</p>
+                    </article>
+                  ))}
+                </div>
               </motion.div>
             </section>
           );
