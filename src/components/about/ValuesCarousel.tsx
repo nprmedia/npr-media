@@ -91,19 +91,26 @@ export default function ValuesCarousel({ className }: ValuesCarouselProps) {
   return (
     <div
       className={clsx(
-        'relative mx-auto h-screen max-w-md overflow-hidden bg-offwhite',
+        'relative mx-auto h-screen max-w-md overflow-hidden bg-olive',
         className,
       )}
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10" style={{ height: '33%' }}>
-        <div className="h-full bg-gradient-to-b from-white via-white/80 to-transparent" />
-      </div>
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 z-10"
+        style={{
+          height: '33%',
+          background:
+            'linear-gradient(to bottom, rgba(var(--color-olive-rgb) / 1), rgba(var(--color-olive-rgb) / 0.85), rgba(var(--color-olive-rgb) / 0))',
+        }}
+      />
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 z-10"
-        style={{ height: '33%' }}
-      >
-        <div className="h-full bg-gradient-to-t from-white via-white/80 to-transparent" />
-      </div>
+        style={{
+          height: '33%',
+          background:
+            'linear-gradient(to top, rgba(var(--color-olive-rgb) / 1), rgba(var(--color-olive-rgb) / 0.85), rgba(var(--color-olive-rgb) / 0))',
+        }}
+      />
       <div
         ref={containerRef}
         className="no-scrollbar h-full snap-y snap-mandatory overflow-y-scroll scroll-smooth py-12"
@@ -118,7 +125,7 @@ export default function ValuesCarousel({ className }: ValuesCarouselProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
                 style={{ opacity }}
-                className="rounded-xl bg-olive p-6 text-charcoal shadow"
+                className="rounded-xl bg-antique p-6 text-charcoal shadow-silver/20"
               >
                 <p className="text-xl leading-snug font-bold">{slide.title}</p>
                 <p className="mt-2 text-lg leading-relaxed text-charcoal">{slide.description}</p>
