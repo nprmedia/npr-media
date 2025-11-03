@@ -31,14 +31,8 @@ export interface HeroProps {
 /* ──────────────────────────────────────────────────────────────── */
 /* HERO INNER CORE                                                 */
 /* ──────────────────────────────────────────────────────────────── */
-function HeroInner({
-  headline,
-  subheadline,
-  ctaText,
-  ctaLink,
-  image,
-  enableEffects = true,
-}: HeroProps & { enableEffects?: boolean }) {
+function HeroInner(props: HeroProps & { enableEffects?: boolean }) {
+  const { headline, subheadline, ctaText, ctaLink, enableEffects = true } = props;
   const heroRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLButtonElement>(null);
@@ -61,8 +55,8 @@ function HeroInner({
   // Video state
   const [videoOpacity, setVideoOpacity] = useState(0);
   const [filterState, setFilterState] = useState(
-    'grayscale(1) brightness(0.1) contrast(3) saturate(0)'
-  ); // start pure black
+    'grayscale(0.95) brightness(0.2) contrast(2.8) saturate(0.05)'
+  ); // keep detail visible even at the darkest point
 
   /* ─── Background logic ───────────────────────────── */
   useParticleBackground(particlesRef);
@@ -126,60 +120,91 @@ function HeroInner({
     v.muted = true;
     v.playsInline = true;
 
-   const startTransitions = () => {
-  // Start invisible → soft visible
-  setVideoOpacity(0.3);
-  setFilterState('grayscale(1) brightness(0.1) contrast(3) saturate(0)');
+  const startTransitions = () => {
+    const timeouts: ReturnType<typeof setTimeout>[] = [];
 
-  // Step 1: gently fade opacity to 0.6 over 1s
-  setTimeout(() => setVideoOpacity(0.6), 1000);
+    const schedule = (callback: () => void, delay: number) => {
+      const timeout = setTimeout(callback, delay);
+      timeouts.push(timeout);
+    };
 
-  // Step 2: begin brightening while continuing opacity fade to full
-  setTimeout(() => {
-    setFilterState('brightness(0.6) contrast(1.6) saturate(0.3)');
-    setVideoOpacity(0.8);
-  }, 2500);
+    // Start invisible → soft visible
+    setVideoOpacity(0.35);
+    setFilterState(
+      'grayscale(0.9) brightness(0.25) contrast(2.6) saturate(0.08)'
+    );
 
-  // Step 3: reach full clarity and natural color
-  const t = setTimeout(() => {
-    setFilterState('brightness(1) contrast(1) saturate(1)');
-    setVideoOpacity(1);
-  }, 5000);
+    // Step 1: ease in some detail
+    schedule(() => {
+      setVideoOpacity(0.55);
+      setFilterState(
+        'grayscale(0.7) brightness(0.4) contrast(2.2) saturate(0.2)'
+      );
+    }, 350);
 
-  return t;
-};
+    // Step 2: continue revealing colour information
+    schedule(() => {
+      setVideoOpacity(0.75);
+      setFilterState(
+        'grayscale(0.35) brightness(0.6) contrast(1.7) saturate(0.45)'
+      );
+    }, 1100);
 
-    let timer: ReturnType<typeof setTimeout> | undefined;
+    // Step 3: approach the final natural look
+    schedule(() => {
+      setVideoOpacity(0.92);
+      setFilterState(
+        'grayscale(0.15) brightness(0.85) contrast(1.4) saturate(0.75)'
+      );
+    }, 1900);
+
+    // Final step: settle into full clarity
+    schedule(() => {
+      setVideoOpacity(1);
+      setFilterState(
+        'grayscale(0.05) brightness(0.95) contrast(1.15) saturate(0.95)'
+      );
+    }, 2800);
+
+    return () => {
+      timeouts.forEach(clearTimeout);
+    };
+  };
+
+    let cancelTransitions: (() => void) | undefined;
 
     const onLoadedData = () => {
       v.play().catch(() => {});
-      if (timer) clearTimeout(timer);
-      timer = startTransitions();
+      if (cancelTransitions) {
+        cancelTransitions();
+        cancelTransitions = undefined;
+      }
+      cancelTransitions = startTransitions();
     };
 
     const onPlay = () => {
-      if (!timer) timer = startTransitions();
-    };
-
-    const onEnded = () => {
-      v.pause();
-      v.currentTime = Math.max(0, v.duration - 0.1);
+      if (!cancelTransitions) {
+        cancelTransitions = startTransitions();
+      }
     };
 
     v.addEventListener('loadeddata', onLoadedData, { once: true });
     v.addEventListener('play', onPlay);
-    v.addEventListener('ended', onEnded);
 
     const fallback = setTimeout(() => {
       v.play().catch(() => {});
-      if (!timer) timer = startTransitions();
+      if (!cancelTransitions) {
+        cancelTransitions = startTransitions();
+      }
     }, 1000);
 
     return () => {
-      if (timer) clearTimeout(timer);
+      if (cancelTransitions) {
+        cancelTransitions();
+        cancelTransitions = undefined;
+      }
       clearTimeout(fallback);
       v.removeEventListener('play', onPlay);
-      v.removeEventListener('ended', onEnded);
     };
   }, []);
 
@@ -240,8 +265,12 @@ function HeroInner({
       {/* Video background */}
       <video
         ref={videoRef}
-        className="absolute inset-0 z-[1] h-full w-full object-cover transition-[opacity,filter] duration-[2500ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
-        style={{ opacity: videoOpacity, filter: filterState }}
+        className="absolute left-0 right-0 bottom-0 top-[-10%] z-[1] w-full object-cover transition-[opacity,filter] duration-[1400ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
+        style={{
+          opacity: videoOpacity,
+          filter: filterState,
+          objectPosition: '78% 36%',
+        }}
         autoPlay
         muted
         playsInline
