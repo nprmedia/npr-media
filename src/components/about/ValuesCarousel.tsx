@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useSpring } from 'framer-motion';
+import type { MotionStyle } from 'framer-motion';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { KeyboardEvent, TouchEvent as ReactTouchEvent } from 'react';
 import clsx from 'clsx';
@@ -90,6 +91,75 @@ export interface ValuesCarouselProps {
   className?: string;
 }
 
+type MotionConfig = {
+  initial: Record<string, number>;
+  animate: Record<string, number>;
+  transition: { duration: number; ease: string };
+};
+
+const cultureScaleForDistance = (distance: number) =>
+  Math.max(0.86, 1 - distance * 0.08);
+
+function CarouselCard({
+  group,
+  card,
+  cardIndex,
+  activeIndex,
+  isHorizontal,
+  motionConfig,
+}: {
+  group: SlideGroup;
+  card: Slide;
+  cardIndex: number;
+  activeIndex: number;
+  isHorizontal: boolean;
+  motionConfig: MotionConfig;
+}) {
+  const distance = Math.abs(activeIndex - cardIndex);
+  const opacity = 1 - Math.min(distance * 0.4, 0.8);
+  const isCulture = group.motionKey === 'culture';
+  const targetScale = isCulture ? cultureScaleForDistance(distance) : 1;
+  const scaleSpring = useSpring(targetScale, {
+    stiffness: 220,
+    damping: 28,
+    mass: 0.9,
+  });
+
+  useEffect(() => {
+    scaleSpring.set(targetScale);
+  }, [scaleSpring, targetScale]);
+
+  const style: MotionStyle = {
+    opacity,
+    transformOrigin: 'center center',
+  };
+
+  if (isCulture) {
+    style.scale = scaleSpring;
+  }
+
+  return (
+    <motion.div
+      data-card-index={cardIndex}
+      initial={motionConfig.initial}
+      animate={motionConfig.animate}
+      transition={motionConfig.transition}
+      style={style}
+      className={clsx(
+        'snap-center rounded-xl bg-antique p-6 text-charcoal shadow-silver/20',
+        isHorizontal && 'min-w-[calc(100%-1.5rem)] shrink-0',
+        group.axis === 'paged' && 'snap-always',
+        isCulture && 'will-change-transform',
+      )}
+    >
+      <p className="text-xl font-bold leading-snug">{card.title}</p>
+      <p className="mt-2 text-lg leading-relaxed text-charcoal">
+        {card.description}
+      </p>
+    </motion.div>
+  );
+}
+
 export default function ValuesCarousel({ className }: ValuesCarouselProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const groupRefs = useRef<Record<string, HTMLDivElement | null>>({});
@@ -102,25 +172,24 @@ export default function ValuesCarousel({ className }: ValuesCarouselProps) {
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   const hasMountedRef = useRef(false);
 
-  const motionConfigs = useMemo(
-    () =>
-      ({
-        values: {
-          initial: { opacity: 0, y: 32 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.45, ease: 'easeOut' },
-        },
-        culture: {
-          initial: { opacity: 0, x: 48 },
-          animate: { opacity: 1, x: 0 },
-          transition: { duration: 0.5, ease: 'easeOut' },
-        },
-        beliefs: {
-          initial: { opacity: 0, x: -24, y: 24, scale: 0.92 },
-          animate: { opacity: 1, x: 0, y: 0, scale: 1 },
-          transition: { duration: 0.55, ease: 'easeOut' },
-        },
-      } as const),
+  const motionConfigs = useMemo<Record<SlideGroup['motionKey'], MotionConfig>>(
+    () => ({
+      values: {
+        initial: { opacity: 0, y: 32 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.45, ease: 'easeOut' },
+      },
+      culture: {
+        initial: { opacity: 0, x: 48 },
+        animate: { opacity: 1, x: 0 },
+        transition: { duration: 0.5, ease: 'easeOut' },
+      },
+      beliefs: {
+        initial: { opacity: 0, x: -24, y: 24, scale: 0.92 },
+        animate: { opacity: 1, x: 0, y: 0, scale: 1 },
+        transition: { duration: 0.55, ease: 'easeOut' },
+      },
+    }),
     [],
   );
 
@@ -368,39 +437,17 @@ export default function ValuesCarousel({ className }: ValuesCarouselProps) {
                   className={containerClasses}
                 >
                   <div aria-hidden className={spacerClass} />
-                  {group.cards.map((card, cardIndex) => {
-                    const distance = Math.abs(activeIndex - cardIndex);
-                    const opacity = 1 - Math.min(distance * 0.4, 0.8);
-                    const motionConfig = motionConfigs[group.motionKey];
-                    const isCulture = group.motionKey === 'culture';
-                    const scale = isCulture
-                      ? Math.max(0.86, 1 - distance * 0.08)
-                      : 1;
-                    const cardInitial = isCulture
-                      ? { ...motionConfig.initial, scale }
-                      : motionConfig.initial;
-                    const cardAnimate = isCulture
-                      ? { ...motionConfig.animate, scale }
-                      : motionConfig.animate;
-                    return (
-                      <motion.div
-                        key={card.title}
-                        data-card-index={cardIndex}
-                        initial={cardInitial}
-                        animate={cardAnimate}
-                        transition={motionConfig.transition}
-                        style={{ opacity, transformOrigin: 'center center' }}
-                        className={clsx(
-                          'snap-center rounded-xl bg-antique p-6 text-charcoal shadow-silver/20',
-                          isHorizontal && 'min-w-[calc(100%-1.5rem)] shrink-0',
-                          group.axis === 'paged' && 'snap-always',
-                        )}
-                      >
-                        <p className="text-xl font-bold leading-snug">{card.title}</p>
-                        <p className="mt-2 text-lg leading-relaxed text-charcoal">{card.description}</p>
-                      </motion.div>
-                    );
-                  })}
+                  {group.cards.map((card, cardIndex) => (
+                    <CarouselCard
+                      key={card.title}
+                      group={group}
+                      card={card}
+                      cardIndex={cardIndex}
+                      activeIndex={activeIndex}
+                      isHorizontal={isHorizontal}
+                      motionConfig={motionConfigs[group.motionKey]}
+                    />
+                  ))}
                   <div aria-hidden className={spacerClass} />
                 </div>
               </section>
