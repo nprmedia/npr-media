@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { KeyboardEvent, TouchEvent as ReactTouchEvent } from 'react';
 import clsx from 'clsx';
 
 type Slide = {
@@ -90,11 +91,16 @@ export interface ValuesCarouselProps {
 }
 
 export default function ValuesCarousel({ className }: ValuesCarouselProps) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const groupRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const [activeIndices, setActiveIndices] = useState<Record<string, number>>(() =>
     Object.fromEntries(slideGroups.map((group) => [group.heading, 0])),
   );
   const activeIndicesRef = useRef(activeIndices);
+  const [currentStage, setCurrentStage] = useState(0);
+  const isTransitioningRef = useRef(false);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const hasMountedRef = useRef(false);
 
   const motionConfigs = useMemo(
     () =>
@@ -122,90 +128,179 @@ export default function ValuesCarousel({ className }: ValuesCarouselProps) {
     activeIndicesRef.current = activeIndices;
   }, [activeIndices]);
 
-  useEffect(() => {
-    const cleanups = slideGroups.map((group) => {
-      const container = groupRefs.current[group.heading];
-      if (!container) return undefined;
-      const isHorizontal = group.axis === 'x';
-
-      const handleScroll = () => {
-        const center = isHorizontal
-          ? container.scrollLeft + container.clientWidth / 2
-          : container.scrollTop + container.clientHeight / 2;
-        const children = Array.from(container.children) as HTMLElement[];
-        let closest = 0;
-        let minDistance = Infinity;
-        children.forEach((child, index) => {
-          const childCenter = isHorizontal
-            ? child.offsetLeft + child.clientWidth / 2
-            : child.offsetTop + child.clientHeight / 2;
-          const distance = Math.abs(childCenter - center);
-          if (distance < minDistance) {
-            minDistance = distance;
-            closest = index;
-          }
-        });
-        setActiveIndices((prev) => {
-          if (prev[group.heading] === closest) return prev;
-          return { ...prev, [group.heading]: closest };
-        });
-      };
-
-      container.addEventListener('scroll', handleScroll, { passive: true });
-      handleScroll();
-      return () => container.removeEventListener('scroll', handleScroll);
-    });
-
-    return () => {
-      cleanups.forEach((cleanup) => cleanup?.());
-    };
+  const clampScroll = useCallback((value: number, max: number) => {
+    if (max <= 0) return 0;
+    if (value < 0) return 0;
+    if (value > max) return max;
+    return value;
   }, []);
 
-  useEffect(() => {
-    const beliefsContainer = groupRefs.current['Beliefs'];
-    if (!beliefsContainer) return;
+  const scrollToCard = useCallback(
+    (group: SlideGroup, index: number, behavior: ScrollBehavior = 'smooth') => {
+      const container = groupRefs.current[group.heading];
+      if (!container) return;
+      const card = container.children[index] as HTMLElement | undefined;
+      if (!card) return;
 
-    let ticking = false;
+      if (group.axis === 'x') {
+        const desired =
+          card.offsetLeft - container.clientWidth / 2 + card.clientWidth / 2;
+        const maxScrollLeft = container.scrollWidth - container.clientWidth;
+        const left = clampScroll(desired, maxScrollLeft);
+        container.scrollTo({ left, behavior });
+      } else {
+        const desired =
+          card.offsetTop - container.clientHeight / 2 + card.clientHeight / 2;
+        const maxScrollTop = container.scrollHeight - container.clientHeight;
+        const top = clampScroll(desired, maxScrollTop);
+        container.scrollTo({ top, behavior });
+      }
+    },
+    [clampScroll],
+  );
 
-    const handleWheel = (event: WheelEvent) => {
-      if (!beliefsContainer) return;
-      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
-      event.preventDefault();
-      if (ticking) return;
-      ticking = true;
-
-      const direction = event.deltaY > 0 ? 1 : -1;
-      const children = Array.from(beliefsContainer.children) as HTMLElement[];
-      const currentIndex = activeIndicesRef.current['Beliefs'] ?? 0;
+  const stepWithinStage = useCallback(
+    (direction: 1 | -1) => {
+      const stage = slideGroups[currentStage];
+      if (!stage) return;
+      const heading = stage.heading;
+      const currentIndex = activeIndicesRef.current[heading] ?? 0;
       const nextIndex = Math.min(
         Math.max(currentIndex + direction, 0),
-        Math.max(children.length - 1, 0),
+        stage.cards.length - 1,
       );
-      const target = children[nextIndex];
-      if (target) {
-        const targetRect = target.getBoundingClientRect();
-        const containerRect = beliefsContainer.getBoundingClientRect();
-        const offset = targetRect.top - containerRect.top + beliefsContainer.scrollTop;
-        beliefsContainer.scrollTo({
-          top: offset,
-          behavior: 'smooth',
-        });
-      }
-      window.setTimeout(() => {
-        ticking = false;
-      }, 400);
-    };
 
-    beliefsContainer.addEventListener('wheel', handleWheel, { passive: false });
-    return () => beliefsContainer.removeEventListener('wheel', handleWheel);
+      if (nextIndex !== currentIndex) {
+        setActiveIndices((prev) => ({ ...prev, [heading]: nextIndex }));
+        return;
+      }
+
+      if (direction > 0 && currentStage < slideGroups.length - 1) {
+        setCurrentStage((prev) => prev + 1);
+      } else if (direction < 0 && currentStage > 0) {
+        setCurrentStage((prev) => prev - 1);
+      }
+    },
+    [currentStage],
+  );
+
+  const requestStageStep = useCallback(
+    (direction: 1 | -1) => {
+      if (isTransitioningRef.current) return;
+      isTransitioningRef.current = true;
+      stepWithinStage(direction);
+      window.setTimeout(() => {
+        isTransitioningRef.current = false;
+      }, 420);
+    },
+    [stepWithinStage],
+  );
+
+  const handleWheel = useCallback(
+    (event: WheelEvent) => {
+      const stage = slideGroups[currentStage];
+      if (!stage) return;
+      const { deltaX, deltaY } = event;
+      const primary =
+        stage.axis === 'x'
+          ? Math.abs(deltaY) > Math.abs(deltaX)
+            ? deltaY
+            : deltaX
+          : deltaY;
+
+      if (primary === 0) return;
+      event.preventDefault();
+      requestStageStep(primary > 0 ? 1 : -1);
+    },
+    [currentStage, requestStageStep],
+  );
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    container.addEventListener('wheel', handleWheel, { passive: false });
+    return () => container.removeEventListener('wheel', handleWheel);
+  }, [handleWheel]);
+
+  useEffect(() => {
+    slideGroups.forEach((group, index) => {
+      const targetIndex = activeIndices[group.heading] ?? 0;
+      const behavior: ScrollBehavior =
+        hasMountedRef.current && index === currentStage ? 'smooth' : 'auto';
+      scrollToCard(group, targetIndex, behavior);
+    });
+    hasMountedRef.current = true;
+  }, [activeIndices, currentStage, scrollToCard]);
+
+  useEffect(() => {
+    const stage = slideGroups[currentStage];
+    if (!stage) return;
+    const index = activeIndicesRef.current[stage.heading] ?? 0;
+    scrollToCard(stage, index, 'auto');
+  }, [currentStage, scrollToCard]);
+
+  const handleTouchStart = useCallback((event: ReactTouchEvent<HTMLDivElement>) => {
+    const touch = event.touches[0];
+    if (!touch) return;
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
   }, []);
+
+  const handleTouchMove = useCallback(
+    (event: ReactTouchEvent<HTMLDivElement>) => {
+      const start = touchStartRef.current;
+      if (!start) return;
+      const touch = event.touches[0];
+      if (!touch) return;
+      const deltaX = touch.clientX - start.x;
+      const deltaY = touch.clientY - start.y;
+      const stage = slideGroups[currentStage];
+      if (!stage) return;
+
+      const primary =
+        stage.axis === 'x'
+          ? Math.abs(deltaY) > Math.abs(deltaX)
+            ? deltaY
+            : deltaX
+          : deltaY;
+      if (Math.abs(primary) < 24) return;
+      event.preventDefault();
+      requestStageStep(primary < 0 ? 1 : -1);
+      touchStartRef.current = null;
+    },
+    [currentStage, requestStageStep],
+  );
+
+  const handleTouchEnd = useCallback(() => {
+    touchStartRef.current = null;
+  }, []);
+
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === 'ArrowDown' || event.key === 'ArrowRight' || event.key === 'PageDown') {
+        event.preventDefault();
+        requestStageStep(1);
+      } else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft' || event.key === 'PageUp') {
+        event.preventDefault();
+        requestStageStep(-1);
+      }
+    },
+    [requestStageStep],
+  );
 
   return (
     <div
+      ref={containerRef}
       className={clsx(
         'relative mx-auto h-screen max-w-md overflow-hidden bg-olive',
         className,
       )}
+      tabIndex={0}
+      role="group"
+      aria-label="Values, Culture & Beliefs"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onKeyDown={handleKeyDown}
     >
       <div
         className="pointer-events-none absolute inset-x-0 top-0 z-10"
@@ -228,27 +323,38 @@ export default function ValuesCarousel({ className }: ValuesCarouselProps) {
           Values, Culture &amp; Beliefs
         </h2>
       </div>
-      <div
-        className="no-scrollbar h-full overflow-y-scroll scroll-smooth pb-12 pt-6"
-      >
-        <div className="space-y-10 px-6">
-          {slideGroups.map((group) => {
+      <div className="relative z-10 h-full pb-12 pt-6">
+        <div className="relative h-full px-6">
+          {slideGroups.map((group, index) => {
             const activeIndex = activeIndices[group.heading] ?? 0;
             const isHorizontal = group.axis === 'x';
+            const isActiveStage = index === currentStage;
             const containerClasses = clsx(
               'group/card no-scrollbar flex gap-6',
+              'min-h-0 flex-1',
               group.axis === 'y' &&
-                'h-[22rem] snap-y snap-mandatory flex-col overflow-y-scroll pb-4',
+                'snap-y snap-mandatory flex-col overflow-y-scroll pb-4',
               isHorizontal &&
                 'snap-x snap-mandatory overflow-x-scroll pb-4 flex-nowrap',
               group.axis === 'paged' &&
-                'h-[22rem] snap-y snap-mandatory flex-col overflow-y-scroll pb-4 scroll-py-6',
+                'snap-y snap-mandatory flex-col overflow-y-scroll pb-4 scroll-py-6',
             );
             return (
-              <section key={group.heading} className="space-y-4">
-                <p className="text-center text-lg font-semibold uppercase tracking-[0.3em] text-antique/80">
-                  {group.heading}
-                </p>
+              <section
+                key={group.heading}
+                className={clsx(
+                  'absolute inset-0 flex min-h-0 flex-col gap-6 transition-opacity duration-500 ease-out',
+                  isActiveStage
+                    ? 'opacity-100 pointer-events-auto'
+                    : 'opacity-0 pointer-events-none',
+                )}
+                aria-hidden={!isActiveStage}
+              >
+                <div className="flex justify-center">
+                  <p className="text-center text-lg font-semibold uppercase tracking-[0.3em] text-antique/80">
+                    {group.heading}
+                  </p>
+                </div>
                 <div
                   ref={(node) => {
                     groupRefs.current[group.heading] = node;
