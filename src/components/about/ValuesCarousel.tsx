@@ -117,8 +117,8 @@ function CarouselCard({
 }) {
   const distance = Math.abs(activeIndex - cardIndex);
   const opacity = 1 - Math.min(distance * 0.4, 0.8);
-  const isCulture = group.motionKey === 'culture';
-  const targetScale = isCulture ? cultureScaleForDistance(distance) : 1;
+  const targetScale =
+    group.motionKey === 'culture' ? cultureScaleForDistance(distance) : 1;
   const scaleSpring = useSpring(targetScale, {
     stiffness: 220,
     damping: 28,
@@ -129,14 +129,15 @@ function CarouselCard({
     scaleSpring.set(targetScale);
   }, [scaleSpring, targetScale]);
 
-  const style: MotionStyle = {
+  const outerStyle: MotionStyle = {
     opacity,
-    transformOrigin: 'center center',
   };
 
-  if (isCulture) {
-    style.scale = scaleSpring;
-  }
+  const innerStyle: MotionStyle = {
+    transformOrigin: 'center center',
+    scaleX: scaleSpring,
+    scaleY: scaleSpring,
+  };
 
   return (
     <motion.div
@@ -144,18 +145,25 @@ function CarouselCard({
       initial={motionConfig.initial}
       animate={motionConfig.animate}
       transition={motionConfig.transition}
-      style={style}
+      style={outerStyle}
       className={clsx(
-        'snap-center rounded-xl bg-antique p-6 text-charcoal shadow-silver/20',
+        'snap-center flex w-full justify-center',
         isHorizontal && 'min-w-[calc(100%-1.5rem)] shrink-0',
         group.axis === 'paged' && 'snap-always',
-        isCulture && 'will-change-transform',
       )}
     >
-      <p className="text-xl font-bold leading-snug">{card.title}</p>
-      <p className="mt-2 text-lg leading-relaxed text-charcoal">
-        {card.description}
-      </p>
+      <motion.div
+        style={innerStyle}
+        className={clsx(
+          'w-full rounded-xl bg-antique p-6 text-charcoal shadow-silver/20',
+          group.motionKey === 'culture' && 'will-change-transform',
+        )}
+      >
+        <p className="text-xl font-bold leading-snug">{card.title}</p>
+        <p className="mt-2 text-lg leading-relaxed text-charcoal">
+          {card.description}
+        </p>
+      </motion.div>
     </motion.div>
   );
 }
