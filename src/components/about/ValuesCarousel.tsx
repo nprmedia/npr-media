@@ -139,7 +139,9 @@ export default function ValuesCarousel({ className }: ValuesCarouselProps) {
     (group: SlideGroup, index: number, behavior: ScrollBehavior = 'smooth') => {
       const container = groupRefs.current[group.heading];
       if (!container) return;
-      const card = container.children[index] as HTMLElement | undefined;
+      const card = container.querySelector<HTMLElement>(
+        `[data-card-index="${index}"]`,
+      );
       if (!card) return;
 
       if (group.axis === 'x') {
@@ -329,6 +331,10 @@ export default function ValuesCarousel({ className }: ValuesCarouselProps) {
             const activeIndex = activeIndices[group.heading] ?? 0;
             const isHorizontal = group.axis === 'x';
             const isActiveStage = index === currentStage;
+            const spacerClass = clsx(
+              'pointer-events-none snap-none self-stretch',
+              'flex-[0_0_50%] shrink-0',
+            );
             const containerClasses = clsx(
               'group/card no-scrollbar flex gap-6',
               'min-h-0 flex-1',
@@ -361,17 +367,29 @@ export default function ValuesCarousel({ className }: ValuesCarouselProps) {
                   }}
                   className={containerClasses}
                 >
+                  <div aria-hidden className={spacerClass} />
                   {group.cards.map((card, cardIndex) => {
                     const distance = Math.abs(activeIndex - cardIndex);
                     const opacity = 1 - Math.min(distance * 0.4, 0.8);
                     const motionConfig = motionConfigs[group.motionKey];
+                    const isCulture = group.motionKey === 'culture';
+                    const scale = isCulture
+                      ? Math.max(0.86, 1 - distance * 0.08)
+                      : 1;
+                    const cardInitial = isCulture
+                      ? { ...motionConfig.initial, scale }
+                      : motionConfig.initial;
+                    const cardAnimate = isCulture
+                      ? { ...motionConfig.animate, scale }
+                      : motionConfig.animate;
                     return (
                       <motion.div
                         key={card.title}
-                        initial={motionConfig.initial}
-                        animate={motionConfig.animate}
+                        data-card-index={cardIndex}
+                        initial={cardInitial}
+                        animate={cardAnimate}
                         transition={motionConfig.transition}
-                        style={{ opacity }}
+                        style={{ opacity, transformOrigin: 'center center' }}
                         className={clsx(
                           'snap-center rounded-xl bg-antique p-6 text-charcoal shadow-silver/20',
                           isHorizontal && 'min-w-[calc(100%-1.5rem)] shrink-0',
@@ -383,6 +401,7 @@ export default function ValuesCarousel({ className }: ValuesCarouselProps) {
                       </motion.div>
                     );
                   })}
+                  <div aria-hidden className={spacerClass} />
                 </div>
               </section>
             );
