@@ -52,7 +52,7 @@ export default function StatImpact() {
               transition={{ duration: 0.5, delay: i * 0.12 }}
               className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 rounded-xl bg-white/80 p-3.5 sm:p-4 shadow-md hover:shadow-lg border border-white/70 transition-all duration-300 ease-out"
             >
-              <span className="min-w-[4.25rem] text-[clamp(2.4rem,5vw,3.4rem)] leading-none font-black text-blood bg-gradient-to-br from-blood/10 to-transparent px-2 py-1 rounded-xl text-center">
+              <span className="min-w-[4.25rem] text-[clamp(2.4rem,5vw,3.4rem)] leading-none font-black text-[#9f0303] drop-shadow-[0_0_6px_rgba(0,0,0,0.25)] bg-gradient-to-br from-blood/10 to-transparent px-2 py-1 rounded-xl text-center">
                 {stat.value}
               </span>
 

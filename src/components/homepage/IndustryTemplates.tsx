@@ -13,52 +13,61 @@ export default function IndustryTemplatesSection() {
   return (
     <section
       id="templates"
-      className="bg-offwhite text-charcoal w-full scroll-mt-[120px] overflow-x-hidden py-[clamp(5rem,10vw,8rem)]"
+      className="bg-offwhite text-charcoal w-full scroll-mt-[120px] overflow-x-hidden py-[clamp(4rem,8vw,6rem)]"
     >
-      <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
-          <h2 className="text-blood text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold tracking-tight">
+      <div className="mx-auto max-w-[88rem] px-[clamp(1.5rem,5vw,4rem)]">
+        <div className="mb-10 text-center">
+          <h2 className="text-blood text-[clamp(1.75rem,3.2vw,2.4rem)] font-bold tracking-tight">
             Authority Platform Demo
           </h2>
-          <p className="text-charcoal mt-2 text-[clamp(0.9rem,1.6vw,1.125rem)]">
-            Our premier template for coaches and consultants.
+          <p className="text-charcoal/90 mt-2 text-[clamp(0.95rem,1.35vw,1.1rem)]">
+            Our flagship build for coaches and consultants who sell high-trust services.
           </p>
         </div>
 
-        <div className="group mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-start">
+        <div className="group mx-auto flex flex-col gap-8 md:flex-row md:items-center">
+          {/* Preview card */}
           <div
-            className="relative mb-4 aspect-[2/3] h-[80vh] max-h-[80vh] overflow-hidden rounded-lg md:mr-6 md:mb-0"
+            className="relative w-full max-w-[480px] overflow-hidden rounded-2xl border border-charcoal/5 bg-white shadow-[0_18px_45px_rgba(15,23,42,0.16)] transition-transform duration-500 md:mr-8"
             style={{ perspective: '1000px' }}
           >
-            <Image
-              src="/logos/Authority Platform.webp"
-              alt={`Screenshot of ${authority.title}`}
-              width={640}
-              height={960}
-              className="h-full w-full origin-left rounded-lg object-cover transition-transform duration-500 group-hover:[transform:rotateY(12deg)]"
-              priority
-            />
+            <div className="relative aspect-[4/5]">
+              <Image
+                src="/logos/Authority Platform.webp"
+                alt={`Screenshot of ${authority.title}`}
+                width={640}
+                height={800}
+                className="h-full w-full origin-left rounded-2xl object-cover transition-transform duration-500 group-hover:[transform:rotateY(8deg)_translateX(-6px)]"
+                priority
+              />
+            </div>
           </div>
-          <div className="flex flex-grow origin-left transform-gpu flex-col transition-all duration-500 group-hover:[transform:translateX(1.5rem)_rotateY(-6deg)] md:w-1/2">
-            <h4 className="text-charcoal mb-1 truncate text-[clamp(1rem,1.8vw,1.25rem)] font-semibold">
+
+          {/* Copy + CTA */}
+          <div className="flex flex-1 flex-col justify-center md:max-w-[480px]">
+            <h4 className="text-charcoal mb-2 text-[clamp(1.1rem,1.9vw,1.35rem)] font-semibold">
               {authority.title}
             </h4>
-            <p className="text-charcoal mb-1 text-[clamp(0.8rem,1.2vw,0.9rem)]">
+
+            <p className="text-charcoal/90 mb-2 text-[clamp(0.9rem,1.25vw,1rem)] leading-relaxed">
               {authority.description}
             </p>
-            <p className="text-charcoal mb-3 text-[clamp(0.7rem,1vw,0.8rem)] italic">
-              Used by 12+ clients in this industry
+
+            <p className="text-charcoal/70 mb-4 text-[clamp(0.8rem,1vw,0.9rem)] italic">
+              Already battle-tested with 12+ clients in this niche.
             </p>
-            <div className="mt-auto text-[clamp(0.8rem,1vw,0.9rem)] font-medium">
+
+            <div className="mt-auto text-[clamp(0.85rem,1vw,0.95rem)] font-medium">
               <a
                 href={authority.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Opens in new tab"
                 aria-label={`Open demo for ${authority.title}`}
-                className="bg-blood text-charcoal hover:bg-blood focus:ring-blood rounded-full px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.4rem,1vw,0.6rem)] transition hover:scale-105 focus:ring-2 focus:outline-none"
+                className="inline-flex items-center justify-center rounded-full border border-blood bg-blood px-[clamp(0.85rem,2.25vw,1.2rem)] py-[clamp(0.45rem,1vw,0.7rem)] text-charcoal shadow-[0_0_18px_rgba(179,0,0,0.3)] transition-transform duration-200 hover:scale-105 hover:bg-crimson focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blood"
               >
-                Open Demo →
+                Open demo
+                <span className="ml-1 text-[0.9em]">→</span>
               </a>
             </div>
           </div>
