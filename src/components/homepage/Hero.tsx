@@ -49,7 +49,6 @@ function HeroInner({
     target: heroRef,
     offset: ['start start', 'end start'],
   });
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.98]);
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
 
   const controls = useAnimation();
@@ -234,7 +233,7 @@ function HeroInner({
       id="hero"
       ref={heroRef}
       aria-label="Hero Section"
-      style={{ scale: heroScale, opacity: heroOpacity, willChange: 'transform, opacity' }}
+      style={{ opacity: heroOpacity, willChange: 'opacity' }}
       className="relative min-h-[100svh] pb-[5vh] flex items-center justify-center bg-black font-sans overflow-hidden"
     >
       {/* Video background */}
